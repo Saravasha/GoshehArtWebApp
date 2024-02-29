@@ -54,4 +54,4 @@ jobs:
           app-name: 'MVCGoshehArt20240229180139'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_0F54DF2FEF3640BBB513D7D62134096E }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_8F8F3AA26B674D40BC252A79FC9978A8 }}
