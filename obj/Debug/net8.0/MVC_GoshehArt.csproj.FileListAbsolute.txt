@@ -287,9 +287,6 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\MVC_GoshehArt\obj\Debug\net8.0\MV
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\MVC_GoshehArt\obj\Debug\net8.0\ref\MVC_GoshehArt.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\appsettings.Development.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\appsettings.json
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\package-lock.json
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\package.json
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\public\manifest.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\MVC_GoshehArt.staticwebassets.runtime.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\MVC_GoshehArt.exe
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\bin\Debug\net8.0\MVC_GoshehArt.deps.json
