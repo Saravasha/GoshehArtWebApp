@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\MVC_GoshehArt.csproj": {}
+    "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\MVC_GoshehArt.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\MVC_GoshehArt.csproj": {
+    "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\MVC_GoshehArt.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\MVC_GoshehArt.csproj",
+        "projectUniqueName": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\MVC_GoshehArt.csproj",
         "projectName": "MVC_GoshehArt",
-        "projectPath": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\MVC_GoshehArt.csproj",
+        "projectPath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\MVC_GoshehArt.csproj",
         "packagesPath": "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\obj\\",
+        "outputPath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\Siavash Gosheh\\AppData\\Roaming\\NuGet\\NuGet.Config",
