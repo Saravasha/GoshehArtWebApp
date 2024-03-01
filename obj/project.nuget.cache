@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "Cc+2/0JHLR6weIbfZ927NxSs6jsviaiymQEoKnzzma77cwTyp2J0obLMn7vBjmnZQ422KqtozBUs4Vllse11Cw==",
+  "dgSpecHash": "B6Ks/PVnLTvdVEYUnSuvbS/GZsAldJTomBk3Ixle2BR6ksDA8yAfqq6iiSh57XXQUCWAqEuF5UEf24CXDV3ViA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArtWebApp\\MVC_GoshehArt.csproj",
+  "projectFilePath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\MVC_GoshehArt.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\azure.core\\1.35.0\\azure.core.1.35.0.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\azure.identity\\1.10.3\\azure.identity.1.10.3.nupkg.sha512",
