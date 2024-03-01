@@ -1,31 +1,5 @@
-# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+﻿################################################################################
+# This .gitignore file was automatically created by Microsoft(R) Visual Studio.
+################################################################################
 
-# dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# testing
-/coverage
-
-# production
-/build
-
-# misc
-.DS_Store
-.env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-/.vs/MVC_GoshehArt/FileContentIndex/1f65d022-879f-4f79-a517-a6b14120f2d1.vsidx
-/.vs/MVC_GoshehArt/FileContentIndex/a63da31d-d27b-4705-8c41-5e6dca1de90c.vsidx
-/.vs/MVC_GoshehArt/FileContentIndex/9ff1cc6f-360f-4786-bdeb-bed1a5172282.vsidx
-/.vs/MVC_GoshehArt/FileContentIndex/899b0180-9132-4944-953d-676c70199bc9.vsidx
-/.vs/MVC_GoshehArt/v17/.suo
-/.vs/MVC_GoshehArt/v17/DocumentLayout.json
-/.vs/MVC_GoshehArt/FileContentIndex/e4c572af-a716-4bf3-a0e7-64134b8ff815.vsidx
-/.vs/MVC_GoshehArt/DesignTimeBuild/.dtbcache.v2
+/.vs
