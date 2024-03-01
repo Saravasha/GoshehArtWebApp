@@ -17,6 +17,78 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\.gitignore",
+      "PackagePath": "staticwebassets\\goshehartreact\\.gitignore"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\README.md",
+      "PackagePath": "staticwebassets\\goshehartreact\\README.md"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\package-lock.json",
+      "PackagePath": "staticwebassets\\goshehartreact\\package-lock.json"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\package.json",
+      "PackagePath": "staticwebassets\\goshehartreact\\package.json"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\public\\favicon.ico",
+      "PackagePath": "staticwebassets\\goshehartreact\\public\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\public\\index.html",
+      "PackagePath": "staticwebassets\\goshehartreact\\public\\index.html"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\public\\logo192.png",
+      "PackagePath": "staticwebassets\\goshehartreact\\public\\logo192.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\public\\logo512.png",
+      "PackagePath": "staticwebassets\\goshehartreact\\public\\logo512.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\public\\manifest.json",
+      "PackagePath": "staticwebassets\\goshehartreact\\public\\manifest.json"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\public\\robots.txt",
+      "PackagePath": "staticwebassets\\goshehartreact\\public\\robots.txt"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\App.css",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\App.css"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\App.js",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\App.js"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\App.test.js",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\App.test.js"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\index.css",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\index.css"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\index.js",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\index.js"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\logo.svg",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\logo.svg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\reportWebVitals.js",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\reportWebVitals.js"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\goshehartreact\\src\\setupTests.js",
+      "PackagePath": "staticwebassets\\goshehartreact\\src\\setupTests.js"
+    },
+    {
       "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -255,62 +327,6 @@
     {
       "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\package.json",
       "PackagePath": "staticwebassets\\package.json"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\public\\favicon.ico",
-      "PackagePath": "staticwebassets\\public\\favicon.ico"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\public\\index.html",
-      "PackagePath": "staticwebassets\\public\\index.html"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\public\\logo192.png",
-      "PackagePath": "staticwebassets\\public\\logo192.png"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\public\\logo512.png",
-      "PackagePath": "staticwebassets\\public\\logo512.png"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\public\\manifest.json",
-      "PackagePath": "staticwebassets\\public\\manifest.json"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\public\\robots.txt",
-      "PackagePath": "staticwebassets\\public\\robots.txt"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\App.css",
-      "PackagePath": "staticwebassets\\src\\App.css"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\App.js",
-      "PackagePath": "staticwebassets\\src\\App.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\App.test.js",
-      "PackagePath": "staticwebassets\\src\\App.test.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\index.css",
-      "PackagePath": "staticwebassets\\src\\index.css"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\index.js",
-      "PackagePath": "staticwebassets\\src\\index.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\logo.svg",
-      "PackagePath": "staticwebassets\\src\\logo.svg"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\reportWebVitals.js",
-      "PackagePath": "staticwebassets\\src\\reportWebVitals.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\Source\\Repos\\GoshehArt\\wwwroot\\src\\setupTests.js",
-      "PackagePath": "staticwebassets\\src\\setupTests.js"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MVC_GoshehArt.Microsoft.AspNetCore.StaticWebAssets.props",
