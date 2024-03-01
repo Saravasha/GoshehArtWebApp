@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="Views\Home\Privacy.cshtml" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Include="wwwroot\public\favicon.ico" />
     <None Include="wwwroot\public\index.html" />
     <None Include="wwwroot\public\logo192.png" />
