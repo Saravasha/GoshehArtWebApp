@@ -54,4 +54,4 @@ jobs:
           app-name: 'GoshehArt'
           slot-name: 'Production'
           package: .
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_735DAFA012C445CEAA4CABC769582BE9 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_DB18A73E977D4112AAE0A92792E6BAE3 }}
