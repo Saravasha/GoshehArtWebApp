@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MVC_GoshehArt")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+a5ddd439cc573fc68da9e4f2cc07bb0d89c78df9")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0f700193b0ea6c8c1fefc364242554ca9773e388")]
 [assembly: System.Reflection.AssemblyProductAttribute("MVC_GoshehArt")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MVC_GoshehArt")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
