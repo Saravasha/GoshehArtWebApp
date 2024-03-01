@@ -7,6 +7,23 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\public\favicon.ico" />
+    <None Include="wwwroot\public\index.html" />
+    <None Include="wwwroot\public\logo192.png" />
+    <None Include="wwwroot\public\logo512.png" />
+    <None Include="wwwroot\public\robots.txt" />
+    <None Include="wwwroot\README.md" />
+    <None Include="wwwroot\src\App.css" />
+    <None Include="wwwroot\src\App.js" />
+    <None Include="wwwroot\src\App.test.js" />
+    <None Include="wwwroot\src\index.css" />
+    <None Include="wwwroot\src\index.js" />
+    <None Include="wwwroot\src\logo.svg" />
+    <None Include="wwwroot\src\reportWebVitals.js" />
+    <None Include="wwwroot\src\setupTests.js" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.2">
