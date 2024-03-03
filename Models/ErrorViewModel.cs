@@ -1,4 +1,4 @@
-namespace MVC_GoshehArt.Models
+namespace GoshehArtWebApp.Models
 {
     public class ErrorViewModel
     {

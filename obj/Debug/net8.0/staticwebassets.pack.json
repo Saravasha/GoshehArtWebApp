@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\MVC_GoshehArt.bundle.scp.css",
-      "PackagePath": "staticwebassets\\MVC_GoshehArt.bundle.scp.css"
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css",
+      "PackagePath": "staticwebassets\\GoshehArtWebApp.bundle.scp.css"
     },
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
@@ -245,52 +245,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\App.css",
-      "PackagePath": "staticwebassets\\src\\App.css"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\App.js",
-      "PackagePath": "staticwebassets\\src\\App.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\App.test.js",
-      "PackagePath": "staticwebassets\\src\\App.test.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\index.css",
-      "PackagePath": "staticwebassets\\src\\index.css"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\index.js",
-      "PackagePath": "staticwebassets\\src\\index.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\logo.svg",
-      "PackagePath": "staticwebassets\\src\\logo.svg"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\reportWebVitals.js",
-      "PackagePath": "staticwebassets\\src\\reportWebVitals.js"
-    },
-    {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\src\\setupTests.js",
-      "PackagePath": "staticwebassets\\src\\setupTests.js"
-    },
-    {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.MVC_GoshehArt.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GoshehArtWebApp.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.MVC_GoshehArt.props",
-      "PackagePath": "build\\MVC_GoshehArt.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.GoshehArtWebApp.props",
+      "PackagePath": "build\\GoshehArtWebApp.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.MVC_GoshehArt.props",
-      "PackagePath": "buildMultiTargeting\\MVC_GoshehArt.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.GoshehArtWebApp.props",
+      "PackagePath": "buildMultiTargeting\\GoshehArtWebApp.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.MVC_GoshehArt.props",
-      "PackagePath": "buildTransitive\\MVC_GoshehArt.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.GoshehArtWebApp.props",
+      "PackagePath": "buildTransitive\\GoshehArtWebApp.props"
     }
   ],
   "ElementsToRemove": []

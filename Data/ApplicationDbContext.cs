@@ -1,22 +1,19 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using GoshehArtWebApp.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.Diagnostics.Metrics;
+using System;
 
-using MVC_GoshehArt.Models;
-namespace MVC_GoshehArt.Data
+namespace GoshehArtWebApp.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
+    public class ApplicationDbContext : IdentityDbContext
     {
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
             : base(options)
         {
-
         }
-
         public DbSet<Page> Pages { get; set; } = default!;
-        //public DbSet<City> Cities { get; set; } = default!;
-        //public DbSet<Country> Countries { get; set; } = default!;
-        //public DbSet<Language> Languages { get; set; } = default!;
 
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
@@ -25,8 +22,10 @@ namespace MVC_GoshehArt.Data
 
 
 
-            //modelbuilder.Entity<Language>().HasData(new Language { Id = 1, Name = "Svenska" });
-            //modelbuilder.Entity<Language>().HasData(new Language { Id = 2, Name = "'Murican" });
+            modelbuilder.Entity<Page>().HasData(new Page { Title = "Home", Content = "" });
+            modelbuilder.Entity<Page>().HasData(new Page { Title = "Production", Content = "" });
+            modelbuilder.Entity<Page>().HasData(new Page { Title = "About", Content = "" });
+            modelbuilder.Entity<Page>().HasData(new Page { Title = "Contact", Content = "" });
             //modelbuilder.Entity<Language>().HasData(new Language { Id = 3, Name = "Polski" });
 
             //modelbuilder.Entity<Country>().HasData(new Country { Id = 1, Name = "Sweden" });
@@ -72,8 +71,8 @@ namespace MVC_GoshehArt.Data
 
             });
 
-            PasswordHasher<ApplicationUser> passwordHasher = new PasswordHasher<ApplicationUser>();
-            modelbuilder.Entity<ApplicationUser>().HasData(new ApplicationUser
+            PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
+            modelbuilder.Entity<IdentityUser>().HasData(new IdentityUser
             {
                 Id = userId,
                 Email = "admin@admin.com",
@@ -85,11 +84,10 @@ namespace MVC_GoshehArt.Data
 
             modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
             {
-               RoleId = adminRoleId,
-               UserId = userId,
+                RoleId = adminRoleId,
+                UserId = userId,
             });
 
         }
     }
 }
-

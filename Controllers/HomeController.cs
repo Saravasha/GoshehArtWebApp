@@ -1,35 +1,30 @@
-﻿using Microsoft.AspNetCore.Mvc;
-using MVC_GoshehArt.Models;
+using GoshehArtWebApp.Data;
+using GoshehArtWebApp.Models;
+using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
-namespace MVC_GoshehArt.Controllers
+namespace GoshehArtWebApp.Controllers
 {
+   
     public class HomeController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ApplicationDbContext _dbContext;
 
-        public HomeController(ILogger<HomeController> logger)
+        public HomeController(ApplicationDbContext dbContext)
         {
-            _logger = logger;
+            _dbContext = dbContext;
         }
 
         public IActionResult Index()
         {
-            return View();
+            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == "Home");
+            return View(page);
         }
 
-        public IActionResult Contact()
+        public IActionResult Privacy()
         {
-            return View();
-        }
-        public IActionResult About()
-        {
-            return View();
-        }
-
-        public IActionResult Production()
-        {
-            return View();
+            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == "Privacy");
+            return View(page);
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
