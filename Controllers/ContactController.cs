@@ -5,16 +5,16 @@ namespace GoshehArtWebApp.Controllers
 {
     public class ContactController : Controller
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public ContactController(ApplicationDbContext dbContext)
+        public ContactController(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == "Contact");
+            var page = _context.Pages.FirstOrDefault(x => x.Title == "Contact");
             return View(page);
         }
     }

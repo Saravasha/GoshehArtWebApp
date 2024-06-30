@@ -5,16 +5,16 @@ namespace GoshehArtWebApp.Controllers
 {
     public class ProductionController : Controller
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public ProductionController(ApplicationDbContext dbContext)
+        public ProductionController(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == "Production");
+            var page = _context.Pages.FirstOrDefault(x => x.Title == "Production");
             return View(page);
         }
     }
