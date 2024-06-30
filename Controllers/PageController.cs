@@ -8,11 +8,11 @@ namespace GoshehArtWebApp.Controllers
     [Authorize]
     public class PageController : Controller
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public PageController(ApplicationDbContext dbContext)
+        public PageController(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
 
@@ -24,15 +24,15 @@ namespace GoshehArtWebApp.Controllers
         public IActionResult EditPage(string title)
         {
             // SELECT * FROM Pages WHERE Title = {title}
-            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == title);
+            var page = _context.Pages.FirstOrDefault(x => x.Title == title);
 
             if (page == null)
             {
                 page = new Page();
                 page.Title = title;
 
-                _dbContext.Pages.Add(page);
-                _dbContext.SaveChanges();
+                _context.Pages.Add(page);
+                _context.SaveChanges();
             }
 
             return View(page);
@@ -41,7 +41,7 @@ namespace GoshehArtWebApp.Controllers
         [HttpPost]
         public IActionResult SavePage(string title, string content)
         {
-            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == title);
+            var page = _context.Pages.FirstOrDefault(x => x.Title == title);
 
             if (page == null)
             {
@@ -49,7 +49,7 @@ namespace GoshehArtWebApp.Controllers
             }
 
             page.Content = content;
-            _dbContext.SaveChanges();
+            _context.SaveChanges();
 
             return RedirectToAction(nameof(Index));
         }

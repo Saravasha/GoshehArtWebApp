@@ -8,22 +8,22 @@ namespace GoshehArtWebApp.Controllers
    
     public class HomeController : Controller
     {
-        private readonly ApplicationDbContext _dbContext;
+        private readonly ApplicationDbContext _context;
 
-        public HomeController(ApplicationDbContext dbContext)
+        public HomeController(ApplicationDbContext context)
         {
-            _dbContext = dbContext;
+            _context = context;
         }
 
         public IActionResult Index()
         {
-            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == "Home");
+            var page = _context.Pages.FirstOrDefault(x => x.Title == "Home");
             return View(page);
         }
 
         public IActionResult Privacy()
         {
-            var page = _dbContext.Pages.FirstOrDefault(x => x.Title == "Privacy");
+            var page = _context.Pages.FirstOrDefault(x => x.Title == "Privacy");
             return View(page);
         }
 

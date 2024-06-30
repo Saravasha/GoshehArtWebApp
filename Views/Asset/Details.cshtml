@@ -1,0 +1,51 @@
+﻿@model Asset
+
+@{
+    ViewData["Title"] = "Asset Details";
+}
+
+<section class="container">
+    <div>
+        <h4>Asset Details</h4>
+
+        <img src="@Model.ImageUrl" style="max-height: 40%;" />
+        <dl class="row">
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Name)</dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Name)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Description)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Description)
+            </dd>
+            <dt class="col-sm-2">
+                @Html.DisplayNameFor(model => model.Author)
+            </dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Author)
+            </dd>
+            <dt class="col-sm-2">
+                  @*Html.DisplayNameFor(model => model.CategoryId)*@
+                Categories
+            </dt>
+            <dd class="col-sm-10">
+                    @*Html.DisplayFor(model => model.CategoryId)*@
+                <ul>
+                    
+                    @foreach (var cat in Model.Categories)
+                    {
+                        <li>@cat.Name</li>
+                    }
+                </ul>
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model?.Id">Update</a> |
+        <a asp-action="Index">Return to Asset Index</a>
+    </div>
+
+</section>
+

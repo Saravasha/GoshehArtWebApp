@@ -144,3 +144,4 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\GoshehArtWebApp.pdb
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\GoshehArtWebApp.genruntimeconfig.cache
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\ref\GoshehArtWebApp.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\GoshehArtWebApp.sourcelink.json
