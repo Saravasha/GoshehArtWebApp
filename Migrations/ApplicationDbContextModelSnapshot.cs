@@ -39,18 +39,18 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            AssetsId = 3,
-                            CategoriesId = 1
-                        },
-                        new
-                        {
                             AssetsId = 1,
-                            CategoriesId = 2
+                            CategoriesId = 9
                         },
                         new
                         {
                             AssetsId = 2,
-                            CategoriesId = 3
+                            CategoriesId = 6
+                        },
+                        new
+                        {
+                            AssetsId = 3,
+                            CategoriesId = 9
                         });
                 });
 
@@ -86,27 +86,27 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             Author = "Fateme Gosheh",
-                            CategoryId = 1,
+                            CategoryId = 9,
                             Description = "Inte sett än",
-                            ImageUrl = "placeholder",
+                            ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan"
                         },
                         new
                         {
                             Id = 2,
                             Author = "Fateme Gosheh",
-                            CategoryId = 2,
+                            CategoryId = 6,
                             Description = "Gods butt from above",
-                            ImageUrl = "placeholder",
+                            ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Kontroversiell Konst/image (3).jpg",
                             Name = "Aisha's Art"
                         },
                         new
                         {
                             Id = 3,
                             Author = "Fateme Gosheh",
-                            CategoryId = 3,
+                            CategoryId = 9,
                             Description = "Helt fantastiskt",
-                            ImageUrl = "placeholder",
+                            ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg",
                             Name = "Kari - Jag är elak"
                         });
                 });
@@ -235,13 +235,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f19a837a-ff53-433b-84ce-c2f539540817",
+                            Id = "5793509b-3797-4cc6-812a-8ab8b53a71a7",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "ade0da3c-7f4d-4213-86dc-ffb0ea2bb92a",
+                            Id = "fcffe7fb-88f5-4533-90f2-65ad2fc521b5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -339,17 +339,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1c542f85-78c5-42b1-aef1-39d7badcd432",
+                            Id = "ea80894f-632f-48c4-b575-dba8bd892b6f",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2f9860ba-d122-45e1-b72d-e1df916ae278",
+                            ConcurrencyStamp = "fadd5734-a089-42d3-8687-7132ea60639f",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEEB9Xqw7U4BzPh4CI5+x4zevrnCbbu7FeBv8Nj0WVfdOLfzIosVDjDE9pTFk4Z0AQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEB9nMwlibmL7XY8A5qReq63yU+uNX6NOyjho94VXUXTPBaLKO6VGxPKczQcO0HrHMg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "d8b4180a-d3e9-42bd-b7c0-a544463389cd",
+                            SecurityStamp = "44dcfc59-0e20-49d6-b6f1-b2f26549efbd",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -421,8 +421,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "1c542f85-78c5-42b1-aef1-39d7badcd432",
-                            RoleId = "f19a837a-ff53-433b-84ce-c2f539540817"
+                            UserId = "ea80894f-632f-48c4-b575-dba8bd892b6f",
+                            RoleId = "5793509b-3797-4cc6-812a-8ab8b53a71a7"
                         });
                 });
 

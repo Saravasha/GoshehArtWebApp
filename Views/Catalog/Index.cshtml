@@ -1,0 +1,53 @@
+﻿@model CatalogViewModel
+
+@{
+    ViewData["Title"] = "Catalog Index";
+}
+
+<section class="container">
+
+    <p>
+        <a asp-controller="Catalog" asp-action="">Catalog View</a>
+        <a asp-action="Upload">Upload View</a>
+    </p>
+    <p>@Model.CatalogNames</p>
+    <table class="table  table-sm">
+        <thead>
+            <tr class="table-dark">
+                <th>Assets</th>
+                <th>Name</th>
+                 <th>Description</th>
+                 <th>Author</th>
+                <th>Category</th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var asset in Model.Assets)
+            {
+                <tr class="table-secondary">
+                    <td><img src="@asset.ImageUrl" class="img-fluid" style="max-height:100px;" /></td>
+                    <td>@Html.DisplayFor(modelItem => asset.Name)</td>
+                    <td>@Html.DisplayFor(modelItem => asset.Description)</td>
+                    <td>@Html.DisplayFor(modelItem => asset.Author)</td>
+                    @*@<td>@Html.DisplayFor(modelItem => asset.Categories)</td>*@
+
+                    <td>
+                        @foreach (var assetCategory in asset.Categories)
+                        {
+                            @assetCategory.Name
+                            <br />
+                        }
+                    </td>
+
+
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-dark">Edit</a>
+                        <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-dark">Details</a>
+                        <a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-dark">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

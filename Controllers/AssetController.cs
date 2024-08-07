@@ -12,7 +12,7 @@ namespace GoshehArtWebApp.Controllers
     [Authorize]
     public class AssetController : Controller
     {
-		string UploadedFile(CreateAssetViewModel asset)
+		public string UploadedFile(CreateAssetViewModel asset)
 		{
 			string? uniqueFileName = null;
 
