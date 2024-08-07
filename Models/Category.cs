@@ -1,7 +1,10 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations;
 
 namespace GoshehArtWebApp.Models
 {
+    
+    //[Index(IsUnique =true)]
     public class Category
     {
 

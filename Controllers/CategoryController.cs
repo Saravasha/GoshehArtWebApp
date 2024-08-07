@@ -37,10 +37,10 @@ namespace GoshehArtWebApp.Controllers
         public IActionResult Create(CreateCategoryViewModel cat)
         {
 
-            ModelState.Remove("Id");
+            //ModelState.Remove("Id");
             if (ModelState.IsValid)
             {
-                var catToAdd = new Category()
+                Category catToAdd = new Category()
                 {
                     Name = cat.Name
                 };
