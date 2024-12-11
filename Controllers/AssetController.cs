@@ -35,7 +35,30 @@ namespace GoshehArtWebApp.Controllers
 			return "/imagesAsset/" + uniqueFileName;
 		}
 
-		private readonly ApplicationDbContext _context;
+        public string UploadedFile(CreateMultipleAssetsViewModel assets)
+        {
+            string? uniqueFileName = null;
+
+            if (assets.ImagesUp != null)
+            {
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
+                uniqueFileName = Guid.NewGuid().ToString() + "_" + assets.ImageUp.FileName;
+                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                if (System.IO.File.Exists(filePath))
+                {
+                    System.IO.File.Copy(filePath, "~/Uploads");
+                }
+                using (var fileStream = new FileStream(filePath, FileMode.Create))
+                {
+                    assets.ImageUp.CopyTo(fileStream);
+                }
+            }
+
+            return "/imagesAsset/" + uniqueFileName;
+        }
+
+        private readonly ApplicationDbContext _context;
 		private readonly IWebHostEnvironment webHostEnvironment;
 
 		public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
@@ -58,7 +81,7 @@ namespace GoshehArtWebApp.Controllers
 		// GET: AssetController/Details/5
 		public IActionResult Details(int id)
 		{
-			Asset? asset = _context.Assets
+            Asset? asset = _context.Assets
 				.Include(c => c.Categories)
 				.FirstOrDefault(p => p.Id == id);
 
@@ -76,9 +99,9 @@ namespace GoshehArtWebApp.Controllers
 			return View(avm);
 		}
 
-		// POST: AssetController/Create
-		[HttpPost]
-		//[ValidateAntiForgeryToken]
+        // POST: AssetController/Create
+        //[ValidateAntiForgeryToken]
+        [HttpPost]
 		public IActionResult Create(CreateAssetViewModel asset, List<string> Categories)
 		{
 			CreateAssetViewModel cavm = new CreateAssetViewModel();
@@ -130,8 +153,8 @@ namespace GoshehArtWebApp.Controllers
 			}
 		}
 
-		// GET: AssetController/Edit/5
-		[HttpGet]
+        // GET: AssetController/Edit/5
+        [HttpGet]
 		public IActionResult Edit(int id)
 		{
 			CreateAssetViewModel cavm = new CreateAssetViewModel();
@@ -248,7 +271,7 @@ namespace GoshehArtWebApp.Controllers
         {
             if (_context.Assets == null)
             {
-                return Problem("Entity set 'ApplicationDbConext.Assets'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Assets'  is null.");
             }
             var cat = await _context.Assets.FindAsync(id);
             if (cat != null)
@@ -260,5 +283,152 @@ namespace GoshehArtWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+		// Den här fungerar för variabel mängd med uppladdade filer.
+
+
+		public IActionResult Upload()
+		{
+
+			UploadAssetsViewModel umfm = new UploadAssetsViewModel();
+
+			ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
+
+			return View(umfm);
+		}
+
+
+        [HttpPost]
+        public IActionResult Upload(UploadAssetsViewModel model)
+        {
+						
+            if (ModelState.IsValid)
+            {
+                model.IsResponse = true;
+                if (model.ImagesUp.Count > 1)
+                {
+                    foreach (var file in model.ImagesUp)
+                    {
+
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+
+                        //create folder if not exist
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+
+
+                        string fileNameWithPath = Path.Combine(path, file.FileName);
+
+                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                        {
+                            file.CopyTo(stream);
+                        }
+                    }
+                    model.IsSuccess = true;
+                    model.Message = "Files upload successfully";
+                }
+                else if (model.ImagesUp.Count > 0)
+                {
+                    foreach (var file in model.ImagesUp)
+                    {
+
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+
+                        //create folder if not exist
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+
+
+                        string fileNameWithPath = Path.Combine(path, file.FileName);
+
+                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                        {
+                            file.CopyTo(stream);
+                        }
+                    }
+                    model.IsSuccess = true;
+                    model.Message = "File upload successfully";
+                }
+                else
+                {
+                    model.IsSuccess = false;
+                    model.Message = "Please select files";
+                }
+            }
+            return View("Upload", model);
+        }
+
+	 [HttpPost]
+		public IActionResult MultipleAssets(CreateMultipleAssetsViewModel assets, List<string> Categories, List<string>ImagesUrl)
+        {
+            CreateMultipleAssetsViewModel cmavm = new CreateMultipleAssetsViewModel();
+
+
+            ModelState.Remove("Id");
+            //ModelState.Remove("ImageUrl");
+            if (ModelState.IsValid)
+            {
+
+                foreach (var file in assets.ImagesUp)
+                {
+
+                    List<string> uniqueFileNames = UploadedFile(assets);
+                    assets.ImagesUrl = uniqueFileNames;
+
+                    string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+
+                    //create folder if not exist
+                    if (!Directory.Exists(path))
+                        Directory.CreateDirectory(path);
+
+
+                    string fileNameWithPath = Path.Combine(path, file.FileName);
+
+                    using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                    {
+                        file.CopyTo(stream);
+                    }
+                
+                    var AssetToAdd = new Asset()
+                    {
+                        Name = assets.Names,
+                        Description = assets.Description,
+                        Author = assets.Author,
+                        ImageUrl = uniqueFileName
+                    };
+
+                    Category? catToAdd = new Category();
+                    foreach (var item in Categories)
+                    {
+                        int castItem = Int32.Parse(item);
+                        catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
+
+                        if (catToAdd != null)
+                        {
+                            AssetToAdd.Categories.Add(catToAdd);
+                        }
+
+                    }
+
+                    _context.Assets.Add(AssetToAdd);
+                    _context.SaveChanges();
+
+                }
+
+                return RedirectToAction(nameof(Index));
+            }
+            else
+            {
+                if (assets.Categories.Count == 0)
+                {
+                    ViewBag.CategoryError = "Category is Required";
+                }
+
+                var categories = _context.Categories;
+                ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
+
+                return View(cmavm);
+            }
+        }
     }
+
 }

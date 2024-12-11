@@ -2,7 +2,63 @@
   "Files": [
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css",
-      "PackagePath": "staticwebassets\\GoshehArtWebApp.bundle.scp.css"
+      "PackagePath": "staticwebassets\\GoshehArtWebApp.42oj84q9ar.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\1087927.png",
+      "PackagePath": "staticwebassets\\Files\\1087927.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-02-27 (1).png",
+      "PackagePath": "staticwebassets\\Files\\2022-02-27 (1).png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-02-27 (2).png",
+      "PackagePath": "staticwebassets\\Files\\2022-02-27 (2).png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-02-27.png",
+      "PackagePath": "staticwebassets\\Files\\2022-02-27.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-02-28 (2).png",
+      "PackagePath": "staticwebassets\\Files\\2022-02-28 (2).png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-02-28.png",
+      "PackagePath": "staticwebassets\\Files\\2022-02-28.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-03-01.png",
+      "PackagePath": "staticwebassets\\Files\\2022-03-01.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-03-25.png",
+      "PackagePath": "staticwebassets\\Files\\2022-03-25.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2022-03-26 (1).png",
+      "PackagePath": "staticwebassets\\Files\\2022-03-26 (1).png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\20220813_134540.jpg",
+      "PackagePath": "staticwebassets\\Files\\20220813_134540.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\20220813_192433.jpg",
+      "PackagePath": "staticwebassets\\Files\\20220813_192433.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\2_Body_Straight_Front_NA-02f3427fb4b18109737692468d30fa5c-523566871.jpg",
+      "PackagePath": "staticwebassets\\Files\\2_Body_Straight_Front_NA-02f3427fb4b18109737692468d30fa5c-523566871.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\44961429_2156859217697580_297786712745050112_n - Copy.jpg",
+      "PackagePath": "staticwebassets\\Files\\44961429_2156859217697580_297786712745050112_n - Copy.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Files\\44961429_2156859217697580_297786712745050112_n.jpg",
+      "PackagePath": "staticwebassets\\Files\\44961429_2156859217697580_297786712745050112_n.jpg"
     },
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
@@ -19,6 +75,10 @@
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\02733dbd-494d-48d3-8e57-ac6808520c6a_image_14.jpg",
       "PackagePath": "staticwebassets\\imagesAsset\\02733dbd-494d-48d3-8e57-ac6808520c6a_image_14.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\02ff79b3-fda3-4ad1-83e4-12876efcb000_20230524_102154.jpg",
+      "PackagePath": "staticwebassets\\imagesAsset\\02ff79b3-fda3-4ad1-83e4-12876efcb000_20230524_102154.jpg"
     },
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\140444cd-0d7c-4391-b347-f75deb27222b_image_16.jpg",
@@ -73,12 +133,24 @@
       "PackagePath": "staticwebassets\\imagesAsset\\6eeaf7d2-14b0-4df6-b101-b47b7bbba1b7_image_40.jpg"
     },
     {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\7b8d4c20-358f-4a74-8cce-a2f3869278ce_main4.png",
+      "PackagePath": "staticwebassets\\imagesAsset\\7b8d4c20-358f-4a74-8cce-a2f3869278ce_main4.png"
+    },
+    {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\7f017444-e616-450d-a853-a3748f0667b7_image_14.jpg",
       "PackagePath": "staticwebassets\\imagesAsset\\7f017444-e616-450d-a853-a3748f0667b7_image_14.jpg"
     },
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\86303f87-5a40-4e58-a303-d982d0f969ef_image_36.jpg",
       "PackagePath": "staticwebassets\\imagesAsset\\86303f87-5a40-4e58-a303-d982d0f969ef_image_36.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\89832325-f344-4a76-a3d8-abc0408407ef_idontdrinkwine.png",
+      "PackagePath": "staticwebassets\\imagesAsset\\89832325-f344-4a76-a3d8-abc0408407ef_idontdrinkwine.png"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\94bb2e6b-b8f4-406d-92a4-75f7cc26bb1c_44961429_2156859217697580_297786712745050112_n - Copy.jpg",
+      "PackagePath": "staticwebassets\\imagesAsset\\94bb2e6b-b8f4-406d-92a4-75f7cc26bb1c_44961429_2156859217697580_297786712745050112_n - Copy.jpg"
     },
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\98c3ce98-d53d-4cf8-9c05-53e00d343b13_image_53.jpg",
@@ -1397,6 +1469,10 @@
       "PackagePath": "staticwebassets\\imagesAsset\\fa194ba3-78ef-4171-893f-11bb028a3750_image_13.jpg"
     },
     {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\faa2cccb-d733-44a1-8e45-ee8c93b490f1_chefchefdrinkwine.png",
+      "PackagePath": "staticwebassets\\imagesAsset\\faa2cccb-d733-44a1-8e45-ee8c93b490f1_chefchefdrinkwine.png"
+    },
+    {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\js\\site.js",
       "PackagePath": "staticwebassets\\js\\site.js"
     },
@@ -1627,6 +1703,10 @@
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GoshehArtWebApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssetEndpoints.props"
     },
     {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.GoshehArtWebApp.Microsoft.AspNetCore.StaticWebAssets.props",
