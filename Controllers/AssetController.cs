@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
+using System.Collections.Generic;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -35,29 +36,6 @@ namespace GoshehArtWebApp.Controllers
 			return "/imagesAsset/" + uniqueFileName;
 		}
 
-        public string UploadedFile(CreateMultipleAssetsViewModel assets)
-        {
-            string? uniqueFileName = null;
-
-            if (assets.ImagesUp != null)
-            {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + assets.ImageUp.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                if (System.IO.File.Exists(filePath))
-                {
-                    System.IO.File.Copy(filePath, "~/Uploads");
-                }
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    assets.ImageUp.CopyTo(fileStream);
-                }
-            }
-
-            return "/imagesAsset/" + uniqueFileName;
-        }
-
         private readonly ApplicationDbContext _context;
 		private readonly IWebHostEnvironment webHostEnvironment;
 
@@ -66,8 +44,8 @@ namespace GoshehArtWebApp.Controllers
 			_context = context;
 			webHostEnvironment = webHost;
 		}
-
 		// GET: AssetController
+
 		public IActionResult Index()
 		{
 			var avm = new AssetViewModel();
@@ -357,61 +335,76 @@ namespace GoshehArtWebApp.Controllers
             return View("Upload", model);
         }
 
-	 [HttpPost]
-		public IActionResult MultipleAssets(CreateMultipleAssetsViewModel assets, List<string> Categories, List<string>ImagesUrl)
+        public IActionResult MultipleAssets()
+        {
+
+            CreateMultipleAssetsViewModel umfm = new CreateMultipleAssetsViewModel();
+
+            ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
+
+            return View(umfm);
+        }
+        [HttpPost]
+		public IActionResult MultipleAssets(CreateMultipleAssetsViewModel assets, List<string> Categories)
         {
             CreateMultipleAssetsViewModel cmavm = new CreateMultipleAssetsViewModel();
-
 
             ModelState.Remove("Id");
             //ModelState.Remove("ImageUrl");
             if (ModelState.IsValid)
             {
-
-                foreach (var file in assets.ImagesUp)
+                if (assets.ImageUp != null)
                 {
-
-                    List<string> uniqueFileNames = UploadedFile(assets);
-                    assets.ImagesUrl = uniqueFileNames;
-
-                    string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
-
-                    //create folder if not exist
-                    if (!Directory.Exists(path))
-                        Directory.CreateDirectory(path);
-
-
-                    string fileNameWithPath = Path.Combine(path, file.FileName);
-
-                    using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                    foreach (var file in assets.ImageUp)
                     {
-                        file.CopyTo(stream);
-                    }
-                
-                    var AssetToAdd = new Asset()
-                    {
-                        Name = assets.Names,
-                        Description = assets.Description,
-                        Author = assets.Author,
-                        ImageUrl = uniqueFileName
-                    };
+                        string? uniqueFileName = null;
+                        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
+                        
+                        uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
+                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                    Category? catToAdd = new Category();
-                    foreach (var item in Categories)
-                    {
-                        int castItem = Int32.Parse(item);
-                        catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), uploadsFolder);
 
-                        if (catToAdd != null)
+                        //create folder if not exist
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+
+
+                        string fileNameWithPath = Path.Combine(path, file.FileName);
+
+                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
                         {
-                            AssetToAdd.Categories.Add(catToAdd);
+                            file.CopyTo(stream);
                         }
 
+                        assets.ImageUrl = "/imagesAsset/" + uniqueFileName;
+
+                        var AssetToAdd = new Asset()
+                        {
+                            Name = assets.Name,
+                            Description = assets.Description,
+                            Author = assets.Author,
+                            ImageUrl = uniqueFileName
+                        };
+              
+
+                        Category? catToAdd = new Category();
+                        foreach (var item in Categories)
+                        {
+                            int castItem = Int32.Parse(item);
+                            catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
+
+                            if (catToAdd != null)
+                            {
+                                AssetToAdd.Categories.Add(catToAdd);
+                            }
+
+                        }
+
+                        _context.Assets.Add(AssetToAdd);
+                        _context.SaveChanges();
+
                     }
-
-                    _context.Assets.Add(AssetToAdd);
-                    _context.SaveChanges();
-
                 }
 
                 return RedirectToAction(nameof(Index));

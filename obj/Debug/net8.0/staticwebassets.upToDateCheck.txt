@@ -19,12 +19,15 @@ wwwroot\imagesAsset\02733dbd-494d-48d3-8e57-ac6808520c6a_image_14.jpg
 wwwroot\imagesAsset\02ff79b3-fda3-4ad1-83e4-12876efcb000_20230524_102154.jpg
 wwwroot\imagesAsset\140444cd-0d7c-4391-b347-f75deb27222b_image_16.jpg
 wwwroot\imagesAsset\1e62557e-95dc-4051-b690-4fc0a593596c_image_31.jpg
+wwwroot\imagesAsset\24530b6c-1910-4c1f-89c7-02734e8d937a_2_Body_Straight_Front_NA-02f3427fb4b18109737692468d30fa5c-523566871.jpg
 wwwroot\imagesAsset\256c4640-721a-491d-81ce-7c47183f17d1_image_82.jpg
 wwwroot\imagesAsset\2cc0c313-d686-425f-a411-87d9f4af9ff9_20230524_102154.jpg
 wwwroot\imagesAsset\31f78e6a-e8a1-4051-af9d-f9e2cda77659_oups.png
+wwwroot\imagesAsset\398dbbd0-2211-4fc6-94fe-c367376d8eac_2022-02-26.png
 wwwroot\imagesAsset\3c504baa-9897-417f-8202-f1a6efca3252_image_15.jpg
 wwwroot\imagesAsset\40a5f5df-f182-4686-b031-d620438909b8_image_43.jpg
 wwwroot\imagesAsset\4671f098-f068-4553-9f00-545658b85166_image_85.jpg
+wwwroot\imagesAsset\5accdeb6-9895-4376-b638-8d8962adbe1f_2022-02-09.png
 wwwroot\imagesAsset\5c1237a5-d494-4edb-b937-5eaa12d13cf7_image_41.jpg
 wwwroot\imagesAsset\5ee8a244-bcc7-4792-8db1-9160ce5b7169_image_20.jpg
 wwwroot\imagesAsset\66d898b5-5d46-4263-b93c-69b83fe28ee9_image_16.jpg
@@ -45,6 +48,7 @@ wwwroot\imagesAsset\c456d6d1-6a11-48c0-953b-671b340866d1_image_28.jpg
 wwwroot\imagesAsset\c5574ae5-f3b5-43a7-9e8a-4cbfbbd82f86_image_17.jpg
 wwwroot\imagesAsset\c6a1c084-ee74-40db-8a4b-5ae848567d44_image_33.jpg
 wwwroot\imagesAsset\ca03f151-0516-4694-ab07-d344c0864bf5_image_238.jpg
+wwwroot\imagesAsset\d21271d0-3698-4cc8-b9de-6e345c189a9f_2022-02-26.png
 wwwroot\imagesAsset\e56f75d4-18e6-40c0-88b9-210024cf3566_image_34.jpg
 wwwroot\imagesAsset\e725eee4-dab6-4a75-81f7-f589b904dddb_image_13.jpg
 wwwroot\imagesAsset\f3c5af7b-3b54-4735-bfa0-4fafc1fbbe60_image_303.jpg

@@ -3,25 +3,25 @@ using GoshehArtWebApp.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 namespace GoshehArtWebApp.ViewModels;
-public class CreateMultipleAssetsViewModel
+public class CreateMultipleAssetsViewModel : ResponseModel
 {
 
 
-    public List<CreateAssetViewModel> CreateAssets { get; set; }
-    public List<int> Ids { get; set; }
+    //public List<CreateAssetViewModel> CreateAssets { get; set; }
+    public List<int> Id { get; set; }
 
 
-    public List<string>? Names { get; set; }
+    public string? Name { get; set; }
 
-    public List<string>? Authors { get; set; }
-    public List<string>? Descriptions { get; set; }
+    public string? Author { get; set; }
+    public string? Description { get; set; }
 
-    public List<string>? ImagesUrl { get; set; }
+    public string? ImageUrl { get; set; }
 
     [NotMapped]
     public List<IFormFile> ImageUp { get; set; }
 
-    public List<int>? CategoryIds { get; set; } = new();
+    public List<int>? CategoryId { get; set; } = new();
 
-    public List<Category> Categories { get; set; } = new();
+    public List<Category>? Categories { get; set; } = new();
 }
