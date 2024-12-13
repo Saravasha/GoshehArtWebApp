@@ -355,24 +355,28 @@ namespace GoshehArtWebApp.Controllers
             {
                 if (assets.ImageUp != null)
                 {
+                    string? uniqueFileName = null;
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
                     foreach (var file in assets.ImageUp)
                     {
-                        string? uniqueFileName = null;
-                        string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
                         
                         uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
                         string filePath = Path.Combine(uploadsFolder, uniqueFileName);
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), uploadsFolder);
+                        //string path = Path.Combine(Directory.GetCurrentDirectory(), uploadsFolder);
 
                         //create folder if not exist
-                        if (!Directory.Exists(path))
-                            Directory.CreateDirectory(path);
+                        //if (!Directory.Exists(filePath))
+                        //    Directory.CreateDirectory(filePath);
 
+                        if (System.IO.File.Exists(filePath))
+                        {
+                            System.IO.File.Copy(filePath, "~/Uploads");
+                        }
 
-                        string fileNameWithPath = Path.Combine(path, file.FileName);
+                        //string fileNameWithPath = Path.Combine(filePath, file.FileName);
 
-                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                        using (var stream = new FileStream(filePath, FileMode.Create))
                         {
                             file.CopyTo(stream);
                         }
@@ -381,10 +385,10 @@ namespace GoshehArtWebApp.Controllers
 
                         var AssetToAdd = new Asset()
                         {
-                            Name = assets.Name,
+                            Name = uniqueFileName,
                             Description = assets.Description,
                             Author = assets.Author,
-                            ImageUrl = uniqueFileName
+                            ImageUrl = assets.ImageUrl
                         };
               
 
