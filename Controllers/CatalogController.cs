@@ -17,36 +17,61 @@ namespace GoshehArtWebApp.Controllers
 	public class CatalogController : Controller
 	{
 
-        //HELPER FUNCTIONS
-        string UploadedFile(CatalogViewModel asset)
-        {
-            string? uniqueFileName = null;
-
-            if (asset.ImageUp != null)
-            {
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesProduct");
-                uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-                {
-                    asset.ImageUp.CopyTo(fileStream);
-                }
-            }
-
-            return "/imagesProduct/" + uniqueFileName;
-        }
-		public IActionResult Upload()
-		{
-			return View();
-		}
-
-        private readonly ApplicationDbContext _context;
+		private readonly ApplicationDbContext _context;
 		private readonly IWebHostEnvironment webHostEnvironment;
 
 		public CatalogController(ApplicationDbContext context, IWebHostEnvironment webHost)
 		{
 			_context = context;
 			webHostEnvironment = webHost;
+		}
+		public IActionResult Success()
+		{
+			return View();
+		}
+
+		// Den här fungerar för variabel mängd med uppladdade filer.
+        [HttpPost]
+        public IActionResult Upload(UploadAssetsViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                model.IsResponse = true;
+                if (model.ImagesUp.Count > 0)
+                {
+                    foreach (var file in model.ImagesUp)
+                    {
+
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+
+                        //create folder if not exist
+                        if (!Directory.Exists(path))
+                            Directory.CreateDirectory(path);
+
+                        string fileNameWithPath = Path.Combine(path, file.FileName);
+
+                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
+                        {
+                            file.CopyTo(stream);
+                        }
+                    }
+                    model.IsSuccess = true;
+                    model.Message = "Files upload successfully";
+                }
+                else
+                {
+                    model.IsSuccess = false;
+                    model.Message = "Please select files";
+                }
+            }
+            return View("Upload", model);
+        }
+
+        public IActionResult Upload()
+		{
+
+			UploadAssetsViewModel umfm = new UploadAssetsViewModel();
+			return View(umfm);
 		}
 
 		// GET: CatalogController]
@@ -73,7 +98,7 @@ namespace GoshehArtWebApp.Controllers
 			}
 
 			FoldersContentGetter(uploadDirectory, localFolders);
-			return View(cvm);
+			return Redirect("Asset");
 		}
 		private void FoldersContentGetter(string uploadDirectory, List<string> localFolders)
 		{

@@ -17,10 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="wwwroot\imagesAsset\Pictures\Sidans filer\NewFolder\" />
-  </ItemGroup>
-
-  <ItemGroup>
     <None Include="wwwroot\imagesAsset\Pictures\Sidans filer.zip" />
     <None Include="wwwroot\imagesAsset\Pictures\Sidans filer\Abstrakt Konst\image %28194%29.jpg" />
     <None Include="wwwroot\imagesAsset\Pictures\Sidans filer\Akvarell Konst\image %2810%29.jpg" />
@@ -339,7 +335,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Content Update="Views\Catalog\Upload.cshtml">
+    <Content Update="Views\Asset\Upload.cshtml">
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>

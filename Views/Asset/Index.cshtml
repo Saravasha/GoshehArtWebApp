@@ -8,10 +8,14 @@
 
     <p>
         <a asp-action="Create">Add new Asset</a>
-        <a asp-controller="Catalog" asp-action="Index">Catalog View</a>
-        <a asp-controller="Catalog" asp-action="Upload">Upload folder(s) of Assets</a>
+        <br />
+        <a asp-action="Upload">Add Multiple Assets</a>
+        <br />
+        <a asp-controller="Catalog" asp-action="Index">Sync Catalogs</a>
+        <br />
+        <a asp-action="MultipleAssets">Add Multiple Assets v2</a>
     </p>
-    <table class="table  table-sm">
+    <table class="table table-secondary table-responsive table-striped">
         <thead>
             <tr class="table-dark">
                 <th>Assets</th>
@@ -20,9 +24,11 @@
                  <th>Author</th>
                 <th>Category</th>
                 <th></th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-primary">
             @foreach (var asset in Model.Assets)
             {
                 <tr class="table-secondary">
@@ -39,13 +45,9 @@
                             <br />
                         }
                     </td>
-
-
-                    <td>
-                        <a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-dark">Edit</a>
-                        <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-dark">Details</a>
-                        <a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-dark">Delete</a>
-                    </td>
+                    <td><a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
+                    <td><a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>                        
                 </tr>
             }
         </tbody>
