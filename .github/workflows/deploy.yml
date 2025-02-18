@@ -45,6 +45,7 @@ jobs:
           #pm2 start goshehartwebapp
          # pm2 save
         run: |
+          ls -a
           pm2 ls
       - name: Nginx Restarting
         run: service nginx restart
