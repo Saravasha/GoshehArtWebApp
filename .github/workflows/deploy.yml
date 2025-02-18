@@ -41,3 +41,6 @@ jobs:
       # We will output publish files to the folder we previously created
       - name: Publish
         run: dotnet publish -c Release -o /var/www/goshehartwebapp
+         pm2 stop goshehartwebapp
+         pm2 start goshehartwebapp
+         pm2 save
