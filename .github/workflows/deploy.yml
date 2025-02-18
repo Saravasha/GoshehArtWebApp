@@ -42,9 +42,9 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o /var/www/goshehartwebapp
       - name: PM2 Syncing
+          #pm2 start goshehartwebapp
+         # pm2 save
         run: |
-          pm2 stop goshehartwebapp
-          pm2 start goshehartwebapp
-          pm2 save
+          pm2 ls
       - name: Nginx Restarting
         run: service nginx restart
