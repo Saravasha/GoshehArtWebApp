@@ -41,8 +41,10 @@ jobs:
       # We will output publish files to the folder we previously created
       - name: Publish
       - run: dotnet publish -c Release -o /var/www/goshehartwebapp
+      - name: PM2 Syncing
       - run: |
           pm2 stop goshehartwebapp
           pm2 start goshehartwebapp
           pm2 save
-          service nginx restart
+      - name: Nginx Restarting
+      - run: service nginx restart
