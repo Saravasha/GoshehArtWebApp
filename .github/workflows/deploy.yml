@@ -41,6 +41,8 @@ jobs:
       # We will output publish files to the folder we previously created
       - name: Publish
         run: dotnet publish -c Release -o /var/www/goshehartwebapp
+      - name: Unset HOME environment variable
+        run: unset HOME
       - name: PM2 Syncing
         run: |
           ls -a
