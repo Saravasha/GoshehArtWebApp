@@ -46,7 +46,7 @@ jobs:
       - name: PM2 Syncing
         run: |
           ls -a
-          echo "PM2_HOME=/root/.pm2" >> $GITHUB_ENV
+          export PM2_HOME=/root/.pm2
           pm2 resurrect 
           pm2 ls
           pm2 stop 5
