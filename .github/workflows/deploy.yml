@@ -1,4 +1,4 @@
-# Triggers
+  # Triggers
 name: deploy goshehartwebapp
 on:
   push:
@@ -42,7 +42,7 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o /var/www/goshehartwebapp
       - name: Unset HOME environment variable
-        run: unset HOME
+        run: echo "HOME=/root/.pm2/" >> $GITHUB_ENV
       - name: PM2 Syncing
         run: |
           ls -a
