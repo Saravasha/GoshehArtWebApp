@@ -41,10 +41,9 @@ jobs:
       # We will output publish files to the folder we previously created
       - name: Publish
         run: dotnet publish -c Release -o /var/www/goshehartwebapp
-      - name: Unset HOME environment variable
-        run: echo "HOME=/root/.pm2/" >> $GITHUB_ENV
       - name: PM2 Syncing
         run: |
+          echo "HOME=/root/.pm2/" >> $GITHUB_ENV
           ls -a
           pm2 ls
           pm2 stop goshehartwebapp
