@@ -1,5 +1,5 @@
   # Triggers
-name: deploy goshehartwebapp
+name: Deploy GoshehArtWebApp (Backend)
 on:
   push:
     branches:
