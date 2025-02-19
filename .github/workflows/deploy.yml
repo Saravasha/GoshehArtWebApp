@@ -45,8 +45,6 @@ jobs:
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/
       - name: PM2 Syncing
         run: |
-          cd /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/
-          pwd
           ls -a
           pm2 ls
           pm2 stop goshehartwebapp
