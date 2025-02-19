@@ -46,6 +46,7 @@ jobs:
       - name: PM2 Syncing
         run: |
           ls -a
+          pm2 resurrect 
           pm2 ls
           pm2 stop 5
           pm2 start 5
