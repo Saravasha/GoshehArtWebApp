@@ -24,9 +24,9 @@ jobs:
     steps:
       # Checks out repository so our job can access it
       - uses: actions/checkout@v2
-   #   - name: Set HOME environment variable
-  #      run: |
-  #        echo "HOME=/home/runner" >> $GITHUB_ENV
+      - name: Set HOME environment variable
+        run: |
+          echo "HOME=/home/runner" >> $GITHUB_ENV
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1.7.2
         with:
@@ -42,10 +42,11 @@ jobs:
       - name: Publish
         run: dotnet publish -c Release -o /var/www/goshehartwebapp
       - name: PM2 Syncing
-          #pm2 start goshehartwebapp
-         # pm2 save
         run: |
           ls -a
           pm2 ls
+          pm2 stop goshehartwebapp
+          pm2 start goshehartwebapp
+          pm2 save
       - name: Nginx Restarting
         run: service nginx restart
