@@ -35,9 +35,12 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+      - name: Check Environment Variable
+        run: echo $ASPNET_ENVIRONMENT
+        
       - name: Build
         run: dotnet build --configuration Release --no-restore
-
+    
       # We will output publish files to the folder we previously created
       - name: Publish
          # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
