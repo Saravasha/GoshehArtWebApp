@@ -35,8 +35,16 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+      #Check if ASPNETCORE_ENVIRONMENT is unset or not set to Production
       - name: Check Environment Variable
-        run: echo $ASPNETCORE_ENVIRONMENT
+        run: | 
+          if [ -z "$ASPNETCORE_ENVIRONMENT" ] || [ "$ASPNETCORE_ENVIRONMENT" != "Production" ]; then
+            # Set ASPNETCORE_ENVIRONMENT to Production
+            export ASPNETCORE_ENVIRONMENT=Production
+            echo "ASPNETCORE_ENVIRONMENT set to Production."
+          else
+            echo "ASPNETCORE_ENVIRONMENT is already set to $ASPNETCORE_ENVIRONMENT."
+          fi
         
       - name: Build
         run: dotnet build --configuration Release --no-restore
