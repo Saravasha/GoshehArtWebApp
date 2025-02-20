@@ -36,7 +36,7 @@ jobs:
         run: dotnet restore
 
       - name: Check Environment Variable
-        run: echo $ASPNET_ENVIRONMENT
+        run: echo $ASPNETCORE_ENVIRONMENT
         
       - name: Build
         run: dotnet build --configuration Release --no-restore
