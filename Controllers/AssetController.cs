@@ -33,7 +33,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return Uri.EscapeDataString("/imagesAsset/" + uniqueFileName);
+			return Path.Combine("imagesAsset",uniqueFileName);
 		}
 
         private readonly ApplicationDbContext _context;
@@ -96,7 +96,7 @@ namespace GoshehArtWebApp.Controllers
 					Name = asset.Name,
 					Description = asset.Description,
 					Author = asset.Author,
-					ImageUrl = Uri.EscapeDataString(uniqueFileName)
+					ImageUrl = uniqueFileName
 				};
 
 				Category? catToAdd = new Category();
@@ -287,7 +287,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Files"));
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -309,7 +309,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Files"));
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -381,7 +381,7 @@ namespace GoshehArtWebApp.Controllers
                             file.CopyTo(stream);
                         }
 
-                        assets.ImageUrl = Uri.EscapeDataString("/imagesAsset/" + uniqueFileName);
+                        assets.ImageUrl = Path.Combine("imagesAsset",uniqueFileName);
 
                         var AssetToAdd = new Asset()
                         {
