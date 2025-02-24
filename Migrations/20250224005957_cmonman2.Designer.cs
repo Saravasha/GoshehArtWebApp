@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240720204047_newseedww")]
-    partial class newseedww
+    [Migration("20250224005957_cmonman2")]
+    partial class cmonman2
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -43,7 +43,7 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             AssetsId = 1,
-                            CategoriesId = 9
+                            CategoriesId = 8
                         },
                         new
                         {
@@ -53,7 +53,7 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             AssetsId = 3,
-                            CategoriesId = 9
+                            CategoriesId = 8
                         });
                 });
 
@@ -89,7 +89,7 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             Author = "Fateme Gosheh",
-                            CategoryId = 9,
+                            CategoryId = 8,
                             Description = "Inte sett än",
                             ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan"
@@ -107,7 +107,7 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 3,
                             Author = "Fateme Gosheh",
-                            CategoryId = 9,
+                            CategoryId = 8,
                             Description = "Helt fantastiskt",
                             ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg",
                             Name = "Kari - Jag är elak"
@@ -238,13 +238,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "5793509b-3797-4cc6-812a-8ab8b53a71a7",
+                            Id = "443a799e-f631-4e0b-9f11-ea0ba541fd91",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "fcffe7fb-88f5-4533-90f2-65ad2fc521b5",
+                            Id = "ffa4864a-68c8-48e5-92aa-9c954938f709",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -342,17 +342,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "ea80894f-632f-48c4-b575-dba8bd892b6f",
+                            Id = "9b62d17c-762b-4178-9257-78533483cd30",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "fadd5734-a089-42d3-8687-7132ea60639f",
+                            ConcurrencyStamp = "6722e1c6-46fd-40b2-98f6-9094cd3e2d6a",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB9nMwlibmL7XY8A5qReq63yU+uNX6NOyjho94VXUXTPBaLKO6VGxPKczQcO0HrHMg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEM7O4o4P0uPWdb8zpROz1zaJLh3TI1LIjQGWVT7TOFCo170luC1G+r17r91ZHluxGw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "44dcfc59-0e20-49d6-b6f1-b2f26549efbd",
+                            SecurityStamp = "f37ed9fc-3f33-458d-b460-f3948c97a781",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -424,8 +424,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "ea80894f-632f-48c4-b575-dba8bd892b6f",
-                            RoleId = "5793509b-3797-4cc6-812a-8ab8b53a71a7"
+                            UserId = "9b62d17c-762b-4178-9257-78533483cd30",
+                            RoleId = "443a799e-f631-4e0b-9f11-ea0ba541fd91"
                         });
                 });
 
