@@ -117,14 +117,14 @@ namespace GoshehArtWebApp.Controllers
 					{
 						//catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
 						//_context.Assets.Update(new Asset() { Name = fileInDirectory, Author = User.Identity.Name, CategoryId = cat.Id, });
-						var fileName = "/imagesAsset/Pictures//Sidans Filer//" + folder + "/" + fileInDirectory;
+						var fileName = "/imagesAsset/Pictures/Sidans Filer/" + folder + "/" + fileInDirectory;
 
 						Asset assetStage = new Asset()
 						{
 							Name = fileInDirectory,
 							Description = folder,
 							Author = User.Identity.Name,
-							ImageUrl = fileName
+							ImageUrl = Uri.EscapeDataString(fileName)
 						};
 						foreach (var cat in localFolders)
 						{

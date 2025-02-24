@@ -7,7 +7,7 @@
 namespace GoshehArtWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class newseed : Migration
+    public partial class addinguriescapes : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,62 +15,62 @@ namespace GoshehArtWebApp.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "14857add-5cef-45ea-b4f7-10b74e134eeb");
+                keyValue: "a067dfa5-df78-45b9-8e4e-3502c20f3310");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "77d08c37-2005-4711-b66f-9e573477c532", "13d8efcc-54d8-456b-8e25-eafa3f1654d9" });
+                keyValues: new object[] { "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4", "e2ab0035-7a83-441a-8b0b-a763604adc9c" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "77d08c37-2005-4711-b66f-9e573477c532");
+                keyValue: "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "13d8efcc-54d8-456b-8e25-eafa3f1654d9");
+                keyValue: "e2ab0035-7a83-441a-8b0b-a763604adc9c");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "7ccc16d8-be78-4031-94e3-0f68f31aa79a", null, "Admin", "ADMIN" },
-                    { "b2d4565d-4c55-4fef-aecc-c54f47f54762", null, "User", "USER" }
+                    { "28b55915-87ea-48eb-947c-a440c7446e0c", null, "User", "USER" },
+                    { "e69ec4bf-5dcb-4809-9226-eabb9f71a936", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "785baa01-515a-4e0a-9207-a07772d247af", 0, "5d3b9b4e-90b5-4526-8113-8398607e8971", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEEs1oQozPPISZWD+kb21s2dydY+3hFCVFROoEwmygYXRLkM5k8l9UeAGxJq2r0kCDg==", null, false, "f5fd49c0-3e86-4b1c-b680-6ef3e2cf8be7", false, "Admin" });
+                values: new object[] { "b13aa4a8-457f-4ed9-89b1-ab3ce1503c3e", 0, "44dfdeb1-743f-4e3c-8b19-0cade47728ee", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEPRxpjCLtUfKsk52JAZxCrJ5MruiO/AhWTouJOCqbQ/Y8cSo75TYKPRCoCE0oQznYg==", null, false, "3f89f339-d712-49e1-ad34-e20fe259a2c8", false, "Admin" });
 
             migrationBuilder.UpdateData(
                 table: "Assets",
                 keyColumn: "Id",
                 keyValue: 1,
-                columns: new[] { "CategoryId", "ImageUrl" },
-                values: new object[] { 9, "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg" });
+                column: "ImageUrl",
+                value: "%2FimagesAsset%2FPictures%2FSidans%20Filer%2FFilmproduktion%2Fimage%20%28287%29.jpg");
 
             migrationBuilder.UpdateData(
                 table: "Assets",
                 keyColumn: "Id",
                 keyValue: 2,
-                columns: new[] { "CategoryId", "ImageUrl" },
-                values: new object[] { 6, "/imagesAsset/Pictures/Sidans Filer/Kontroversiell Konst/image (3).jpg" });
+                column: "ImageUrl",
+                value: "%2FimagesAsset%2FPictures%2FSidans%20Filer%2FKontroversiell%20Konst%2Fimage%20%283%29.jpg");
 
             migrationBuilder.UpdateData(
                 table: "Assets",
                 keyColumn: "Id",
                 keyValue: 3,
-                columns: new[] { "CategoryId", "ImageUrl" },
-                values: new object[] { 9, "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg" });
+                column: "ImageUrl",
+                value: "%2FimagesAsset%2FPictures%2FSidans%20Filer%2FFilmproduktion%2Fimage%20%28304%29.jpg");
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "7ccc16d8-be78-4031-94e3-0f68f31aa79a", "785baa01-515a-4e0a-9207-a07772d247af" });
+                values: new object[] { "e69ec4bf-5dcb-4809-9226-eabb9f71a936", "b13aa4a8-457f-4ed9-89b1-ab3ce1503c3e" });
         }
 
         /// <inheritdoc />
@@ -79,62 +79,62 @@ namespace GoshehArtWebApp.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "b2d4565d-4c55-4fef-aecc-c54f47f54762");
+                keyValue: "28b55915-87ea-48eb-947c-a440c7446e0c");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "7ccc16d8-be78-4031-94e3-0f68f31aa79a", "785baa01-515a-4e0a-9207-a07772d247af" });
+                keyValues: new object[] { "e69ec4bf-5dcb-4809-9226-eabb9f71a936", "b13aa4a8-457f-4ed9-89b1-ab3ce1503c3e" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "7ccc16d8-be78-4031-94e3-0f68f31aa79a");
+                keyValue: "e69ec4bf-5dcb-4809-9226-eabb9f71a936");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "785baa01-515a-4e0a-9207-a07772d247af");
+                keyValue: "b13aa4a8-457f-4ed9-89b1-ab3ce1503c3e");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "14857add-5cef-45ea-b4f7-10b74e134eeb", null, "User", "USER" },
-                    { "77d08c37-2005-4711-b66f-9e573477c532", null, "Admin", "ADMIN" }
+                    { "a067dfa5-df78-45b9-8e4e-3502c20f3310", null, "User", "USER" },
+                    { "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "13d8efcc-54d8-456b-8e25-eafa3f1654d9", 0, "356ac614-7c06-4e85-af24-c423b7b121fa", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEJq6AZjX0zDIrY+F51fy5dYu2AWNHgirja3qr+ipQoCUaT3P+4WO6Vz/3Ds/xJ/AvQ==", null, false, "0ad92ddd-b56d-4e6f-953e-d042ed444015", false, "Admin" });
+                values: new object[] { "e2ab0035-7a83-441a-8b0b-a763604adc9c", 0, "c804d2c2-2c3c-4bf9-b682-6b18d30f8758", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEENd3s5aPH1eqkgJcDsKVWADryKzr1ZFQUvFqn/dEUEIy/4vvKI4ZBOvpG0SbHwdpQ==", null, false, "d9eae6e1-cdb7-4696-99fa-3ec5b38dbdb3", false, "Admin" });
 
             migrationBuilder.UpdateData(
                 table: "Assets",
                 keyColumn: "Id",
                 keyValue: 1,
-                columns: new[] { "CategoryId", "ImageUrl" },
-                values: new object[] { 1, "" });
+                column: "ImageUrl",
+                value: "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg");
 
             migrationBuilder.UpdateData(
                 table: "Assets",
                 keyColumn: "Id",
                 keyValue: 2,
-                columns: new[] { "CategoryId", "ImageUrl" },
-                values: new object[] { 2, "placeholder" });
+                column: "ImageUrl",
+                value: "/imagesAsset/Pictures/Sidans Filer/Kontroversiell Konst/image (3).jpg");
 
             migrationBuilder.UpdateData(
                 table: "Assets",
                 keyColumn: "Id",
                 keyValue: 3,
-                columns: new[] { "CategoryId", "ImageUrl" },
-                values: new object[] { 3, "placeholder" });
+                column: "ImageUrl",
+                value: "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg");
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "77d08c37-2005-4711-b66f-9e573477c532", "13d8efcc-54d8-456b-8e25-eafa3f1654d9" });
+                values: new object[] { "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4", "e2ab0035-7a83-441a-8b0b-a763604adc9c" });
         }
     }
 }

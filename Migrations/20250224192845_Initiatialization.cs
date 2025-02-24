@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GoshehArtWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class cmonman : Migration
+    public partial class Initiatialization : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -87,7 +87,7 @@ namespace GoshehArtWebApp.Migrations
                 columns: table => new
                 {
                     Title = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
@@ -229,14 +229,14 @@ namespace GoshehArtWebApp.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "016506ac-19ac-4a9a-9ee8-00d1e33793c9", null, "User", "USER" },
-                    { "a12f4b74-beef-4e30-9766-496ea23652fb", null, "Admin", "ADMIN" }
+                    { "a067dfa5-df78-45b9-8e4e-3502c20f3310", null, "User", "USER" },
+                    { "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "2cbeb0d8-09c6-4333-9db8-caf25911cba8", 0, "793a7afa-b37f-4879-a17f-71cba685f223", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEMo9yEvdZQsHLNaiUh0GO7eQrH4vycMzYxFYigXP+JM1bYRhjefGQ3KqMYlks2t4bw==", null, false, "d0f10591-af87-4602-b9d7-e045941d32e6", false, "Admin" });
+                values: new object[] { "e2ab0035-7a83-441a-8b0b-a763604adc9c", 0, "c804d2c2-2c3c-4bf9-b682-6b18d30f8758", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEENd3s5aPH1eqkgJcDsKVWADryKzr1ZFQUvFqn/dEUEIy/4vvKI4ZBOvpG0SbHwdpQ==", null, false, "d9eae6e1-cdb7-4696-99fa-3ec5b38dbdb3", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Assets",
@@ -277,7 +277,7 @@ namespace GoshehArtWebApp.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "a12f4b74-beef-4e30-9766-496ea23652fb", "2cbeb0d8-09c6-4333-9db8-caf25911cba8" });
+                values: new object[] { "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4", "e2ab0035-7a83-441a-8b0b-a763604adc9c" });
 
             migrationBuilder.InsertData(
                 table: "AssetCategory",

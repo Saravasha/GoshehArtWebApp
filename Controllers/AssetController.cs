@@ -33,7 +33,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return "/imagesAsset/" + uniqueFileName;
+			return Uri.EscapeDataString("/imagesAsset/" + uniqueFileName);
 		}
 
         private readonly ApplicationDbContext _context;
@@ -96,7 +96,7 @@ namespace GoshehArtWebApp.Controllers
 					Name = asset.Name,
 					Description = asset.Description,
 					Author = asset.Author,
-					ImageUrl = uniqueFileName
+					ImageUrl = Uri.EscapeDataString(uniqueFileName)
 				};
 
 				Category? catToAdd = new Category();
@@ -249,7 +249,7 @@ namespace GoshehArtWebApp.Controllers
         {
             if (_context.Assets == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Assets'  is null.");
+                return Problem("Entity set 'ApplicationDbContext.Assets' is null.");
             }
             var cat = await _context.Assets.FindAsync(id);
             if (cat != null)
@@ -381,7 +381,7 @@ namespace GoshehArtWebApp.Controllers
                             file.CopyTo(stream);
                         }
 
-                        assets.ImageUrl = "/imagesAsset/" + uniqueFileName;
+                        assets.ImageUrl = Uri.EscapeDataString("/imagesAsset/" + uniqueFileName);
 
                         var AssetToAdd = new Asset()
                         {
