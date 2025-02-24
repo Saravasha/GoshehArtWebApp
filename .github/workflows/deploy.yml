@@ -60,8 +60,8 @@ jobs:
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
           pm2 ls
-          pm2 stop 5
-          pm2 start 5
+          pm2 stop goshehartwebapp
+          pm2 start goshehartwebapp
           pm2 save
       - name: Nginx Restarting
         run: service nginx restart
