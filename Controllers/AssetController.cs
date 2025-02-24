@@ -19,7 +19,7 @@ namespace GoshehArtWebApp.Controllers
 
 			if (asset.ImageUp != null)
 			{
-				string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
+				string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "imagesAsset");
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 
@@ -33,7 +33,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return Path.Combine("imagesAsset",uniqueFileName);
+			return "imagesAsset"+uniqueFileName;
 		}
 
         private readonly ApplicationDbContext _context;
