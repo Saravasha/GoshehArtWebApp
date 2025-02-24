@@ -124,7 +124,7 @@ namespace GoshehArtWebApp.Controllers
         ;
             if (_context.Categories == null)
             {
-                return Problem("Entity set 'ApplicationDbConext.Category'  is null.");
+                return Problem("Entity set 'ApplicationDbConext.Category' is null.");
             }
             var cat = await _context.Categories.FindAsync(id);
             if (cat != null)
