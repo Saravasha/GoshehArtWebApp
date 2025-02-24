@@ -265,3 +265,8 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Release\net8.0\staticwebassets.build.endpoints.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Release\net8.0\staticwebassets\msbuild.GoshehArtWebApp.Microsoft.AspNetCore.StaticWebAssetEndpoints.props
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Release\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\Microsoft.Extensions.Logging.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
