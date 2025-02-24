@@ -75,6 +75,7 @@ wwwroot\imagesAsset\c6a1c084-ee74-40db-8a4b-5ae848567d44_image_33.jpg
 wwwroot\imagesAsset\ca03f151-0516-4694-ab07-d344c0864bf5_image_238.jpg
 wwwroot\imagesAsset\cfd4bc84-7bbf-42a7-ad76-7cdbd309d63c_image_7.jpg
 wwwroot\imagesAsset\d21271d0-3698-4cc8-b9de-6e345c189a9f_2022-02-26.png
+wwwroot\imagesAsset\e11a35a7-e2ba-4fdb-88b6-b0b7c0f4912a_image_1.jpg
 wwwroot\imagesAsset\e56f75d4-18e6-40c0-88b9-210024cf3566_image_34.jpg
 wwwroot\imagesAsset\e725eee4-dab6-4a75-81f7-f589b904dddb_image_13.jpg
 wwwroot\imagesAsset\e861f4e5-8614-40b4-b833-bb03ab75e8df_image_6.jpg
