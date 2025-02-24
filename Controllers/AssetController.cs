@@ -13,13 +13,16 @@ namespace GoshehArtWebApp.Controllers
     [Authorize]
     public class AssetController : Controller
     {
+
+        private readonly ApplicationDbContext _context;
+		private readonly IWebHostEnvironment webHostEnvironment;
 		public string UploadedFile(CreateAssetViewModel asset)
 		{
 			string? uniqueFileName = null;
 
 			if (asset.ImageUp != null)
 			{
-				string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "imagesAsset");
+				string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), webHostEnvironment.WebRootPath, "imagesAsset");
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 
@@ -33,11 +36,9 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return "imagesAsset"+uniqueFileName;
+			return Path.Combine("imagesAsset",uniqueFileName);
 		}
 
-        private readonly ApplicationDbContext _context;
-		private readonly IWebHostEnvironment webHostEnvironment;
 
 		public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
 		{

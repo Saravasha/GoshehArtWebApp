@@ -28,6 +28,7 @@ wwwroot\imagesAsset\24530b6c-1910-4c1f-89c7-02734e8d937a_2_Body_Straight_Front_N
 wwwroot\imagesAsset\256c4640-721a-491d-81ce-7c47183f17d1_image_82.jpg
 wwwroot\imagesAsset\2cc0c313-d686-425f-a411-87d9f4af9ff9_20230524_102154.jpg
 wwwroot\imagesAsset\31f78e6a-e8a1-4051-af9d-f9e2cda77659_oups.png
+wwwroot\imagesAsset\3252840d-226e-4a5f-b5f6-f2dd94d0ddbc_image_6.jpg
 wwwroot\imagesAsset\35d64b37-3e40-4ac2-9c4d-7f973d9965a0_image_31.jpg
 wwwroot\imagesAsset\36dcb482-10d4-4e52-a9a7-fd02409f8a6a_image_32.jpg
 wwwroot\imagesAsset\398dbbd0-2211-4fc6-94fe-c367376d8eac_2022-02-26.png
