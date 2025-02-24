@@ -1,5 +1,5 @@
-# Triggers
-name: deploy goshehartwebapp
+  # Triggers
+name: Deploy GoshehArtWebApp (Backend)
 on:
   push:
     branches:
@@ -24,6 +24,9 @@ jobs:
     steps:
       # Checks out repository so our job can access it
       - uses: actions/checkout@v2
+      - name: Set HOME environment variable
+        run: |
+          echo "HOME=/home/runner" >> $GITHUB_ENV
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
         uses: actions/setup-dotnet@v1.7.2
         with:
@@ -32,9 +35,33 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
+      #Check if ASPNETCORE_ENVIRONMENT is unset or not set to Production
+      - name: Check Environment Variable
+        run: | 
+          if [ -z "$ASPNETCORE_ENVIRONMENT" ] || [ "$ASPNETCORE_ENVIRONMENT" != "Production" ]; then
+            # Set ASPNETCORE_ENVIRONMENT to Production
+            export ASPNETCORE_ENVIRONMENT=Production
+            echo "ASPNETCORE_ENVIRONMENT set to Production."
+          else
+            echo "ASPNETCORE_ENVIRONMENT is already set to $ASPNETCORE_ENVIRONMENT."
+          fi
+        
       - name: Build
         run: dotnet build --configuration Release --no-restore
-
+    
       # We will output publish files to the folder we previously created
       - name: Publish
-        run: dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+         # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
+        run: |
+          dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+      - name: PM2 Syncing
+        run: |
+          ls -a
+          export PM2_HOME=/root/.pm2
+          pm2 resurrect 
+          pm2 ls
+          pm2 stop goshehartwebapp
+          pm2 start goshehartwebapp
+          pm2 save
+      - name: Nginx Restarting
+        run: service nginx restart
