@@ -325,10 +325,6 @@
       "PackagePath": "staticwebassets\\imagesAsset\\Pictures\\Sidans filer\\Akvarell Konst\\image (9).jpg"
     },
     {
-      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (287).jpg",
-      "PackagePath": "staticwebassets\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (287).jpg"
-    },
-    {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (292).jpg",
       "PackagePath": "staticwebassets\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (292).jpg"
     },
@@ -399,6 +395,10 @@
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (312).jpg",
       "PackagePath": "staticwebassets\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (312).jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image(287).jpg",
+      "PackagePath": "staticwebassets\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image(287).jpg"
     },
     {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Kontroversiell Konst\\image (15).jpg",
