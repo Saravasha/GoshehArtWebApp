@@ -12,15 +12,15 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20240720203554_newseed")]
-    partial class newseed
+    [Migration("20250224192845_Initiatialization")]
+    partial class Initiatialization
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.2")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -42,18 +42,18 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            AssetsId = 3,
-                            CategoriesId = 1
-                        },
-                        new
-                        {
                             AssetsId = 1,
-                            CategoriesId = 2
+                            CategoriesId = 8
                         },
                         new
                         {
                             AssetsId = 2,
-                            CategoriesId = 3
+                            CategoriesId = 6
+                        },
+                        new
+                        {
+                            AssetsId = 3,
+                            CategoriesId = 8
                         });
                 });
 
@@ -89,7 +89,7 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             Author = "Fateme Gosheh",
-                            CategoryId = 9,
+                            CategoryId = 8,
                             Description = "Inte sett än",
                             ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan"
@@ -107,7 +107,7 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 3,
                             Author = "Fateme Gosheh",
-                            CategoryId = 9,
+                            CategoryId = 8,
                             Description = "Helt fantastiskt",
                             ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg",
                             Name = "Kari - Jag är elak"
@@ -179,7 +179,6 @@ namespace GoshehArtWebApp.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Content")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Title");
@@ -238,13 +237,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "7ccc16d8-be78-4031-94e3-0f68f31aa79a",
+                            Id = "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "b2d4565d-4c55-4fef-aecc-c54f47f54762",
+                            Id = "a067dfa5-df78-45b9-8e4e-3502c20f3310",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -342,17 +341,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "785baa01-515a-4e0a-9207-a07772d247af",
+                            Id = "e2ab0035-7a83-441a-8b0b-a763604adc9c",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "5d3b9b4e-90b5-4526-8113-8398607e8971",
+                            ConcurrencyStamp = "c804d2c2-2c3c-4bf9-b682-6b18d30f8758",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEs1oQozPPISZWD+kb21s2dydY+3hFCVFROoEwmygYXRLkM5k8l9UeAGxJq2r0kCDg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEENd3s5aPH1eqkgJcDsKVWADryKzr1ZFQUvFqn/dEUEIy/4vvKI4ZBOvpG0SbHwdpQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f5fd49c0-3e86-4b1c-b680-6ef3e2cf8be7",
+                            SecurityStamp = "d9eae6e1-cdb7-4696-99fa-3ec5b38dbdb3",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -424,8 +423,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "785baa01-515a-4e0a-9207-a07772d247af",
-                            RoleId = "7ccc16d8-be78-4031-94e3-0f68f31aa79a"
+                            UserId = "e2ab0035-7a83-441a-8b0b-a763604adc9c",
+                            RoleId = "f0b1e682-a29e-453e-9ed2-ad0cf79e6ae4"
                         });
                 });
 
