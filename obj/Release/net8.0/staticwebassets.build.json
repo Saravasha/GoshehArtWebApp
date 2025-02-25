@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "fZXTvLLRFUb/UV+XHoTz5vi7Aj5czs5Lfl7g4XyFLDg=",
+  "Hash": "nBYeyw9eddat+Tia2fu4qu4dHMXl5+9USsNWir3epa0=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -3419,6 +3419,27 @@
       "OriginalItemSpec": "wwwroot\\Assets\\ca03f151-0516-4694-ab07-d344c0864bf5_image_238.jpg"
     },
     {
+      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg",
+      "SourceId": "GoshehArtWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\",
+      "BasePath": "_content/GoshehArtWebApp",
+      "RelativePath": "Assets/cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ikvd53vvnf",
+      "Integrity": "7l12x/ZwXWTO28y7vkdec1RHjyuHeGnZD6ELmYh4fdQ=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg"
+    },
+    {
       "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg",
       "SourceId": "GoshehArtWebApp",
       "SourceType": "Discovered",
@@ -3627,6 +3648,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\f3c5af7b-3b54-4735-bfa0-4fafc1fbbe60_image_303.jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg",
+      "SourceId": "GoshehArtWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\",
+      "BasePath": "_content/GoshehArtWebApp",
+      "RelativePath": "Assets/f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "ls06md9hpv",
+      "Integrity": "hUNBsomQuI5IoRZR4ZbcK0ev3VSp4520UldqrFbNRH8=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\Assets\\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg"
     },
     {
       "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\fa194ba3-78ef-4171-893f-11bb028a3750_image_13.jpg",
@@ -19496,6 +19538,88 @@
       ]
     },
     {
+      "Route": "Assets/cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.ikvd53vvnf.jpg",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "184960"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7l12x/ZwXWTO28y7vkdec1RHjyuHeGnZD6ELmYh4fdQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 25 Feb 2025 19:16:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ikvd53vvnf"
+        },
+        {
+          "Name": "label",
+          "Value": "Assets/cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-7l12x/ZwXWTO28y7vkdec1RHjyuHeGnZD6ELmYh4fdQ="
+        }
+      ]
+    },
+    {
+      "Route": "Assets/cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "184960"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"7l12x/ZwXWTO28y7vkdec1RHjyuHeGnZD6ELmYh4fdQ=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 25 Feb 2025 19:16:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-7l12x/ZwXWTO28y7vkdec1RHjyuHeGnZD6ELmYh4fdQ="
+        }
+      ]
+    },
+    {
       "Route": "Assets/cf2d4b59-b409-4a53-b862-115296e0062a_image_6.7ds6tdb6uk.jpg",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg",
       "Selectors": [],
@@ -20312,6 +20436,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-A7by8GWx8rMXrgEledZGssboxjfksKne+1F4wx/KalQ="
+        }
+      ]
+    },
+    {
+      "Route": "Assets/f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "88869"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hUNBsomQuI5IoRZR4ZbcK0ev3VSp4520UldqrFbNRH8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 25 Feb 2025 19:16:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-hUNBsomQuI5IoRZR4ZbcK0ev3VSp4520UldqrFbNRH8="
+        }
+      ]
+    },
+    {
+      "Route": "Assets/f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.ls06md9hpv.jpg",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Assets\\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "88869"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"hUNBsomQuI5IoRZR4ZbcK0ev3VSp4520UldqrFbNRH8=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Tue, 25 Feb 2025 19:16:04 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "ls06md9hpv"
+        },
+        {
+          "Name": "label",
+          "Value": "Assets/f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-hUNBsomQuI5IoRZR4ZbcK0ev3VSp4520UldqrFbNRH8="
         }
       ]
     },
