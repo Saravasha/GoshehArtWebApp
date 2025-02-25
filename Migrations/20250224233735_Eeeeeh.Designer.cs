@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250224233735_Eeeeeh")]
+    partial class Eeeeeh
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -234,13 +237,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "569fc238-91ba-4f4e-a57f-2ca263a0c794",
+                            Id = "88ac5a05-5986-44a9-ac88-53a53e8804cf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "adbf2958-c76e-4d09-8831-af82ea945853",
+                            Id = "8bd6a810-df88-4dd0-82ef-23ff1d0a75fb",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -338,17 +341,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55cb6588-0814-44b2-8bd6-7dee260ecd27",
+                            Id = "be29edb5-e00e-404e-a8db-f97727a8d41b",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0d3429d6-3cea-4c89-948a-e40f3ab8b1f3",
+                            ConcurrencyStamp = "bdf62662-daa0-4fb4-ba46-da95e955b9d0",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEIlRL/z9dLbLhmLcZPzlDbAAercCOZOwZ5Uy1GnlXMi9PJymL/qXX17YD24EModbVA==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKfuISqXdN+ju6rQUgRq10YcM8BhGhpWvyRhOel/LxAk43i8zn7qVd/pEIFiriZznw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "66ee1c3b-8e2a-4f5b-93c9-573647fccf4d",
+                            SecurityStamp = "31ef60e0-0c4e-401d-b808-6416e72dceeb",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -420,8 +423,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "55cb6588-0814-44b2-8bd6-7dee260ecd27",
-                            RoleId = "569fc238-91ba-4f4e-a57f-2ca263a0c794"
+                            UserId = "be29edb5-e00e-404e-a8db-f97727a8d41b",
+                            RoleId = "88ac5a05-5986-44a9-ac88-53a53e8804cf"
                         });
                 });
 

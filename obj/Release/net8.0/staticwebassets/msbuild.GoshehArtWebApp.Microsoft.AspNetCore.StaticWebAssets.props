@@ -450,6 +450,42 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\18002ee3-544a-4306-9783-31bea2524ae1_image_28.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\1c371979-d8dc-4a6f-82d9-15cf50e21903_image_6.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/1c371979-d8dc-4a6f-82d9-15cf50e21903_image_6.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>7ds6tdb6uk</Fingerprint>
+      <Integrity>G5YPYLHACeRGQG98NmkN097n4wMfZ+rqbgRFTsIHhF4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\1c371979-d8dc-4a6f-82d9-15cf50e21903_image_6.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\1d432b33-c764-436d-9650-846a15db12af_image_9.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/1d432b33-c764-436d-9650-846a15db12af_image_9.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>65z2dxhvtw</Fingerprint>
+      <Integrity>lsD6QoZUmkq1SnaqRVvcE2anR0CVQ3gfsi3Nr7rWDGA=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\1d432b33-c764-436d-9650-846a15db12af_image_9.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\1e62557e-95dc-4051-b690-4fc0a593596c_image_31.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>GoshehArtWebApp</SourceId>
@@ -539,6 +575,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\2cc0c313-d686-425f-a411-87d9f4af9ff9_20230524_102154.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\310e0913-89b6-40d6-9144-161ba7e91604_image.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/310e0913-89b6-40d6-9144-161ba7e91604_image.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>azzzi4rslx</Fingerprint>
+      <Integrity>Gs1v51C4W0m+PTJJt/f5X9aGmHJMB/tIxctZcPYfwME=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\310e0913-89b6-40d6-9144-161ba7e91604_image.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\31f78e6a-e8a1-4051-af9d-f9e2cda77659_oups.png'))">
       <SourceType>Package</SourceType>
@@ -701,6 +755,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\4671f098-f068-4553-9f00-545658b85166_image_85.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\4e4fe04e-fb73-4d49-af5f-8a32c63dacb7_image_4.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/4e4fe04e-fb73-4d49-af5f-8a32c63dacb7_image_4.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>w2ztcvokli</Fingerprint>
+      <Integrity>2D4m56MBXxtaT5+z3tbdDIX2MbeaKDJRTELVvwelIMc=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\4e4fe04e-fb73-4d49-af5f-8a32c63dacb7_image_4.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\53795836-e15a-421d-bad2-a7ddbbb8dcff_image_9.jpg'))">
       <SourceType>Package</SourceType>
@@ -1116,6 +1188,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\98c3ce98-d53d-4cf8-9c05-53e00d343b13_image_53.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\99ba789f-8570-400f-97e8-43fa9db00410_image.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/99ba789f-8570-400f-97e8-43fa9db00410_image.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>azzzi4rslx</Fingerprint>
+      <Integrity>Gs1v51C4W0m+PTJJt/f5X9aGmHJMB/tIxctZcPYfwME=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\99ba789f-8570-400f-97e8-43fa9db00410_image.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\9e33f864-fe0a-4cec-bc99-829ccadac2f7_Screenshot 2024-06-09 183530.png'))">
       <SourceType>Package</SourceType>
       <SourceId>GoshehArtWebApp</SourceId>
@@ -1151,6 +1241,42 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\9e967906-1a3d-4512-a9ac-315a377f6c0c_image_34.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\a365e6a4-6254-48cf-b3a9-8d11ac8080d2_image_11.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/a365e6a4-6254-48cf-b3a9-8d11ac8080d2_image_11.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>8v0cnnziqo</Fingerprint>
+      <Integrity>nI1rEw6dfwzuBzav4Gg+B9RIYXv1GlXH+2wpOuBY9l4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\a365e6a4-6254-48cf-b3a9-8d11ac8080d2_image_11.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\a3ec7fc5-1c17-4e20-afa6-b679a1e896b9_image_59.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/a3ec7fc5-1c17-4e20-afa6-b679a1e896b9_image_59.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>wj25j4pwv2</Fingerprint>
+      <Integrity>1FCjaXUAsTnPtz6DsmWlsY0wQX/REoAeFT8lEZ7BieQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\a3ec7fc5-1c17-4e20-afa6-b679a1e896b9_image_59.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\a61558c0-35b1-48f6-b1f4-e7947fbf7ce2_image_30.jpg'))">
       <SourceType>Package</SourceType>
@@ -1241,6 +1367,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\b77b3663-bf9c-4b63-9636-a0121a51a47b_image_28.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\bcdc6e22-749f-47b7-8ab1-cdf28188abee_image_14.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/bcdc6e22-749f-47b7-8ab1-cdf28188abee_image_14.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>t30p7wvt55</Fingerprint>
+      <Integrity>yePyXy+TpUtvTZnU6kZmOCY7bowdTca1sSJZrv5CBes=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\bcdc6e22-749f-47b7-8ab1-cdf28188abee_image_14.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\bd6da43f-6b3d-4676-9cf8-9160e8d0bd8a_image_74.jpg'))">
       <SourceType>Package</SourceType>
@@ -1368,6 +1512,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\ca03f151-0516-4694-ab07-d344c0864bf5_image_238.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>7ds6tdb6uk</Fingerprint>
+      <Integrity>G5YPYLHACeRGQG98NmkN097n4wMfZ+rqbgRFTsIHhF4=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\cfd4bc84-7bbf-42a7-ad76-7cdbd309d63c_image_7.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>GoshehArtWebApp</SourceId>
@@ -1403,6 +1565,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\d21271d0-3698-4cc8-b9de-6e345c189a9f_2022-02-26.png'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\dde5610d-4f46-46f4-845f-f4720d667101_image_67.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>imagesAsset/dde5610d-4f46-46f4-845f-f4720d667101_image_67.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>4c2den2oly</Fingerprint>
+      <Integrity>FPdVD+gtHG5c2vYHFFFW7WHZpMeqj+BDpVDUNB+5ZNM=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\dde5610d-4f46-46f4-845f-f4720d667101_image_67.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\imagesAsset\e11a35a7-e2ba-4fdb-88b6-b0b7c0f4912a_image_1.jpg'))">
       <SourceType>Package</SourceType>
