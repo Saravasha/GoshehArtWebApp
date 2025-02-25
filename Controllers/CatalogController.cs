@@ -42,7 +42,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Files"));
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -117,7 +117,7 @@ namespace GoshehArtWebApp.Controllers
 					{
 						//catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
 						//_context.Assets.Update(new Asset() { Name = fileInDirectory, Author = User.Identity.Name, CategoryId = cat.Id, });
-						var fileName = Path.Combine("imagesAsset","Pictures","Sidans Filer",folder,fileInDirectory);
+						var fileName = "/imagesAsset/Pictures//Sidans Filer//" + folder + "/" + fileInDirectory;
 
 						Asset assetStage = new Asset()
 						{
