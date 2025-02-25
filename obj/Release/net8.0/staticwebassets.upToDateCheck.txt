@@ -98,6 +98,7 @@ wwwroot\Assets\c456d6d1-6a11-48c0-953b-671b340866d1_image_28.jpg
 wwwroot\Assets\c5574ae5-f3b5-43a7-9e8a-4cbfbbd82f86_image_17.jpg
 wwwroot\Assets\c6a1c084-ee74-40db-8a4b-5ae848567d44_image_33.jpg
 wwwroot\Assets\ca03f151-0516-4694-ab07-d344c0864bf5_image_238.jpg
+wwwroot\Assets\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg
 wwwroot\Assets\cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg
 wwwroot\Assets\cfd4bc84-7bbf-42a7-ad76-7cdbd309d63c_image_7.jpg
 wwwroot\Assets\d21271d0-3698-4cc8-b9de-6e345c189a9f_2022-02-26.png
@@ -108,6 +109,7 @@ wwwroot\Assets\e725eee4-dab6-4a75-81f7-f589b904dddb_image_13.jpg
 wwwroot\Assets\e861f4e5-8614-40b4-b833-bb03ab75e8df_image_6.jpg
 wwwroot\Assets\eef1bd15-0efc-42a6-a4ae-9a68aad3aae2_image_5.jpg
 wwwroot\Assets\f3c5af7b-3b54-4735-bfa0-4fafc1fbbe60_image_303.jpg
+wwwroot\Assets\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg
 wwwroot\Assets\fa194ba3-78ef-4171-893f-11bb028a3750_image_13.jpg
 wwwroot\Assets\faa2cccb-d733-44a1-8e45-ee8c93b490f1_chefchefdrinkwine.png
 wwwroot\Assets\fc331141-d20d-4ad1-b77d-3e9d79fb4983_image_35.jpg

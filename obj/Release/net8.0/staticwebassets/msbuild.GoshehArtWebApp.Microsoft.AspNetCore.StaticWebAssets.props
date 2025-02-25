@@ -1800,6 +1800,24 @@
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\ca03f151-0516-4694-ab07-d344c0864bf5_image_238.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>Assets/cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ikvd53vvnf</Fingerprint>
+      <Integrity>7l12x/ZwXWTO28y7vkdec1RHjyuHeGnZD6ELmYh4fdQ=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\cefb895b-90dc-4101-9e49-5a0fb5572e19_image_8.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\cf2d4b59-b409-4a53-b862-115296e0062a_image_6.jpg'))">
       <SourceType>Package</SourceType>
       <SourceId>GoshehArtWebApp</SourceId>
@@ -1979,6 +1997,24 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\f3c5af7b-3b54-4735-bfa0-4fafc1fbbe60_image_303.jpg'))</OriginalItemSpec>
+    </StaticWebAsset>
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg'))">
+      <SourceType>Package</SourceType>
+      <SourceId>GoshehArtWebApp</SourceId>
+      <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
+      <BasePath>_content/GoshehArtWebApp</BasePath>
+      <RelativePath>Assets/f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg</RelativePath>
+      <AssetKind>All</AssetKind>
+      <AssetMode>All</AssetMode>
+      <AssetRole>Primary</AssetRole>
+      <RelatedAsset></RelatedAsset>
+      <AssetTraitName></AssetTraitName>
+      <AssetTraitValue></AssetTraitValue>
+      <Fingerprint>ls06md9hpv</Fingerprint>
+      <Integrity>hUNBsomQuI5IoRZR4ZbcK0ev3VSp4520UldqrFbNRH8=</Integrity>
+      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\f4fe9904-bd75-4c81-83f2-e71686ddbd0e_image_7.jpg'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\Assets\fa194ba3-78ef-4171-893f-11bb028a3750_image_13.jpg'))">
       <SourceType>Package</SourceType>
