@@ -35,9 +35,9 @@ namespace GoshehArtWebApp.Data
             modelbuilder.Entity<Category>().HasData(new Category { Id = 7, Name = "Abstrakt Konst" });
             modelbuilder.Entity<Category>().HasData(new Category { Id = 8, Name = "Akvarell Konst" });
             
-            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg", CategoryId = 8 });
-            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Kontroversiell Konst/image (3).jpg", CategoryId = 6 });
-            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg", CategoryId = 8 });
+            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", ImageUrl = "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8 });
+            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", ImageUrl = "/Assets/Kontroversiell Konst/image (3).jpg", CategoryId = 6 });
+            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", ImageUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8 });
 
             modelbuilder.Entity<Asset>()
                .HasMany(p => p.Categories)
