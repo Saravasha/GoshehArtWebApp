@@ -53,7 +53,7 @@ jobs:
       - name: Publish
          # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
         run: |
-          dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+          dotnet publish -c Release /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
       - name: PM2 Syncing
         run: |
           ls -a
