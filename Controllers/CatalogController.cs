@@ -42,7 +42,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Files");
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets");
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -79,7 +79,7 @@ namespace GoshehArtWebApp.Controllers
 		{
 			// Kanske behöver scopa min uploadDirectory till innuti applikationsmiljön, för det fungerar lokalt, men inte på deployment????!
 			var cvm = new CatalogViewModel();
-			string uploadDirectory = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset","Pictures","Sidans Filer");
+			string uploadDirectory = Path.Combine(webHostEnvironment.WebRootPath, "Assets");
 			List<string> localFolders = new List<string>();
 			//Directory.GetDirectories(uploadDirectory, "*").ToList().new DirectoryInfo();
 			foreach (var f in Directory.GetDirectories(uploadDirectory, "*"))
@@ -117,7 +117,7 @@ namespace GoshehArtWebApp.Controllers
 					{
 						//catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
 						//_context.Assets.Update(new Asset() { Name = fileInDirectory, Author = User.Identity.Name, CategoryId = cat.Id, });
-						var fileName = "/imagesAsset/Pictures//Sidans Filer//" + folder + "/" + fileInDirectory;
+						var fileName = "/Assets//" + folder + "/" + fileInDirectory;
 
 						Asset assetStage = new Asset()
 						{

@@ -19,7 +19,7 @@ namespace GoshehArtWebApp.Controllers
 
 			if (asset.ImageUp != null)
 			{
-				string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
+				string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Assets");
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 
@@ -33,7 +33,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return "/imagesAsset/" + uniqueFileName; ;
+			return "/Assets/" + uniqueFileName; ;
 		}
 
         private readonly ApplicationDbContext _context;
@@ -287,7 +287,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Files"));
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Assets"));
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -302,14 +302,14 @@ namespace GoshehArtWebApp.Controllers
                         }
                     }
                     model.IsSuccess = true;
-                    model.Message = "Files upload successfully";
+                    model.Message = "Assets upload successfully";
                 }
                 else if (model.ImagesUp.Count > 0)
                 {
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Files"));
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Assets"));
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -356,7 +356,7 @@ namespace GoshehArtWebApp.Controllers
                 if (assets.ImageUp != null)
                 {
                     string? uniqueFileName = null;
-                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset");
+                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Assets");
                     foreach (var file in assets.ImageUp)
                     {
                         
@@ -381,7 +381,7 @@ namespace GoshehArtWebApp.Controllers
                             file.CopyTo(stream);
                         }
 
-                        assets.ImageUrl = "/imagesAsset/" + uniqueFileName;
+                        assets.ImageUrl = "/Assets/" + uniqueFileName;
 
                         var AssetToAdd = new Asset()
                         {

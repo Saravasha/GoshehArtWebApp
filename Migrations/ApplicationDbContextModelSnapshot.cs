@@ -88,7 +88,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Inte sett än",
-                            ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (287).jpg",
+                            ImageUrl = "/Assets/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan"
                         },
                         new
@@ -97,7 +97,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 6,
                             Description = "Gods butt from above",
-                            ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Kontroversiell Konst/image (3).jpg",
+                            ImageUrl = "/Assets/Kontroversiell Konst/image (3).jpg",
                             Name = "Aisha's Art"
                         },
                         new
@@ -106,7 +106,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Helt fantastiskt",
-                            ImageUrl = "/imagesAsset/Pictures/Sidans Filer/Filmproduktion/image (304).jpg",
+                            ImageUrl = "/Assets/Filmproduktion/image (304).jpg",
                             Name = "Kari - Jag är elak"
                         });
                 });
@@ -234,13 +234,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "51502c6d-dc39-410c-9d66-d306a0d6fd01",
+                            Id = "38bbc3d2-49bc-4658-8308-72860d0262e4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "385fa512-eaf5-40be-a939-39f25b0cc924",
+                            Id = "e94c28ed-751e-4b3e-8402-cc47eb7a8294",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -338,17 +338,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0db7bdb8-0653-45b4-b87b-6b8816e6da30",
+                            Id = "a35affae-5545-4281-a7d3-479965400c29",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "74b023b7-67c5-4fe9-8f8a-578c90ad79f9",
+                            ConcurrencyStamp = "41a55b56-082c-4efd-a656-a2d1510dac75",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEG+0pNTMCdob3ioahCyj7wyiD5VCfohFC0idluamwIC6ZPxUR1fT14BOBb9lOtjRNw==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEGec8MPXSuDPxizay7kcXuPSZB/dor/RJ87LOWwLfHEIhDhAVsaso+wU1pJZIY9zWg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "6c7a87a3-ce35-48c7-b3a8-5090b79aa685",
+                            SecurityStamp = "ad744073-52a7-4902-b8e0-3cfbe7af6d89",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -420,8 +420,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "0db7bdb8-0653-45b4-b87b-6b8816e6da30",
-                            RoleId = "51502c6d-dc39-410c-9d66-d306a0d6fd01"
+                            UserId = "a35affae-5545-4281-a7d3-479965400c29",
+                            RoleId = "38bbc3d2-49bc-4658-8308-72860d0262e4"
                         });
                 });
 
