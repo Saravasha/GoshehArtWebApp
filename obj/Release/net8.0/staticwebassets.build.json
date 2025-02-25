@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "+tfzhZbVJtkE3tcQ+ogBxMc3MNviceCgLc0pnP8BbaA=",
+  "Hash": "DhXUMAXqHmVBNTSTyW8HwzZiqG4Wr779Tk5sWXKykuY=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -3923,6 +3923,27 @@
       "OriginalItemSpec": "wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Akvarell Konst\\image (9).jpg"
     },
     {
+      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (287).jpg",
+      "SourceId": "GoshehArtWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\",
+      "BasePath": "_content/GoshehArtWebApp",
+      "RelativePath": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image (287)#[.{fingerprint}]?.jpg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "td970rcadw",
+      "Integrity": "QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (287).jpg"
+    },
+    {
       "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (292).jpg",
       "SourceId": "GoshehArtWebApp",
       "SourceType": "Discovered",
@@ -4299,27 +4320,6 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (312).jpg"
-    },
-    {
-      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image(287).jpg",
-      "SourceId": "GoshehArtWebApp",
-      "SourceType": "Discovered",
-      "ContentRoot": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\",
-      "BasePath": "_content/GoshehArtWebApp",
-      "RelativePath": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image(287)#[.{fingerprint}]?.jpg",
-      "AssetKind": "All",
-      "AssetMode": "All",
-      "AssetRole": "Primary",
-      "AssetMergeBehavior": "",
-      "AssetMergeSource": "",
-      "RelatedAsset": "",
-      "AssetTraitName": "",
-      "AssetTraitValue": "",
-      "Fingerprint": "td970rcadw",
-      "Integrity": "QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY=",
-      "CopyToOutputDirectory": "Never",
-      "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image(287).jpg"
     },
     {
       "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\image (314).jpg",
@@ -23911,6 +23911,88 @@
       ]
     },
     {
+      "Route": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image (287).jpg",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (287).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 21 Dec 2024 02:31:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=3600, must-revalidate"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY="
+        }
+      ]
+    },
+    {
+      "Route": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image (287).td970rcadw.jpg",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (287).jpg",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "26631"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "image/jpeg"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sat, 21 Dec 2024 02:31:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "td970rcadw"
+        },
+        {
+          "Name": "label",
+          "Value": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image (287).jpg"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY="
+        }
+      ]
+    },
+    {
       "Route": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image (292).jpg",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image (292).jpg",
       "Selectors": [],
@@ -25383,88 +25465,6 @@
         {
           "Name": "integrity",
           "Value": "sha256-hEM9CQlyp5X+7Iq+xyEWwvlU0a7d5UeEAqHhpLl4DOQ="
-        }
-      ]
-    },
-    {
-      "Route": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image(287).jpg",
-      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image(287).jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "26631"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 21 Dec 2024 02:31:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=3600, must-revalidate"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "integrity",
-          "Value": "sha256-QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY="
-        }
-      ]
-    },
-    {
-      "Route": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image(287).td970rcadw.jpg",
-      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\imagesAsset\\Pictures\\Sidans filer\\Filmproduktion\\image(287).jpg",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "26631"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "image/jpeg"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Sat, 21 Dec 2024 02:31:47 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "td970rcadw"
-        },
-        {
-          "Name": "label",
-          "Value": "imagesAsset/Pictures/Sidans filer/Filmproduktion/image(287).jpg"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-QbfEmZcicmpNLk/+aODkrUgGkxFU/G30cma6MOG33RY="
         }
       ]
     },
