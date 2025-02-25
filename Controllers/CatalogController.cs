@@ -77,7 +77,7 @@ namespace GoshehArtWebApp.Controllers
 		// GET: CatalogController]
 		public IActionResult Index()
 		{
-
+			// Kanske behöver scopa min uploadDirectory till innuti applikationsmiljön, för det fungerar lokalt, men inte på deployment????!
 			var cvm = new CatalogViewModel();
 			string uploadDirectory = Path.Combine(webHostEnvironment.WebRootPath, "imagesAsset","Pictures","Sidans Filer");
 			List<string> localFolders = new List<string>();
