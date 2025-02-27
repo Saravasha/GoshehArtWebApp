@@ -54,11 +54,9 @@ jobs:
          # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
         run: |
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-          
-      - name: Setting Connection String
+      - name: Setting Connection String and PM2 Syncing for Production
         env:
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
-      - name: PM2 Syncing
         run: |
           ls -a
           export PM2_HOME=/root/.pm2
