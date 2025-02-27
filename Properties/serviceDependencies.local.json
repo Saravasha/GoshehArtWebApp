@@ -5,6 +5,10 @@
       "resourceId": null,
       "type": "mssql.onprem",
       "connectionId": "ConnectionStrings:DefaultConnection"
+    },
+    "secrets1": {
+      "type": "secrets.user",
+      "dynamicId": null
     }
   }
 }
