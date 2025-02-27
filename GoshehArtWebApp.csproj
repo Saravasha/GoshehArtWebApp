@@ -31,7 +31,6 @@
     <None Include="appsettings.json">
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\Assets\Abstrakt Konst\image %28194%29.jpg" />
     <Page Include="wwwroot\Assets\Akvarell Konst\image %2811%29.jpg" />
     <Page Include="wwwroot\Assets\Akvarell Konst\image %2813%29.jpg" />
     <None Include="wwwroot\Assets\Akvarell Konst\image %2816%29.jpg" />
