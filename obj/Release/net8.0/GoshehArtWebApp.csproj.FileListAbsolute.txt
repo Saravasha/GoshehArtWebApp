@@ -1,5 +1,3 @@
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\appsettings.Development.json
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\appsettings.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\GoshehArtWebApp.staticwebassets.runtime.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\GoshehArtWebApp.exe
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Release\net8.0\GoshehArtWebApp.deps.json
