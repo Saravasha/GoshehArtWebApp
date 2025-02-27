@@ -59,7 +59,15 @@ jobs:
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
         run: |
           echo $CONNECTION_STRING
-          echo $ASPNETCORE_ENVIRONMENT
+          
+          if [ -z "$ASPNETCORE_ENVIRONMENT" ] || [ "$ASPNETCORE_ENVIRONMENT" != "Production" ]; then
+            # Set ASPNETCORE_ENVIRONMENT to Production
+            export ASPNETCORE_ENVIRONMENT=Production
+            echo "ASPNETCORE_ENVIRONMENT set to Production."
+          else
+            echo "ASPNETCORE_ENVIRONMENT is already set to $ASPNETCORE_ENVIRONMENT."
+          fi
+          
           ls -a
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
