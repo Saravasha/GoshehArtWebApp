@@ -58,6 +58,8 @@ jobs:
         env:
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
         run: |
+          echo $CONNECTION_STRING
+          echo $ASPNETCORE_ENVIRONMENT
           ls -a
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
