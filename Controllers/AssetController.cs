@@ -14,6 +14,15 @@ namespace GoshehArtWebApp.Controllers
     [Authorize]
     public class AssetController : Controller
     {
+        private readonly ApplicationDbContext _context;
+		private readonly IWebHostEnvironment webHostEnvironment;
+
+		public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
+		{
+			_context = context;
+			webHostEnvironment = webHost;
+		}
+
 		public string UploadedFile(CreateAssetViewModel asset)
 		{
 			string? uniqueFileName = null;
@@ -21,13 +30,13 @@ namespace GoshehArtWebApp.Controllers
 			if (asset.ImageUp != null)
 			{
 
-                string path = Path.Combine(webHostEnvironment.WebRootPath, "Uploads");
+                string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
 
-                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads");
+                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 
@@ -44,14 +53,6 @@ namespace GoshehArtWebApp.Controllers
 			return "/Uploads/" + uniqueFileName; ;
 		}
 
-        private readonly ApplicationDbContext _context;
-		private readonly IWebHostEnvironment webHostEnvironment;
-
-		public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
-		{
-			_context = context;
-			webHostEnvironment = webHost;
-		}
 		// GET: AssetController
 
 		public IActionResult Index()
@@ -295,7 +296,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Uploads"));
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -317,7 +318,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), Path.Combine(webHostEnvironment.WebRootPath, "Uploads"));
+                        string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -364,7 +365,7 @@ namespace GoshehArtWebApp.Controllers
                 if (assets.ImageUp != null)
                 {
                     string? uniqueFileName = null;
-                    string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads");
+                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
                     foreach (var file in assets.ImageUp)
                     {
                         

@@ -13,6 +13,16 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Content Include="Uploads\0bc1bf0c-2c87-479f-9753-09fd291748c8_image_13.jpg" />
+    <Content Include="Uploads\15589d73-33ad-4592-9c03-73d6984b40cb_image_6.jpg" />
+    <Content Include="Uploads\2bd89b99-6351-479b-a993-1902dbd44660_image_14.jpg" />
+    <Content Include="Uploads\479a7a19-c8f6-413f-8bf3-9f18daad6804_image_13.jpg" />
+    <Content Include="Uploads\922a27b5-b692-441e-a276-88d856c441a0_image_5.jpg" />
+    <Content Include="Uploads\f4f66e87-5428-4f33-9240-618c121ba792_image_6.jpg" />
+    <Content Include="Uploads\f5cb2240-761a-46e7-96ba-60b2b516f4b9_image_4.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.EntityFrameworkCore" Version="8.0.2" />
     <PackageReference Include="Microsoft.AspNetCore.Identity.UI" Version="8.0.2" />
