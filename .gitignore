@@ -6,4 +6,4 @@
 /.github/workflows/azure-functions-app-dotnet.yml
 /.config
 /.vs
-/Uploads/
+Uploads
