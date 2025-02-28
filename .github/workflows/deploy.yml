@@ -54,21 +54,8 @@ jobs:
          # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
         run: |
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-      - name: Setting Connection String and PM2 Syncing for Production
-        env:
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+      - name: PM2 Syncing for Production
         run: |
-          echo $CONNECTION_STRING
-          
-          if [ -z "$ASPNETCORE_ENVIRONMENT" ] || [ "$ASPNETCORE_ENVIRONMENT" != "Production" ]; then
-            # Set ASPNETCORE_ENVIRONMENT to Production
-            export ASPNETCORE_ENVIRONMENT=Production
-            echo "ASPNETCORE_ENVIRONMENT set to Production."
-          else
-            echo "ASPNETCORE_ENVIRONMENT is already set to $ASPNETCORE_ENVIRONMENT."
-          fi
-          
-          ls -a
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
           pm2 ls
