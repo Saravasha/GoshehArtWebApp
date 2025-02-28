@@ -62,7 +62,7 @@ void AddStaticFilesRecursively(string directory, WebApplication app)
     app.UseStaticFiles(new StaticFileOptions
     {
         FileProvider = fileProvider,
-        RequestPath = "/" + Path.GetFileName(directory)  // You can adjust the request path here
+        RequestPath = "/" + Path.GetFileName(directory)  // You can adjust the request path here w
     });
 
     // Recursively add subdirectories
