@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Drawing.Text;
+using System.IO;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -48,10 +49,16 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 // Fileprovider för Uploads utanför webrooten
+string path = Path.Combine(Environment.CurrentDirectory, "Uploads");
+if (!Directory.Exists(path))
+{
+    Directory.CreateDirectory(path);
+}
+
 app.UseStaticFiles(new StaticFileOptions()
 {
     FileProvider = new PhysicalFileProvider(
-    Path.Combine(Environment.CurrentDirectory, "Uploads")),
+    Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
     RequestPath = "/Uploads"
 });
 
