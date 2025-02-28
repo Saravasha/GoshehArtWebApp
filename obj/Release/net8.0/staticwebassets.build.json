@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "MRzi1DlyBfYKU1BwzghzC8zSa+FEI3kRPQ8nG59cX6s=",
+  "Hash": "hvuvSssm30TuuI1eIKOw9xvv2YC9cR/nRweiLdBqBlA=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -7892,12 +7892,12 @@
       "OriginalItemSpec": "wwwroot\\css\\site.css"
     },
     {
-      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\favicon.ico",
+      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\faviconw.ico",
       "SourceId": "GoshehArtWebApp",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\",
       "BasePath": "_content/GoshehArtWebApp",
-      "RelativePath": "favicon#[.{fingerprint}]?.ico",
+      "RelativePath": "faviconw#[.{fingerprint}]?.ico",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -7910,7 +7910,7 @@
       "Integrity": "Jtxf9L+5ITKRc1gIRl4VbUpGkRNfOBXjYTdhJD4facM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\favicon.ico"
+      "OriginalItemSpec": "wwwroot\\faviconw.ico"
     },
     {
       "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\js\\site.js",
@@ -34799,8 +34799,8 @@
       ]
     },
     {
-      "Route": "favicon.61n19gt1b8.ico",
-      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\favicon.ico",
+      "Route": "faviconw.61n19gt1b8.ico",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\faviconw.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -34835,7 +34835,7 @@
         },
         {
           "Name": "label",
-          "Value": "favicon.ico"
+          "Value": "faviconw.ico"
         },
         {
           "Name": "integrity",
@@ -34844,8 +34844,8 @@
       ]
     },
     {
-      "Route": "favicon.ico",
-      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\favicon.ico",
+      "Route": "faviconw.ico",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\faviconw.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
