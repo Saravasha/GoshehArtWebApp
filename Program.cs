@@ -16,7 +16,6 @@ if (builder.Environment.IsDevelopment())
 } else
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
