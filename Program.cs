@@ -16,10 +16,11 @@ if (builder.Environment.IsDevelopment())
 } else
 {
     var fromEnv = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+    connectionString = builder.Configuration.GetConnectionString(fromEnv); 
     Console.WriteLine(fromEnv);
-    connectionString = builder.Configuration.GetConnectionString(fromEnv);
-    Console.WriteLine(connectionString);
 }
+
+
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
