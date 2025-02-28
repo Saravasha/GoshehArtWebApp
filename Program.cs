@@ -15,7 +15,7 @@ if (builder.Environment.IsDevelopment())
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 } else
 {
-    connectionString = builder.Configuration.GetConnectionString(Environment.GetEnvironmentVariable("CONNECTION_STRING")) ?? throw new InvalidOperationException("No assigned Connection string could be found.");
+    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 
 }
 
