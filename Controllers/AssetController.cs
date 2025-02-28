@@ -367,7 +367,7 @@ namespace GoshehArtWebApp.Controllers
 
                         //create folder if not exist
                         //if (!Directory.Exists(filePath))
-                        //    Directory.CreateDirectory(filePath);
+                        //    Directory.CreateDirectory(filePath)w;
 
                         if (System.IO.File.Exists(filePath))
                         {
