@@ -35,7 +35,7 @@ namespace GoshehArtWebApp.Controllers
                 {
                     Directory.CreateDirectory(path);
                 }
-
+                // Trying to override Uploads briefly by pushing
                 string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
