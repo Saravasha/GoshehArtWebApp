@@ -8,6 +8,13 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="wwwroot\Uploads\**" />
+    <Content Remove="wwwroot\Uploads\**" />
+    <EmbeddedResource Remove="wwwroot\Uploads\**" />
+    <None Remove="wwwroot\Uploads\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <Content Remove="appsettings.Development.json" />
     <Content Remove="appsettings.json" />
   </ItemGroup>
