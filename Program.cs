@@ -49,18 +49,24 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 // Fileprovider för Uploads utanför webrooten
-string path = Path.Combine(Environment.CurrentDirectory, "Uploads");
-if (!Directory.Exists(path))
+void UploadDirectoryAsserter()
 {
-    Directory.CreateDirectory(path);
+    // Gets App root path's parent directory and does a combine with Uploads, checks if directory Uploads exists under parent directory, if not then it creates it => Adds a new PhysicalFileProvider for Upload Path.
+    string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(),"Uploads");
+    if (!Directory.Exists(path))
+    {
+        Directory.CreateDirectory(path);
+    }
+
+    app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = new PhysicalFileProvider(
+        Path.Combine(path, "Uploads")),
+        RequestPath = "/Uploads"
+    });
 }
 
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(
-    Path.Combine(Directory.GetCurrentDirectory(), "Uploads")),
-    RequestPath = "/Uploads"
-});
+UploadDirectoryAsserter();
 
 // Fileprovider för Assets rekursivt
 var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets");
