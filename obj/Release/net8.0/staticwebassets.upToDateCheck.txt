@@ -311,7 +311,7 @@ wwwroot\Assets\Utställningar\image (97).jpg
 wwwroot\Assets\Utställningar\image (98).jpg
 wwwroot\Assets\Utställningar\image (99).jpg
 wwwroot\css\site.css
-wwwroot\favicon.ico
+wwwroot\faviconw.ico
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css
 wwwroot\lib\bootstrap\dist\css\bootstrap.css.map

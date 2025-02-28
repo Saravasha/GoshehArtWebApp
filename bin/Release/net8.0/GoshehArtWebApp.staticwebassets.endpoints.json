@@ -27971,8 +27971,8 @@
       ]
     },
     {
-      "Route": "favicon.61n19gt1b8.ico",
-      "AssetFile": "favicon.ico",
+      "Route": "faviconw.61n19gt1b8.ico",
+      "AssetFile": "faviconw.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
@@ -28011,13 +28011,13 @@
         },
         {
           "Name": "label",
-          "Value": "favicon.ico"
+          "Value": "faviconw.ico"
         }
       ]
     },
     {
-      "Route": "favicon.ico",
-      "AssetFile": "favicon.ico",
+      "Route": "faviconw.ico",
+      "AssetFile": "faviconw.ico",
       "Selectors": [],
       "ResponseHeaders": [
         {
