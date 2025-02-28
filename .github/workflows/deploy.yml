@@ -65,6 +65,8 @@ jobs:
           else
             echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
           fi
+
+          echo $CONNECTION_STRING
           
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
