@@ -370,6 +370,3 @@ wwwroot\lib\jquery-validation\LICENSE.md
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.js
 wwwroot\lib\jquery-validation-unobtrusive\jquery.validate.unobtrusive.min.js
 wwwroot\lib\jquery-validation-unobtrusive\LICENSE.txt
-wwwroot\Uploads\15589d73-33ad-4592-9c03-73d6984b40cb_image_6.jpg
-wwwroot\Uploads\922a27b5-b692-441e-a276-88d856c441a0_image_5.jpg
-wwwroot\Uploads\f4f66e87-5428-4f33-9240-618c121ba792_image_6.jpg
