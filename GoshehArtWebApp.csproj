@@ -64,8 +64,6 @@
     <None Include="wwwroot\Assets\Filmproduktion\image %28310%29.jpg" />
     <None Include="wwwroot\Assets\Filmproduktion\image %28311%29.jpg" />
     <None Include="wwwroot\Assets\Filmproduktion\image %28312%29.jpg" />
-    <None Include="wwwroot\Assets\image %28314%29.jpg" />
-    <None Include="wwwroot\Assets\image.jpg" />
     <None Include="wwwroot\Assets\Kontroversiell Konst\image %2815%29.jpg" />
     <None Include="wwwroot\Assets\Kontroversiell Konst\image %2821%29.jpg" />
     <None Include="wwwroot\Assets\Kontroversiell Konst\image %2822%29.jpg" />
@@ -348,18 +346,11 @@
       <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
     </Content>
-    <Content Update="wwwroot\Assets\image_5.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
-    <Content Update="wwwroot\Assets\image_6.jpg">
-      <ExcludeFromSingleFile>true</ExcludeFromSingleFile>
-      <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-    </Content>
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Migrations\" />
+    <Folder Include="wwwroot\Uploads\" />
   </ItemGroup>
 
   <ProjectExtensions><VisualStudio><UserProperties /></VisualStudio></ProjectExtensions>
