@@ -7,6 +7,7 @@ using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
 using System.Collections.Generic;
+using System.IO;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -19,7 +20,14 @@ namespace GoshehArtWebApp.Controllers
 
 			if (asset.ImageUp != null)
 			{
-				string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads");
+
+                string path = Path.Combine(webHostEnvironment.WebRootPath, "Uploads");
+                if (!Directory.Exists(path))
+                {
+                    Directory.CreateDirectory(path);
+                }
+
+                string uploadsFolder = Path.Combine(webHostEnvironment.WebRootPath, "Uploads");
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 
@@ -33,7 +41,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return "/Assets/" + uniqueFileName; ;
+			return "/Uploads/" + uniqueFileName; ;
 		}
 
         private readonly ApplicationDbContext _context;
@@ -381,7 +389,7 @@ namespace GoshehArtWebApp.Controllers
                             file.CopyTo(stream);
                         }
 
-                        assets.ImageUrl = "/Assets/" + uniqueFileName;
+                        assets.ImageUrl = "/Uploads/" + uniqueFileName;
 
                         var AssetToAdd = new Asset()
                         {
