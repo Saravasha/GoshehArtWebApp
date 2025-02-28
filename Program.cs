@@ -61,7 +61,7 @@ void UploadDirectoryAsserter()
     app.UseStaticFiles(new StaticFileOptions()
     {
         FileProvider = new PhysicalFileProvider(
-        Path.Combine(path, "Uploads")),
+        path),
         RequestPath = "/Uploads"
     });
 }

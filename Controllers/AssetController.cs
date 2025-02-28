@@ -30,13 +30,13 @@ namespace GoshehArtWebApp.Controllers
 			if (asset.ImageUp != null)
 			{
 
-                string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
                 // Trying to override Uploads briefly by pushing
-                string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                string uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 
@@ -296,7 +296,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                        string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -318,7 +318,7 @@ namespace GoshehArtWebApp.Controllers
                     foreach (var file in model.ImagesUp)
                     {
 
-                        string path = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                        string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
 
                         //create folder if not exist
                         if (!Directory.Exists(path))
@@ -365,7 +365,7 @@ namespace GoshehArtWebApp.Controllers
                 if (assets.ImageUp != null)
                 {
                     string? uniqueFileName = null;
-                    string uploadsFolder = Path.Combine(Directory.GetCurrentDirectory(), "Uploads");
+                    string uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
                     foreach (var file in assets.ImageUp)
                     {
                         
