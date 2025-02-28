@@ -1253,6 +1253,18 @@
       "PackagePath": "staticwebassets\\Assets\\Utställningar\\image (99).jpg"
     },
     {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Uploads\\15589d73-33ad-4592-9c03-73d6984b40cb_image_6.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\15589d73-33ad-4592-9c03-73d6984b40cb_image_6.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Uploads\\922a27b5-b692-441e-a276-88d856c441a0_image_5.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\922a27b5-b692-441e-a276-88d856c441a0_image_5.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\Uploads\\f4f66e87-5428-4f33-9240-618c121ba792_image_6.jpg",
+      "PackagePath": "staticwebassets\\Uploads\\f4f66e87-5428-4f33-9240-618c121ba792_image_6.jpg"
+    },
+    {
       "Id": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
       "PackagePath": "staticwebassets\\css\\site.css"
     },
