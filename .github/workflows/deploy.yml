@@ -55,8 +55,6 @@ jobs:
         run: |
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
       - name: PM2 Syncing for Production
-        env: 
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
         run: |
           if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
             # Set DOTNET_ENVIRONMENT to Production
