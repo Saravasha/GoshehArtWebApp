@@ -64,7 +64,7 @@ jobs:
             echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
           fi
 
-          echo ${{secrets.CONNECTION_STRING}}
+          export CONNECTION_STRING={{ secrets.CONNECTION_STRING }}
           echo $CONNECTION_STRING
           
           export PM2_HOME=/root/.pm2
