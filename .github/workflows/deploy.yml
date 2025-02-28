@@ -56,6 +56,14 @@ jobs:
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
       - name: PM2 Syncing for Production
         run: |
+          if [ -z "$ASPNETCORE_ENVIRONMENT" ] || [ "$ASPNETCORE_ENVIRONMENT" != "Production" ]; then
+            # Set ASPNETCORE_ENVIRONMENT to Production
+            export ASPNETCORE_ENVIRONMENT=Production
+            echo "ASPNETCORE_ENVIRONMENT set to Production."
+          else
+            echo "ASPNETCORE_ENVIRONMENT is already set to $ASPNETCORE_ENVIRONMENT."
+          fi
+          
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
           pm2 ls
