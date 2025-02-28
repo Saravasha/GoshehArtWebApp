@@ -51,7 +51,7 @@ app.UseStaticFiles();
 // Fileprovider för Uploads utanför webrooten
 void UploadDirectoryAsserter()
 {
-    // Gets App root path's parent directory and does a combine with Uploads, checks if directory Uploads exists under parent directory, if not then it creates it => Adds a new PhysicalFileProvider for Upload Path.
+    // Gets App root path's parent directory and does a combine with Uploads, checks if directory Uploads exists under parent directory, if not then it creates it => Adds a new PhysicalFileProvider for Upload Path..
     string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(),"Uploads");
     if (!Directory.Exists(path))
     {
