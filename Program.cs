@@ -48,7 +48,7 @@ app.UseHttpsRedirection();
 app.UseStaticFiles();
 
 
-var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot");
+var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets");
 
 // Recursively find all subdirectories and add them
 AddStaticFilesRecursively(baseDirectory, app);
