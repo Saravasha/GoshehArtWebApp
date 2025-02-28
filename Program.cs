@@ -47,25 +47,28 @@ app.UseHttpsRedirection();
 
 app.UseStaticFiles();
 
+// Fileprovider för Uploads utanför webrooten
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+    Path.Combine(Environment.CurrentDirectory, "Uploads")),
+    RequestPath = "/Uploads"
+});
 
+// Fileprovider för Assets rekursivt
 var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets");
-
-// Recursively find all subdirectories and add them
 AddStaticFilesRecursively(baseDirectory, app);
 
 void AddStaticFilesRecursively(string directory, WebApplication app)
 {
-    // Create a PhysicalFileProvider for this directory
     var fileProvider = new PhysicalFileProvider(directory);
 
-    // Serve static files from this directory
     app.UseStaticFiles(new StaticFileOptions
     {
         FileProvider = fileProvider,
-        RequestPath = "/" + Path.GetFileName(directory)  // You can adjust the request path here w
+        RequestPath = "/" + Path.GetFileName(directory) 
     });
 
-    // Recursively add subdirectories
     var subdirectories = Directory.GetDirectories(directory);
     foreach (var subdirectory in subdirectories)
     {
