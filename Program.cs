@@ -15,12 +15,9 @@ if (builder.Environment.IsDevelopment())
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 } else
 {
-    var fromEnv = Environment.GetEnvironmentVariable("CONNECTION_STRING");
-    connectionString = builder.Configuration.GetConnectionString(fromEnv); 
-    Console.WriteLine(fromEnv);
+    connectionString = builder.Configuration.GetConnectionString(Environment.GetEnvironmentVariable("CONNECTION_STRING")) ?? throw new InvalidOperationException("No assigned Connection string could be found.");
+
 }
-
-
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
