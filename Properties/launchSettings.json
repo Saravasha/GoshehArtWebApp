@@ -16,7 +16,7 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7033;http://localhost:5283",
+      "applicationUrl": "https://localhost:7033",
       "sqlDebugging": true
     },
     "IIS Express": {

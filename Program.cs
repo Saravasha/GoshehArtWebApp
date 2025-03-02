@@ -1,11 +1,8 @@
 using GoshehArtWebApp.Data;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
-using System.Drawing.Text;
-using System.IO;
+using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,19 +11,56 @@ var connectionString = "";
 if (builder.Environment.IsDevelopment())  
 {
     connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 } else
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 }
 
+
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
+    .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
-builder.Services.AddControllersWithViews();
+builder.Services.AddControllersWithViews().AddJsonOptions(x =>
+                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 
 builder.Services.AddDirectoryBrowser();
+
+builder.Services.AddCors(options =>
+    options.AddPolicy("corsPolicy",
+        policy =>
+        {
+            policy.WithOrigins("http://localhost:5173", "https://goshehart.se")
+            .AllowAnyMethod()
+            .AllowAnyHeader();
+        }
+    )
+);
+
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireLowercase = false;
+    options.Password.RequiredUniqueChars = 1;
+    options.Password.RequireUppercase = false;
+    options.Password.RequiredLength = 6;
+});
+
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    // Cookie settings
+    options.Cookie.HttpOnly = true;
+    options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+
+    options.LoginPath = "/Identity/Account/Login";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
+    options.SlidingExpiration = true;
+});
+
+
 
 var app = builder.Build();
 
@@ -44,7 +78,7 @@ else
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
+
 
 app.UseStaticFiles();
 
@@ -89,9 +123,14 @@ void AddStaticFilesRecursively(string directory, WebApplication app)
     }
 }
 
+
 app.UseRouting();
 
+app.UseHttpsRedirection();
+
 app.UseAuthorization();
+app.UseAuthentication();
+app.UseCors("corsPolicy");
 
 app.MapControllerRoute(
     name: "default",
