@@ -67,7 +67,15 @@ namespace GoshehArtWebApp.Data
 
             });
 
-            IConfigurationRoot secret = new ConfigurationBuilder().AddUserSecrets<Password>().Build();
+            var secret = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
+            if (secret == "Production")
+            {
+                secret = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
+            } else
+            {
+                IConfigurationRoot conf = new ConfigurationBuilder().AddUserSecrets<Password>().Build();
+                secret = conf["Passwords:Admin"];
+            }
             PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
             modelbuilder.Entity<IdentityUser>().HasData(new IdentityUser
             {
@@ -76,7 +84,7 @@ namespace GoshehArtWebApp.Data
                 NormalizedEmail = "ADMIN@ADMIN.COM",
                 UserName = "Admin",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
-                PasswordHash = passwordHasher.HashPassword(null, secret["Passwords:Admin"])
+                PasswordHash = passwordHasher.HashPassword(null, secret)
             });
 
             modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
