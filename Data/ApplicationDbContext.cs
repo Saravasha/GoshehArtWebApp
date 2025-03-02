@@ -1,4 +1,5 @@
 ﻿using GoshehArtWebApp.Models;
+using GoshehArtWebApp.Secrets;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -66,6 +67,7 @@ namespace GoshehArtWebApp.Data
 
             });
 
+            IConfigurationRoot secret = new ConfigurationBuilder().AddUserSecrets<Password>().Build();
             PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
             modelbuilder.Entity<IdentityUser>().HasData(new IdentityUser
             {
@@ -74,7 +76,7 @@ namespace GoshehArtWebApp.Data
                 NormalizedEmail = "ADMIN@ADMIN.COM",
                 UserName = "Admin",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
-                PasswordHash = passwordHasher.HashPassword(null, "password")
+                PasswordHash = passwordHasher.HashPassword(null, secret["Passwords:Admin"])
             });
 
             modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
