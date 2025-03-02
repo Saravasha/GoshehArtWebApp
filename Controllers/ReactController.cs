@@ -3,6 +3,7 @@ using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using Microsoft.EntityFrameworkCore;
 
+
 namespace GoshehArtWebApp.Controllers
 {
 
@@ -17,7 +18,7 @@ namespace GoshehArtWebApp.Controllers
         }
 
         //[HttpGet]
-        //public List<City> GetCities()
+        //public List<City> GetCities()wwwwwwwwwwwwwwwwww
         //{
         //    List<City> cities = new List<City>();
         //    cities = _context.Cities.ToList();

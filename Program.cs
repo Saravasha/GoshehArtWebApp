@@ -32,9 +32,12 @@ builder.Services.AddCors(options =>
     options.AddPolicy("corsPolicy",
         policy =>
         {
-            policy.WithOrigins("http://localhost:5173", "https://goshehart.se")
+            policy
+            //.WithOrigins("http://localhost:5173")
+            .AllowAnyOrigin()
             .AllowAnyMethod()
             .AllowAnyHeader();
+// wwwwwwwwwww
         }
     )
 );
@@ -126,10 +129,10 @@ void AddStaticFilesRecursively(string directory, WebApplication app)
 
 app.UseRouting();
 
-app.UseHttpsRedirection();
+app.UseHttpsRedirection(); 
 
 app.UseAuthorization();
-app.UseAuthentication();
+//app.UseAuthentication();
 app.UseCors("corsPolicy");
 
 app.MapControllerRoute(
