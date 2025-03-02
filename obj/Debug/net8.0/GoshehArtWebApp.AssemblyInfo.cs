@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("GoshehArtWebApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+294b8968f4bcc5ef5c467ad2a5a21888a9295232")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+9685379db4cc5a73bdac12059e191d1a42e9301a")]
 [assembly: System.Reflection.AssemblyProductAttribute("GoshehArtWebApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("GoshehArtWebApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

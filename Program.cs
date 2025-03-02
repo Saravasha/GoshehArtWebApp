@@ -17,7 +17,6 @@ if (builder.Environment.IsDevelopment())
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
 }
 
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
