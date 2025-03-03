@@ -27,19 +27,39 @@ builder.Services.AddControllersWithViews().AddJsonOptions(x =>
 
 builder.Services.AddDirectoryBrowser();
 
-builder.Services.AddCors(options =>
-    options.AddPolicy("corsPolicy",
-        policy =>
-        {
-            policy
-            //.WithOrigins("http://localhost:5173")
-            .AllowAnyOrigin()
-            .AllowAnyMethod()
-            .AllowAnyHeader();
-// wwwwwwwwwww
-        }
-    )
-);
+
+if (builder.Environment.IsProduction())
+{
+    builder.Services.AddCors(options =>
+        options.AddPolicy("corsPolicy",
+            policy =>
+            {
+                policy
+                .WithOrigins("https://goshehart.se")
+                .AllowAnyOrigin()
+                .AllowAnyMethod()
+                .AllowAnyHeader();
+
+            }
+        )
+    );
+
+} else
+{
+    builder.Services.AddCors(options =>
+       options.AddPolicy("corsPolicy",
+           policy =>
+           {
+               policy
+               .WithOrigins("http://localhost:5173")
+               .AllowAnyOrigin()
+               .AllowAnyMethod()
+               .AllowAnyHeader();
+
+           }
+       )
+   );
+}
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
