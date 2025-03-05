@@ -35,7 +35,7 @@ if (builder.Environment.IsProduction())
             policy =>
             {
                 policy
-                .WithOrigins("https://goshehart.se")
+                .WithOrigins(origins: ["https://goshehart.se", "https://www.goshehart.se"])
                 .AllowAnyOrigin()
                 .AllowAnyMethod()
                 .AllowAnyHeader();
