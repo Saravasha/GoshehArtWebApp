@@ -78,7 +78,16 @@ namespace GoshehArtWebApp.Data
                 IConfigurationRoot conf = new ConfigurationBuilder().AddUserSecrets<Password>().Build();
                 secret = conf["Passwords:Admin"];
             }
+
+            // Ensure secret is not null or empty
+            if (string.IsNullOrEmpty(secret))
+            {
+                throw new InvalidOperationException("Password cannot be null or empty.");
+            }
+
             PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
+
+
             modelbuilder.Entity<IdentityUser>().HasData(new IdentityUser
             {
                 Id = userId,

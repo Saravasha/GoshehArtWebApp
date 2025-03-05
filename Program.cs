@@ -149,10 +149,10 @@ void AddStaticFilesRecursively(string directory, WebApplication app)
 app.UseRouting();
 
 app.UseHttpsRedirection(); 
-
-app.UseAuthorization();
-//app.UseAuthentication();
 app.UseCors("corsPolicy");
+
+app.UseAuthentication();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
