@@ -6,3 +6,4 @@
 /.github/workflows/azure-functions-app-dotnet.yml
 /.config
 /.vs
+appsettings.Development.json
