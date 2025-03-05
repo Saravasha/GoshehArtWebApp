@@ -65,6 +65,10 @@ jobs:
           else
             echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
           fi
+
+          echo $ADMIN_PASSWORD
+          echo $ASPNETCORE_ENVIRONMENT
+          echo $DOTNET_ENVIRONMENT
           
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
