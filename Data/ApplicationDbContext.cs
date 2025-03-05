@@ -69,7 +69,7 @@ namespace GoshehArtWebApp.Data
 
             // Changing Password injector based on environment variable instead of storing it in source control.
             var environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
-            var secret = "";
+            var secret = "www";
             if (environment == "Production")
             {
                 secret = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
