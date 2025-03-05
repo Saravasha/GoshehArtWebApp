@@ -2,11 +2,11 @@
 using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.Authorization;
 
 
 namespace GoshehArtWebApp.Controllers
 {
-
     [Route("api/[controller]")]
     [ApiController]
     public class ReactController : ControllerBase
@@ -49,6 +49,7 @@ namespace GoshehArtWebApp.Controllers
         //    return people;
         //}
 
+        //[Authorize]
         [HttpGet("asset")]
         public List<Asset> GetAssets()
         {
