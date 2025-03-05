@@ -3,8 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\controllers\\pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:controllers\\pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -17,10 +21,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
       "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -41,10 +41,6 @@
     {
       "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\controllers\\assetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:controllers\\assetcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\controllers\\pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:controllers\\pagecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\controllers\\categorycontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -116,32 +112,20 @@
         },
         {
           "DockedWidth": 232,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 4,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 1,
               "Title": "PageController.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Controllers\\PageController.cs",
               "RelativeDocumentMoniker": "Controllers\\PageController.cs",
               "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Controllers\\PageController.cs",
               "RelativeToolTip": "Controllers\\PageController.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAkwBQAAAAaAAAAAAAAAA==",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAkwAwAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-02T21:22:01.138Z",
-              "IsPinned": true
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAABIAAAAAAAAAAAAAAA0AAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-03-05T17:42:22.266Z",
+              "IsPinned": true,
               "EditorCaption": ""
             },
             {
@@ -154,7 +138,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 3,
               "Title": "20250305170623_postapocalypse.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Migrations\\20250305170623_postapocalypse.cs",
               "RelativeDocumentMoniker": "Migrations\\20250305170623_postapocalypse.cs",
@@ -167,13 +151,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 0,
               "Title": "ApplicationDbContext.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Data\\ApplicationDbContext.cs",
               "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
               "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Data\\ApplicationDbContext.cs",
               "RelativeToolTip": "Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAADcAAAAAAAAAAAAcwEIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAEAAAAAAAAAAAAAgwEcAAAAmAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-03-05T17:02:20.06Z",
               "EditorCaption": ""
@@ -205,7 +189,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "appsettings.json",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.json",
               "RelativeDocumentMoniker": "appsettings.json",
@@ -218,7 +202,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "Program.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Program.cs",
               "RelativeDocumentMoniker": "Program.cs",
@@ -255,7 +239,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 11,
+              "DocumentIndex": 10,
               "Title": "CategoryController.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Controllers\\CategoryController.cs",
               "RelativeDocumentMoniker": "Controllers\\CategoryController.cs",
@@ -267,7 +251,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 16,
+              "DocumentIndex": 15,
               "Title": "CatalogViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\ViewModels\\CatalogViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\CatalogViewModel.cs",
@@ -279,7 +263,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 13,
+              "DocumentIndex": 12,
               "Title": "CatalogController.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Controllers\\CatalogController.cs",
               "RelativeDocumentMoniker": "Controllers\\CatalogController.cs",
@@ -303,7 +287,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
+              "DocumentIndex": 11,
               "Title": "AboutController.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Controllers\\AboutController.cs",
               "RelativeDocumentMoniker": "Controllers\\AboutController.cs",
@@ -315,7 +299,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
+              "DocumentIndex": 16,
               "Title": "site.css",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
               "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
@@ -327,7 +311,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 18,
+              "DocumentIndex": 17,
               "Title": "Page.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Models\\Page.cs",
               "RelativeDocumentMoniker": "Models\\Page.cs",
@@ -339,7 +323,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 15,
+              "DocumentIndex": 14,
               "Title": "AssetViewModel.cs",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\ViewModels\\AssetViewModel.cs",
               "RelativeDocumentMoniker": "ViewModels\\AssetViewModel.cs",
@@ -351,7 +335,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 14,
+              "DocumentIndex": 13,
               "Title": "Edit.cshtml",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Views\\Asset\\Edit.cshtml",
               "RelativeDocumentMoniker": "Views\\Asset\\Edit.cshtml",
@@ -363,7 +347,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 19,
+              "DocumentIndex": 18,
               "Title": "Index.cshtml",
               "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Views\\Asset\\Index.cshtml",
               "RelativeDocumentMoniker": "Views\\Asset\\Index.cshtml",
