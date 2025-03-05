@@ -57,6 +57,7 @@ jobs:
       - name: PM2 Syncing for Production
         env: 
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
           if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
             # Set DOTNET_ENVIRONMENT to Production
