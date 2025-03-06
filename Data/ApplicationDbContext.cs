@@ -68,9 +68,8 @@ namespace GoshehArtWebApp.Data
             });
 
             // Changing Password injector based on environment variable instead of storing it in source control.
-            var environment = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
             var secret = "";
-            if (environment == "Production")
+            if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
             {
                 secret = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
             } else
@@ -95,7 +94,7 @@ namespace GoshehArtWebApp.Data
                 NormalizedEmail = "ADMIN@ADMIN.COM",
                 UserName = "Admin",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
-                PasswordHash = passwordHasher.HashPassword(null, "Zigiplz")
+                PasswordHash = passwordHasher.HashPassword(null, secret)
             });
 
             modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>

@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = "";
 if (builder.Environment.IsDevelopment())  
 {
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    connectionString = builder.Configuration.GetConnectionString("DatabaseConnection") ?? throw new InvalidOperationException("Connection string 'DatabaseConnection' not found.");
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 } else
 {
@@ -95,8 +95,8 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    //app.UseExceptionHandler("/Home/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    //app.UseExceptionHandler("/Home/Error");www
+    // The default HSTS value is 30 days. You may want to change this for wproduction wscenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
 }
 
