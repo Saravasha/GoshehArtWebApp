@@ -95,7 +95,7 @@ namespace GoshehArtWebApp.Data
                 NormalizedEmail = "ADMIN@ADMIN.COM",
                 UserName = "Admin",
                 NormalizedUserName = "ADMIN@ADMIN.COM",
-                PasswordHash = passwordHasher.HashPassword(null, secret)
+                PasswordHash = passwordHasher.HashPassword(null, "Zigiplz")
             });
 
             modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
