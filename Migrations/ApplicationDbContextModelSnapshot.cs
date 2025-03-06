@@ -17,7 +17,7 @@ namespace GoshehArtWebApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.10")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -234,13 +234,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0f1a3453-4dc2-4c9b-b2ad-8dcc9d347863",
+                            Id = "57b50225-ee03-4c9d-bc57-93c186566da4",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "86f1c223-5d37-4859-8f54-7067d8fb61a0",
+                            Id = "db7bda4b-19a5-4cae-81ef-8e866499a258",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -338,17 +338,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "433fd63b-d6ed-430f-b25d-ceea231a4f3d",
+                            Id = "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "7afc6f3c-dbd0-4681-8377-ce6597f90de3",
+                            ConcurrencyStamp = "bea6b129-6b6b-45cc-ba66-92dd635d6a55",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEEHG2VuFcN5HnNgfHnfQadCpSOQAGyqv5E2ufI+z64ifcw/FxIqMKC1jC9zrgWr4Jg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENxh1hz/I7h9L8g1CqHT/6x2nTXW/Pib8ppen4hQNEsx3aq238qoGDq86Xdkk8NIXg==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "1bbec546-a71f-4f1e-944e-0e8bb15cffb0",
+                            SecurityStamp = "fcf38eeb-ba67-4e1e-ac58-4c8919e71682",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -420,8 +420,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "433fd63b-d6ed-430f-b25d-ceea231a4f3d",
-                            RoleId = "0f1a3453-4dc2-4c9b-b2ad-8dcc9d347863"
+                            UserId = "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59",
+                            RoleId = "57b50225-ee03-4c9d-bc57-93c186566da4"
                         });
                 });
 
