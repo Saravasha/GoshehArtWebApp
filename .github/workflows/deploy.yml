@@ -35,15 +35,15 @@ jobs:
       - name: Install dependencies
         run: dotnet restore
 
-      #Check if ASPNETCORE_ENVIRONMENT is unset or not set to Production
+      #Check if DOTNET_ENVIRONMENT is unset or not set to Production
       - name: Check Environment Variable
         run: | 
-          if [ -z "$ASPNETCORE_ENVIRONMENT" ] || [ "$ASPNETCORE_ENVIRONMENT" != "Production" ]; then
-            # Set ASPNETCORE_ENVIRONMENT to Production
-            export ASPNETCORE_ENVIRONMENT=Production
-            echo "ASPNETCORE_ENVIRONMENT set to Production."
+          if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
+            # Set DOTNET_ENVIRONMENT to Production
+            export DOTNET_ENVIRONMENT=Production
+            echo "DOTNET_ENVIRONMENT set to Production."
           else
-            echo "ASPNETCORE_ENVIRONMENT is already set to $ASPNETCORE_ENVIRONMENT."
+            echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
           fi
         
       - name: Build
@@ -54,9 +54,18 @@ jobs:
          # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
         run: |
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-      - name: PM2 Syncing
+      - name: PM2 Syncing for Production
+        env: 
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
         run: |
-          ls -a
+          if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
+            # Set DOTNET_ENVIRONMENT to Production
+            export DOTNET_ENVIRONMENT=Production
+            echo "DOTNET_ENVIRONMENT set to Production."
+          else
+            echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
+          fi
+          
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
           pm2 ls
