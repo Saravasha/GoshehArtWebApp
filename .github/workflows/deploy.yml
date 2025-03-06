@@ -57,6 +57,7 @@ jobs:
       - name: PM2 Syncing for Production
         env: 
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
           if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
             # Set DOTNET_ENVIRONMENT to Production
@@ -65,6 +66,10 @@ jobs:
           else
             echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
           fi
+
+          echo $ADMIN_PASSWORD
+          echo $ASPNETCORE_ENVIRONMENT
+          echo $DOTNET_ENVIRONMENT
           
           export PM2_HOME=/root/.pm2
           pm2 resurrect 
