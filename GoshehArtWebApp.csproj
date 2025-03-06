@@ -38,7 +38,7 @@
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
     </None>
     <None Include="appsettings.json">
-      <CopyToOutputDirectory>Never</CopyToOutputDirectory>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Include="wwwroot\favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>

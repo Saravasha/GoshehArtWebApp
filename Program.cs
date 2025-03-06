@@ -10,7 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = "";
 if (builder.Environment.IsDevelopment())  
 {
-    connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
+    connectionString = builder.Configuration.GetConnectionString("DatabaseConnection") ?? throw new InvalidOperationException("Connection string 'DatabaseConnection' not found.");
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 } else
 {
