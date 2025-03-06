@@ -273,3 +273,4 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\Microsoft.Extensions.DependencyInjection.Abstractions.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\appsettings.Development.json
