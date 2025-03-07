@@ -35,11 +35,9 @@ if (builder.Environment.IsProduction())
             policy =>
             {
                 policy
-                .WithOrigins(origins: ["https://goshehart.se", "https://www.goshehart.se"])
-                .AllowAnyOrigin()
+                .WithOrigins("https://goshehart.se", "https://www.goshehart.se")
                 .AllowAnyMethod()
                 .AllowAnyHeader();
-
             }
         )
     );
@@ -52,7 +50,6 @@ if (builder.Environment.IsProduction())
            {
                policy
                .WithOrigins("http://localhost:5173")
-               .AllowAnyOrigin()
                .AllowAnyMethod()
                .AllowAnyHeader();
 
