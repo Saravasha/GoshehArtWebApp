@@ -1,0 +1,60 @@
+﻿@model CreatePageViewModel
+
+@{
+    ViewData["Title"] = "Edit Page";
+}
+
+<section class="container">
+    <h1>@ViewBag.Title</h1>
+
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Edit">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="Container" class="control-label"></label>
+                    <span asp-validation-for="Container" class="text-danger"></span>
+                    <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30">@Model.Container</textarea>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="ContentIds" class="control-label"></label>
+                    <select asp-for="ContentIds" asp-items="ViewBag.ContentList" class="form-control dropdown-margin-bottom" selected="@Model.Contents" multiple>
+                    </select>
+                    @if (ViewBag.ContentError != null)
+                    {
+                        <span class="error-message">@ViewBag.ContentError</span>
+                    }
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Return to Page Index</a>
+    </div>
+</section>
+
+@section Scripts {
+ 
+   @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote();
+        });
+    </script>
+}
+                @* <input type="hidden" asp-for="Id" /> *@

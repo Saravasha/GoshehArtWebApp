@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -54,12 +55,17 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Page" asp-action="Index">Page Control</a>
+                                    <a class="nav-link text-dark" asp-controller="Page" asp-action="Index">Pages</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Content" asp-action="Index">Content </a>
                                 </li>
                             </ul>
+                            @* <partial name="_PagePartial" /> *@
                         </div>
                     }
                     <partial name="_LoginPartial" />
+                    @* <div>@Html.PartialAsync("_PagePartial")</div> *@
                 </div>
             </div>
         </nav>

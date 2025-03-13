@@ -270,9 +270,9 @@ namespace GoshehArtWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
+
+
 		// Den här fungerar för variabel mängd med uppladdade filer.
-
-
 		public IActionResult Upload()
 		{
 

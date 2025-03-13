@@ -1,0 +1,12 @@
+﻿@model PageViewModel
+
+<div class="navb ar-collapse collapse d-sm-inline-flex justify-content-between">
+    <ul class="navbar-nav flex-grow-1">
+        @foreach (var item in Model.Pages)
+        {
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="" asp-controller="@item.Title" asp-action="Index">@item.Title</a>
+        </li>
+        }
+    </ul>
+</div>

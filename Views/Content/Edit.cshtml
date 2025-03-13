@@ -1,15 +1,15 @@
-﻿@model Page
+﻿@model Content
 @{
-    ViewData["Title"] = "Edit Page";
+    ViewData["Title"] = "Edit Content";
 }
 
 <h3>@Model.Title</h3>
 
-<form asp-controller="Page" asp-action="SavePage" method="post">
+<form asp-controller="Content" asp-action="SavePage" method="post">
     <input name="title" type="hidden" value="@Model.Title" />
     <div class="form-group">
         <textarea id="summernote" name="content" class="form-control" rows="30">
-            @Model.Content
+            @Model.Body
         </textarea>
     </div>
     <div class="text-center">

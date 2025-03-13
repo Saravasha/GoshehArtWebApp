@@ -1,0 +1,54 @@
+﻿@model ContentViewModel
+
+@{
+    ViewData["Title"] = "Page Content Control Panel";
+}
+
+<h1>Page Content Control Panel</h1>
+
+@* <ul> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Home">Home</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Production">Production</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="About">About</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Contact">Contact</a></li> *@
+@* </ul> *@
+<section class="container">
+    <table class="table table-secondary table-responsive table-striped">
+        <thead>
+            <tr class="table-dark">
+                @* <th>Id</th> *@
+                <th>Content Title</th>
+                <th>Body</th>
+                <th>Page</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-primary">
+            @foreach (var content in Model.Contents)
+            {
+                <tr class="table-secondary">
+                    @* <td>@Html.DisplayFor(content => content.Id)</td> *@
+                    <td>@Html.DisplayFor(modelItem => content.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => content.Body)</td>
+                    <td>@Html.DisplayFor(modelItem => content.Page.Title)</td>
+                    @* <td><img src="@Url.Content(asset.ImageUrl)" class="img-fluid" style="max-height:100px;" /></td> *@
+     
+                    @*@<td>@Html.DisplayFor(modelItem => asset.Categories)</td>*@
+
+                    @* <td> *@
+                    @*     @foreach (var content in content.Contents) *@
+                    @*     { *@
+                    @*         @content.Title *@
+                    @*         <br /> *@
+                    @*     } *@
+                    @* </td> *@
+                    <td><a asp-action="Edit" asp-route-id="@content.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
+                    <td><a asp-action="Details" asp-route-id="@content.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@content.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

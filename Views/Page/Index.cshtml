@@ -1,12 +1,48 @@
-﻿@{
-    ViewData["Title"] = "Control Panel";
+﻿@model PageViewModel
+
+@{
+    ViewData["Title"] = "Pages Control Panel";
 }
 
-<h1>Control Panel</h1>
+@* <ul> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Home">Home</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Production">Production</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="About">About</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Contact">Contact</a></li> *@
+@* </ul> *@
 
-<ul>
-    <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Home">Home</a></li>
-    <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Production">Production</a></li>
-    <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="About">About</a></li>
-    <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Contact">Contact</a></li>
-</ul>
+<section class="container">
+    <h1>@ViewBag.Title</h1>
+    <p><a asp-controller="Page" asp-action="Create">Add new Page</a></p>
+    <table class="table table-secondary table-responsive table-striped">
+        <thead>
+            <tr class="table-dark">
+                <th>Page Title</th>
+                <th>Container</th>
+                <th>Content</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-primary">
+            @foreach (var item in Model.Pages)
+            {
+                <tr class="table-secondary">
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.Raw(item.Container)</td>
+                    <td>
+                        @foreach (var content in item.Contents)
+                        {
+                            @content.Title
+                            <br />
+                        }
+                    </td>
+                    <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
+                    <td><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>
