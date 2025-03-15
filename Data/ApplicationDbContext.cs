@@ -26,20 +26,20 @@ namespace GoshehArtWebApp.Data
 
 
             modelbuilder.Entity<Page>().HasData(
-                new Page { Id = 1, Title = "Home", Container = "", ContentId = 2 },
-                new Page { Id = 2, Title = "Production", Container = "", ContentId = 3 },
-                new Page { Id = 3, Title = "About", Container = "" , ContentId = 4 },
+                new Page { Id = 1, Title = "Home", Container = "", ContentId = 1 },
+                new Page { Id = 2, Title = "Production", Container = "", ContentId = 2 },
+                new Page { Id = 3, Title = "About", Container = "" , ContentId = 3 },
                 new Page { Id = 4, Title = "Contact", Container = "" , ContentId = 5 },
                 new Page { Id = 5, Title = "Privacy", Container = "" , ContentId = 1 }
             );
 
             modelbuilder.Entity<Content>().HasData(
-                new Content { Id = 1, Body = "blog body", Title = "Stuff i made up", PageId = 1 },
-                new Content { Id = 2, Body = "blog body", Title = "stuff i made up 2", PageId = 5 },
-                new Content { Id = 3, Body = "blog body", Title = "atrocities", PageId = 2 },
-                new Content { Id = 4, Body = "blog body", Title = "blog title", PageId = 3 },
-                new Content { Id = 5, Body = "blog body", Title = "blog title", PageId = 4 },
-                new Content { Id = 6, Body = "blog body", Title = "blog title", PageId = 1 }
+                new Content { Id = 1, Body = "", Title = "Welcome", PageId = 1 },
+                new Content { Id = 2, Body = "", Title = "This is what I'm working on", PageId = 2 },
+                new Content { Id = 3, Body = "", Title = "Biography", PageId = 3 },
+                new Content { Id = 4, Body = "", Title = "Social Media", PageId = 4 },
+                new Content { Id = 5, Body = "", Title = "Cookie Policy", PageId = 5 },
+                new Content { Id = 6, Body = "", Title = "Privacy Policy", PageId = 5 }
             );
 
 
@@ -61,10 +61,11 @@ namespace GoshehArtWebApp.Data
             );
 
 
-            modelbuilder.Entity<Content>()
-                .HasOne(c => c.Page)
-                .WithMany(p => p.Contents)
-                .HasForeignKey(p => p.PageId)
+            modelbuilder.Entity<Page>()
+                .HasMany(e => e.Contents)
+                .WithOne(e => e.Page)
+                .HasForeignKey(e => e.PageId)
+                .IsRequired(false)
             ;
 
             modelbuilder.Entity<Asset>()

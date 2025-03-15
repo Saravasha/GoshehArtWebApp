@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250314001457_zigi")]
+    partial class zigi
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -184,7 +187,8 @@ namespace GoshehArtWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Body")
+                    b.Property<string>("Container")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PageId")
@@ -204,44 +208,44 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            Body = "",
+                            Container = "blog body",
                             PageId = 1,
-                            Title = "Welcome"
+                            Title = "Stuff i made up"
                         },
                         new
                         {
                             Id = 2,
-                            Body = "",
-                            PageId = 2,
-                            Title = "This is what I'm working on"
+                            Container = "blog body",
+                            PageId = 5,
+                            Title = "stuff i made up 2"
                         },
                         new
                         {
                             Id = 3,
-                            Body = "",
-                            PageId = 3,
-                            Title = "Biography"
+                            Container = "blog body",
+                            PageId = 2,
+                            Title = "atrocities"
                         },
                         new
                         {
                             Id = 4,
-                            Body = "",
-                            PageId = 4,
-                            Title = "Social Media"
+                            Container = "blog body",
+                            PageId = 3,
+                            Title = "blog title"
                         },
                         new
                         {
                             Id = 5,
-                            Body = "",
-                            PageId = 5,
-                            Title = "Cookie Policy"
+                            Container = "blog body",
+                            PageId = 4,
+                            Title = "blog title"
                         },
                         new
                         {
                             Id = 6,
-                            Body = "",
-                            PageId = 5,
-                            Title = "Privacy Policy"
+                            Container = "blog body",
+                            PageId = 1,
+                            Title = "blog title"
                         });
                 });
 
@@ -265,6 +269,8 @@ namespace GoshehArtWebApp.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("ContentId");
+
                     b.ToTable("Pages");
 
                     b.HasData(
@@ -272,21 +278,21 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             Container = "",
-                            ContentId = 1,
+                            ContentId = 2,
                             Title = "Home"
                         },
                         new
                         {
                             Id = 2,
                             Container = "",
-                            ContentId = 2,
+                            ContentId = 3,
                             Title = "Production"
                         },
                         new
                         {
                             Id = 3,
                             Container = "",
-                            ContentId = 3,
+                            ContentId = 4,
                             Title = "About"
                         },
                         new
@@ -334,13 +340,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49867349-a1d0-4501-aa43-b6b3f410d752",
+                            Id = "30c8cd50-4b97-4805-b2f1-74e2efefefff",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c04f0234-1de9-42c0-832b-6df380e0e2a1",
+                            Id = "55b7536b-22bd-4179-a497-e11641ce0ada",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -438,17 +444,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55b2fc52-bb24-4393-bcfa-68a90448be41",
+                            Id = "37c2edd6-ef32-468f-a5c9-ed835f45142e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a418a1d3-4b8d-4a84-bfc3-2003027a8d8f",
+                            ConcurrencyStamp = "dbe3de43-d29b-4e00-b3ee-164ed0842c57",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB57kNxHwJnvP4H3rjAFg0wKhs9YTIdooJSQ5DEj34/PQxY/XiI0u2jYHz+WMkkqWQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEEA+BGmVmH37UOKsVqhDSKKEXpB8xCViMZUWA/gB8zuX5VX5Sr+g3VEF/D39SnMdVw==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c696ef7c-c1f1-4e32-aecf-245902e0c269",
+                            SecurityStamp = "86ac12bb-f6bf-4481-a87f-053cb85b9d08",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -520,8 +526,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "55b2fc52-bb24-4393-bcfa-68a90448be41",
-                            RoleId = "49867349-a1d0-4501-aa43-b6b3f410d752"
+                            UserId = "37c2edd6-ef32-468f-a5c9-ed835f45142e",
+                            RoleId = "30c8cd50-4b97-4805-b2f1-74e2efefefff"
                         });
                 });
 
@@ -568,6 +574,15 @@ namespace GoshehArtWebApp.Migrations
                         .HasForeignKey("PageId");
 
                     b.Navigation("Page");
+                });
+
+            modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>
+                {
+                    b.HasOne("GoshehArtWebApp.Models.Content", null)
+                        .WithMany("Pages")
+                        .HasForeignKey("ContentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -619,6 +634,11 @@ namespace GoshehArtWebApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GoshehArtWebApp.Models.Content", b =>
+                {
+                    b.Navigation("Pages");
                 });
 
             modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>

@@ -13,15 +13,16 @@
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
                     <label asp-for="Title" class="control-label"></label>
-                    <input asp-for="Title" class="form-control" />
+                    <input asp-for="Title" name="title" value="@Model.Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
                 <div>
                     <label asp-for="Container" class="control-label"></label>
                     <span asp-validation-for="Container" class="text-danger"></span>
-                    <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30">@Model.Container</textarea>
+                    <textarea asp-for="Container" id="summernote" name="container" class="form-control" rows="30">@Model.Container</textarea>
                 </div>
 
+                @* Multiselect list *@
                 <div class="form-group">
                     <label asp-for="ContentIds" class="control-label"></label>
                     <select asp-for="ContentIds" asp-items="ViewBag.ContentList" class="form-control dropdown-margin-bottom" selected="@Model.Contents" multiple>

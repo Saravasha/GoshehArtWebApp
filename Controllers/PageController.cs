@@ -99,9 +99,8 @@ namespace GoshehArtWebApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public IActionResult Edit(int id, string title, string container)
         {
-
 
             CreatePageViewModel cpvm = new CreatePageViewModel();
             Page? page = _context.Pages
@@ -118,12 +117,24 @@ namespace GoshehArtWebApp.Controllers
             {
                 cpvm.Title = page.Title;
                 cpvm.Container = page.Container;
+                //cpvm.Container = page.Container;
+                cpvm.ContentIds = contentsId;
 
                 var contents = _context.Contents;
 
                 ViewBag.ContentList = new MultiSelectList(contents, "Id", "Title");
-                ViewBag.Container = page.Container;
             }
+
+            if (page == null)
+            {
+                page = new Page();
+                page.Title = title;
+
+                _context.Pages.Add(page);
+                _context.SaveChanges();
+            }
+
+
 
             return View(cpvm);
 
@@ -150,6 +161,7 @@ namespace GoshehArtWebApp.Controllers
             Page? pageToEdit = _context.Pages.Find(id);
 
             ModelState.Remove("Id");
+            ModelState.Remove("Container");
 
             if (pageToEdit != null && ModelState.IsValid)
             {
@@ -201,6 +213,7 @@ namespace GoshehArtWebApp.Controllers
             var page = await _context.Pages.FindAsync(id);
             pvm.Title = page.Title;
             pvm.Contents = page.Contents;
+            pvm.Container = page.Container;
 
             pvm.Pages = _context.Pages.Include(c => c.Contents).ToList();
 

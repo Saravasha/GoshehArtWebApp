@@ -1,4 +1,5 @@
 ﻿using GoshehArtWebApp.Models;
+using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 
 namespace GoshehArtWebApp.ViewModels
@@ -7,12 +8,14 @@ namespace GoshehArtWebApp.ViewModels
     {
         [Key]
         public int Id { get; set; }
-        public string? Title { get; set; }
+        [Required]
+        [Display(Name = "Page Title")]
+        public string Title { get; set; }
+        [Display(Name = "Container Body")]
         public string? Container { get; set; }
-
+        [Display(Name = "Contents")]
         public List<int> ContentIds { get; set; } = new();
         [Display(Name = "Content:")]
-        [Required(ErrorMessage = "Content is Required")]
         public List<Content> Contents { get; set; } = new();
     }
 }

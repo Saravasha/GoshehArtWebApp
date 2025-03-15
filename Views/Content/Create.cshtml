@@ -1,12 +1,13 @@
 ﻿@model CreateContentViewModel
 
 @{
-    ViewData["Title"] = "Edit Content";
+    ViewData["Title"] = "Create";
 }
+
 
 <section class="container">
     <h1>@ViewBag.Title</h1>
-
+    <h4>Add new Content</h4>
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Create" method="post">
@@ -17,7 +18,7 @@
                     <span asp-validation-for="NewContent.Title" class="text-danger"></span>
                 </div>
 
-                @* name="title" type="hidden" value="@Model.Title" /> *@
+                    @* name="title" type="hidden" value="@Model.Title" /> *@
                 <div class="form-group">
                     <label asp-for="NewContent.Body" class="control-label"></label>
                     @* <input asp-for="Body" class="form-control" /> *@
@@ -34,10 +35,10 @@
                     </select>
                     <span asp-validation-for="NewContent.PageId"></span>
                 </div>
-                @if (ViewBag.PageError != null)
-                {
-                    <span class="error-message">@ViewBag.PageError</span>
-                }
+                    @if (ViewBag.PageError != null)
+                    {
+                        <span class="error-message">@ViewBag.PageError</span>
+                    }
                 <div class="form-group">
                     <input type="submit" value="Create" class="btn btn-primary" />
                 </div>
@@ -46,15 +47,13 @@
     </div>
 
     <div>
-        <a asp-action="Index">Return to Content Index</a>
+        <a asp-action="Index">Return to Page Index</a>
     </div>
+
 </section>
 
 @section Scripts {
- 
-   @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+        @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
@@ -63,4 +62,4 @@
         });
     </script>
 }
-                @* <input type="hidden" asp-for="Id" /> *@
+

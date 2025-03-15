@@ -9,24 +9,25 @@
     <h1>@ViewBag.Title</h1>
     <h3>Are you sure you want to delete this?</h3>
     <div>
-        <h4>Page</h4>
         <hr />
     
         <dl class="row">
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Title)
-            </dt>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Title)</dt>
+            <dd class="col-sm-10">
+                @Html.DisplayFor(model => model.Title)        
+            </dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Container)</dt>
             <dd class="col-sm-10">
                 @Html.Raw(Model.Container)
             </dd>
-            <dt class="col-sm-2">
-                @Html.DisplayNameFor(model => model.Contents)
-            </dt>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Contents)</dt>
             <dd class="col-sm-10">
+               <ul>
                 @foreach (var contents in Model.Contents)
                 {
-                    <ul>@contents.Title</ul>
+                    <li>@contents.Title</li>
                 }
+               </ul>
             </dd>
         </dl>
 

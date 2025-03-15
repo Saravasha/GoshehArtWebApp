@@ -7,16 +7,18 @@ namespace GoshehArtWebApp.ViewModels
     public class ContentViewModel
     {
 
-        [Key]
+
         public int Id { get; set; }
-        public string Title { get; set; }
-        public string Body { get; set; }
-
+        [Required]
+        [Display(Name = "Content Title")]
+        public string? Title { get; set; }
+        [Display(Name = "Container Body")]
+        public string? Body { get; set; }
         public int PageId { get; set; }
-        public string PageTitle { get; set; }
-        public Page Page { get; set; } = default!;
+        public string? PageTitle { get; set; }
+        public Page? Page { get; set; }
+        public List<Content> Contents { get; set; } = new List<Content>();
+        public List<Page>? Pages { get; set; } = new();
 
-        public List<Page> Pages { get; set; } = new();
-        public List<Content> Contents { get; set; } = new();
     }
 }

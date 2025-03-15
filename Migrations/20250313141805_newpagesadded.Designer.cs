@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250313141805_newpagesadded")]
+    partial class newpagesadded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -185,6 +188,7 @@ namespace GoshehArtWebApp.Migrations
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
                     b.Property<string>("Body")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int?>("PageId")
@@ -204,44 +208,44 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            Body = "",
+                            Body = "blog body",
                             PageId = 1,
-                            Title = "Welcome"
+                            Title = "Stuff i made up"
                         },
                         new
                         {
                             Id = 2,
-                            Body = "",
-                            PageId = 2,
-                            Title = "This is what I'm working on"
+                            Body = "blog body",
+                            PageId = 5,
+                            Title = "stuff i made up 2"
                         },
                         new
                         {
                             Id = 3,
-                            Body = "",
-                            PageId = 3,
-                            Title = "Biography"
+                            Body = "blog body",
+                            PageId = 2,
+                            Title = "atrocities"
                         },
                         new
                         {
                             Id = 4,
-                            Body = "",
-                            PageId = 4,
-                            Title = "Social Media"
+                            Body = "blog body",
+                            PageId = 3,
+                            Title = "blog title"
                         },
                         new
                         {
                             Id = 5,
-                            Body = "",
-                            PageId = 5,
-                            Title = "Cookie Policy"
+                            Body = "blog body",
+                            PageId = 4,
+                            Title = "blog title"
                         },
                         new
                         {
                             Id = 6,
-                            Body = "",
-                            PageId = 5,
-                            Title = "Privacy Policy"
+                            Body = "blog body",
+                            PageId = 1,
+                            Title = "blog title"
                         });
                 });
 
@@ -272,21 +276,21 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             Container = "",
-                            ContentId = 1,
+                            ContentId = 2,
                             Title = "Home"
                         },
                         new
                         {
                             Id = 2,
                             Container = "",
-                            ContentId = 2,
+                            ContentId = 3,
                             Title = "Production"
                         },
                         new
                         {
                             Id = 3,
                             Container = "",
-                            ContentId = 3,
+                            ContentId = 4,
                             Title = "About"
                         },
                         new
@@ -334,13 +338,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "49867349-a1d0-4501-aa43-b6b3f410d752",
+                            Id = "08d68e25-84eb-4005-b584-e3d903491854",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "c04f0234-1de9-42c0-832b-6df380e0e2a1",
+                            Id = "f17e7278-95fe-45a1-a4e4-0c947ce2ef09",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -438,17 +442,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "55b2fc52-bb24-4393-bcfa-68a90448be41",
+                            Id = "cedea83c-28e1-4e93-a0ef-9236105bce4e",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "a418a1d3-4b8d-4a84-bfc3-2003027a8d8f",
+                            ConcurrencyStamp = "ad1e3ba1-0342-4b54-bfc0-57c286bd604c",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEB57kNxHwJnvP4H3rjAFg0wKhs9YTIdooJSQ5DEj34/PQxY/XiI0u2jYHz+WMkkqWQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIQUouH0pK9rVqqM3kdrfHiIF3sJ31Miz3OarHvb9dL2GcAFHSQvTqQFYOoMoNCLSA==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "c696ef7c-c1f1-4e32-aecf-245902e0c269",
+                            SecurityStamp = "d0711217-8c7e-4101-b1e1-76651866843e",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -520,8 +524,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "55b2fc52-bb24-4393-bcfa-68a90448be41",
-                            RoleId = "49867349-a1d0-4501-aa43-b6b3f410d752"
+                            UserId = "cedea83c-28e1-4e93-a0ef-9236105bce4e",
+                            RoleId = "08d68e25-84eb-4005-b584-e3d903491854"
                         });
                 });
 
