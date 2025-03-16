@@ -7,7 +7,7 @@
 namespace GoshehArtWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class newSeedww : Migration
+    public partial class zigi : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,148 +15,149 @@ namespace GoshehArtWebApp.Migrations
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "120f7d19-1012-40d5-b28d-e81de18077d8");
+                keyValue: "37e411c8-bd25-4d4d-b1d6-9d2741ef8e82");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "9ee91e16-3be2-475a-a524-1324b39d18b7", "536d5330-5bda-4cb3-8a29-68709b96ca7b" });
+                keyValues: new object[] { "74cef872-6ed7-4756-a2f0-246849d64ca6", "4338f087-c5fd-4db3-9752-78f12fd49b37" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "9ee91e16-3be2-475a-a524-1324b39d18b7");
+                keyValue: "74cef872-6ed7-4756-a2f0-246849d64ca6");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "536d5330-5bda-4cb3-8a29-68709b96ca7b");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Title",
-                table: "Pages",
-                type: "nvarchar(max)",
-                nullable: false,
-                defaultValue: "",
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)",
-                oldNullable: true);
+                keyValue: "4338f087-c5fd-4db3-9752-78f12fd49b37");
 
             migrationBuilder.AddColumn<int>(
                 name: "ContentId",
                 table: "Pages",
                 type: "int",
-                nullable: false,
-                defaultValue: 0);
+                nullable: true);
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "3b454010-d6b8-4eb4-a63f-9792ed64f431", null, "User", "USER" },
-                    { "e2def0e5-6f34-43d3-82e7-4bec1cc62a03", null, "Admin", "ADMIN" }
+                    { "136d76a5-0f6f-498c-beff-3fe3400cde19", null, "Admin", "ADMIN" },
+                    { "ad68b95d-7ffa-4f2f-adf9-1b453b098c48", null, "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "9b18fee2-be95-4438-8e18-3f5a46441b5e", 0, "30a9ca39-bd01-4b6e-bf3e-bda8fd80325f", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEFW1e3DQB0EgfjT2SeqN1ija3M+0RUqH5oJJub/Xq6K6ezrhhe0/ODRXB+vw/1FqSw==", null, false, "1613a35a-3a9f-454b-9492-d8a0ce7f4be5", false, "Admin" });
+                values: new object[] { "4ec4108a-12a4-42d3-b7dc-4ab2f0123738", 0, "d1b1db6e-efb9-495d-bb45-aca128673a34", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEB7hpEHqcdEAH1vfR2AsMSmOvocSnUzNYIHty2jkS8JB9yBKao3y2/qDRmTId7mF5w==", null, false, "a6db8019-e575-498d-8c28-7d4b8fa6b4b9", false, "Admin" });
 
             migrationBuilder.UpdateData(
                 table: "Pages",
                 keyColumn: "Id",
                 keyValue: 1,
                 column: "ContentId",
-                value: 2);
+                value: null);
 
             migrationBuilder.UpdateData(
                 table: "Pages",
                 keyColumn: "Id",
                 keyValue: 2,
                 column: "ContentId",
-                value: 3);
+                value: null);
 
             migrationBuilder.UpdateData(
                 table: "Pages",
                 keyColumn: "Id",
                 keyValue: 3,
                 column: "ContentId",
-                value: 4);
+                value: null);
 
             migrationBuilder.UpdateData(
                 table: "Pages",
                 keyColumn: "Id",
                 keyValue: 4,
                 column: "ContentId",
-                value: 5);
+                value: null);
 
             migrationBuilder.UpdateData(
                 table: "Pages",
                 keyColumn: "Id",
                 keyValue: 5,
                 column: "ContentId",
-                value: 1);
+                value: null);
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "e2def0e5-6f34-43d3-82e7-4bec1cc62a03", "9b18fee2-be95-4438-8e18-3f5a46441b5e" });
+                values: new object[] { "136d76a5-0f6f-498c-beff-3fe3400cde19", "4ec4108a-12a4-42d3-b7dc-4ab2f0123738" });
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Pages_ContentId",
+                table: "Pages",
+                column: "ContentId");
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Pages_Contents_ContentId",
+                table: "Pages",
+                column: "ContentId",
+                principalTable: "Contents",
+                principalColumn: "Id");
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Pages_Contents_ContentId",
+                table: "Pages");
+
+            migrationBuilder.DropIndex(
+                name: "IX_Pages_ContentId",
+                table: "Pages");
+
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "3b454010-d6b8-4eb4-a63f-9792ed64f431");
+                keyValue: "ad68b95d-7ffa-4f2f-adf9-1b453b098c48");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "e2def0e5-6f34-43d3-82e7-4bec1cc62a03", "9b18fee2-be95-4438-8e18-3f5a46441b5e" });
+                keyValues: new object[] { "136d76a5-0f6f-498c-beff-3fe3400cde19", "4ec4108a-12a4-42d3-b7dc-4ab2f0123738" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "e2def0e5-6f34-43d3-82e7-4bec1cc62a03");
+                keyValue: "136d76a5-0f6f-498c-beff-3fe3400cde19");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "9b18fee2-be95-4438-8e18-3f5a46441b5e");
+                keyValue: "4ec4108a-12a4-42d3-b7dc-4ab2f0123738");
 
             migrationBuilder.DropColumn(
                 name: "ContentId",
                 table: "Pages");
-
-            migrationBuilder.AlterColumn<string>(
-                name: "Title",
-                table: "Pages",
-                type: "nvarchar(max)",
-                nullable: true,
-                oldClrType: typeof(string),
-                oldType: "nvarchar(max)");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "120f7d19-1012-40d5-b28d-e81de18077d8", null, "User", "USER" },
-                    { "9ee91e16-3be2-475a-a524-1324b39d18b7", null, "Admin", "ADMIN" }
+                    { "37e411c8-bd25-4d4d-b1d6-9d2741ef8e82", null, "User", "USER" },
+                    { "74cef872-6ed7-4756-a2f0-246849d64ca6", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "536d5330-5bda-4cb3-8a29-68709b96ca7b", 0, "8e503a06-3838-42da-9a42-530e16a90f7e", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAECpbuUlTDAfgqqQjSJjzgVlsE/ek9nfNUXzAPPTb4V2lD2E8O1lhKLFIsoZFQdxvkw==", null, false, "29ffe87c-947a-411e-9c1a-5bc1684f35bf", false, "Admin" });
+                values: new object[] { "4338f087-c5fd-4db3-9752-78f12fd49b37", 0, "dc0e7b31-25eb-468f-8c72-51009d14faff", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEBw/ARUl0e82hq3rY0wwV7fHV1V1ygFEREAY8MSiHnDAzDzQHIVmSqK1TXUvpcABAw==", null, false, "8c3b0d86-721a-45d2-a0e1-58a1f332bc44", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "9ee91e16-3be2-475a-a524-1324b39d18b7", "536d5330-5bda-4cb3-8a29-68709b96ca7b" });
+                values: new object[] { "74cef872-6ed7-4756-a2f0-246849d64ca6", "4338f087-c5fd-4db3-9752-78f12fd49b37" });
         }
     }
 }

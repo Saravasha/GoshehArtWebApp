@@ -6,7 +6,6 @@
 
 <section class="container">
     <h1>@ViewBag.Title</h1>
-
     <div class="row">
         <div class="col-md-4">
             <form asp-action="Edit">
@@ -16,22 +15,22 @@
                     <input asp-for="Title" name="title" value="@Model.Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-                <div>
+                <div class="form-group">
                     <label asp-for="Container" class="control-label"></label>
                     <span asp-validation-for="Container" class="text-danger"></span>
                     <textarea asp-for="Container" id="summernote" name="container" class="form-control" rows="30">@Model.Container</textarea>
                 </div>
 
                 @* Multiselect list *@
-                <div class="form-group">
-                    <label asp-for="ContentIds" class="control-label"></label>
-                    <select asp-for="ContentIds" asp-items="ViewBag.ContentList" class="form-control dropdown-margin-bottom" selected="@Model.Contents" multiple>
-                    </select>
-                    @if (ViewBag.ContentError != null)
-                    {
-                        <span class="error-message">@ViewBag.ContentError</span>
-                    }
-                </div>
+                @* <div class="form-group"> *@
+                @*     <label asp-for="ContentIds" class="control-label"></label> *@
+                @*     <select asp-for="ContentIds" asp-items="ViewBag.ContentList" class="form-control dropdown-margin-bottom" selected="@Model.Contents" multiple> *@
+                @*     </select> *@
+                @*     @if (ViewBag.ContentError != null) *@
+                @*     { *@
+                @*         <span class="error-message">@ViewBag.ContentError</span> *@
+                @*     } *@
+                @* </div> *@
 
                 <div class="form-group">
                     <input type="submit" value="Save" class="btn btn-primary" />
@@ -58,4 +57,3 @@
         });
     </script>
 }
-                @* <input type="hidden" asp-for="Id" /> *@

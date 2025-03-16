@@ -10,12 +10,12 @@ namespace GoshehArtWebApp.ViewModels
         public int Id { get; set; }
         [Required]
         [Display(Name = "Page Title")]
-        public string Title { get; set; }
+        public string? Title { get; set; }
         [Display(Name = "Container Body")]
         public string? Container { get; set; }
         [Display(Name = "Contents")]
-        public List<int> ContentIds { get; set; } = new();
+        public List<int>? ContentIds { get; set; } = new();
         [Display(Name = "Content:")]
-        public List<Content> Contents { get; set; } = new();
+        public List<Content>? Contents { get; set; } = new();
     }
 }

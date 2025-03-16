@@ -26,22 +26,21 @@ namespace GoshehArtWebApp.Data
 
 
             modelbuilder.Entity<Page>().HasData(
-                new Page { Id = 1, Title = "Home", Container = "", ContentId = 1 },
-                new Page { Id = 2, Title = "Production", Container = "", ContentId = 2 },
-                new Page { Id = 3, Title = "About", Container = "" , ContentId = 3 },
-                new Page { Id = 4, Title = "Contact", Container = "" , ContentId = 5 },
-                new Page { Id = 5, Title = "Privacy", Container = "" , ContentId = 1 }
+                new Page { Id = 1, Title = "Home", Container = "Home"},
+                new Page { Id = 2, Title = "Production", Container = "Production"},
+                new Page { Id = 3, Title = "About", Container = "About" },
+                new Page { Id = 4, Title = "Contact", Container = "Contact" },
+                new Page { Id = 5, Title = "Privacy", Container = "Privacy" }
             );
 
             modelbuilder.Entity<Content>().HasData(
-                new Content { Id = 1, Body = "", Title = "Welcome", PageId = 1 },
-                new Content { Id = 2, Body = "", Title = "This is what I'm working on", PageId = 2 },
-                new Content { Id = 3, Body = "", Title = "Biography", PageId = 3 },
-                new Content { Id = 4, Body = "", Title = "Social Media", PageId = 4 },
-                new Content { Id = 5, Body = "", Title = "Cookie Policy", PageId = 5 },
-                new Content { Id = 6, Body = "", Title = "Privacy Policy", PageId = 5 }
+                new Content { Id = 1, Body = "Welcome", Title = "Welcome", PageId = 1 },
+                new Content { Id = 2, Body = "Process:", Title = "This is what I'm working on", PageId = 2 },
+                new Content { Id = 3, Body = "Early Life", Title = "Biography", PageId = 3 },
+                new Content { Id = 4, Body = "Faceberrk", Title = "Social Media", PageId = 4 },
+                new Content { Id = 5, Body = "We don't use cookies", Title = "Cookie Policy", PageId = 5 },
+                new Content { Id = 6, Body = "Pending", Title = "Privacy Policy", PageId = 5 }
             );
-
 
             modelbuilder.Entity<Category>().HasData(
                 new Category { Id = 1, Name = "Film" },
@@ -60,12 +59,12 @@ namespace GoshehArtWebApp.Data
                 new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", ImageUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8 }
             );
 
-
             modelbuilder.Entity<Page>()
-                .HasMany(e => e.Contents)
-                .WithOne(e => e.Page)
-                .HasForeignKey(e => e.PageId)
+                .HasMany(p => p.Contents)
+                .WithOne(p => p.Page)
+                .HasForeignKey(p =>  p.PageId)
                 .IsRequired(false)
+                .OnDelete(DeleteBehavior.Restrict);
             ;
 
             modelbuilder.Entity<Asset>()
@@ -76,15 +75,6 @@ namespace GoshehArtWebApp.Data
                    new { CategoriesId = 6, AssetsId = 2 },
                    new { CategoriesId = 8, AssetsId = 3 }
            ));
-
-
-
-
-            //modelbuilder.Entity<Page>()
-            //    .HasMany(c => c.Contents)
-            //    .WithOne(p => p.Page)
-            //    .HasForeignKey(k => k.PageId)
-            //    .IsRequired(false);
 
             string adminRoleId = Guid.NewGuid().ToString();
             string userRoleId = Guid.NewGuid().ToString();

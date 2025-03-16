@@ -8,7 +8,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace GoshehArtWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class init : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -61,6 +61,8 @@ namespace GoshehArtWebApp.Migrations
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Description = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     Author = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Location = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    Date = table.Column<DateTime>(type: "datetime2", nullable: true),
                     ImageUrl = table.Column<string>(type: "nvarchar(max)", nullable: true),
                     CategoryId = table.Column<int>(type: "int", nullable: false)
                 },
@@ -86,12 +88,14 @@ namespace GoshehArtWebApp.Migrations
                 name: "Pages",
                 columns: table => new
                 {
-                    Title = table.Column<string>(type: "nvarchar(450)", nullable: false),
-                    Content = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Container = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Pages", x => x.Title);
+                    table.PrimaryKey("PK_Pages", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -224,28 +228,48 @@ namespace GoshehArtWebApp.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Contents",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    Title = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Body = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    PageId = table.Column<int>(type: "int", nullable: true)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Contents", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Contents_Pages_PageId",
+                        column: x => x.PageId,
+                        principalTable: "Pages",
+                        principalColumn: "Id");
+                });
+
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "57b50225-ee03-4c9d-bc57-93c186566da4", null, "Admin", "ADMIN" },
-                    { "db7bda4b-19a5-4cae-81ef-8e866499a258", null, "User", "USER" }
+                    { "37e411c8-bd25-4d4d-b1d6-9d2741ef8e82", null, "User", "USER" },
+                    { "74cef872-6ed7-4756-a2f0-246849d64ca6", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59", 0, "bea6b129-6b6b-45cc-ba66-92dd635d6a55", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAENxh1hz/I7h9L8g1CqHT/6x2nTXW/Pib8ppen4hQNEsx3aq238qoGDq86Xdkk8NIXg==", null, false, "fcf38eeb-ba67-4e1e-ac58-4c8919e71682", false, "Admin" });
+                values: new object[] { "4338f087-c5fd-4db3-9752-78f12fd49b37", 0, "dc0e7b31-25eb-468f-8c72-51009d14faff", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEBw/ARUl0e82hq3rY0wwV7fHV1V1ygFEREAY8MSiHnDAzDzQHIVmSqK1TXUvpcABAw==", null, false, "8c3b0d86-721a-45d2-a0e1-58a1f332bc44", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "Assets",
-                columns: new[] { "Id", "Author", "CategoryId", "Description", "ImageUrl", "Name" },
+                columns: new[] { "Id", "Author", "CategoryId", "Date", "Description", "ImageUrl", "Location", "Name" },
                 values: new object[,]
                 {
-                    { 1, "Fateme Gosheh", 8, "Inte sett än", "/Assets/Filmproduktion/image (287).jpg", "Dans under Vita Lakan" },
-                    { 2, "Fateme Gosheh", 6, "Gods butt from above", "/Assets/Kontroversiell Konst/image (3).jpg", "Aisha's Art" },
-                    { 3, "Fateme Gosheh", 8, "Helt fantastiskt", "/Assets/Filmproduktion/image (304).jpg", "Kari - Jag är elak" }
+                    { 1, "Fateme Gosheh", 8, null, "Inte sett än", "/Assets/Filmproduktion/image (287).jpg", null, "Dans under Vita Lakan" },
+                    { 2, "Fateme Gosheh", 6, null, "Gods butt from above", "/Assets/Kontroversiell Konst/image (3).jpg", null, "Aisha's Art" },
+                    { 3, "Fateme Gosheh", 8, null, "Helt fantastiskt", "/Assets/Filmproduktion/image (304).jpg", null, "Kari - Jag är elak" }
                 });
 
             migrationBuilder.InsertData(
@@ -265,19 +289,20 @@ namespace GoshehArtWebApp.Migrations
 
             migrationBuilder.InsertData(
                 table: "Pages",
-                columns: new[] { "Title", "Content" },
+                columns: new[] { "Id", "Container", "Title" },
                 values: new object[,]
                 {
-                    { "About", "" },
-                    { "Contact", "" },
-                    { "Home", "" },
-                    { "Production", "" }
+                    { 1, "Home", "Home" },
+                    { 2, "Production", "Production" },
+                    { 3, "About", "About" },
+                    { 4, "Contact", "Contact" },
+                    { 5, "Privacy", "Privacy" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "57b50225-ee03-4c9d-bc57-93c186566da4", "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59" });
+                values: new object[] { "74cef872-6ed7-4756-a2f0-246849d64ca6", "4338f087-c5fd-4db3-9752-78f12fd49b37" });
 
             migrationBuilder.InsertData(
                 table: "AssetCategory",
@@ -287,6 +312,19 @@ namespace GoshehArtWebApp.Migrations
                     { 1, 8 },
                     { 2, 6 },
                     { 3, 8 }
+                });
+
+            migrationBuilder.InsertData(
+                table: "Contents",
+                columns: new[] { "Id", "Body", "PageId", "Title" },
+                values: new object[,]
+                {
+                    { 1, "Welcome", 1, "Welcome" },
+                    { 2, "Process:", 2, "This is what I'm working on" },
+                    { 3, "Early Life", 3, "Biography" },
+                    { 4, "Faceberrk", 4, "Social Media" },
+                    { 5, "We don't use cookies", 5, "Cookie Policy" },
+                    { 6, "Pending", 5, "Privacy Policy" }
                 });
 
             migrationBuilder.CreateIndex(
@@ -332,6 +370,11 @@ namespace GoshehArtWebApp.Migrations
                 name: "IX_AssetCategory_CategoriesId",
                 table: "AssetCategory",
                 column: "CategoriesId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Contents_PageId",
+                table: "Contents",
+                column: "PageId");
         }
 
         /// <inheritdoc />
@@ -356,7 +399,7 @@ namespace GoshehArtWebApp.Migrations
                 name: "AssetCategory");
 
             migrationBuilder.DropTable(
-                name: "Pages");
+                name: "Contents");
 
             migrationBuilder.DropTable(
                 name: "AspNetRoles");
@@ -369,6 +412,9 @@ namespace GoshehArtWebApp.Migrations
 
             migrationBuilder.DropTable(
                 name: "Categories");
+
+            migrationBuilder.DropTable(
+                name: "Pages");
         }
     }
 }

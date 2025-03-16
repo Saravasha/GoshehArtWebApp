@@ -1,65 +1,82 @@
 ﻿using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using NuGet.ContentModel;
+
 
 namespace GoshehArtWebApp.Controllers
 {
+    [Authorize]
     public class ContentController : Controller
     {
-
         private readonly ApplicationDbContext _context;
-        private readonly ContentViewModel cvm = new();
-        private readonly CreateContentViewModel ccvm = new();
+
         public ContentController(ApplicationDbContext context)
         {
             _context = context;
         }
+
+
         public IActionResult Index()
         {
+
             var cvm = new ContentViewModel();
-            
-            cvm.Contents = _context.Contents.Include(p => p.Page).ToList();
+
+            cvm.Contents = _context.Contents.Include(c => c.Page).ToList();
 
             return View(cvm);
         }
 
-        // GET: ContentController/Details/5
+        // GET: PageController/Details/5
         public IActionResult Details(int id)
         {
             Content? content = _context.Contents
-                .Include(p => p.Page)
+                .Include(c => c.Page)
                 .FirstOrDefault(p => p.Id == id);
 
             return View(content);
         }
 
-        //GET: ContentController/Create
+        //GET: PageController/Create
         public IActionResult Create()
         {
             CreateContentViewModel cvm = new CreateContentViewModel();
             var pages = _context.Pages;
 
-
             ViewBag.PageList = new SelectList(pages, "Id", "Title");
+
             return View(cvm);
         }
 
         [HttpPost]
-        public IActionResult Create(CreateContentViewModel cont)
+        public IActionResult Create(CreateContentViewModel content, List<string> Pages)
         {
-            
+            CreateContentViewModel ccvm = new CreateContentViewModel();
+            ModelState.Remove("Id");
             if (ModelState.IsValid)
             {
                 var ContentToAdd = new Content()
                 {
-                    Title = cont.NewContent.Title,
-                    Body = cont.NewContent.Body,
-                    PageId = cont.NewContent.PageId
+                    Title = content.Title,
+                    Body = content.Body
                 };
 
+                Page? pageToAdd = new Page();
+                foreach (var item in Pages)
+                {
+                    int castItem = Int32.Parse(item);
+                    pageToAdd = _context.Pages.FirstOrDefault(c => c.Id == castItem);
+
+                    if (pageToAdd != null)
+                    {
+                        ContentToAdd.Pages.Add(pageToAdd);
+                    }
+                }
 
                 _context.Contents.Add(ContentToAdd);
                 _context.SaveChanges();
@@ -68,94 +85,169 @@ namespace GoshehArtWebApp.Controllers
             }
             else
             {
-                if (cont.Pages.Count == 0)
+                if (content.Pages.Count == 0)
                 {
-                    ViewBag.ContentError = "Page is Required";
+                    ViewBag.PageError = "Page is Required";
                 }
 
-                var pages = _context.Contents;
+                var pages = _context.Pages;
                 ViewBag.PageList = new SelectList(pages, "Id", "Title");
 
                 return View(ccvm);
             }
         }
 
+
         [HttpGet]
-        public async Task<IActionResult> Edit(int? id)
+        public IActionResult Edit(int id, string title, string container)
         {
-            if (id == null || _context.Contents == null)
+
+            CreateContentViewModel ccvm = new CreateContentViewModel();
+            Content? content = _context.Contents
+                .Include(c => c.Page)
+                .FirstOrDefault(content => content.PageId == id);
+
+
+            List<int>? pagesId = new();
+            //foreach (var contentNum in content.PageId)
+            //{
+            //    pagesId.Add(contentNum.Id);
+            //}
+            if (content != null)
             {
-                return NotFound();
+                ccvm.Title = content.Title;
+                ccvm.Body = content.Body;
+                //ccvm.Container = content.Container;
+                ccvm.PageIds = pagesId;
+
+                var pages = _context.Pages;
+
+                ViewBag.ContentList = new MultiSelectList(pages, "Id", "Title");
             }
 
-            var content = await _context.Contents.FindAsync(id);
             if (content == null)
             {
-                return NotFound();
+                content = new Content();
+                content.Title = title;
+
+                _context.Contents.Add(content);
+                _context.SaveChanges();
             }
-            return View(content);
+
+
+
+            return View(ccvm);
+
+            //// SELECT * FROM Pages WHERE Title = {title}
+            //var page = _context.Pages.FirstOrDefault(x => x.Title == title);
+
+            //if (page == null)
+            //{
+            //    page = new Page();
+            //    page.Title = title;
+
+            //    _context.Pages.Add(page);
+            //    _context.SaveChanges();
+            //}
+
+            //return View(page);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, ContentViewModel cont)
+        public IActionResult Edit(int id, CreateContentViewModel content, string title, string container, List<string> PageIds)
         {
-            //var contentToEdit = _context.Contents.Find(id);
 
-            if (id != cont.Id)
+            Content? contentToEdit = _context.Contents.Find(id);
+
+            ModelState.Remove("Id");
+            ModelState.Remove("Body");
+
+            if (contentToEdit != null && ModelState.IsValid)
             {
-                return NotFound();
-            }
+                contentToEdit.Title = content.Title;
+                contentToEdit.Body = content.Body;
 
-            if (ModelState.IsValid)
-            {
-                //contentToEdit.Title = cont.Title;
+                var pageToDelete = _context.Contents.Include(c => c.PageId)
+                    .FirstOrDefault(p => p.PageId == id);
 
-                _context.Update(cont);
-                await _context.SaveChangesAsync();
+                List<Page> tempList = new List<Page>();
+
+                //foreach (var item in pageToDelete.PageId)
+                //{
+                //    tempList.Add(item);
+                //}
+
+                //foreach (var page in tempList)
+                //{
+                //    pageToDelete.Pages.Remove(page);
+                //}
+
+                Page? pageToAdd = new Page();
+                foreach (var item in PageIds)
+                {
+                    int castItem = Int32.Parse(item);
+                    pageToAdd = _context.Pages.FirstOrDefault(c => c.Id == castItem);
+
+                    if (pageToAdd != null)
+                    {
+                        //contentToEdit.Pages.Add(pageToAdd);
+                    }
+
+                }
+
+                _context.Contents.Update(contentToEdit);
+                _context.SaveChanges();
 
                 return RedirectToAction(nameof(Index));
             }
             else
             {
-                return View(cont);
+                return View();
             }
         }
+
         public async Task<IActionResult> Delete(int? id)
         {
+            var cvm = new ContentViewModel();
+            var content = await _context.Contents.FindAsync(id);
+            cvm.Title = content.Title;
+            cvm.Page = content.Page;
+            cvm.Body = content.Body;
 
-            Content? content = await _context.Contents
-                .Include(p => p.Page)
-                .FirstOrDefaultAsync(p => p.Id == id);
+            cvm.Contents = _context.Contents.Include(c => c.Pages).ToList();
 
             if (id == null || _context.Contents == null)
             {
                 return NotFound();
             }
 
-            //var content = await _context.Contents
-            //    .FirstOrDefaultAsync(m => m.Id == id);
-            if (content == null)
+            var cont = await _context.Contents
+                .FirstOrDefaultAsync(m => m.Id == id);
+            if (cont == null)
             {
                 return NotFound();
             }
 
-            return View(content);
+            return View(cvm);
         }
 
+        // POST: AssetController/Delete/5
+
+        // POST: Db/Delete/5
         [HttpPost, ActionName("Delete")]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> DeleteConfirmed(int id)
+        public async Task<IActionResult> DeleteConfirmed(int id, IFormCollection collection)
         {
             if (_context.Contents == null)
             {
-                return Problem("Entity Set 'ApplicationDbContext.Content' is null.");
+                return Problem("Entity set 'ApplicationDbContext.Contents' is null.");
             }
-
-            var cont = await _context.Contents.FindAsync(id);
-            if (cont != null)
+            var page = await _context.Contents.FindAsync(id);
+            if (page != null)
             {
-                _context.Contents.Remove(cont);
+                _context.Contents.Remove(page);
             }
 
             await _context.SaveChangesAsync();
@@ -163,3 +255,17 @@ namespace GoshehArtWebApp.Controllers
         }
     }
 }
+
+
+
+//var page = _context.Pages.FirstOrDefault(x => x.Title == title);
+
+//if (page == null)
+//{
+//    return View("Error");
+//}
+
+//page.Container = header;
+//_context.SaveChanges();
+
+//return RedirectToAction(nameof(Index));

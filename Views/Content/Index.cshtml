@@ -4,7 +4,7 @@
     ViewData["Title"] = "Content Control Panel";
 }
 
-@*@ <ul> *@
+@* <ul> *@
 @*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Home">Home</a></li> *@
 @*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Production">Production</a></li> *@
 @*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="About">About</a></li> *@
@@ -18,8 +18,8 @@
         <thead>
             <tr class="table-dark">
                 <th>Content Title</th>
-                <th>Container</th>
-                <th>Parent Page</th>
+                <th>Content Body</th>
+                <th>Page Parent</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -31,8 +31,16 @@
                 <tr class="table-secondary">
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
                     <td>@Html.Raw(item.Body)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Page.Title)</td> 
-                    @* <td>@foreach (var pag in item.)</td> *@
+                    <td>
+                        @if (item?.Page != null && !string.IsNullOrEmpty(item.Page.Title))
+                        {
+                            @item.Page.Title
+                        }
+                        else
+                        {
+                            @:
+                        }
+                    </td>
                     <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
                     <td><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
                     <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>

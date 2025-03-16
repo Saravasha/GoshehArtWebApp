@@ -46,15 +46,15 @@ namespace GoshehArtWebApp.Controllers
         public IActionResult Create()
         {
             CreatePageViewModel pvm = new CreatePageViewModel();
-            var contents = _context.Contents;
+            //var contents = _context.Contents;
 
-            ViewBag.ContentList = new SelectList(contents, "Id", "Title");
+            //ViewBag.ContentList = new SelectList(contents, "Id", "Title");
 
             return View(pvm);
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePageViewModel page, string title, string container, List<string> Contents)
+        public IActionResult Create(CreatePageViewModel page)
         {
             CreatePageViewModel cpvm = new CreatePageViewModel();
             if (ModelState.IsValid)
@@ -63,20 +63,19 @@ namespace GoshehArtWebApp.Controllers
                 {
                     Title = page.Title,
                     Container = page.Container
-
                 };
 
-                Content contToAdd = new Content();
-                foreach (var item in Contents)
-                {
-                    int castItem = Int32.Parse(item);
-                    contToAdd = _context.Contents.FirstOrDefault(c => c.Id == castItem);
+                //Content contToAdd = new Content();
+                //foreach (var item in Contents)
+                //{
+                //    int castItem = Int32.Parse(item);
+                //    contToAdd = _context.Contents.FirstOrDefault(c => c.Id == castItem);
 
-                    if (contToAdd != null)
-                    {
-                        PageToAdd.Contents.Add(contToAdd);
-                    }
-                }
+                //    if (contToAdd != null)
+                //    {
+                //        PageToAdd.Contents.Add(contToAdd);
+                //    }
+                //}
 
                 _context.Pages.Add(PageToAdd);
                 _context.SaveChanges();
@@ -85,13 +84,13 @@ namespace GoshehArtWebApp.Controllers
             }
             else
             {
-                if (page.Contents.Count == 0)
-                {
-                    ViewBag.ContentError = "Content is Required";
-                }
+                //if (page.Contents.Count == 0)
+                //{
+                //    ViewBag.ContentError = "Content is Required";
+                //}
 
-                var contents = _context.Contents;
-                ViewBag.ContentList = new SelectList(contents, "Id", "Title");
+                //var contents = _context.Contents;
+                //ViewBag.ContentList = new SelectList(contents, "Id", "Title");
 
                 return View(cpvm);
             }
@@ -242,7 +241,7 @@ namespace GoshehArtWebApp.Controllers
         {
             if (_context.Pages == null)
             {
-                return Problem("Entity set 'ApplicationDbContext.Pagges' is null.");
+                return Problem("Entity set 'ApplicationDbContext.Pages' is null.");
             }
             var content = await _context.Pages.FindAsync(id);
             if (content != null)

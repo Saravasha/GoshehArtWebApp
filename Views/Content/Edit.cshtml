@@ -1,52 +1,47 @@
 ﻿@model CreateContentViewModel
 
 @{
-    ViewData["Title"] = "Edit Content";
+    ViewData["Title"] = "Edit Page";
 }
 
 <section class="container">
     <h1>@ViewBag.Title</h1>
-
     <div class="row">
         <div class="col-md-4">
-            <form asp-action="Create" method="post">
+            <form asp-action="Edit">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <div class="form-group">
-                    <label asp-for="NewContent.Title" class="control-label"></label>
-                    <input asp-for="NewContent.Title" class="form-control" />
-                    <span asp-validation-for="NewContent.Title" class="text-danger"></span>
+                    <label asp-for="Title" class="control-label"></label>
+                    <input asp-for="Title" name="title" value="@Model.Title" class="form-control" />
+                    <span asp-validation-for="Title" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Body" class="control-label"></label>
+                    <span asp-validation-for="Body" class="text-danger"></span>
+                    <textarea asp-for="Body" id="summernote" name="container" class="form-control" rows="30">@Model.Body</textarea>
                 </div>
 
-                @* name="title" type="hidden" value="@Model.Title" /> *@
+                @* Multiselect list *@
                 <div class="form-group">
-                    <label asp-for="NewContent.Body" class="control-label"></label>
-                    @* <input asp-for="Body" class="form-control" /> *@
-                    <span asp-validation-for="NewContent.Body" class="text-danger"></span>
-                    <textarea asp-for="NewContent.Body" id="summernote" name="NewContent.Body" class="form-control" rows="30">
-                        @Model.NewContent.Body
-                    </textarea>
-                </div>
-
-                <div class="form-group">
-                    <label asp-for="NewContent.Pages" class="control-label"></label>
-                    <select asp-for="NewContent.PageId" asp-items="ViewBag.PageList" class="form-select">
-                        <option disabled selected>--Select Parent Page--</option>
+                    <label asp-for="PageIds" class="control-label"></label>
+                    <select asp-for="PageIds" asp-items="ViewBag.PageList" class="form-control" selected="@Model.Pages">
+                        <option disabled selected>--Select Page--</option>
                     </select>
-                    <span asp-validation-for="NewContent.PageId"></span>
+                    @if (ViewBag.PageError != null)
+                    {
+                        <span class="error-message">@ViewBag.PageError</span>
+                    }
                 </div>
-                @if (ViewBag.PageError != null)
-                {
-                    <span class="error-message">@ViewBag.PageError</span>
-                }
+
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Save" class="btn btn-primary" />
                 </div>
             </form>
         </div>
     </div>
 
     <div>
-        <a asp-action="Index">Return to Content Index</a>
+        <a asp-action="Index">Return to Page Index</a>
     </div>
 </section>
 

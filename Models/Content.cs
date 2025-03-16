@@ -10,10 +10,12 @@ namespace GoshehArtWebApp.Models
         [Required]
         [Display(Name = "Content Title")]
         public string? Title { get; set; }
+        [Display(Name = "Container Body")]
         public string? Body { get; set; }
-
         public int? PageId { get; set; }
-        public Page? Page { get; set; } = default!;
+        public Page? Page { get; set; }
+
+        public List<Page>? Pages { get; set; } = new();
 
     }
 }
