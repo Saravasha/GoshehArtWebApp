@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250318211459_finishingThis")]
+    partial class finishingThis
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -187,7 +190,7 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Container")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PageId")
+                    b.Property<int>("PageId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -326,13 +329,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "3188e6fc-2d39-41a4-879b-8040456dc8f3",
+                            Id = "c27dd347-2a46-4c75-9ef8-e499f36f56cf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "98822663-766a-4eee-8c36-0e61d7ed9d84",
+                            Id = "e94c70c9-4402-4df3-b6d0-bf880499b0c8",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -430,17 +433,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "0b298642-74b8-42fb-9bb8-ff41e536fb8a",
+                            Id = "e7d99e63-5ee6-4e59-8be5-7dbd9253a517",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "2bda3ffe-fa66-4320-87b8-c3ec8d37895f",
+                            ConcurrencyStamp = "955e80c9-d528-4ac9-8e24-c61a244ee2c7",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEL1zm+BVE4mH04Sq7p7Whh7KdDohZOJLeRJMjGd1RmeilNI6o4m37xe8pRF2c6lY1Q==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENvXDrjUBqwghqk9u0NeIToaKatfgfzQwPoRpwpAkyB8PrJQiKE9rAgF4Jkc+Q9lfQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "70847ee3-5ad3-44ec-80e5-07f776de077a",
+                            SecurityStamp = "03be6af0-a8b0-40d6-aaaa-19e536772166",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -512,8 +515,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "0b298642-74b8-42fb-9bb8-ff41e536fb8a",
-                            RoleId = "3188e6fc-2d39-41a4-879b-8040456dc8f3"
+                            UserId = "e7d99e63-5ee6-4e59-8be5-7dbd9253a517",
+                            RoleId = "c27dd347-2a46-4c75-9ef8-e499f36f56cf"
                         });
                 });
 
@@ -558,7 +561,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasOne("GoshehArtWebApp.Models.Page", "Page")
                         .WithMany("Contents")
                         .HasForeignKey("PageId")
-                        .OnDelete(DeleteBehavior.SetNull);
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
 
                     b.Navigation("Page");
                 });

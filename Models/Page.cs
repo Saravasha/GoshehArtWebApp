@@ -11,6 +11,6 @@ namespace GoshehArtWebApp.Models
         public string? Title { get; set; }
         [Display(Name = "Container Body")]
         public string? Container { get; set; }
-        public List<Content> Contents { get; set; } = new List<Content>();
+        public List<Content>? Contents { get; set; } = new List<Content>();
     }
 }

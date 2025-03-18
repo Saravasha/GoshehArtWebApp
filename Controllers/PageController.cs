@@ -55,10 +55,6 @@ namespace GoshehArtWebApp.Controllers
         public IActionResult Create(CreatePageViewModel page, string containerContent, List<string> Contents)
         {
             
-            if (!ModelState.IsValid)
-            {
-
-            }
 
             CreatePageViewModel cpvm = new CreatePageViewModel();
             ModelState.Remove("Id");
@@ -87,20 +83,20 @@ namespace GoshehArtWebApp.Controllers
                  _context.Pages.Add(PageToAdd);
                  _context.SaveChanges();
 
-                return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                if (page.Contents.Count == 0)
-                {
-                    ViewBag.ContentError = "Content is Required";
-                }
+            return RedirectToAction(nameof(Index));
+            //else
+            //{
+            //    if (page.Contents.Count == 0)
+            //    {
+            //        ViewBag.ContentError = "Content is Required";
+            //    }
 
-                var contents = _context.Contents;
-                ViewBag.ContentList = new SelectList(contents, "Id", "Title");
+            //    var contents = _context.Contents;
+            //    ViewBag.ContentList = new SelectList(contents, "Id", "Title");
 
-                return View(cpvm);
-            }
+            //    return View(cpvm);
+            //}
         }
 
 
@@ -237,17 +233,3 @@ namespace GoshehArtWebApp.Controllers
         }
     }
 }
-
-
-
-            //var page = _context.Pages.FirstOrDefault(x => x.Title == title);
-
-            //if (page == null)
-            //{
-            //    return View("Error");
-            //}
-
-            //page.Container = header;
-            //_context.SaveChanges();
-
-            //return RedirectToAction(nameof(Index));

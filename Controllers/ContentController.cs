@@ -52,8 +52,10 @@ namespace GoshehArtWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateContentViewModel content, List<string> Pages)
+        public IActionResult Create(CreateContentViewModel content)
         {
+
+
             CreateContentViewModel ccvm = new CreateContentViewModel();
             ModelState.Remove("Id");
             if (ModelState.IsValid)
@@ -62,20 +64,10 @@ namespace GoshehArtWebApp.Controllers
                 {
                     Title = content.Title,
                     Container = content.Container,
+                    PageId = content.PageId
                    
                 };
 
-                Page? pageToAdd = new Page();
-                foreach (var item in Pages)
-                {
-                    int castItem = Int32.Parse(item);
-                    pageToAdd = _context.Pages.FirstOrDefault(c => c.Id == castItem);
-
-                    if (pageToAdd != null)
-                    {
-                        ContentToAdd.Page = pageToAdd;
-                    }
-                }
 
                 _context.Contents.Add(ContentToAdd);
                 _context.SaveChanges();
@@ -102,7 +94,7 @@ namespace GoshehArtWebApp.Controllers
         {
 
             CreateContentViewModel ccvm = new CreateContentViewModel();
-            Content? content = _context.Contents
+            var content = _context.Contents
                 .Include(c => c.Page)
                 .FirstOrDefault(p => p.Id == id);
 
@@ -110,9 +102,8 @@ namespace GoshehArtWebApp.Controllers
             {
                 ccvm.Title = content.Title;
                 ccvm.Container = content.Container;
-                //ccvm.Container = content.Container;
                 ccvm.PageId = content.PageId;
-                
+
 
                 var pages = _context.Pages;
 
@@ -125,7 +116,7 @@ namespace GoshehArtWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, CreateContentViewModel content, string title, string container, List<string> PageIds)
+        public IActionResult Edit(int id, CreateContentViewModel content, string title, string container, int PageId)
         {
 
             Content? contentToEdit = _context.Contents.Find(id);
@@ -137,34 +128,7 @@ namespace GoshehArtWebApp.Controllers
             {
                 contentToEdit.Title = content.Title;
                 contentToEdit.Container = content.Container;
-
-                var pageToDelete = _context.Contents.Include(c => c.Page)
-                    .FirstOrDefault(p => p.Id == id);
-
-                List<Page> tempList = new List<Page>();
-
-                foreach (var item in pageToDelete.PageIds)
-                {
-                    tempList.Add(item);
-                }
-
-                foreach (var page in tempList)
-                {
-                    pageToDelete.Pages.Remove(page);
-                }
-
-                Page? pageToAdd = new Page();
-                foreach (var item in PageIds)
-                {
-                    int castItem = Int32.Parse(item);
-                    pageToAdd = _context.Pages.FirstOrDefault(c => c.Id == castItem);
-
-                    if (pageToAdd != null)
-                    {
-                        //contentToEdit.Pages.Add(pageToAdd);
-                    }
-
-                }
+                contentToEdit.PageId = content.PageId;
 
                 _context.Contents.Update(contentToEdit);
                 _context.SaveChanges();
@@ -208,10 +172,10 @@ namespace GoshehArtWebApp.Controllers
             {
                 return Problem("Entity set 'ApplicationDbContext.Contents' is null.");
             }
-            var page = await _context.Contents.FindAsync(id);
-            if (page != null)
+            var content = await _context.Contents.FindAsync(id);
+            if (content != null)
             {
-                _context.Contents.Remove(page);
+                _context.Contents.Remove(content);
             }
 
             await _context.SaveChangesAsync();
@@ -219,17 +183,3 @@ namespace GoshehArtWebApp.Controllers
         }
     }
 }
-
-
-
-//var page = _context.Pages.FirstOrDefault(x => x.Title == title);
-
-//if (page == null)
-//{
-//    return View("Error");
-//}
-
-//page.Container = header;
-//_context.SaveChanges();
-
-//return RedirectToAction(nameof(Index));

@@ -15,6 +15,7 @@ namespace GoshehArtWebApp.ViewModels
         [Display(Name = "Contents")]
         public List<int>? ContentIds { get; set; } = new();
         [Display(Name = "Content:")]
+        [Required(ErrorMessage = "Page Parent is required, else the Content has nowhere to appear")]
         public List<Content>? Contents { get; set; } = new();
     }
 }

@@ -17,11 +17,8 @@
                     <input asp-for="Title" class="form-control" value="@Model.Title" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-
-                    @* name="title" type="hidden" value="@Model.Title" /> *@
                 <div class="form-group">
                     <label asp-for="Container" class="control-label"></label>
-                    @* <input asp-for="Container" class="form-control" /> *@
                     <span asp-validation-for="Container" class="text-danger"></span>
                     <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="30">
                         @Model.Container

@@ -7,8 +7,6 @@ namespace GoshehArtWebApp.ViewModels
     public class ContentViewModel
     {
 
-        public int Id { get; set; }
-
         [Display(Name = "Content Title")]
         public string? Title { get; set; }
         [Display(Name = "Container Body")]

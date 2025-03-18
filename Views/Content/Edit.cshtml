@@ -23,14 +23,14 @@
 
                 @* Multiselect list *@
                 <div class="form-group">
-                    <label asp-for="PageIds" class="control-label"></label>
-                    <select asp-for="PageIds" asp-items="ViewBag.PageList" class="form-control" selected="@Model.Pages">
+                    <label asp-for="PageId" class="control-label"></label>
+                    <select asp-for="PageId" asp-items="ViewBag.PageList"  class="form-control" selected="@Model.PageId">
                         <option disabled selected>--Select Page--</option>
                     </select>
-                    @if (ViewBag.PageError != null)
-                    {
-                        <span class="error-message">@ViewBag.PageError</span>
-                    }
+                    @* @if (ViewBag.PageError != null) *@
+                    @* { *@
+                    @*     <span class="error-message">@ViewBag.PageError</span> *@
+                    @* } *@
                 </div>
 
                 <div class="form-group">
