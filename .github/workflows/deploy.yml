@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet: ["8.0.13"]
+        dotnet: ["8.0.x"]
 
     # A sequence of tasks that will execute as part of the job
     steps:
@@ -28,7 +28,7 @@ jobs:
         run: |
           echo "HOME=/home/runner" >> $GITHUB_ENV
       - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@main
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet-version }}
 
