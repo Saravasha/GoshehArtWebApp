@@ -18,7 +18,7 @@ jobs:
 
     strategy:
       matrix:
-        dotnet: ["8.0.x"]
+        dotnet: ["8.0.13"]
 
     # A sequence of tasks that will execute as part of the job
     steps:
