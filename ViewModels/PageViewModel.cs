@@ -5,11 +5,10 @@ namespace GoshehArtWebApp.ViewModels
 {
     public class PageViewModel
     {
-        public int? Id { get; set; }
-        [Required]
+
         [Display(Name = "Page Title")]
         public string? Title { get; set; }
-        [Display(Name = "Container Body")]
+        [Display(Name = "Page Container Body")]
         public string? Container { get; set; }
         public Content? Content { get; set; }
         [Display(Name = "Contents")]

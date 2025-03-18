@@ -1,4 +1,4 @@
-﻿@model PageViewModel
+﻿@model IEnumerable<Page>
 
 @{
     ViewData["Title"] = "Pages Control Panel";
@@ -26,7 +26,7 @@
             </tr>
         </thead>
         <tbody class="table-primary">
-            @foreach (var item in Model.Pages)
+            @foreach (var item in Model)
             {
                 <tr class="table-secondary">
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
@@ -45,4 +45,6 @@
             }
         </tbody>
     </table>
+
 </section>
+    

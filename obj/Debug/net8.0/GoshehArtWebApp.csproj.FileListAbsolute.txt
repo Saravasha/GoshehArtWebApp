@@ -251,7 +251,6 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildMultiTargeting.GoshehArtWebApp.props
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets\msbuild.buildTransitive.GoshehArtWebApp.props
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.pack.json
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\GoshehAr.EB758806.Up2Date
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\GoshehArtWebApp.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\refint\GoshehArtWebApp.dll
@@ -274,3 +273,8 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\Microsoft.Extensions.Logging.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\Microsoft.Extensions.Logging.Abstractions.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\appsettings.Development.json
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\AngleSharp.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\AngleSharp.Css.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\HtmlSanitizer.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\System.Collections.Immutable.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

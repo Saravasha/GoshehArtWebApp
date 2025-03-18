@@ -34,12 +34,12 @@ namespace GoshehArtWebApp.Data
             );
 
             modelbuilder.Entity<Content>().HasData(
-                new Content { Id = 1, Body = "Welcome", Title = "Welcome", PageId = 1 },
-                new Content { Id = 2, Body = "Process:", Title = "This is what I'm working on", PageId = 2 },
-                new Content { Id = 3, Body = "Early Life", Title = "Biography", PageId = 3 },
-                new Content { Id = 4, Body = "Faceberrk", Title = "Social Media", PageId = 4 },
-                new Content { Id = 5, Body = "We don't use cookies", Title = "Cookie Policy", PageId = 5 },
-                new Content { Id = 6, Body = "Pending", Title = "Privacy Policy", PageId = 5 }
+                new Content { Id = 1, Title = "Welcome", Container = "Welcome",  PageId = 1 },
+                new Content { Id = 2, Title = "This is what I'm working on", Container = "Process:",  PageId = 2 },
+                new Content { Id = 3, Title = "Biography", Container = "Early Life", PageId = 3 },
+                new Content { Id = 4, Title = "Social Media", Container = "Faceberrk", PageId = 4 },
+                new Content { Id = 5, Title = "Cookie Policy", Container = "We don't use cookies", PageId = 5 },
+                new Content { Id = 6, Title = "Privacy Policy", Container = "Pending", PageId = 5 }
             );
 
             modelbuilder.Entity<Category>().HasData(
@@ -59,12 +59,12 @@ namespace GoshehArtWebApp.Data
                 new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", ImageUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8 }
             );
 
+
             modelbuilder.Entity<Page>()
-                .HasMany(p => p.Contents)
+                .HasMany(c => c.Contents)
                 .WithOne(p => p.Page)
-                .HasForeignKey(p =>  p.PageId)
-                .IsRequired(false)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(p => p.PageId)
+                .OnDelete(DeleteBehavior.SetNull);
             ;
 
             modelbuilder.Entity<Asset>()

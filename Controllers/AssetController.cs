@@ -238,7 +238,7 @@ namespace GoshehArtWebApp.Controllers
                 return NotFound();
             }
 
-            var asset = await _context.Assets
+            var asset = await _context.Assets.Include(c => c.Categories)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (asset == null)
             {

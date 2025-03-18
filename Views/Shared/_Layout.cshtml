@@ -61,24 +61,23 @@
                                     <a class="nav-link text-dark" asp-controller="Content" asp-action="Index">Content </a>
                                 </li>
                             </ul>
-                            @* <partial name="_PagePartial" /> *@
                         </div>
                     }
                     <partial name="_LoginPartial" />
-                    @* <div>@Html.PartialAsync("_PagePartial")</div> *@
                 </div>
             </div>
         </nav>
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @(DateTime.Now.Year) - GoshehArtWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; GoshehArtWebApp - @(DateTime.Now.Year) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 

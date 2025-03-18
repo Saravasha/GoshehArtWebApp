@@ -6,12 +6,11 @@ namespace GoshehArtWebApp.ViewModels
 {
     public class CreatePageViewModel
     {
-        [Key]
-        public int Id { get; set; }
-        [Required]
-        [Display(Name = "Page Title")]
+        
+        [Required(ErrorMessage = "Page Title is required")]
+        [Display(Name = "Asset Name:")]
         public string? Title { get; set; }
-        [Display(Name = "Container Body")]
+        [Display(Name = "Header Image for Page")]
         public string? Container { get; set; }
         [Display(Name = "Contents")]
         public List<int>? ContentIds { get; set; } = new();

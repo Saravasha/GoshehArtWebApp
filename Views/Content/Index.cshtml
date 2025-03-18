@@ -1,4 +1,4 @@
-﻿@model ContentViewModel
+﻿@model IEnumerable<Content>
 
 @{
     ViewData["Title"] = "Content Control Panel";
@@ -26,11 +26,11 @@
             </tr>
         </thead>
         <tbody class="table-primary">
-            @foreach (var item in Model.Contents)
+            @foreach (var item in Model)
             {
                 <tr class="table-secondary">
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td>@Html.Raw(item.Body)</td>
+                    <td>@Html.Raw(item.Container)</td>
                     <td>
                         @if (item?.Page != null && !string.IsNullOrEmpty(item.Page.Title))
                         {

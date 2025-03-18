@@ -1,4 +1,4 @@
-﻿@model ContentViewModel
+﻿@model Content
 
 @{
     ViewData["Title"] = "Delete";
@@ -16,18 +16,20 @@
             <dd class="col-sm-10">
                 @Html.DisplayFor(model => model.Title)        
             </dd>
-            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Body)</dt>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Container)</dt>
             <dd class="col-sm-10">
-                @Html.Raw(Model.Body)
+                @Html.Raw(Model.Container)
             </dd>
-            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Pages)</dt>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Page)</dt>
             <dd class="col-sm-10">
-               <ul>
-                @foreach (var pages in Model.Pages)
+                @if (Model.Page != null && !string.IsNullOrEmpty(Model.Page.Title))
                 {
-                    <li>@pages.Title</li>
+                    <p>@Model.Page.Title</p>
                 }
-               </ul>
+                else
+                {
+                    @:
+                }
             </dd>
         </dl>
 

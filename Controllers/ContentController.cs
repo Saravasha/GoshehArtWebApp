@@ -25,11 +25,9 @@ namespace GoshehArtWebApp.Controllers
         public IActionResult Index()
         {
 
-            var cvm = new ContentViewModel();
+            var contentList = _context.Contents.Include(c => c.Page).ToList();
 
-            cvm.Contents = _context.Contents.Include(c => c.Page).ToList();
-
-            return View(cvm);
+            return View(contentList);
         }
 
         // GET: PageController/Details/5
@@ -45,12 +43,12 @@ namespace GoshehArtWebApp.Controllers
         //GET: PageController/Create
         public IActionResult Create()
         {
-            CreateContentViewModel cvm = new CreateContentViewModel();
+            CreateContentViewModel ccvm = new CreateContentViewModel();
             var pages = _context.Pages;
 
             ViewBag.PageList = new SelectList(pages, "Id", "Title");
 
-            return View(cvm);
+            return View(ccvm);
         }
 
         [HttpPost]
@@ -63,7 +61,8 @@ namespace GoshehArtWebApp.Controllers
                 var ContentToAdd = new Content()
                 {
                     Title = content.Title,
-                    Body = content.Body
+                    Container = content.Container,
+                   
                 };
 
                 Page? pageToAdd = new Page();
@@ -74,7 +73,7 @@ namespace GoshehArtWebApp.Controllers
 
                     if (pageToAdd != null)
                     {
-                        ContentToAdd.Pages.Add(pageToAdd);
+                        ContentToAdd.Page = pageToAdd;
                     }
                 }
 
@@ -99,58 +98,29 @@ namespace GoshehArtWebApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int id, string title, string container)
+        public IActionResult Edit(int id)
         {
 
             CreateContentViewModel ccvm = new CreateContentViewModel();
             Content? content = _context.Contents
                 .Include(c => c.Page)
-                .FirstOrDefault(content => content.PageId == id);
+                .FirstOrDefault(p => p.Id == id);
 
-
-            List<int>? pagesId = new();
-            //foreach (var contentNum in content.PageId)
-            //{
-            //    pagesId.Add(contentNum.Id);
-            //}
             if (content != null)
             {
                 ccvm.Title = content.Title;
-                ccvm.Body = content.Body;
+                ccvm.Container = content.Container;
                 //ccvm.Container = content.Container;
-                ccvm.PageIds = pagesId;
+                ccvm.PageId = content.PageId;
+                
 
                 var pages = _context.Pages;
 
-                ViewBag.ContentList = new MultiSelectList(pages, "Id", "Title");
+                ViewBag.PageList = new SelectList(pages, "Id", "Title");
             }
-
-            if (content == null)
-            {
-                content = new Content();
-                content.Title = title;
-
-                _context.Contents.Add(content);
-                _context.SaveChanges();
-            }
-
-
 
             return View(ccvm);
 
-            //// SELECT * FROM Pages WHERE Title = {title}
-            //var page = _context.Pages.FirstOrDefault(x => x.Title == title);
-
-            //if (page == null)
-            //{
-            //    page = new Page();
-            //    page.Title = title;
-
-            //    _context.Pages.Add(page);
-            //    _context.SaveChanges();
-            //}
-
-            //return View(page);
         }
 
         [HttpPost]
@@ -161,27 +131,27 @@ namespace GoshehArtWebApp.Controllers
             Content? contentToEdit = _context.Contents.Find(id);
 
             ModelState.Remove("Id");
-            ModelState.Remove("Body");
+            ModelState.Remove("Container");
 
             if (contentToEdit != null && ModelState.IsValid)
             {
                 contentToEdit.Title = content.Title;
-                contentToEdit.Body = content.Body;
+                contentToEdit.Container = content.Container;
 
-                var pageToDelete = _context.Contents.Include(c => c.PageId)
-                    .FirstOrDefault(p => p.PageId == id);
+                var pageToDelete = _context.Contents.Include(c => c.Page)
+                    .FirstOrDefault(p => p.Id == id);
 
                 List<Page> tempList = new List<Page>();
 
-                //foreach (var item in pageToDelete.PageId)
-                //{
-                //    tempList.Add(item);
-                //}
+                foreach (var item in pageToDelete.PageIds)
+                {
+                    tempList.Add(item);
+                }
 
-                //foreach (var page in tempList)
-                //{
-                //    pageToDelete.Pages.Remove(page);
-                //}
+                foreach (var page in tempList)
+                {
+                    pageToDelete.Pages.Remove(page);
+                }
 
                 Page? pageToAdd = new Page();
                 foreach (var item in PageIds)
@@ -209,27 +179,21 @@ namespace GoshehArtWebApp.Controllers
 
         public async Task<IActionResult> Delete(int? id)
         {
-            var cvm = new ContentViewModel();
-            var content = await _context.Contents.FindAsync(id);
-            cvm.Title = content.Title;
-            cvm.Page = content.Page;
-            cvm.Body = content.Body;
-
-            cvm.Contents = _context.Contents.Include(c => c.Pages).ToList();
+            
 
             if (id == null || _context.Contents == null)
             {
                 return NotFound();
             }
 
-            var cont = await _context.Contents
+            var cont = await _context.Contents.Include(p => p.Page)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (cont == null)
             {
                 return NotFound();
             }
 
-            return View(cvm);
+            return View(cont);
         }
 
         // POST: AssetController/Delete/5

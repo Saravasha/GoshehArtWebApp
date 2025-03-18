@@ -184,10 +184,10 @@ namespace GoshehArtWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("Body")
+                    b.Property<string>("Container")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("PageId")
+                    b.Property<int>("PageId")
                         .HasColumnType("int");
 
                     b.Property<string>("Title")
@@ -204,42 +204,42 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            Body = "Welcome",
+                            Container = "Welcome",
                             PageId = 1,
                             Title = "Welcome"
                         },
                         new
                         {
                             Id = 2,
-                            Body = "Process:",
+                            Container = "Process:",
                             PageId = 2,
                             Title = "This is what I'm working on"
                         },
                         new
                         {
                             Id = 3,
-                            Body = "Early Life",
+                            Container = "Early Life",
                             PageId = 3,
                             Title = "Biography"
                         },
                         new
                         {
                             Id = 4,
-                            Body = "Faceberrk",
+                            Container = "Faceberrk",
                             PageId = 4,
                             Title = "Social Media"
                         },
                         new
                         {
                             Id = 5,
-                            Body = "We don't use cookies",
+                            Container = "We don't use cookies",
                             PageId = 5,
                             Title = "Cookie Policy"
                         },
                         new
                         {
                             Id = 6,
-                            Body = "Pending",
+                            Container = "Pending",
                             PageId = 5,
                             Title = "Privacy Policy"
                         });
@@ -256,16 +256,11 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Container")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int?>("ContentId")
-                        .HasColumnType("int");
-
                     b.Property<string>("Title")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
-
-                    b.HasIndex("ContentId");
 
                     b.ToTable("Pages");
 
@@ -331,13 +326,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "334494b4-1e6c-4424-a31f-34b21c395be8",
+                            Id = "38b18ddb-6d9b-4f2e-a574-d17d5046b050",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "748a0aaa-89fa-475c-8f6c-3c66441aa655",
+                            Id = "cee39a82-dde0-4f20-bff5-3ab76d128753",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -435,17 +430,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "20896606-90f9-4b01-94a0-a0a165f11aa6",
+                            Id = "32da60ff-205d-4982-9933-1e2de06a4340",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "0e58c04b-3190-4d88-a2d1-7451696e08d3",
+                            ConcurrencyStamp = "8571e8f4-738e-4ffe-88b3-909077e5fae9",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEKL/zfh1+xQ7UahWb7m6jlxFUBiWY8LOp9ZpUioeYJUIK2DCp3kvG8QGlbd0HAvSAQ==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEKXlTJoQbniQrsh5XqhXpjuFvqU3uHqD21giUwQNJ+SgSJENSaYkezqL/ElhCTb/WQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "74101aff-3777-478c-a16a-2e464d13682a",
+                            SecurityStamp = "98b67a3e-bcbe-4b48-9d00-093dc0813dba",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -517,8 +512,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "20896606-90f9-4b01-94a0-a0a165f11aa6",
-                            RoleId = "334494b4-1e6c-4424-a31f-34b21c395be8"
+                            UserId = "32da60ff-205d-4982-9933-1e2de06a4340",
+                            RoleId = "38b18ddb-6d9b-4f2e-a574-d17d5046b050"
                         });
                 });
 
@@ -562,16 +557,11 @@ namespace GoshehArtWebApp.Migrations
                 {
                     b.HasOne("GoshehArtWebApp.Models.Page", "Page")
                         .WithMany("Contents")
-                        .HasForeignKey("PageId");
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
 
                     b.Navigation("Page");
-                });
-
-            modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>
-                {
-                    b.HasOne("GoshehArtWebApp.Models.Content", null)
-                        .WithMany("Pages")
-                        .HasForeignKey("ContentId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -623,11 +613,6 @@ namespace GoshehArtWebApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("GoshehArtWebApp.Models.Content", b =>
-                {
-                    b.Navigation("Pages");
                 });
 
             modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>
