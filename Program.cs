@@ -83,8 +83,19 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 var app = builder.Build();
 
+// Configure the HTTP request pipeline.
+if (app.Environment.IsDevelopment())
+{
 
-
+    app.UseMigrationsEndPoint();
+}
+else
+{
+    //app.UseExceptionHandler("/Home/Error");www
+    // The default HSTS value is 30 days. You may want to change this for wproduction wscenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseHsts();
+    app.UseHttpsRedirection(); 
+}
 
 app.UseStaticFiles();
 
@@ -131,20 +142,6 @@ void AddStaticFilesRecursively(string directory, WebApplication app)
 
 
 app.UseRouting();
-
-// Configure the HTTP request pipeline.
-if (app.Environment.IsDevelopment())
-{
-
-    app.UseMigrationsEndPoint();
-}
-else
-{
-    //app.UseExceptionHandler("/Home/Error");www
-    // The default HSTS value is 30 days. You may want to change this for wproduction wscenarios, see https://aka.ms/aspnetcore-hsts.
-    app.UseHsts();
-    app.UseHttpsRedirection(); 
-}
 
 app.UseCors("corsPolicy");
 
