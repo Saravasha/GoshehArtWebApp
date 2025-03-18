@@ -5,9 +5,9 @@
 }
 
 
-<h1>@ViewBag.Title</h1>
 
 <section class="container">
+<h1>@ViewBag.Title</h1>
     <h4>Add a new Asset</h4>
 
     <div class="row">
@@ -40,7 +40,7 @@
                     <img id="FrontImagePrv" src="" alt="product" width="150" height="150" style="border: 1px; margin-top:20px;margin-left:120px;" />
 
                 </div>
-          <div class="form-group">
+                <div class="form-group">
                     <label asp-for="Categories" class="control-label"></label>
                     <select asp-for="Categories" asp-items="ViewBag.CategoryList" multiple class="form-control dropdown-margin-bottom">
                         @*<option disabled selected>Select Category</option>*@

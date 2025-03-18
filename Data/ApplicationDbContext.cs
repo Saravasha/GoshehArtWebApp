@@ -1,5 +1,6 @@
 ﻿using GoshehArtWebApp.Models;
 using GoshehArtWebApp.Secrets;
+using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
@@ -12,7 +13,9 @@ namespace GoshehArtWebApp.Data
             : base(options)
         {
         }
+
         public DbSet<Page> Pages { get; set; } = default!;
+        public DbSet<Content> Contents { get; set; } = default!;
         public DbSet<Category> Categories { get; set; } = default!;
         public DbSet<Asset> Assets { get; set; } = default!;
 
@@ -22,23 +25,47 @@ namespace GoshehArtWebApp.Data
             base.OnModelCreating(modelbuilder);
 
 
-            modelbuilder.Entity<Page>().HasData(new Page { Title = "Home", Content = "" });
-            modelbuilder.Entity<Page>().HasData(new Page { Title = "Production", Content = "" });
-            modelbuilder.Entity<Page>().HasData(new Page { Title = "About", Content = "" });
-            modelbuilder.Entity<Page>().HasData(new Page { Title = "Contact", Content = "" });
+            modelbuilder.Entity<Page>().HasData(
+                new Page { Id = 1, Title = "Home", Container = "Home"},
+                new Page { Id = 2, Title = "Production", Container = "Production"},
+                new Page { Id = 3, Title = "About", Container = "About" },
+                new Page { Id = 4, Title = "Contact", Container = "Contact" },
+                new Page { Id = 5, Title = "Privacy", Container = "Privacy" }
+            );
 
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 1, Name = "Film" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 2, Name = "Liljevalchs 2001" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 3, Name = "Stop-motion" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 4, Name = "Press" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 5, Name = "Foto" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 6, Name = "Kontroversiell Konst" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 7, Name = "Abstrakt Konst" });
-            modelbuilder.Entity<Category>().HasData(new Category { Id = 8, Name = "Akvarell Konst" });
-            
-            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", ImageUrl = "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8 });
-            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", ImageUrl = "/Assets/Kontroversiell Konst/image (3).jpg", CategoryId = 6 });
-            modelbuilder.Entity<Asset>().HasData(new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", ImageUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8 });
+            modelbuilder.Entity<Content>().HasData(
+                new Content { Id = 1, Title = "Welcome", Container = "Welcome",  PageId = 1 },
+                new Content { Id = 2, Title = "This is what I'm working on", Container = "Process:",  PageId = 2 },
+                new Content { Id = 3, Title = "Biography", Container = "Early Life", PageId = 3 },
+                new Content { Id = 4, Title = "Social Media", Container = "Faceberrk", PageId = 4 },
+                new Content { Id = 5, Title = "Cookie Policy", Container = "We don't use cookies", PageId = 5 },
+                new Content { Id = 6, Title = "Privacy Policy", Container = "Pending", PageId = 5 }
+            );
+
+            modelbuilder.Entity<Category>().HasData(
+                new Category { Id = 1, Name = "Film" },
+                new Category { Id = 2, Name = "Liljevalchs 2001" },
+                new Category { Id = 3, Name = "Stop-motion" },
+                new Category { Id = 4, Name = "Press" },
+                new Category { Id = 5, Name = "Foto" },
+                new Category { Id = 6, Name = "Kontroversiell Konst" },
+                new Category { Id = 7, Name = "Abstrakt Konst" },
+                new Category { Id = 8, Name = "Akvarell Konst" }
+            );
+
+            modelbuilder.Entity<Asset>().HasData(
+                new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", ImageUrl = "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8 },
+                new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", ImageUrl = "/Assets/Kontroversiell Konst/image (3).jpg", CategoryId = 6 },
+                new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", ImageUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8 }
+            );
+
+
+            modelbuilder.Entity<Page>()
+                .HasMany(c => c.Contents)
+                .WithOne(p => p.Page)
+                .HasForeignKey(p => p.PageId)
+                .OnDelete(DeleteBehavior.SetNull);
+            ;
 
             modelbuilder.Entity<Asset>()
                .HasMany(p => p.Categories)

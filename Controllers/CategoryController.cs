@@ -121,7 +121,6 @@ namespace GoshehArtWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-        ;
             if (_context.Categories == null)
             {
                 return Problem("Entity set 'ApplicationDbConext.Category'  is null.");

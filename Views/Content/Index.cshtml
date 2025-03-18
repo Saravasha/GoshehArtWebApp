@@ -1,0 +1,51 @@
+﻿@model IEnumerable<Content>
+
+@{
+    ViewData["Title"] = "Content Control Panel";
+}
+
+@* <ul> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Home">Home</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Production">Production</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="About">About</a></li> *@
+@*     <li><a asp-controller="Page" asp-action="EditPage" asp-route-title="Contact">Contact</a></li> *@
+@* </ul> *@
+
+<section class="container">
+    <h1>@ViewBag.Title</h1>
+    <p><a asp-controller="Content" asp-action="Create">Add new Content</a></p>
+    <table class="table table-secondary table-responsive table-striped">
+        <thead>
+            <tr class="table-dark">
+                <th>Content Title</th>
+                <th>Content Body</th>
+                <th>Page Parent</th>
+                <th></th>
+                <th></th>
+                <th></th>
+            </tr>
+        </thead>
+        <tbody class="table-primary">
+            @foreach (var item in Model)
+            {
+                <tr class="table-secondary">
+                    <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.Raw(item.Container)</td>
+                    <td>
+                        @if (item?.Page != null && !string.IsNullOrEmpty(item.Page.Title))
+                        {
+                            @item.Page.Title
+                        }
+                        else
+                        {
+                            @:
+                        }
+                    </td>
+                    <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
+                    <td><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
+                    <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</section>

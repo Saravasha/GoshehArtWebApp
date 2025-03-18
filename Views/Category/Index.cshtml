@@ -1,13 +1,12 @@
 ﻿@model CategoryViewModel
 
 @{
-    ViewData["Title"] = "Index";
+    ViewData["Title"] = "Category Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <section class="container">
-    <h1>Available Categories</h1>
-
+    <h1>@ViewBag.Title</h1>
     <p>
         <a asp-controller="Category" asp-action="Create">Create a new Category</a>
     </p>

@@ -7,92 +7,116 @@
 namespace GoshehArtWebApp.Migrations
 {
     /// <inheritdoc />
-    public partial class zigip : Migration
+    public partial class deletebehavior_setnull : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Contents_Pages_PageId",
+                table: "Contents");
+
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "db7bda4b-19a5-4cae-81ef-8e866499a258");
+                keyValue: "0246f5c4-160d-45f8-8788-1f23292a1abc");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "57b50225-ee03-4c9d-bc57-93c186566da4", "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59" });
+                keyValues: new object[] { "a712fbc9-448e-402d-acc8-ff60ef136b9d", "315520eb-d31d-4449-b363-fe10dc244add" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "57b50225-ee03-4c9d-bc57-93c186566da4");
+                keyValue: "a712fbc9-448e-402d-acc8-ff60ef136b9d");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59");
+                keyValue: "315520eb-d31d-4449-b363-fe10dc244add");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "7ac55a95-97c9-43f3-a6ac-6e865eee5fa1", null, "User", "USER" },
-                    { "e88b855b-e742-4b05-9cfe-c20d8cf9ea73", null, "Admin", "ADMIN" }
+                    { "4a8e1933-2f99-4db2-9b1c-1f1c0b874d8f", null, "Admin", "ADMIN" },
+                    { "b06f0449-91a9-46c0-92ef-31b803b7715f", null, "User", "USER" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "5070f71f-c327-41c5-a696-57f71b4b22b9", 0, "09e809de-094c-4b64-9151-a2b02d1a3334", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEJqVILgbIVhtEJSh3juwO2IwgosY/apHS86FguCMcfNoKEVT2zNBpAjXiXQgC396zQ==", null, false, "2e9e3da1-f80b-417b-9d36-002ad5f9d978", false, "Admin" });
+                values: new object[] { "5a54dc9d-99a6-46d9-8ae2-4b02722c716d", 0, "3d7f0094-a111-4d18-acfb-807359668edf", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEDdq48F0dvDEB5V4WjYXTbJoCeENJ1MYNB4bzjJEq2kMOf41YUyL+GQ8GUqS3xme1A==", null, false, "249ac360-5784-4bb7-8472-82c9bb4da516", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "e88b855b-e742-4b05-9cfe-c20d8cf9ea73", "5070f71f-c327-41c5-a696-57f71b4b22b9" });
+                values: new object[] { "4a8e1933-2f99-4db2-9b1c-1f1c0b874d8f", "5a54dc9d-99a6-46d9-8ae2-4b02722c716d" });
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Contents_Pages_PageId",
+                table: "Contents",
+                column: "PageId",
+                principalTable: "Pages",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.SetNull);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
+            migrationBuilder.DropForeignKey(
+                name: "FK_Contents_Pages_PageId",
+                table: "Contents");
+
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "7ac55a95-97c9-43f3-a6ac-6e865eee5fa1");
+                keyValue: "b06f0449-91a9-46c0-92ef-31b803b7715f");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUserRoles",
                 keyColumns: new[] { "RoleId", "UserId" },
-                keyValues: new object[] { "e88b855b-e742-4b05-9cfe-c20d8cf9ea73", "5070f71f-c327-41c5-a696-57f71b4b22b9" });
+                keyValues: new object[] { "4a8e1933-2f99-4db2-9b1c-1f1c0b874d8f", "5a54dc9d-99a6-46d9-8ae2-4b02722c716d" });
 
             migrationBuilder.DeleteData(
                 table: "AspNetRoles",
                 keyColumn: "Id",
-                keyValue: "e88b855b-e742-4b05-9cfe-c20d8cf9ea73");
+                keyValue: "4a8e1933-2f99-4db2-9b1c-1f1c0b874d8f");
 
             migrationBuilder.DeleteData(
                 table: "AspNetUsers",
                 keyColumn: "Id",
-                keyValue: "5070f71f-c327-41c5-a696-57f71b4b22b9");
+                keyValue: "5a54dc9d-99a6-46d9-8ae2-4b02722c716d");
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "57b50225-ee03-4c9d-bc57-93c186566da4", null, "Admin", "ADMIN" },
-                    { "db7bda4b-19a5-4cae-81ef-8e866499a258", null, "User", "USER" }
+                    { "0246f5c4-160d-45f8-8788-1f23292a1abc", null, "User", "USER" },
+                    { "a712fbc9-448e-402d-acc8-ff60ef136b9d", null, "Admin", "ADMIN" }
                 });
 
             migrationBuilder.InsertData(
                 table: "AspNetUsers",
                 columns: new[] { "Id", "AccessFailedCount", "ConcurrencyStamp", "Email", "EmailConfirmed", "LockoutEnabled", "LockoutEnd", "NormalizedEmail", "NormalizedUserName", "PasswordHash", "PhoneNumber", "PhoneNumberConfirmed", "SecurityStamp", "TwoFactorEnabled", "UserName" },
-                values: new object[] { "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59", 0, "bea6b129-6b6b-45cc-ba66-92dd635d6a55", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAENxh1hz/I7h9L8g1CqHT/6x2nTXW/Pib8ppen4hQNEsx3aq238qoGDq86Xdkk8NIXg==", null, false, "fcf38eeb-ba67-4e1e-ac58-4c8919e71682", false, "Admin" });
+                values: new object[] { "315520eb-d31d-4449-b363-fe10dc244add", 0, "c2475e5c-ced3-438a-a879-f080feb020c2", "admin@admin.com", false, false, null, "ADMIN@ADMIN.COM", "ADMIN@ADMIN.COM", "AQAAAAIAAYagAAAAEDz+2LtAJeBzz79lkCpx5Q/O1FiVow8+klIM3rJN/IA75ir2C+DAyLLWjSBaat6tHA==", null, false, "289f4839-6185-44b6-938e-75c2d3156879", false, "Admin" });
 
             migrationBuilder.InsertData(
                 table: "AspNetUserRoles",
                 columns: new[] { "RoleId", "UserId" },
-                values: new object[] { "57b50225-ee03-4c9d-bc57-93c186566da4", "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59" });
+                values: new object[] { "a712fbc9-448e-402d-acc8-ff60ef136b9d", "315520eb-d31d-4449-b363-fe10dc244add" });
+
+            migrationBuilder.AddForeignKey(
+                name: "FK_Contents_Pages_PageId",
+                table: "Contents",
+                column: "PageId",
+                principalTable: "Pages",
+                principalColumn: "Id",
+                onDelete: ReferentialAction.Cascade);
         }
     }
 }

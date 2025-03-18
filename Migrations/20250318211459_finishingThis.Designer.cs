@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20250306004118_Init")]
-    partial class Init
+    [Migration("20250318211459_finishingThis")]
+    partial class finishingThis
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -71,10 +71,16 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ImageUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -173,38 +179,124 @@ namespace GoshehArtWebApp.Migrations
                         });
                 });
 
-            modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>
+            modelBuilder.Entity("GoshehArtWebApp.Models.Content", b =>
                 {
-                    b.Property<string>("Title")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
 
-                    b.Property<string>("Content")
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Container")
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("Title");
+                    b.Property<int>("PageId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("PageId");
+
+                    b.ToTable("Contents");
+
+                    b.HasData(
+                        new
+                        {
+                            Id = 1,
+                            Container = "Welcome",
+                            PageId = 1,
+                            Title = "Welcome"
+                        },
+                        new
+                        {
+                            Id = 2,
+                            Container = "Process:",
+                            PageId = 2,
+                            Title = "This is what I'm working on"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            Container = "Early Life",
+                            PageId = 3,
+                            Title = "Biography"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            Container = "Faceberrk",
+                            PageId = 4,
+                            Title = "Social Media"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Container = "We don't use cookies",
+                            PageId = 5,
+                            Title = "Cookie Policy"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            Container = "Pending",
+                            PageId = 5,
+                            Title = "Privacy Policy"
+                        });
+                });
+
+            modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<string>("Container")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
 
                     b.ToTable("Pages");
 
                     b.HasData(
                         new
                         {
-                            Title = "Home",
-                            Content = ""
+                            Id = 1,
+                            Container = "Home",
+                            Title = "Home"
                         },
                         new
                         {
-                            Title = "Production",
-                            Content = ""
+                            Id = 2,
+                            Container = "Production",
+                            Title = "Production"
                         },
                         new
                         {
-                            Title = "About",
-                            Content = ""
+                            Id = 3,
+                            Container = "About",
+                            Title = "About"
                         },
                         new
                         {
-                            Title = "Contact",
-                            Content = ""
+                            Id = 4,
+                            Container = "Contact",
+                            Title = "Contact"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            Container = "Privacy",
+                            Title = "Privacy"
                         });
                 });
 
@@ -237,13 +329,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "57b50225-ee03-4c9d-bc57-93c186566da4",
+                            Id = "c27dd347-2a46-4c75-9ef8-e499f36f56cf",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "db7bda4b-19a5-4cae-81ef-8e866499a258",
+                            Id = "e94c70c9-4402-4df3-b6d0-bf880499b0c8",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -341,17 +433,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59",
+                            Id = "e7d99e63-5ee6-4e59-8be5-7dbd9253a517",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "bea6b129-6b6b-45cc-ba66-92dd635d6a55",
+                            ConcurrencyStamp = "955e80c9-d528-4ac9-8e24-c61a244ee2c7",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAENxh1hz/I7h9L8g1CqHT/6x2nTXW/Pib8ppen4hQNEsx3aq238qoGDq86Xdkk8NIXg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAENvXDrjUBqwghqk9u0NeIToaKatfgfzQwPoRpwpAkyB8PrJQiKE9rAgF4Jkc+Q9lfQ==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "fcf38eeb-ba67-4e1e-ac58-4c8919e71682",
+                            SecurityStamp = "03be6af0-a8b0-40d6-aaaa-19e536772166",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -423,8 +515,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "e3b0d14f-d6c0-4a4b-98b0-3708f0bb8c59",
-                            RoleId = "57b50225-ee03-4c9d-bc57-93c186566da4"
+                            UserId = "e7d99e63-5ee6-4e59-8be5-7dbd9253a517",
+                            RoleId = "c27dd347-2a46-4c75-9ef8-e499f36f56cf"
                         });
                 });
 
@@ -462,6 +554,17 @@ namespace GoshehArtWebApp.Migrations
                         .HasForeignKey("CategoriesId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GoshehArtWebApp.Models.Content", b =>
+                {
+                    b.HasOne("GoshehArtWebApp.Models.Page", "Page")
+                        .WithMany("Contents")
+                        .HasForeignKey("PageId")
+                        .OnDelete(DeleteBehavior.SetNull)
+                        .IsRequired();
+
+                    b.Navigation("Page");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -513,6 +616,11 @@ namespace GoshehArtWebApp.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("GoshehArtWebApp.Models.Page", b =>
+                {
+                    b.Navigation("Contents");
                 });
 #pragma warning restore 612, 618
         }

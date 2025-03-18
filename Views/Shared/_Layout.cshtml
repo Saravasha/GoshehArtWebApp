@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -54,7 +55,10 @@
                                     </a>
                                 </li>
                                 <li class="nav-item">
-                                    <a class="nav-link text-dark" asp-controller="Page" asp-action="Index">Page Control</a>
+                                    <a class="nav-link text-dark" asp-controller="Page" asp-action="Index">Pages</a>
+                                </li>
+                                <li class="nav-item">
+                                    <a class="nav-link text-dark" asp-controller="Content" asp-action="Index">Content </a>
                                 </li>
                             </ul>
                         </div>
@@ -66,13 +70,14 @@
     </header>
     <div class="container">
         <main role="main" class="pb-3">
+
             @RenderBody()
         </main>
     </div>
 
     <footer class="border-top footer text-muted">
         <div class="container">
-            &copy; @(DateTime.Now.Year) - GoshehArtWebApp - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
+            &copy; GoshehArtWebApp - @(DateTime.Now.Year) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </div>
     </footer>
 

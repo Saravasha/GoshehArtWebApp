@@ -31,6 +31,5 @@ public class CreateAssetViewModel
     public List<int>? CategoryIds { get; set; } = new();
 
     [Display(Name = "Category:")]
-    [Required(ErrorMessage = "Category is Required")]
     public List<Category> Categories { get; set; } = new();
 }

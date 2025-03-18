@@ -58,6 +58,13 @@ namespace GoshehArtWebApp.Controllers
             return assets;
         }
 
+        [HttpGet("page")]
+        public List<Page> GetPages()
+        {
+            List<Page> pages = new List<Page>();
+            pages = _context.Pages.ToList();
+            return pages;
+        }
         //[HttpGet("persondetails")]
         //public IActionResult GetPeople(int id)
         //{

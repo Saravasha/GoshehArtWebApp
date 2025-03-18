@@ -1,0 +1,39 @@
+﻿@model Content
+
+@{
+    ViewData["Title"] = "Content Details";
+}
+
+
+<section class="container">
+    <h1>@ViewBag.Title</h1>
+    <div>
+        <dl class="row">
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Title)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Title)
+            </dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Container)</dt>
+            <dd class="col-sm-10">@Html.Raw(Model.Container)
+            </dd>
+            <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Page.Title)</dt>
+            <dd class="col-sm-10">@Html.DisplayFor(model => model.Page.Title)
+            </dd>
+        </dl>
+    </div>
+    <div>
+        <a asp-action="Edit" asp-route-id="@Model.Id">Update</a> |
+        <a asp-action="Index">Return to Page Index</a>
+    </div>
+
+</section>
+
+@section Scripts {
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
+    <script>
+        $(document).ready(function () {
+            $('#summernote').summernote();
+        });
+    </script>
+}
+
