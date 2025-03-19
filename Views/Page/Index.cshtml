@@ -7,7 +7,9 @@
 <section class="container">
     <h1>@ViewBag.Title</h1>
     <p><a asp-controller="Page" asp-action="Create">Add new Page</a></p>
-    <table class="table table-secondary table-responsive table-striped">
+    <div class="table-responsive">
+
+    <table class="table table-secondary table-striped">
         <thead>
             <tr class="table-dark">
                 <th>Page Title</th>
@@ -38,5 +40,6 @@
             }
         </tbody>
     </table>
+    </div>
 </section>
     
