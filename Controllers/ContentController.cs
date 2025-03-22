@@ -52,19 +52,19 @@ namespace GoshehArtWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateContentViewModel content)
+        public IActionResult Create(CreateContentViewModel content, int PageId)
         {
 
 
             CreateContentViewModel ccvm = new CreateContentViewModel();
             ModelState.Remove("Id");
-            if (ModelState.IsValid)
+            if (ModelState.IsValid && PageId != 0)
             {
                 var ContentToAdd = new Content()
                 {
                     Title = content.Title,
                     Container = content.Container,
-                    PageId = content.PageId
+                    PageId = PageId
                    
                 };
 
@@ -76,7 +76,7 @@ namespace GoshehArtWebApp.Controllers
             }
             else
             {
-                if (content.Pages.Count == 0)
+                if (content.PageId == 0 || content.PageId == null)
                 {
                     ViewBag.PageError = "Page is Required";
                 }
