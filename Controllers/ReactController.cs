@@ -62,7 +62,7 @@ namespace GoshehArtWebApp.Controllers
         public List<Page> GetPages()
         {
             List<Page> pages = new List<Page>();
-            pages = _context.Pages.ToList();
+            pages = _context.Pages.Include(c => c.Contents).ToList();
             return pages;
         }
         //[HttpGet("persondetails")]

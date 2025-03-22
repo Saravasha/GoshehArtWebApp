@@ -72,7 +72,7 @@ namespace GoshehArtWebApp.Controllers
                 foreach (var item in Contents)
                 {
                     int castItem = Int32.Parse(item);
-                     contToAdd =  _context.Contents.FirstOrDefault(c => c.Id == castItem);
+                    contToAdd = _context.Contents.FirstOrDefault(c => c.Id == castItem);
 
                     if (contToAdd != null)
                     {
@@ -80,23 +80,23 @@ namespace GoshehArtWebApp.Controllers
                     }
                 }
 
-                 _context.Pages.Add(PageToAdd);
-                 _context.SaveChanges();
+                _context.Pages.Add(PageToAdd);
+                _context.SaveChanges();
 
+                return RedirectToAction(nameof(Index));
             }
-            return RedirectToAction(nameof(Index));
-            //else
-            //{
-            //    if (page.Contents.Count == 0)
-            //    {
-            //        ViewBag.ContentError = "Content is Required";
-            //    }
+            else
+            {
+                if (page.Contents.Count == 0)
+                {
+                    ViewBag.ContentError = "Content is Required";
+                }
 
-            //    var contents = _context.Contents;
-            //    ViewBag.ContentList = new SelectList(contents, "Id", "Title");
+                var contents = _context.Contents;
+                ViewBag.ContentList = new SelectList(contents, "Id", "Title");
 
-            //    return View(cpvm);
-            //}
+                return View(cpvm);
+            }
         }
 
 

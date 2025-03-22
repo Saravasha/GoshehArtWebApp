@@ -11,6 +11,7 @@ namespace GoshehArtWebApp.ViewModels
         public string? Title { get; set; }
         [Display(Name = "Content Header Image")]
         public string? Container { get; set; }
+        [Required(ErrorMessage = "Parent Page is required")]
         [Display(Name = "Parent Page")]
         public int PageId { get; set; }
         public List<int>? PageIds { get; set; } = new();

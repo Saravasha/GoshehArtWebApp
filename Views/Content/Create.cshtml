@@ -30,7 +30,7 @@
 
                 <div class="form-group">
                     <label asp-for="PageId" class="control-label"></label>
-                    <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-control dropdown-menu-start m-1">
+                    <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-control dropdown-menu-start m-1" required>
                         <option disabled selected>--Select Page--</option>
                     </select>
                     @if (ViewBag.PageError != null)
