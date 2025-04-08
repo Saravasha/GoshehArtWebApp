@@ -15,10 +15,10 @@
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Production",
-        "DOTNET_ENVIRONMENT": "Production",
+        "DOTNET_ENVIRONMENT": "Production"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:7000",
+      "applicationUrl": "https://localhost:5283",
       "sqlDebugging": true
     },
     "IIS Express": {
