@@ -30,13 +30,13 @@ namespace GoshehArtWebApp.Controllers
 			if (asset.ImageUp != null)
 			{
 
-                string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
+                string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); 
                 if (!Directory.Exists(path))
                 {
                     Directory.CreateDirectory(path);
                 }
                 // Trying to override Uploads briefly by pushing
-                string uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
+                string uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); 
 				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
                 string filePath = Path.Combine(uploadsFolder, uniqueFileName);
                 

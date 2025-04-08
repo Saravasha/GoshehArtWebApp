@@ -79,6 +79,9 @@
           }
         }
       },
+      "FontAwesome/4.2.0": {
+        "type": "package"
+      },
       "HtmlSanitizer/9.0.876": {
         "type": "package",
         "dependencies": {
@@ -690,6 +693,9 @@
             "locale": "zh-Hant"
           }
         }
+      },
+      "jQuery/3.7.1": {
+        "type": "package"
       },
       "Microsoft.AspNetCore.Cryptography.Internal/8.0.0": {
         "type": "package",
@@ -2416,6 +2422,12 @@
           }
         }
       },
+      "summernote/1.0.3": {
+        "type": "package",
+        "dependencies": {
+          "FontAwesome": "4.2.0"
+        }
+      },
       "System.Buffers/4.5.1": {
         "type": "package",
         "compile": {
@@ -3168,6 +3180,26 @@
         "azureicon.png",
         "lib/netstandard2.0/Azure.Identity.dll",
         "lib/netstandard2.0/Azure.Identity.xml"
+      ]
+    },
+    "FontAwesome/4.2.0": {
+      "sha512": "Q7zY9YJV4k2DoJJyw/hxcdKqEKGMwn+woS/g50meo2Tw3DqTtBtlRnuDW70DItQTW33fh+urfGJe/39qXNQy/g==",
+      "type": "package",
+      "path": "fontawesome/4.2.0",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Content/font-awesome.css",
+        "Content/Content/font-awesome.min.css",
+        "Content/fonts/FontAwesome.otf",
+        "Content/fonts/fontawesome-webfont.eot",
+        "Content/fonts/fontawesome-webfont.svg",
+        "Content/fonts/fontawesome-webfont.ttf",
+        "Content/fonts/fontawesome-webfont.woff",
+        "fontawesome.4.2.0.nupkg.sha512",
+        "fontawesome.nuspec",
+        "tools/install.ps1"
       ]
     },
     "HtmlSanitizer/9.0.876": {
@@ -3930,6 +3962,29 @@
         "lib/netstandard1.0/zh-Hant/Humanizer.resources.dll",
         "lib/netstandard2.0/zh-Hant/Humanizer.resources.dll",
         "logo.png"
+      ]
+    },
+    "jQuery/3.7.1": {
+      "sha512": "rF8hnQxmBMlIspf8VN72bALtmIpKx6hKRpUdTOkp/8JzfF8KgNqHut5lOy9kFGvFIStumCqJ+PBxpI9gxpRYfQ==",
+      "type": "package",
+      "path": "jquery/3.7.1",
+      "hasTools": true,
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Content/Scripts/jquery-3.7.1-vsdoc.js",
+        "Content/Scripts/jquery-3.7.1.js",
+        "Content/Scripts/jquery-3.7.1.min.js",
+        "Content/Scripts/jquery-3.7.1.min.map",
+        "Content/Scripts/jquery-3.7.1.slim.js",
+        "Content/Scripts/jquery-3.7.1.slim.min.js",
+        "Content/Scripts/jquery-3.7.1.slim.min.map",
+        "Tools/common.ps1",
+        "Tools/install.ps1",
+        "Tools/jquery-3.7.1.intellisense.js",
+        "Tools/uninstall.ps1",
+        "jquery.3.7.1.nupkg.sha512",
+        "jquery.nuspec"
       ]
     },
     "Microsoft.AspNetCore.Cryptography.Internal/8.0.0": {
@@ -7262,6 +7317,23 @@
         "nuget.versioning.nuspec"
       ]
     },
+    "summernote/1.0.3": {
+      "sha512": "A0Wy2I3dzjZsCdqjG22iQ34XeAWB/+JksXAa46AUeCoBV38dFK+ZU8yw2q83BTgpyBXm57/FfIdbzlbGYph6eQ==",
+      "type": "package",
+      "path": "summernote/1.0.3",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "content/Scripts/summernote/plugin/summernote-ext-hello.js",
+        "content/Scripts/summernote/plugin/summernote-ext-hint.js",
+        "content/Scripts/summernote/plugin/summernote-ext-video.js",
+        "content/Scripts/summernote/summernote.css",
+        "content/Scripts/summernote/summernote.js",
+        "content/Scripts/summernote/summernote.min.js",
+        "summernote.1.0.3.nupkg.sha512",
+        "summernote.nuspec"
+      ]
+    },
     "System.Buffers/4.5.1": {
       "sha512": "Rw7ijyl1qqRS0YQD/WycNst8hUUMgrMH4FCn1nNm27M4VxchZ1js3fVjQaANHO5f3sN4isvP4a+Met9Y4YomAg==",
       "type": "package",
@@ -8605,7 +8677,9 @@
       "Microsoft.Extensions.Configuration >= 8.0.0",
       "Microsoft.Extensions.Configuration.UserSecrets >= 8.0.0",
       "Microsoft.VisualStudio.Web.CodeGeneration.Design >= 8.0.0",
-      "Newtonsoft.Json >= 13.0.3"
+      "Newtonsoft.Json >= 13.0.3",
+      "jQuery >= 3.7.1",
+      "summernote >= 1.0.3"
     ]
   },
   "packageFolders": {
@@ -8705,6 +8779,14 @@
           "Newtonsoft.Json": {
             "target": "Package",
             "version": "[13.0.3, )"
+          },
+          "jQuery": {
+            "target": "Package",
+            "version": "[3.7.1, )"
+          },
+          "summernote": {
+            "target": "Package",
+            "version": "[1.0.3, )"
           }
         },
         "imports": [

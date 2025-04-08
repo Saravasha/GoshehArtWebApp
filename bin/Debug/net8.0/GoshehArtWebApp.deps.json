@@ -18,7 +18,9 @@
           "Microsoft.Extensions.Configuration": "8.0.0",
           "Microsoft.Extensions.Configuration.UserSecrets": "8.0.0",
           "Microsoft.VisualStudio.Web.CodeGeneration.Design": "8.0.0",
-          "Newtonsoft.Json": "13.0.3"
+          "Newtonsoft.Json": "13.0.3",
+          "jQuery": "3.7.1",
+          "summernote": "1.0.3"
         },
         "runtime": {
           "GoshehArtWebApp.dll": {}
@@ -81,6 +83,7 @@
           }
         }
       },
+      "FontAwesome/4.2.0": {},
       "HtmlSanitizer/9.0.876": {
         "dependencies": {
           "AngleSharp": "0.17.1",
@@ -634,6 +637,7 @@
           }
         }
       },
+      "jQuery/3.7.1": {},
       "Microsoft.AspNetCore.Cryptography.Internal/8.0.0": {},
       "Microsoft.AspNetCore.Cryptography.KeyDerivation/8.0.0": {
         "dependencies": {
@@ -1749,6 +1753,11 @@
           }
         }
       },
+      "summernote/1.0.3": {
+        "dependencies": {
+          "FontAwesome": "4.2.0"
+        }
+      },
       "System.Buffers/4.5.1": {},
       "System.CodeDom/5.0.0": {
         "runtime": {
@@ -2050,6 +2059,13 @@
       "sha512": "sha512-eHEiCO/8+MfNc9nH5dVew/+FvxdaGrkRL4OMNwIz0W79+wtJyEoeRlXJ3SrXhoy9XR58geBYKmzMR83VO7bcAw==",
       "path": "azure.identity/1.7.0",
       "hashPath": "azure.identity.1.7.0.nupkg.sha512"
+    },
+    "FontAwesome/4.2.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-Q7zY9YJV4k2DoJJyw/hxcdKqEKGMwn+woS/g50meo2Tw3DqTtBtlRnuDW70DItQTW33fh+urfGJe/39qXNQy/g==",
+      "path": "fontawesome/4.2.0",
+      "hashPath": "fontawesome.4.2.0.nupkg.sha512"
     },
     "HtmlSanitizer/9.0.876": {
       "type": "package",
@@ -2407,6 +2423,13 @@
       "sha512": "sha512-VIXB7HCUC34OoaGnO3HJVtSv2/wljPhjV7eKH4+TFPgQdJj2lvHNKY41Dtg0Bphu7X5UaXFR4zrYYyo+GNOjbA==",
       "path": "humanizer.core.zh-hant/2.14.1",
       "hashPath": "humanizer.core.zh-hant.2.14.1.nupkg.sha512"
+    },
+    "jQuery/3.7.1": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-rF8hnQxmBMlIspf8VN72bALtmIpKx6hKRpUdTOkp/8JzfF8KgNqHut5lOy9kFGvFIStumCqJ+PBxpI9gxpRYfQ==",
+      "path": "jquery/3.7.1",
+      "hashPath": "jquery.3.7.1.nupkg.sha512"
     },
     "Microsoft.AspNetCore.Cryptography.Internal/8.0.0": {
       "type": "package",
@@ -2988,6 +3011,13 @@
       "sha512": "sha512-T/igBDLXCd+pH3YTWgGVNvYSOwbwaT30NyyM9ONjvlHlmaUjKBJpr9kH0AeL+Ado4EJsBhU3qxXVc6lyrpRcMw==",
       "path": "nuget.versioning/6.3.1",
       "hashPath": "nuget.versioning.6.3.1.nupkg.sha512"
+    },
+    "summernote/1.0.3": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-A0Wy2I3dzjZsCdqjG22iQ34XeAWB/+JksXAa46AUeCoBV38dFK+ZU8yw2q83BTgpyBXm57/FfIdbzlbGYph6eQ==",
+      "path": "summernote/1.0.3",
+      "hashPath": "summernote.1.0.3.nupkg.sha512"
     },
     "System.Buffers/4.5.1": {
       "type": "package",

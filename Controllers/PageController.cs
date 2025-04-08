@@ -21,6 +21,9 @@ namespace GoshehArtWebApp.Controllers
             _context = context;
         }
 
+      
+        
+
 
         public IActionResult Index()
         {
