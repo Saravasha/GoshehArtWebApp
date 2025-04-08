@@ -97,6 +97,14 @@
             "Newtonsoft.Json": {
               "target": "Package",
               "version": "[13.0.3, )"
+            },
+            "jQuery": {
+              "target": "Package",
+              "version": "[3.7.1, )"
+            },
+            "summernote": {
+              "target": "Package",
+              "version": "[1.0.3, )"
             }
           },
           "imports": [
