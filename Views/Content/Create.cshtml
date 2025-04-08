@@ -58,7 +58,7 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
 
     <script>
-        $(document).ready(function () {
+             $(document).ready(function () {
             $('#summernote').summernote({
                 height: 200,
                 callbacks: {
@@ -79,6 +79,7 @@
                     contentType: false,
                     processData: false,
                     success: function (data) {
+                        console.log("data = ", data)
                         if (data.url) {
                             $('#summernote').summernote('insertImage', data.url);
                         } else {

@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using NuGet.Common;
+using System.IO;
 
 namespace GoshehArtWebApp.Controllers
 {
+    [Authorize]
     public class PageContentController : Controller
     {
         [HttpPost]
@@ -10,7 +13,10 @@ namespace GoshehArtWebApp.Controllers
         {
 
             string _uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads");
-
+            if (!Directory.Exists(_uploadsFolder))
+            {
+                Directory.CreateDirectory(_uploadsFolder);
+            }
             if (file != null && file.Length > 0)
             {
 
@@ -34,13 +40,13 @@ namespace GoshehArtWebApp.Controllers
 
                     var apiURL = Environment.GetEnvironmentVariable("PRODUCTION_URL_TARGET");
                     // Return the URL for Summernote to insert the image
-                    var fileUrl = Url.Content(apiURL + "Uploads/" + fileName);
-                    return Json(new { url = fileUrl });
+                    var fileUrl = $"{ apiURL}/Uploads/{fileName}";
+                    return Json(new { success = true, url = fileUrl });
                 }
                 else
                 {
-                    var fileUrl = Url.Content("http://localhost:5173/" + "Uploads/" + fileName);
-                    return Json(new { url = fileUrl });
+                    var fileUrl = $"/Uploads/{fileName}";
+                    return Json(new { success = true, url = fileUrl });
                 }
             }
 

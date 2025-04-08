@@ -54,39 +54,40 @@
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.18/dist/summernote.min.js"></script>
     <script>
         // <script>
-            $(document).ready(function () {
-             $('#summernote').summernote({
-                 height: 200,
-                 callbacks: {
-                     onImageUpload: function (files) {
-                         uploadFile(files[0]);
-                     }
-                 }
-             });
+               $(document).ready(function () {
+            $('#summernote').summernote({
+                height: 200,
+                callbacks: {
+                    onImageUpload: function (files) {
+                        uploadFile(files[0]);
+                    }
+                }
+            });
 
-             function uploadFile(file) {
-                 var formData = new FormData();
-                 formData.append("file", file);
+            function uploadFile(file) {
+                var formData = new FormData();
+                formData.append("file", file);
 
-                 $.ajax({
-                     url: '/PageContent/UploadFile',  // Your upload URL
-                     method: 'POST',
-                     data: formData,
-                     contentType: false,
-                     processData: false,
-                     success: function (data) {
-                         if (data.url) {
-                             $('#summernote').summernote('insertImage', data.url);
-                         } else {
-                             alert("File upload failed.");
-                         }
-                     },
-                     error: function () {
-                         alert("Error uploading file.");
-                     }
-                 });
-             }
-         });
+                $.ajax({
+                    url: '/PageContent/UploadFile',  // Your upload URL
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log("data = ", data)
+                        if (data.url) {
+                            $('#summernote').summernote('insertImage', data.url);
+                        } else {
+                            alert("File upload failed.");
+                        }
+                    },
+                    error: function () {
+                        alert("Error uploading file.");
+                    }
+                });
+            }
+        });
 
 
     </script>

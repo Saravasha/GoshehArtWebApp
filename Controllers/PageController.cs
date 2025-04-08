@@ -22,8 +22,6 @@ namespace GoshehArtWebApp.Controllers
         }
 
       
-        
-
 
         public IActionResult Index()
         {
