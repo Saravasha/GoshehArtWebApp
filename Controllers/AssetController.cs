@@ -42,7 +42,7 @@ namespace GoshehArtWebApp.Controllers
                 
                 if (System.IO.File.Exists(filePath))
                 {
-                    System.IO.File.Copy(filePath, "~/Uploads");
+                    System.IO.File.Copy(filePath, "Uploads");
                 }
                 using (var fileStream = new FileStream(filePath, FileMode.Create))
 				{
@@ -50,7 +50,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return "/Uploads/" + uniqueFileName; ;
+			return "Uploads/" + uniqueFileName; ;
 		}
 
 		// GET: AssetController
@@ -380,7 +380,7 @@ namespace GoshehArtWebApp.Controllers
 
                         if (System.IO.File.Exists(filePath))
                         {
-                            System.IO.File.Copy(filePath, "~/Uploads");
+                            System.IO.File.Copy(filePath, "Uploads");
                         }
 
                         //string fileNameWithPath = Path.Combine(filePath, file.FileName);
@@ -390,7 +390,7 @@ namespace GoshehArtWebApp.Controllers
                             file.CopyTo(stream);
                         }
 
-                        assets.ImageUrl = "/Uploads/" + uniqueFileName;
+                        assets.ImageUrl = "Uploads/" + uniqueFileName;
 
                         var AssetToAdd = new Asset()
                         {
