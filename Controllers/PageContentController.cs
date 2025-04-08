@@ -34,21 +34,21 @@ namespace GoshehArtWebApp.Controllers
                     await file.CopyToAsync(stream);
                 }
 
-                if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-                {
+                //if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
+                //{
 
-                var apiURL = Environment.GetEnvironmentVariable("PRODUCTION_URL_TARGET");
-                    Console.WriteLine(apiURL);
+                //var apiURL = Environment.GetEnvironmentVariable("PRODUCTION_URL_TARGET");
+                //    Console.WriteLine(apiURL);
 
-                    // Return the URL for Summernote to insert the image
-                    var fileUrl = $"{ apiURL}/Uploads/{fileName}";
-                    return Json(new { success = true, url = fileUrl });
-                }
-                else
-                {
+                //    // Return the URL for Summernote to insert the image
+                //    var fileUrl = $"{ apiURL}/Uploads/{fileName}";
+                //    return Json(new { success = true, url = fileUrl });
+                //}
+                //else
+                //}
+                //{
                     var fileUrl = $"/Uploads/{fileName}";
                     return Json(new { success = true, url = fileUrl });
-                }
             }
 
             return Json(new { url = "" });
