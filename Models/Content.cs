@@ -12,7 +12,7 @@ namespace GoshehArtWebApp.Models
         public string? Title { get; set; }
         [Display(Name = "Container Body")]
         public string? Container { get; set; }
-        public int PageId { get; set; }
+        public int? PageId { get; set; }
         public Page? Page { get; set; }
 
     }
