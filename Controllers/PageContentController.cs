@@ -20,7 +20,6 @@ namespace GoshehArtWebApp.Controllers
             if (file != null && file.Length > 0)
             {
 
-                // Generate a unique file name
                 var fileName = Guid.NewGuid().ToString() + "_" + Path.GetFileName(file.FileName);
                 var filePath = Path.Combine(_uploadsFolder, fileName);
 
@@ -34,19 +33,7 @@ namespace GoshehArtWebApp.Controllers
                     await file.CopyToAsync(stream);
                 }
 
-                //if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-                //{
-
-                //var apiURL = Environment.GetEnvironmentVariable("PRODUCTION_URL_TARGET");
-                //    Console.WriteLine(apiURL);
-
-                //    // Return the URL for Summernote to insert the image
-                //    var fileUrl = $"{ apiURL}/Uploads/{fileName}";
-                //    return Json(new { success = true, url = fileUrl });
-                //}
-                //else
-                //}
-                //{
+           
                     var fileUrl = $"/Uploads/{fileName}";
                     return Json(new { success = true, url = fileUrl });
             }
