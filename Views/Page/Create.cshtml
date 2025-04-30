@@ -40,6 +40,22 @@
                 </div>
             </form>
         </div>
+        <!-- Modal for Asset Selection -->
+        <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title">Select an Asset</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row" id="assetContainer">
+                            <!-- Asset thumbnails will be inserted here -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
 
     <div>
@@ -50,51 +66,109 @@
 
 @section Scripts {
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
     <script>
-        // $(document).ready(function () {
-        //     $('#summernote').summernote();
-        // });
 
-        // <script>
-           $(document).ready(function () {
+        const baseUrl = '@Url.Content("~/")'; // This gives you something like "/"
+        const fullBaseUrl = window.location.origin + baseUrl;
+
+        $(document).ready(function () {
             $('#summernote').summernote({
-                height: 200,
+                height: 300,
                 callbacks: {
                     onImageUpload: function (files) {
                         uploadFile(files[0]);
                     }
+                },
+                toolbar: [
+                ['style', ['style']],
+                ['font', ['bold', 'italic', 'underline', 'clear']],
+                ['fontname', ['fontname']],
+                ['color', ['color']],
+                ['para', ['ul', 'ol', 'paragraph']],
+                ['height', ['height']],
+                ['table', ['table']],
+                ['insert', ['link', 'picture', 'video', 'insertAsset']],
+                ['view', ['fullscreen', 'codeview', 'help']]
+
+            ],
+            buttons: {
+                insertAsset: function (context) {
+                    var ui = $.summernote.ui;
+
+                    summernoteInstance = context; // Save reference
+
+                    // Create custom button
+                    var button = ui.button({
+                        contents: '<i class="note-icon-picture"></i> Insert Asset',
+                        tooltip: 'Insert Asset from Library',
+                        click: function () {
+                            $('#assetModal').modal('show');
+                            loadAssets();
+                        }
+                    });
+
+                    return button.render();
+                      }
                 }
             });
-
-            function uploadFile(file) {
-                var formData = new FormData();
-                formData.append("file", file);
-
-                $.ajax({
-                    url: '/PageContent/UploadFile',  // Your upload URL
-                    method: 'POST',
-                    data: formData,
-                    contentType: false,
-                    processData: false,
-                    success: function (data) {
-                        console.log("data = ", data)
-                        if (data.url) {
-                            $('#summernote').summernote('insertImage', data.url);
-                        } else {
-                            alert("File upload failed.");
-                        }
-                    },
-                    error: function () {
-                        alert("Error uploading file.");
-                    }
-                });
-            }
         });
 
+        function uploadFile(file) {
+            var formData = new FormData();
+            formData.append("file", file);
+
+            $.ajax({
+                url: '/PageContent/UploadFile',  // Your upload URL
+                method: 'POST',
+                data: formData,
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    console.log("data = ", data)
+                    if (data.url) {
+                        $('#summernote').summernote('insertImage', data.url);
+                    } else {
+                        alert("File upload failed.");
+                    }
+                },
+                error: function () {
+                    alert("Error uploading file.");
+                }
+            });
+        }
+
+
+        function loadAssets() {
+            fetch('/api/react/asset') // Adjust to your actual endpoint
+            .then(res => res.json())
+            .then(data => {
+                const container = $('#assetContainer');
+                container.empty();
+                data.forEach(asset => {
+                    const relativeUrl = asset.imageUrl;
+                    const fullUrl = fullBaseUrl + relativeUrl.replace(/^\/+/, ''); // Removes leading slash if present
+
+                    const item = $(`
+                    <div class="col-md-3 mb-3">
+                        <img src="${fullUrl}" alt="${asset.title || asset.name || 'Asset'}"
+                             class="img-fluid img-thumbnail asset-img"
+                             style="cursor:pointer;" data-url="${fullUrl}">
+                    </div>
+                `);
+                    item.find('img').on('click', function () {
+                        summernoteInstance.invoke('editor.insertImage', $(this).data('url'), asset.name);
+                        $('#assetModal').modal('hide');
+                    });
+                    container.append(item);
+                });
+            });
+        }
 
     </script>
 }

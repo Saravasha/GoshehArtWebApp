@@ -1,13 +1,30 @@
-﻿using Microsoft.AspNetCore.Authorization;
+﻿using GoshehArtWebApp.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using NuGet.Common;
 using System.IO;
 
 namespace GoshehArtWebApp.Controllers
 {
+
     [Authorize]
     public class PageContentController : Controller
     {
+
+        private readonly ApplicationDbContext _context;
+
+        public PageContentController(ApplicationDbContext context) { 
+            _context = context;
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetAssets()
+        {
+            var assets = await _context.Assets.Select(a => new { a.Id, a.ImageUrl, a.Name }).ToListAsync();
+            return Ok(assets);
+        }
+
         [HttpPost]
         public async Task<IActionResult> UploadFile(IFormFile file)
         {
