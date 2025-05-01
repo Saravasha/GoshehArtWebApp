@@ -8,6 +8,8 @@ using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
 using System.Collections.Generic;
 using System.IO;
+using static System.Runtime.InteropServices.JavaScript.JSType;
+using NuGet.ContentModel;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -68,7 +70,7 @@ namespace GoshehArtWebApp.Controllers
 		// GET: AssetController/Details/5
 		public IActionResult Details(int id)
 		{
-            Asset? asset = _context.Assets
+            Models.Asset? asset = _context.Assets
 				.Include(c => c.Categories)
 				.FirstOrDefault(p => p.Id == id);
 
@@ -100,12 +102,14 @@ namespace GoshehArtWebApp.Controllers
 			//ModelState.Remove("ImageUrl");
 			if (ModelState.IsValid)
 			{
-				var AssetToAdd = new Asset()
+				var AssetToAdd = new Models.Asset()
 				{
 					Name = asset.Name,
 					Description = asset.Description,
 					Author = asset.Author,
-					ImageUrl = uniqueFileName
+					ImageUrl = uniqueFileName,
+                    Location = asset.Location,
+                    Date = asset.Date,
 				};
 
 				Category? catToAdd = new Category();
@@ -145,7 +149,7 @@ namespace GoshehArtWebApp.Controllers
 		public IActionResult Edit(int id)
 		{
 			CreateAssetViewModel cavm = new CreateAssetViewModel();
-			Asset? asset = _context.Assets
+			Models.Asset? asset = _context.Assets
 				.Include(c => c.Categories)
 				.FirstOrDefault(p => p.Id == id);
 
@@ -162,6 +166,8 @@ namespace GoshehArtWebApp.Controllers
 				//cavm.ImageUrl = asset.ImageUrl;
 				cavm.Author = asset.Author;
 				cavm.CategoryIds = categoriesIds;
+                cavm.Location = asset.Location;
+                cavm.Date = asset.Date;
 
 				var categories = _context.Categories;
 
@@ -179,7 +185,7 @@ namespace GoshehArtWebApp.Controllers
 		[ValidateAntiForgeryToken]
 		public IActionResult Edit(int id, CreateAssetViewModel asset, List<string> CategoryIds)
 		{
-			Asset? assetToEdit = _context.Assets.Find(id);
+			Models.Asset? assetToEdit = _context.Assets.Find(id);
 
 
 			ModelState.Remove("Id");
@@ -191,6 +197,8 @@ namespace GoshehArtWebApp.Controllers
 				assetToEdit.Description = asset.Description;
 				assetToEdit.Author = asset.Author;
 				assetToEdit.ImageUrl = assetToEdit.ImageUrl;
+                assetToEdit.Location = asset.Location;
+                assetToEdit.Date = asset.Date;
 
 				var catToDelete = _context.Assets.Include(c => c.Categories)
 										.FirstOrDefault(p => p.Id == id);
@@ -392,12 +400,14 @@ namespace GoshehArtWebApp.Controllers
 
                         assets.ImageUrl = "Uploads/" + uniqueFileName;
 
-                        var AssetToAdd = new Asset()
+                        var AssetToAdd = new Models.Asset()
                         {
                             Name = uniqueFileName,
                             Description = assets.Description,
                             Author = assets.Author,
-                            ImageUrl = assets.ImageUrl
+                            ImageUrl = assets.ImageUrl,
+                            Location = assets.Location,
+                            Date = assets.Date
                         };
               
 
