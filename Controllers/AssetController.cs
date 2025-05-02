@@ -163,8 +163,8 @@ namespace GoshehArtWebApp.Controllers
 			{
 				cavm.Name = asset.Name;
 				cavm.Description = asset.Description;
-				//cavm.ImageUrl = asset.ImageUrl;
-				cavm.Author = asset.Author;
+				cavm.ImageUrl = asset.ImageUrl;
+                cavm.Author = asset.Author;
 				cavm.CategoryIds = categoriesIds;
                 cavm.Location = asset.Location;
                 cavm.Date = asset.Date;
@@ -172,7 +172,7 @@ namespace GoshehArtWebApp.Controllers
 				var categories = _context.Categories;
 
 				ViewBag.CategoryList = new MultiSelectList(categories, "Id", "Name");
-				ViewBag.Image = asset.ImageUrl;
+				//ViewBag.Image = asset.ImageUrl;
 			}
 
 

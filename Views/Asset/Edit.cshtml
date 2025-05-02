@@ -12,7 +12,7 @@
             <form asp-action="Edit" enctype="multipart/form-data">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 <input type="hidden" asp-for="Id" />
-                <td><img src="@ViewBag.Image" class="img-fluid" style="max-height:100px;" /></td>
+                <div><img src="@($"{ViewContext.HttpContext.Request.Scheme}://{ViewContext.HttpContext.Request.Host}/{Model.ImageUrl}")" class="img-fluid" style="max-height:40%;" /></div>
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
                     <input asp-for="Name" class="form-control" />
@@ -28,7 +28,18 @@
                     <textarea asp-for="Author" class="form-control"></textarea>
                     <span asp-validation-for="Author" class="text-danger"></span>
                 </div>
-              
+                <div class="form-group">
+                    <label asp-for="Location" class="control-label"></label>
+                    <input asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+                <div class="form-group ">
+                    <label asp-for="Date">Date (Optional)</label>
+                    <div>
+                        <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
+                    </div>
+                </div>
                 <div class="form-group">
                     <label asp-for="CategoryIds" class="control-label"></label>
                     <select asp-for="CategoryIds" asp-items="ViewBag.CategoryList" class="form-control dropdown-margin-bottom" selected="@Model.Categories" multiple>
@@ -40,7 +51,7 @@
                 </div>
 
                 <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary" />
+                    <input type="submit" value="Save" class="btn btn-primary mt-1" />
                 </div>
             </form>
         </div>
@@ -55,4 +66,18 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    @* <script> *@
+
+    @*     $(document).ready(function () { *@
+    @*         $('#datepicker-container').datepicker({ *@
+    @*             format: 'yyyy/mm/dd', *@
+    @*             autoclose: true, *@
+    @*             todayHighlight: true, *@
+    @*             todayBtn: "linked", *@
+    @*             inline:true *@
+    @*         }).on('changeDate', function(e) { *@
+    @*              $('#Date').val(e.format('yyyy-mm-dd')); *@
+    @*         }); *@
+    @*     }); *@
+    @* </script> *@
 }

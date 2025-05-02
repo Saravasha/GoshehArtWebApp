@@ -11,6 +11,7 @@
         <thead>
             <tr class="table-dark">
                 <th>Content Title</th>
+                <th>Content Date</th>
                 <th>Content Body</th>
                 <th>Page Parent</th>
                 <th></th>
@@ -23,6 +24,7 @@
             {
                 <tr class="table-secondary">
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
                     <td>@Html.Raw(item.Container)</td>
                     <td>
                         @if (item?.Page != null && !string.IsNullOrEmpty(item.Page.Title))

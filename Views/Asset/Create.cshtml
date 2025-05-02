@@ -34,14 +34,11 @@
                     <input asp-for="Location" class="form-control" />
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
-
                 <div class="form-group ">
                     <label asp-for="Date">Date (Optional)</label>
-                    <div class="border p-3">
-
-                    <div id="datepicker-container"></div>
-                    <input asp-for="Date" type="text" id="Date" placeholder="Date String..."/>
-                    <span asp-validation-for="Date" class="text-danger"></span>
+                    <div>
+                        <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
+                        <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
                 <div class="form-group ">
@@ -65,9 +62,8 @@
                     }
                 </div>
 
-                <br />
                 <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                    <input type="submit" value="Create" class="btn btn-primary mt-1" />
                 </div>
             </form>
         </div>
@@ -92,16 +88,4 @@
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         theImage.style.visibility = "visible";
     })
-
-    $(document).ready(function () {
-        $('#datepicker-container').datepicker({
-            format: 'yyyy/mm/dd',
-            autoclose: true,
-            todayHighlight: true,
-            todayBtn: "linked",
-            inline:true
-        }).on('changeDate', function(e) {
-             $('#Date').val(e.format('yyyy-mm-dd'));
-        });
-    });
 </script>

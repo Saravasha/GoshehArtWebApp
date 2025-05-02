@@ -11,12 +11,9 @@ namespace GoshehArtWebApp.Models
         public string? Description { get; set; }
         public string? Author { get; set; }
         public string? Location { get; set; }
-
-        // Vi behöver lägga till views och controller actions för dem här två nya propsen till modellen.
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime? Date { get; set; }
-		
         public string? ImageUrl { get; set; } 
 		public int CategoryId { get; set; }
         public List<Category> Categories { get; set; } = new List<Category>();
