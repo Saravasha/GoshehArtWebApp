@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "w5WsYQX2Ibgrvvr9EASu5aBHuvXfwlG8buiG5ihHpc8=",
+  "Hash": "f+j6/C+DyAaG7FIdSjJA9b1hzp3GMtjD1v+1yAZjlWY=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -1291,8 +1291,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "42oj84q9ar",
-      "Integrity": "dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw=",
+      "Fingerprint": "5kwku0y16j",
+      "Integrity": "1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css"
@@ -1312,8 +1312,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "42oj84q9ar",
-      "Integrity": "dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw=",
+      "Fingerprint": "5kwku0y16j",
+      "Integrity": "1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css"
@@ -34778,7 +34778,7 @@
       ]
     },
     {
-      "Route": "GoshehArtWebApp.42oj84q9ar.bundle.scp.css",
+      "Route": "GoshehArtWebApp.5kwku0y16j.bundle.scp.css",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -34788,7 +34788,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1123"
         },
         {
           "Name": "Content-Type",
@@ -34796,11 +34796,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw=\""
+          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 22:12:29 GMT"
+          "Value": "Fri, 02 May 2025 14:32:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34810,7 +34810,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "42oj84q9ar"
+          "Value": "5kwku0y16j"
         },
         {
           "Name": "label",
@@ -34818,12 +34818,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw="
+          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
         }
       ]
     },
     {
-      "Route": "GoshehArtWebApp.42oj84q9ar.styles.css",
+      "Route": "GoshehArtWebApp.5kwku0y16j.styles.css",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -34833,7 +34833,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1123"
         },
         {
           "Name": "Content-Type",
@@ -34841,11 +34841,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw=\""
+          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 22:12:29 GMT"
+          "Value": "Fri, 02 May 2025 14:32:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34855,7 +34855,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "42oj84q9ar"
+          "Value": "5kwku0y16j"
         },
         {
           "Name": "label",
@@ -34863,7 +34863,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw="
+          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
         }
       ]
     },
@@ -34878,7 +34878,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1123"
         },
         {
           "Name": "Content-Type",
@@ -34886,11 +34886,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw=\""
+          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 22:12:29 GMT"
+          "Value": "Fri, 02 May 2025 14:32:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34900,7 +34900,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw="
+          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
         }
       ]
     },
@@ -34915,7 +34915,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1133"
+          "Value": "1123"
         },
         {
           "Name": "Content-Type",
@@ -34923,11 +34923,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw=\""
+          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Sun, 02 Mar 2025 22:12:29 GMT"
+          "Value": "Fri, 02 May 2025 14:32:28 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34937,7 +34937,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-dIf8ZjrZ9a+n8SA2Y9m8cuGqLJmBPJpXwZi5rRXXSuw="
+          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
         }
       ]
     },

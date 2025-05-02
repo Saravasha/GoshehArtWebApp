@@ -63,9 +63,9 @@ namespace GoshehArtWebApp.Controllers
                 var ContentToAdd = new Content()
                 {
                     Title = content.Title,
+                    Date = content.Date,
                     Container = content.Container,
                     PageId = PageId
-                   
                 };
 
 
@@ -101,6 +101,7 @@ namespace GoshehArtWebApp.Controllers
             if (content != null)
             {
                 ccvm.Title = content.Title;
+                ccvm.Date = content.Date;
                 ccvm.Container = content.Container;
                 ccvm.PageId = content.PageId;
 
@@ -127,6 +128,7 @@ namespace GoshehArtWebApp.Controllers
             if (contentToEdit != null && ModelState.IsValid)
             {
                 contentToEdit.Title = content.Title;
+                contentToEdit.Date = content.Date;
                 contentToEdit.Container = content.Container;
                 contentToEdit.PageId = content.PageId;
 

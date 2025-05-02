@@ -17,7 +17,7 @@ namespace GoshehArtWebApp.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.0")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
@@ -187,6 +187,9 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Container")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
+
                     b.Property<int?>("PageId")
                         .HasColumnType("int");
 
@@ -326,13 +329,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "63c21377-70e7-474f-92b4-e2e28efee99e",
+                            Id = "3b774f3f-146b-4801-a6d0-2bf082340334",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "462e9730-cb2c-474a-a7c5-6a61fa1316d1",
+                            Id = "73826d4b-b842-494c-9ab7-901b4193d1f5",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -430,17 +433,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "409078f8-411c-4832-acb2-17af6d7d4d40",
+                            Id = "77c903ae-c29b-4676-866e-670c3d1a5c77",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "dd6f3949-7340-4548-840b-75d9cb1126ce",
+                            ConcurrencyStamp = "71eb1d25-0008-4071-a0bc-43652868bcc9",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEK5oYqBpDEaCtT84tffIYs8FNethx+L4AQe1INH7NAjHn2nw+kO1+OjdOfwbSlay7A==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEMi6ASJRna8OFtbRhV+7khDolpfiO1lOuqo6p8sfVEjCkts9sUtf0U3bfFbgmpu85A==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "f8cd5326-5b26-422e-984c-208c536dfba6",
+                            SecurityStamp = "65c3868e-79ba-460f-98d9-9d1cf930692e",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -512,8 +515,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "409078f8-411c-4832-acb2-17af6d7d4d40",
-                            RoleId = "63c21377-70e7-474f-92b4-e2e28efee99e"
+                            UserId = "77c903ae-c29b-4676-866e-670c3d1a5c77",
+                            RoleId = "3b774f3f-146b-4801-a6d0-2bf082340334"
                         });
                 });
 
