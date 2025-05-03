@@ -2,6 +2,7 @@
 using GoshehArtWebApp.Models;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 namespace GoshehArtWebApp.ViewModels;
 
 public class CreateAssetViewModel
@@ -20,12 +21,9 @@ public class CreateAssetViewModel
     public string? Description { get; set; }
 
     public string? Location { get; set; }
-
-    // Vi behöver lägga till views och controller actions för dem här två nya propsen till modellen.
-    [DataType(DataType.Date)]
-    [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-    public DateTime? Date { get; set; }
-
+    [JsonIgnore]
+    public DateOnly? Date { get; set; }
+    public string? DateString => Date?.ToString("yyyy-MM-dd");
     [Display(Name = "Asset Image")]
     public string? ImageUrl { get; set; }
 

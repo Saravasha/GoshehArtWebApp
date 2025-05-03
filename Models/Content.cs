@@ -1,4 +1,6 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿
+using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace GoshehArtWebApp.Models
 {
@@ -10,10 +12,10 @@ namespace GoshehArtWebApp.Models
         [Required]
         [Display(Name = "Content Title")]
         public string? Title { get; set; }
+        [JsonIgnore]
+        public DateOnly? Date { get; set; }
+        public string? DateString => Date?.ToString("yyyy-MM-dd");
         [Display(Name = "Container Body")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? Date { get; set; }
         public string? Container { get; set; }
         public int? PageId { get; set; }
         public Page? Page { get; set; }
