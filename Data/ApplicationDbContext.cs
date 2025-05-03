@@ -76,6 +76,13 @@ namespace GoshehArtWebApp.Data
                    new { CategoriesId = 8, AssetsId = 3 }
            ));
 
+            modelbuilder.Entity<Asset>()
+                .Property(e => e.Date)
+                .HasColumnType("date");
+            modelbuilder.Entity<Content>()
+                .Property(e => e.Date)
+                .HasColumnType("date");
+
             string adminRoleId = Guid.NewGuid().ToString();
             string userRoleId = Guid.NewGuid().ToString();
             string userId = Guid.NewGuid().ToString();

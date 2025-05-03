@@ -1,5 +1,6 @@
 ﻿using GoshehArtWebApp.Models;
 using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace GoshehArtWebApp.ViewModels
 {
@@ -9,10 +10,10 @@ namespace GoshehArtWebApp.ViewModels
         [Required(ErrorMessage = "Content Title is required")]
         [Display(Name = "Content Title:")]
         public string? Title { get; set; }
+        [JsonIgnore]
+        public DateOnly? Date { get; set; }
+        public string? DateString => Date?.ToString("yyyy-MM-dd");
         [Display(Name = "Content Header Image")]
-        [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
-        public DateTime? Date { get; set; }
         public string? Container { get; set; }
         [Required(ErrorMessage = "Parent Page is required")]
         [Display(Name = "Parent Page")]

@@ -11,9 +11,9 @@
         <thead>
             <tr class="table-dark">
                 <th>Content Title</th>
-                <th>Content Date</th>
                 <th>Content Body</th>
                 <th>Page Parent</th>
+                <th>Content Date</th>
                 <th></th>
                 <th></th>
                 <th></th>
@@ -24,7 +24,6 @@
             {
                 <tr class="table-secondary">
                     <td>@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
                     <td>@Html.Raw(item.Container)</td>
                     <td>
                         @if (item?.Page != null && !string.IsNullOrEmpty(item.Page.Title))
@@ -36,6 +35,7 @@
                             @:
                         }
                     </td>
+                    <td>@Html.DisplayFor(modelItem => item.Date)</td>
                     <td><a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
                     <td><a asp-action="Details" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
                     <td><a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>

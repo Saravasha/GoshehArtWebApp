@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250502224212_Date_Model_Change_3")]
+    partial class Date_Model_Change_3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -68,8 +71,8 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
 
-                    b.Property<DateOnly?>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -187,8 +190,8 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Container")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<DateOnly?>("Date")
-                        .HasColumnType("date");
+                    b.Property<DateTime?>("Date")
+                        .HasColumnType("datetime2");
 
                     b.Property<int?>("PageId")
                         .HasColumnType("int");
@@ -329,13 +332,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "82d812e7-a0a8-43fb-a116-78153389855b",
+                            Id = "4fe54ceb-e7d0-4328-944b-41c7cb843043",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0b6f8432-ec54-4add-9961-b843162c7a60",
+                            Id = "b07b5f93-9584-4e5a-bd93-cf1e0dbc9b13",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -433,17 +436,17 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f950f518-431e-43cb-9880-9169f3c06db7",
+                            Id = "a972b784-11b1-4876-8382-9fd765d45780",
                             AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d8c67e0-744f-41d9-acc6-edbc1dde828d",
+                            ConcurrencyStamp = "d7338e6d-9769-45f4-ba05-575587516c0c",
                             Email = "admin@admin.com",
                             EmailConfirmed = false,
                             LockoutEnabled = false,
                             NormalizedEmail = "ADMIN@ADMIN.COM",
                             NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJZK8sGEPjjdS/Gx06fBxPmHNYT7axDg33SutygaBzPH0ECXYUI7VGs3XeGlJu8wqg==",
+                            PasswordHash = "AQAAAAIAAYagAAAAEIjqzTfXHDehkL0IN3zJnm6zmz/qgljdQ4y3SycQ6/Paoe3vpL0jUC1CsewBIywN+g==",
                             PhoneNumberConfirmed = false,
-                            SecurityStamp = "23a6660a-3242-4fab-88f5-71151c1a8340",
+                            SecurityStamp = "3316fc82-4564-41ba-85fa-855e2f754995",
                             TwoFactorEnabled = false,
                             UserName = "Admin"
                         });
@@ -515,8 +518,8 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            UserId = "f950f518-431e-43cb-9880-9169f3c06db7",
-                            RoleId = "82d812e7-a0a8-43fb-a116-78153389855b"
+                            UserId = "a972b784-11b1-4876-8382-9fd765d45780",
+                            RoleId = "4fe54ceb-e7d0-4328-944b-41c7cb843043"
                         });
                 });
 
