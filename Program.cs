@@ -4,6 +4,10 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
 
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -14,7 +18,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 } else
 {
-    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found.");
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
@@ -28,35 +32,17 @@ builder.Services.AddControllersWithViews().AddJsonOptions(x =>
 builder.Services.AddDirectoryBrowser();
 
 
-if (builder.Environment.IsProduction())
-{
-    builder.Services.AddCors(options =>
-        options.AddPolicy("corsPolicy",
-            policy =>
-            {
-                policy
-                .WithOrigins("https://goshehart.se", "https://www.goshehart.se")
-                .AllowAnyMethod()
-                .AllowAnyHeader();
-            }
-        )
-    );
+var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();
 
-} else
-{
-    builder.Services.AddCors(options =>
-       options.AddPolicy("corsPolicy",
-           policy =>
-           {
-               policy
-               .WithOrigins("http://localhost:5173")
-               .AllowAnyMethod()
-               .AllowAnyHeader();
-
-           }
-       )
-   );
-}
+builder.Services.AddCors(options =>
+    options.AddPolicy("corsPolicy",
+        policy =>
+    {
+    policy.WithOrigins(allowedOrigins)
+          .AllowAnyMethod()
+          .AllowAnyHeader();
+    })
+);
 
 builder.Services.Configure<IdentityOptions>(options =>
 {
@@ -81,6 +67,8 @@ builder.Services.ConfigureApplicationCookie(options =>
 
 
 
+
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -91,7 +79,7 @@ if (app.Environment.IsDevelopment())
 }
 else
 {
-    //app.UseExceptionHandler("/Home/Error");www
+    app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for wproduction wscenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
     app.UseHttpsRedirection(); 
@@ -99,7 +87,7 @@ else
 
 app.UseStaticFiles();
 
-// Fileprovider för Uploads utanför webrooten
+// Fileprovider fï¿½r Uploads utanfï¿½r webrooten
 void UploadDirectoryAsserter()
 {
     // Gets App root path's parent directory and does a combine with Uploads, checks if directory Uploads exists under parent directory, if not then it creates it => Adds a new PhysicalFileProvider for Upload Path...
@@ -119,7 +107,7 @@ void UploadDirectoryAsserter()
 
 UploadDirectoryAsserter();
 
-// Fileprovider för Assets rekursivt
+// Fileprovider fï¿½r Assets rekursivt
 var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets");
 AddStaticFilesRecursively(baseDirectory, app);
 
@@ -133,10 +121,18 @@ void AddStaticFilesRecursively(string directory, WebApplication app)
         RequestPath = "/" + Path.GetFileName(directory) 
     });
 
-    var subdirectories = Directory.GetDirectories(directory);
-    foreach (var subdirectory in subdirectories)
+    try
     {
-        AddStaticFilesRecursively(subdirectory, app);
+        var subdirectories = Directory.GetDirectories(directory);
+        foreach (var subdirectory in subdirectories)
+        {
+            AddStaticFilesRecursively(subdirectory, app);
+        }
+    }
+    catch (Exception ex)
+    {
+        // Log error in case of issues
+        Console.WriteLine($"Error reading directory {directory}: {ex.Message}");
     }
 }
 
@@ -152,5 +148,21 @@ app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
 app.MapRazorPages();
+
+using (var scope = app.Services.CreateScope())
+{
+    var services = scope.ServiceProvider;
+    var config = services.GetRequiredService<IConfiguration>();
+    try
+    {
+        await SeedData.InitializeAsync(services, config);
+    }
+    catch (Exception ex)
+    {
+        // Log error if seed data initialization fails
+        Console.WriteLine($"Error initializing seed data: {ex.Message}");
+    }
+}
+
 
 app.Run();

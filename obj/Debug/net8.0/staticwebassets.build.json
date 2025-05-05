@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "f+j6/C+DyAaG7FIdSjJA9b1hzp3GMtjD1v+1yAZjlWY=",
+  "Hash": "poftFE7DNEIgFbN7wMSCLtw5vL5UacCninIjNoZPPjA=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -1291,8 +1291,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "5kwku0y16j",
-      "Integrity": "1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=",
+      "Fingerprint": "9btpgr7cuc",
+      "Integrity": "pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css"
@@ -1312,8 +1312,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "5kwku0y16j",
-      "Integrity": "1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=",
+      "Fingerprint": "9btpgr7cuc",
+      "Integrity": "pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css"
@@ -34778,7 +34778,7 @@
       ]
     },
     {
-      "Route": "GoshehArtWebApp.5kwku0y16j.bundle.scp.css",
+      "Route": "GoshehArtWebApp.9btpgr7cuc.bundle.scp.css",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -34788,7 +34788,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1123"
+          "Value": "1004"
         },
         {
           "Name": "Content-Type",
@@ -34796,11 +34796,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
+          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:32:28 GMT"
+          "Value": "Mon, 05 May 2025 21:46:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34810,7 +34810,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5kwku0y16j"
+          "Value": "9btpgr7cuc"
         },
         {
           "Name": "label",
@@ -34818,12 +34818,12 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
+          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
         }
       ]
     },
     {
-      "Route": "GoshehArtWebApp.5kwku0y16j.styles.css",
+      "Route": "GoshehArtWebApp.9btpgr7cuc.styles.css",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -34833,7 +34833,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1123"
+          "Value": "1004"
         },
         {
           "Name": "Content-Type",
@@ -34841,11 +34841,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
+          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:32:28 GMT"
+          "Value": "Mon, 05 May 2025 21:46:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34855,7 +34855,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "5kwku0y16j"
+          "Value": "9btpgr7cuc"
         },
         {
           "Name": "label",
@@ -34863,7 +34863,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
+          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
         }
       ]
     },
@@ -34878,7 +34878,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1123"
+          "Value": "1004"
         },
         {
           "Name": "Content-Type",
@@ -34886,11 +34886,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
+          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:32:28 GMT"
+          "Value": "Mon, 05 May 2025 21:46:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34900,7 +34900,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
+          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
         }
       ]
     },
@@ -34915,7 +34915,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1123"
+          "Value": "1004"
         },
         {
           "Name": "Content-Type",
@@ -34923,11 +34923,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\""
+          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Fri, 02 May 2025 14:32:28 GMT"
+          "Value": "Mon, 05 May 2025 21:46:24 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -34937,7 +34937,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="
+          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
         }
       ]
     },

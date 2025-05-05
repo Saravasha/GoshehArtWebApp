@@ -8,11 +8,15 @@
 <section class="container table">
     <h1>@ViewBag.Title</h1>
 
-    <div>
+    <div class="list-group">
         <a asp-action="Create">Add new Asset</a>
-        <br />
+        
+        @if (User.IsInRole("Admin"))
+        {
+
         <a asp-controller="Catalog" asp-action="Index">Sync Catalogs</a>
-        <br />
+        }
+        
         <a asp-action="MultipleAssets">Add Multiple Assets</a>
     </div>
     <table class="table table-dark table-primary table-responsive table-striped">
