@@ -101,42 +101,6 @@ namespace GoshehArtWebApp.Data
 
             });
 
-            // Changing Password injector based on environment variable instead of storing it in source control.
-            var secret = "";
-            if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" || Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-            {
-                secret = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
-            } else
-            {
-                IConfigurationRoot conf = new ConfigurationBuilder().AddUserSecrets<Password>().Build();
-                secret = conf["Passwords:Admin"];
-            }
-
-            // Ensure secret is not null or empty
-            if (string.IsNullOrEmpty(secret))
-            {
-                throw new InvalidOperationException("Password cannot be null or empty.");
-            }
-
-            PasswordHasher<IdentityUser> passwordHasher = new PasswordHasher<IdentityUser>();
-
-
-            modelbuilder.Entity<IdentityUser>().HasData(new IdentityUser
-            {
-                Id = userId,
-                Email = "admin@admin.com",
-                NormalizedEmail = "ADMIN@ADMIN.COM",
-                UserName = "Admin",
-                NormalizedUserName = "ADMIN@ADMIN.COM",
-                PasswordHash = passwordHasher.HashPassword(null, secret)
-            });
-
-            modelbuilder.Entity<IdentityUserRole<string>>().HasData(new IdentityUserRole<string>
-            {
-                RoleId = adminRoleId,
-                UserId = userId,
-            });
-
         }
     }
 }

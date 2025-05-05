@@ -329,13 +329,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "82d812e7-a0a8-43fb-a116-78153389855b",
+                            Id = "977eccef-af21-4e40-86dc-ba66f098af4d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "0b6f8432-ec54-4add-9961-b843162c7a60",
+                            Id = "848be8bb-8785-44ab-8788-0d3139d43691",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -429,24 +429,6 @@ namespace GoshehArtWebApp.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            Id = "f950f518-431e-43cb-9880-9169f3c06db7",
-                            AccessFailedCount = 0,
-                            ConcurrencyStamp = "8d8c67e0-744f-41d9-acc6-edbc1dde828d",
-                            Email = "admin@admin.com",
-                            EmailConfirmed = false,
-                            LockoutEnabled = false,
-                            NormalizedEmail = "ADMIN@ADMIN.COM",
-                            NormalizedUserName = "ADMIN@ADMIN.COM",
-                            PasswordHash = "AQAAAAIAAYagAAAAEJZK8sGEPjjdS/Gx06fBxPmHNYT7axDg33SutygaBzPH0ECXYUI7VGs3XeGlJu8wqg==",
-                            PhoneNumberConfirmed = false,
-                            SecurityStamp = "23a6660a-3242-4fab-88f5-71151c1a8340",
-                            TwoFactorEnabled = false,
-                            UserName = "Admin"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserClaim<string>", b =>
@@ -511,13 +493,6 @@ namespace GoshehArtWebApp.Migrations
                     b.HasIndex("RoleId");
 
                     b.ToTable("AspNetUserRoles", (string)null);
-
-                    b.HasData(
-                        new
-                        {
-                            UserId = "f950f518-431e-43cb-9880-9169f3c06db7",
-                            RoleId = "82d812e7-a0a8-43fb-a116-78153389855b"
-                        });
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserToken<string>", b =>

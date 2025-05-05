@@ -11,9 +11,11 @@ using System.Runtime.InteropServices;
 using System.Linq.Expressions;
 using System.Text.RegularExpressions;
 using Microsoft.AspNetCore.Routing.Constraints;
+using Microsoft.AspNetCore.Authorization;
 
 namespace GoshehArtWebApp.Controllers
 {
+	[Authorize(Roles = "Admin")]
 	public class CatalogController : Controller
 	{
 

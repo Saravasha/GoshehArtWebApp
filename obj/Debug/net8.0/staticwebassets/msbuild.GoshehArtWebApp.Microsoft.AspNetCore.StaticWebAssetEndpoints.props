@@ -3756,17 +3756,17 @@
       <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-pAGv4ietcJNk/EwsQZ5BN9\u002BK4MuNYS2a9wl4Jw\u002Bq9D0="}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"362"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pAGv4ietcJNk/EwsQZ5BN9\u002BK4MuNYS2a9wl4Jw\u002Bq9D0=\u0022"},{"Name":"Last-Modified","Value":"Sun, 03 Mar 2024 02:25:04 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
-    <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/GoshehArtWebApp.5kwku0y16j.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.5kwku0y16j.bundle.scp.css'))</AssetFile>
+    <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/GoshehArtWebApp.9btpgr7cuc.bundle.scp.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.9btpgr7cuc.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"5kwku0y16j"},{"Name":"integrity","Value":"sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="},{"Name":"label","Value":"_content/GoshehArtWebApp/GoshehArtWebApp.bundle.scp.css"}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1123"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00221R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 14:32:28 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"9btpgr7cuc"},{"Name":"integrity","Value":"sha256-pSwOqsT\u002BDmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="},{"Name":"label","Value":"_content/GoshehArtWebApp/GoshehArtWebApp.bundle.scp.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"1004"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pSwOqsT\u002BDmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 21:46:24 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/GoshehArtWebApp.bundle.scp.css">
-      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.5kwku0y16j.bundle.scp.css'))</AssetFile>
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.9btpgr7cuc.bundle.scp.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
-      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-1R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc="}]]]></EndpointProperties>
-      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1123"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00221R9AgHdcRR1whV1u5bymLqshqiibkBx32eP30ht9jcc=\u0022"},{"Name":"Last-Modified","Value":"Fri, 02 May 2025 14:32:28 GMT"}]]]></ResponseHeaders>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-pSwOqsT\u002BDmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"1004"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u0022pSwOqsT\u002BDmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\u0022"},{"Name":"Last-Modified","Value":"Mon, 05 May 2025 21:46:24 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/js/site.js">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\js\site.js'))</AssetFile>
