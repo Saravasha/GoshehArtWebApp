@@ -1,12 +1,10 @@
 using GoshehArtWebApp.Data;
+using GoshehArtWebApp.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
-
-using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
-using Microsoft.Extensions.DependencyInjection;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -66,7 +64,7 @@ builder.Services.ConfigureApplicationCookie(options =>
 });
 
 
-
+builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
 
 var app = builder.Build();
@@ -82,7 +80,22 @@ else
     app.UseExceptionHandler("/Home/Error");
     // The default HSTS value is 30 days. You may want to change this for wproduction wscenarios, see https://aka.ms/aspnetcore-hsts.
     app.UseHsts();
-    app.UseHttpsRedirection(); 
+    app.UseHttpsRedirection();
+
+}
+
+var smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
+
+if (app.Environment.IsProduction())
+{
+    if (string.IsNullOrWhiteSpace(smtpSettings.Host) ||
+        string.IsNullOrWhiteSpace(smtpSettings.Username) ||
+        string.IsNullOrWhiteSpace(smtpSettings.Password) ||
+        string.IsNullOrWhiteSpace(smtpSettings.From) ||
+        smtpSettings.Port == 0)
+    {
+        throw new InvalidOperationException("Missing required SMTP configuration values.");
+    }
 }
 
 app.UseStaticFiles();

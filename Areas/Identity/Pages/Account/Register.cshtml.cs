@@ -110,8 +110,19 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account
         {
             returnUrl ??= Url.Content("~/");
             ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+
             if (ModelState.IsValid)
             {
+                // Check if a user with the same email already exists
+                var existingUser = await _userManager.FindByEmailAsync(Input.Email);
+                if (existingUser != null)
+                {
+                    // Add a model error if the email is already taken
+                    ModelState.AddModelError(string.Empty, "Email is already registered.");
+                    return Page();
+                }
+
+                // If email is not taken, create the user
                 var user = CreateUser();
 
                 await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
@@ -144,11 +155,14 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account
                         return LocalRedirect(returnUrl);
                     }
                 }
+
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
-            }
+            
+        }
+
 
             // If we got this far, something failed, redisplay form
             return Page();

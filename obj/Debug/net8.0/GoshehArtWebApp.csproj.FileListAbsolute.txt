@@ -267,4 +267,6 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\System.Text.Encodings.Web.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\System.Text.Json.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\runtimes\browser\lib\net8.0\System.Text.Encodings.Web.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\SendGrid.dll
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\StarkbankEcdsa.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt

@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "poftFE7DNEIgFbN7wMSCLtw5vL5UacCninIjNoZPPjA=",
+  "Hash": "WwiphsNpSt66FzN+h5y8JKTTgy3bvTIL6M233aiak6s=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -7869,6 +7869,27 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\Assets\\Utställningar\\image (99).jpg"
+    },
+    {
+      "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\account.css",
+      "SourceId": "GoshehArtWebApp",
+      "SourceType": "Discovered",
+      "ContentRoot": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\",
+      "BasePath": "_content/GoshehArtWebApp",
+      "RelativePath": "css/account#[.{fingerprint}]?.css",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "Fingerprint": "oqlkksqpgi",
+      "Integrity": "8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK+tT8xs=",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\css\\account.css"
     },
     {
       "Identity": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
@@ -34692,6 +34713,88 @@
         {
           "Name": "integrity",
           "Value": "sha256-1pDGg1tBXlcVSHlUP9v/QvXkXFdMwTuiOwGaqHLlcRA="
+        }
+      ]
+    },
+    {
+      "Route": "css/account.css",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\account.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK+tT8xs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 02:06:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "no-cache"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "integrity",
+          "Value": "sha256-8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK+tT8xs="
+        }
+      ]
+    },
+    {
+      "Route": "css/account.oqlkksqpgi.css",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\account.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "502"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK+tT8xs=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Thu, 08 May 2025 02:06:48 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "oqlkksqpgi"
+        },
+        {
+          "Name": "label",
+          "Value": "css/account.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK+tT8xs="
         }
       ]
     },
