@@ -28,11 +28,11 @@ namespace GoshehArtWebApp.Services
             try
             {
                
-                string host = _isProduction ? Environment.GetEnvironmentVariable("SMTP_HOST") : _config["Smtp:Host"];
-                int port = int.Parse(_isProduction ? Environment.GetEnvironmentVariable("SMTP_PORT") : _config["Smtp:Port"]);
-                string username = _isProduction ? Environment.GetEnvironmentVariable("SMTP_USERNAME") : _config["Smtp:Username"];
-                string password = _isProduction ? Environment.GetEnvironmentVariable("SMTP_PASSWORD") : _config["Smtp:Password"];
-                string from = _isProduction ? Environment.GetEnvironmentVariable("SMTP_FROM") : _config["Smtp:From"];
+                string host = _isProduction ? Environment.GetEnvironmentVariable("Smtp__Host") : _config["Smtp:Host"];
+                int port = int.Parse(_isProduction ? Environment.GetEnvironmentVariable("Smtp__Port") : _config["Smtp:Port"]);
+                string username = _isProduction ? Environment.GetEnvironmentVariable("Smtp__Username") : _config["Smtp:Username"];
+                string password = _isProduction ? Environment.GetEnvironmentVariable("Smtp__Password") : _config["Smtp:Password"];
+                string from = _isProduction ? Environment.GetEnvironmentVariable("Smtp__From") : _config["Smtp:From"];
 
                 var smtpClient = new SmtpClient(host)
                 {
