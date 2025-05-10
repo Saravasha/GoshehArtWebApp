@@ -1,8 +1,11 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoshehArtWebApp.Controllers
 {
+
+    [Authorize(Roles = "Admin")]
     public class UserController : Controller
     {
         readonly UserManager<IdentityUser> _userManager;
