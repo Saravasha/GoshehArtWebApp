@@ -1,12 +1,14 @@
 using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
 namespace GoshehArtWebApp.Controllers
 {
-   
+
+    [Authorize]
     public class HomeController : Controller
     {
         private readonly ApplicationDbContext _context;

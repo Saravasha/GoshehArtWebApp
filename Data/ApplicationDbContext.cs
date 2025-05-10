@@ -1,5 +1,4 @@
 ﻿using GoshehArtWebApp.Models;
-using GoshehArtWebApp.Secrets;
 using Microsoft.AspNetCore.Components.Web;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;

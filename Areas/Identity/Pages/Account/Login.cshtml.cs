@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
@@ -104,49 +104,56 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account
             ReturnUrl = returnUrl;
         }
 
-        public async Task<IActionResult> OnPostAsync(string? returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
 
             if (ModelState.IsValid)
             {
-                string userName = Input.UserNameOrEmail;
+                var userNameOrEmail = Input.UserNameOrEmail;
+                IdentityUser user = null;
 
-                // Check if input is an email
-                if (Input.UserNameOrEmail.Contains('@'))
+                // Try to find by email
+                if (userNameOrEmail.Contains("@"))
                 {
-                    var user = await _userManager.FindByEmailAsync(Input.UserNameOrEmail);
-                    if (user != null)
-                    {
-                        userName = user.UserName; // Use actual username for sign-in
-                    }
-                }
-
-                var result = await _signInManager.PasswordSignInAsync(userName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
-                if (result.Succeeded)
-                {
-                    _logger.LogInformation("User logged in.");
-                    return LocalRedirect(returnUrl);
-                }
-                if (result.RequiresTwoFactor)
-                {
-                    return RedirectToPage("./LoginWith2fa", new { ReturnUrl = returnUrl, RememberMe = Input.RememberMe });
-                }
-                if (result.IsLockedOut)
-                {
-                    _logger.LogWarning("User account locked out.");
-                    return RedirectToPage("./Lockout");
+                    user = await _userManager.FindByEmailAsync(userNameOrEmail);
                 }
                 else
                 {
+                    user = await _userManager.FindByNameAsync(userNameOrEmail);
+                }
+
+                if (user != null)
+                {
+                    var result = await _signInManager.PasswordSignInAsync(user.UserName, Input.Password, Input.RememberMe, lockoutOnFailure: false);
+
+                    if (result.Succeeded)
+                    {
+                        _logger.LogInformation("User logged in.");
+                        return LocalRedirect(returnUrl);
+                    }
+
+                    if (result.IsLockedOut)
+                    {
+                        _logger.LogWarning("User account locked out.");
+                        return RedirectToPage("./Lockout");
+                    }
+
                     ModelState.AddModelError(string.Empty, "Invalid login attempt.");
                     return Page();
                 }
+
+                else
+                {
+                    // ❗ This is what you're missing
+                    ModelState.AddModelError(string.Empty, "No account found with that username or email.");
+                    return Page();
+                }
+
             }
 
-            // If we got this far, something failed.
+            // If we got this far, something failed, redisplay form
             return Page();
         }
     }
 }
-    

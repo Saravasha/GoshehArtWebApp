@@ -1,0 +1,64 @@
+﻿using Microsoft.AspNetCore.Identity.UI.Services;
+using System.Net.Mail;
+using System.Net;
+
+namespace GoshehArtWebApp.Services
+{
+    public class SmtpEmailSender : IEmailSender
+    {
+        private readonly IConfiguration _config;
+        private readonly bool _isProduction;
+    
+
+       public SmtpEmailSender(IConfiguration config)
+        {
+            _config = config;
+            if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production")
+            {
+                _isProduction = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production";
+            }
+            else
+            {
+                _isProduction = Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production";
+            }
+        }
+
+        public async Task SendEmailAsync(string email, string subject, string htmlMessage)
+        {
+            try
+            {
+               
+                string host = _isProduction ? Environment.GetEnvironmentVariable("SMTP_HOST") : _config["Smtp:Host"];
+                int port = int.Parse(_isProduction ? Environment.GetEnvironmentVariable("SMTP_PORT") : _config["Smtp:Port"]);
+                string username = _isProduction ? Environment.GetEnvironmentVariable("SMTP_USERNAME") : _config["Smtp:Username"];
+                string password = _isProduction ? Environment.GetEnvironmentVariable("SMTP_PASSWORD") : _config["Smtp:Password"];
+                string from = _isProduction ? Environment.GetEnvironmentVariable("SMTP_FROM") : _config["Smtp:From"];
+
+                var smtpClient = new SmtpClient(host)
+                {
+                    Port = port,
+                    Credentials = new NetworkCredential(username, password),
+                    EnableSsl = true
+                };
+
+                var mailMessage = new MailMessage
+                {
+                    From = new MailAddress(from),
+                    Subject = subject,
+                    Body = htmlMessage,
+                    IsBodyHtml = true,
+                };
+
+                mailMessage.To.Add(email);
+                await smtpClient.SendMailAsync(mailMessage);
+                
+            
+            }
+            catch (Exception ex)
+            {
+
+                throw new InvalidOperationException("Failed to send email", ex);
+            }
+        }
+    }
+}

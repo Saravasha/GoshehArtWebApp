@@ -5,7 +5,7 @@
 }
 
 
-<section class="container table">
+<section class="container">
     <h1>@ViewBag.Title</h1>
 
     <div class="list-group">
@@ -19,18 +19,16 @@
         
         <a asp-action="MultipleAssets">Add Multiple Assets</a>
     </div>
-    <table class="table table-dark table-primary table-responsive table-striped">
+    <table class="table table-dark table-primary table-responsive table-striped mt-1">
         <thead>
             <tr class="table-dark">
                 <th>Assets</th>
-                <th>Name</th>
-                 <th>Description</th>
-                 <th>Author</th>
-                <th>Location</th>
-                <th>Date</th>
-                <th>Categories</th>
-                <th></th>
-                <th></th>
+                <th class="text-center align-middle">Name</th>
+                 <th class="text-center align-middle">Description</th>
+                 <th class="text-center align-middle">Author</th>
+                <th class="text-center align-middle">Location</th>
+                <th class="text-center align-middle">Date</th>
+                <th class="text-center align-middle">Categories</th>
                 <th></th>
             </tr>
         </thead>
@@ -39,23 +37,27 @@
             {
                 <tr class="table-secondary">
                     <td><img src="@Url.Content(asset.ImageUrl)" class="img-fluid" style="max-height:100px;" /></td>
-                    <td>@Html.DisplayFor(modelItem => asset.Name)</td>
-                    <td>@Html.DisplayFor(modelItem => asset.Description)</td>
-                    <td>@Html.DisplayFor(modelItem => asset.Author)</td>
-                    <td>@Html.DisplayFor(modelItem => asset.Location)</td>
-                    <td>@Html.DisplayFor(modelItem => asset.Date)</td>
+                    <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Name)</td>
+                    <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Description)</td>
+                    <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Author)</td>
+                    <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Location)</td>
+                    <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Date)</td>
                     @*@<td>@Html.DisplayFor(modelItem => asset.Categories)</td>*@
 
-                    <td>
+                    <td class="text-center align-middle">
                         @foreach (var assetCategory in asset.Categories)
                         {
                             @assetCategory.Name
                             <br />
                         }
                     </td>
-                    <td><a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-group-sm btn-outline-primary">Edit</a></td>
-                    <td><a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-group-sm btn-outline-primary">Details</a></td>
-                    <td><a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-group-sm btn-outline-danger">Delete</a></td>                        
+                    <td class="text-center align-middle">
+                        <div class="d-flex justify-content-center align-items-center flex-row gap-2 justify-content-end">
+                            <a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-primary align-items-center justify-content-center">Edit</a>
+                            <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                            <a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                        </div>
+                    </td>
                 </tr>
             }
         </tbody>

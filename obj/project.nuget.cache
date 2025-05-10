@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "6t6YLhpV9Pc=",
+  "dgSpecHash": "xNpsSALPsPA=",
   "success": true,
   "projectFilePath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\GoshehArtWebApp.csproj",
   "expectedPackageFiles": [
@@ -143,6 +143,8 @@
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\nuget.projectmodel\\6.11.0\\nuget.projectmodel.6.11.0.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\nuget.protocol\\6.11.0\\nuget.protocol.6.11.0.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\nuget.versioning\\6.11.0\\nuget.versioning.6.11.0.nupkg.sha512",
+    "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\sendgrid\\9.29.3\\sendgrid.9.29.3.nupkg.sha512",
+    "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\starkbank-ecdsa\\1.3.3\\starkbank-ecdsa.1.3.3.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\summernote\\1.0.3\\summernote.1.0.3.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\system.clientmodel\\1.0.0\\system.clientmodel.1.0.0.nupkg.sha512",

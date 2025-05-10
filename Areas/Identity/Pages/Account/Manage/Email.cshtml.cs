@@ -113,8 +113,19 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account.Manage
             }
 
             var email = await _userManager.GetEmailAsync(user);
+
+            // Only proceed if the email is actually changing
             if (Input.NewEmail != email)
             {
+                // Check if email is already taken
+                var existingUser = await _userManager.FindByEmailAsync(Input.NewEmail);
+                if (existingUser != null && existingUser.Id != user.Id)
+                {
+                    ModelState.AddModelError(string.Empty, "The email is already taken by another account.");
+                    await LoadAsync(user);
+                    return Page();
+                }
+
                 var userId = await _userManager.GetUserIdAsync(user);
                 var code = await _userManager.GenerateChangeEmailTokenAsync(user, Input.NewEmail);
                 code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
@@ -135,6 +146,7 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account.Manage
             StatusMessage = "Your email is unchanged.";
             return RedirectToPage();
         }
+
 
         public async Task<IActionResult> OnPostSendVerificationEmailAsync()
         {

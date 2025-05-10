@@ -310,6 +310,7 @@ wwwroot\Assets\Utställningar\image (96).jpg
 wwwroot\Assets\Utställningar\image (97).jpg
 wwwroot\Assets\Utställningar\image (98).jpg
 wwwroot\Assets\Utställningar\image (99).jpg
+wwwroot\css\account.css
 wwwroot\css\site.css
 wwwroot\js\site.js
 wwwroot\lib\bootstrap\dist\css\bootstrap.css

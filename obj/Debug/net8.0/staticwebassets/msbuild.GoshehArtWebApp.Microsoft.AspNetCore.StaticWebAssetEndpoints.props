@@ -3744,6 +3744,18 @@
       <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"yxljb4up03"},{"Name":"integrity","Value":"sha256-1pDGg1tBXlcVSHlUP9v/QvXkXFdMwTuiOwGaqHLlcRA="},{"Name":"label","Value":"_content/GoshehArtWebApp/Assets/Utst\u00E4llningar/image (99).jpg"}]]]></EndpointProperties>
       <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"302039"},{"Name":"Content-Type","Value":"image/jpeg"},{"Name":"ETag","Value":"\u00221pDGg1tBXlcVSHlUP9v/QvXkXFdMwTuiOwGaqHLlcRA=\u0022"},{"Name":"Last-Modified","Value":"Sun, 02 Mar 2025 22:03:46 GMT"}]]]></ResponseHeaders>
     </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/css/account.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\account.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"integrity","Value":"sha256-8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK\u002BtT8xs="}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"no-cache"},{"Name":"Content-Length","Value":"502"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK\u002BtT8xs=\u0022"},{"Name":"Last-Modified","Value":"Thu, 08 May 2025 02:06:48 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
+    <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/css/account.oqlkksqpgi.css">
+      <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\account.css'))</AssetFile>
+      <Selectors><![CDATA[[]]]></Selectors>
+      <EndpointProperties><![CDATA[[{"Name":"fingerprint","Value":"oqlkksqpgi"},{"Name":"integrity","Value":"sha256-8PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK\u002BtT8xs="},{"Name":"label","Value":"_content/GoshehArtWebApp/css/account.css"}]]]></EndpointProperties>
+      <ResponseHeaders><![CDATA[[{"Name":"Accept-Ranges","Value":"bytes"},{"Name":"Cache-Control","Value":"max-age=31536000, immutable"},{"Name":"Content-Length","Value":"502"},{"Name":"Content-Type","Value":"text/css"},{"Name":"ETag","Value":"\u00228PBy2y24pW7HTgIg19JqGM012/VKKTLkwwktK\u002BtT8xs=\u0022"},{"Name":"Last-Modified","Value":"Thu, 08 May 2025 02:06:48 GMT"}]]]></ResponseHeaders>
+    </StaticWebAssetEndpoint>
     <StaticWebAssetEndpoint Include="_content/GoshehArtWebApp/css/site.c2tiyv64ts.css">
       <AssetFile>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</AssetFile>
       <Selectors><![CDATA[[]]]></Selectors>
