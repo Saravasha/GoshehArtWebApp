@@ -1,4 +1,4 @@
-// Licensed to the .NET Foundation under one or more agreements.
+﻿// Licensed to the .NET Foundation under one or more agreements.
 // The .NET Foundation licenses this file to you under the MIT license.
 #nullable disable
 
@@ -138,9 +138,18 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account
                         _logger.LogWarning("User account locked out.");
                         return RedirectToPage("./Lockout");
                     }
+
+                    ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                    return Page();
                 }
 
-                ModelState.AddModelError(string.Empty, "Invalid login attempt.");
+                else
+                {
+                    // ❗ This is what you're missing
+                    ModelState.AddModelError(string.Empty, "No account found with that username or email.");
+                    return Page();
+                }
+
             }
 
             // If we got this far, something failed, redisplay form

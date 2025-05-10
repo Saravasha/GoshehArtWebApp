@@ -17,6 +17,7 @@ using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 
 namespace GoshehArtWebApp.Areas.Identity.Pages.Account
@@ -113,8 +114,15 @@ namespace GoshehArtWebApp.Areas.Identity.Pages.Account
 
             if (ModelState.IsValid)
             {
+
+                var normalizedEmail = _userManager.NormalizeEmail(Input.Email);
                 // Check if a user with the same email already exists
-                var existingUser = await _userManager.FindByEmailAsync(Input.Email);
+                var existingUser = await _userManager.Users
+                    .FirstOrDefaultAsync(u => u.NormalizedEmail == normalizedEmail);
+
+
+                //var existingUser = await _userManager.FindByEmailAsync(Input.Email);
+                
                 if (existingUser != null)
                 {
                     // Add a model error if the email is already taken

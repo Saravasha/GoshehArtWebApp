@@ -6,9 +6,13 @@
 }
 
 
-<div class="account-container"> 
+
+
+<div class="account-container">
+
     <div class="account-box container">
 
+   
                 <div class="row justify-content-center ">
                         <h1 class="text-center mb-4">GoshehArtWebApp</h1>
                 <div class="col-md-6">
@@ -16,6 +20,8 @@
                         <div class="card-body">
                             <h2 class="text-center mb-4">@ViewData["Title"]</h2>
                             <form id="account" method="post">
+
+                            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                                 <div class="form-group mb-3">
                                     <label asp-for="Input.UserNameOrEmail" class="form-label"></label>
                                     <input asp-for="Input.UserNameOrEmail" class="form-control" />
