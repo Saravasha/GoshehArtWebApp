@@ -17,6 +17,9 @@
                     @if (User.IsInRole("Admin"))
                     {
                         <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Register">Register User</a></li>
+                        <li>
+                            <a class="dropdown-item text-dark" asp-controller="User" asp-action="Index">User List</a>
+                        </li>
                     }
                     <li>
                         <a href="#" class="dropdown-item text-dark" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>

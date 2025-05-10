@@ -1,0 +1,31 @@
+﻿@model IEnumerable<IdentityUser>
+@{
+    ViewData["Title"] = "Users";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+
+<section class="container">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>UserName</th>
+                <th>NormalizedUserName</th>
+                <th>Email</th>
+                <th>NormalizedEmail</th>
+            </tr>
+        </thead>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.Id</td>
+                <td>@user.UserName</td>
+                <td>@user.NormalizedUserName</td>
+                <td>@user.Email</td>
+                <td>@user.NormalizedEmail</td>
+            </tr>
+        }
+    </table>
+
+</section>
