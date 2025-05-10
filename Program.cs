@@ -6,6 +6,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.FileProviders;
 using System.Text.Json.Serialization;
 
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
@@ -84,10 +85,14 @@ else
 
 }
 
-var smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
-
 if (app.Environment.IsProduction())
+
 {
+    var smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
+    if (smtpSettings == null)
+    {
+        Console.WriteLine("SMTP settings are null.");
+    }
     if (string.IsNullOrWhiteSpace(smtpSettings.Host) ||
         string.IsNullOrWhiteSpace(smtpSettings.Username) ||
         string.IsNullOrWhiteSpace(smtpSettings.Password) ||
