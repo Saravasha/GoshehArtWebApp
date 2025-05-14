@@ -55,12 +55,14 @@ builder.Services.Configure<IdentityOptions>(options =>
 
 builder.Services.ConfigureApplicationCookie(options =>
 {
+
+    Console.WriteLine("AccessDeniedPath: " + options.AccessDeniedPath); // Debug output
     // Cookie settings
+    options.LoginPath = "/Identity/Account/Login";
+    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
 
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
-    options.LoginPath = "/Identity/Account/Login";
-    options.AccessDeniedPath = "/Identity/Account/AccessDenied";
     options.SlidingExpiration = true;
 });
 
