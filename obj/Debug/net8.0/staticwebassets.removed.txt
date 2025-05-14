@@ -1,4 +1,0 @@
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\wwwroot\lib\jquery\dist\jquery.js
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\wwwroot\lib\jquery\dist\jquery.min.js
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\wwwroot\lib\jquery\dist\jquery.min.map
-C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\wwwroot\lib\jquery\LICENSE.txt
