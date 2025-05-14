@@ -8,20 +8,28 @@
 <section class="container-fluid">
     <h1>@ViewBag.Title</h1>
 
-    <div class="list-group">
-        <a asp-action="Create">Add new Asset</a>
+    <ul class="list-group gap-2">
+        <li class="list-group-item">
+
+        <a asp-action="Create" class="btn btn-outline-success">Add new Asset</a>
+        </li>
         
         @if (User.IsInRole("Admin"))
         {
+            <li class="list-group-item">
 
-        <a asp-controller="Catalog" asp-action="Index">Sync Catalogs</a>
+            <a asp-controller="Catalog" asp-action="Index" class="btn btn-outline-danger">Sync Catalogs</a>
+            </li>
         }
-        
-        <a asp-action="MultipleAssets">Add Multiple Assets</a>
-    </div>
-    <table class="table table-dark table-primary table-responsive table-bordered table-striped table-striped mt-1">
-        <thead>
-            <tr class="table-dark">
+        <li class="list-group-item">
+
+        <a asp-action="MultipleAssets" class="btn btn-outline-success">Add Multiple Assets</a>
+        </li>
+    </ul>
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
                 <th>Assets</th>
                 <th class="text-center align-middle">Name</th>
                  <th class="text-center align-middle">Description</th>
@@ -29,7 +37,7 @@
                 <th class="text-center align-middle">Location</th>
                 <th class="text-center align-middle">Date</th>
                 <th class="text-center align-middle">Categories</th>
-                <th></th>
+                <th class="text-center align-middle">Actions</th>
             </tr>
         </thead>
         <tbody class="table-primary">
@@ -62,4 +70,5 @@
             }
         </tbody>
     </table>
+    </div>
 </section>

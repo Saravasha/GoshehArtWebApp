@@ -26,7 +26,7 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td class="text-center">@Html.DisplayFor(modelItem => item.Title)</td>
                         <td class="text-center">@Html.Raw(item.Container)</td>
                         <td class="text-center">
                             @foreach (var content in item.Contents)
