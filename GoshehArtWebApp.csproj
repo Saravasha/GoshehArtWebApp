@@ -9,12 +9,56 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-grid.rtl.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-reboot.rtl.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap-utilities.rtl.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.rtl.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\css\bootstrap.rtl.min.css.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.bundle.js.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.bundle.min.js.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.esm.js" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.esm.js.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.esm.min.js" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.esm.min.js.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.js" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.js.map" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.min.js" />
+    <Content Remove="C:\Users\Siavash Gosheh\.nuget\packages\bootstrap\5.3.5\contentFiles\any\any\wwwroot\js\bootstrap.min.js.map" />
     <Content Remove="wwwroot\Assets\Akvarell Konst\image(17) .jpg" />
     <Content Remove="wwwroot\favicon.ico" />
-    <Content Remove="wwwroot\images\image-bg.jpg" />
   </ItemGroup>
 
   <ItemGroup>
+    <PackageReference Include="bootstrap" Version="5.3.5" />
     <PackageReference Include="HtmlSanitizer" Version="9.0.876" />
     <PackageReference Include="jQuery" Version="3.7.1" />
     <PackageReference Include="Microsoft.AspNetCore.Diagnostics.EntityFrameworkCore" Version="8.0.0" />
@@ -41,7 +85,6 @@
     <None Include="wwwroot\favicon.ico">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
-    <None Include="wwwroot\images\image-bg.jpg" />
     <Page Include="wwwroot\Assets\Akvarell Konst\image %2811%29.jpg" />
     <Page Include="wwwroot\Assets\Akvarell Konst\image %2813%29.jpg" />
     <None Include="wwwroot\Assets\Akvarell Konst\image %2816%29.jpg" />
