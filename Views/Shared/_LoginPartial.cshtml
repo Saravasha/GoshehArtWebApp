@@ -2,53 +2,48 @@
 @inject SignInManager<IdentityUser> SignInManager
 @inject UserManager<IdentityUser> UserManager
 
-<ul class="navbar-nav">
-    @if (SignInManager.IsSignedIn(User))
-    {
-        <li class="nav-item">
-            <div class="dropdown">
-                <p class="btn btn-secondary  dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
-                    Hello @User.Identity?.Name!
-                </p>
-                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
-                    <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Settings</a>
-                    </li>
+@if (SignInManager.IsSignedIn(User))
+{
+    <ul class="navbar-nav ms-auto">
+        <li class="nav-item dropdown">
+            <a class="btn btn-outline-secondary dropdown-toggle" href="#" id="userDropdown"
+               role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Hello @User.Identity?.Name!
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="userDropdown">
+                <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Manage/Index">Settings</a></li>
 
-                    @if (User.IsInRole("Admin"))
-                    {
-                        <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Register">Register User</a></li>
-                        <li>
-                            <a class="dropdown-item text-dark" asp-controller="User" asp-action="Index">User List</a>
-                        </li>
-                    }
-                    <li>
-                        <a href="#" class="dropdown-item text-dark" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a>
-                    </li>
-                </ul>
-            </div>
+                @if (User.IsInRole("Admin"))
+                {
+                    <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Register">Register User</a></li>
+                    <li><a class="dropdown-item text-dark" asp-controller="User" asp-action="Index">User List</a></li>
+                }
 
-            <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout"
-                  asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" class="d-none">
-            </form>
+                <li><a href="#" class="dropdown-item text-dark" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
+            </ul>
+        </li>
+    </ul>
 
-            <!-- Bootstrap Logout Confirmation Modal -->
-            <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
-                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                        </div>
-                        <div class="modal-body">
-                            Are you sure you want to log out?
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
-                            <button type="button" class="btn btn-danger" onclick="document.getElementById('logoutForm').submit();">Logout</button>
-                        </div>
-                    </div>
+    <form id="logoutForm" asp-area="Identity" asp-page="/Account/Logout"
+          asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })" method="post" class="d-none">
+    </form>
+
+    <!-- Bootstrap Logout Confirmation Modal -->
+    <div class="modal fade" id="logoutModal" tabindex="-1" aria-labelledby="logoutModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="logoutModalLabel">Confirm Logout</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to log out?
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+                    <button type="button" class="btn btn-danger" onclick="document.getElementById('logoutForm').submit();">Logout</button>
                 </div>
             </div>
-        </li>
-    }
-</ul>
+        </div>
+    </div>
+}
