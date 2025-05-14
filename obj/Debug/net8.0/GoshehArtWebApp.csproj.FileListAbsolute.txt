@@ -270,3 +270,4 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\SendGrid.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\StarkbankEcdsa.dll
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\libman.json
