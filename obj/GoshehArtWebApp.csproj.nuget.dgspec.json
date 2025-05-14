@@ -102,6 +102,10 @@
               "target": "Package",
               "version": "[9.29.3, )"
             },
+            "bootstrap": {
+              "target": "Package",
+              "version": "[5.3.5, )"
+            },
             "jQuery": {
               "target": "Package",
               "version": "[3.7.1, )"
