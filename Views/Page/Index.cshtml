@@ -4,41 +4,48 @@
     ViewData["Title"] = "Pages Control Panel";
 }
 
-<section class="container">
-    <h1>@ViewBag.Title</h1>
-    <p><a asp-controller="Page" asp-action="Create">Add new Page</a></p>
-    <table class="table table-secondary table-striped table-responsive">
-        <thead>
-            <tr class="table-dark">
-                <th class="align-middle">Page Title</th>
-                <th class="text-center align-middle">Container</th>
-                <th class="text-center align-middle">Page Content Children</th>
-                <th></th>
-            </tr>
-        </thead>
-        <tbody class="table-primary">
-            @foreach (var item in Model)
-            {
-                <tr class="table-secondary">
-                    <td class="align-middle">@Html.DisplayFor(modelItem => item.Title)</td>
-                    <td class="text-center align-middle">@Html.Raw(item.Container)</td>
-                    <td class="text-center align-middle">
-                        @foreach (var content in item.Contents)
-                        {
-                            @content.Title
-                            <br />
-                        }
-                    </td>
-                    <td class="text-center align-middle">
-                        <div class="d-flex align-items-center flex-row gap-2 justify-content-end">
-                            <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Edit</a>
-                            <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Details</a>
-                            <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-danger">Delete</a>
-                        </div>
-                    </td>
+<section class="container-fluid my-4">
+    <h1 class="mb-3">@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-controller="Page" asp-action="Create" class="btn btn-outline-success">Add New Page</a>
+    </p>
+
+    <!-- Responsive table wrapper -->
+    <div class="table-responsive">
+        <table class="table table-bordered table-striped align-middle">
+            <thead class="table-dark">
+                <tr>
+                    <th>Page Title</th>
+                    <th class="text-center">Container</th>
+                    <th class="text-center">Page Content Children</th>
+                    <th class="text-end">Actions</th>
                 </tr>
-            }
-        </tbody>
-    </table>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td class="text-center">@Html.Raw(item.Container)</td>
+                        <td class="text-center">
+                            @foreach (var content in item.Contents)
+                            {
+                                @content.Title
+
+                                <br />
+                            }
+                        </td>
+                        <td>
+                            <div class="d-flex justify-content-end gap-2 flex-wrap">
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>
+                            </div>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    </div>
 </section>
-    
