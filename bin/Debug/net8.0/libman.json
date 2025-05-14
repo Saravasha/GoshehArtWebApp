@@ -16,7 +16,10 @@
     },
     {
       "library": "bootstrap@5.3.3",
-      "destination": "wwwroot/lib/bootstrap/"
+      "destination": "wwwroot/lib/bootstrap/",
+      "files": [
+        "js/bootstrap.min.js"
+      ]
     }
   ]
 }
