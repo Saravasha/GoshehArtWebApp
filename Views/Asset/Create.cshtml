@@ -6,7 +6,7 @@
 
 
 
-<section class="container">
+<section class="container-fluid">
 <h1>@ViewBag.Title</h1>
     <h4>Add a new Asset</h4>
 
@@ -41,14 +41,14 @@
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group ">
+                <div class="form-group flex-column ">
                     <label asp-for="ImageUp" class="control-label"></label>
                     <div class="custom-file border p-3">
+                    <img id="FrontImagePrv" src="" alt="Asset" width="150" height="150" style="border: 1px; margin-left:0px;" class="pb-2" />
                         <input asp-for="ImageUp" class="custom-file-input" id="FLFrontImage"
                                onchange="document.getElementById('FrontImagePrv').src = window.URL.createObjectURL(this.files[0])" />
                         @*<label class="custom-file-label" for="FLFrontImage">Choose file</label>*@
                     <span asp-validation-for="ImageUp" class="text-danger"></span>
-                    <img id="FrontImagePrv" src="" alt="Asset" width="150" height="150" style="border: 1px; margin-left:120px;" />
                     </div>
                 </div>
                 <div class="form-group">

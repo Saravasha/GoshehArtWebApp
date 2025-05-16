@@ -24,7 +24,7 @@ public class CreateAssetViewModel
     [JsonIgnore]
     public DateOnly? Date { get; set; }
     public string? DateString => Date?.ToString("yyyy-MM-dd");
-    [Display(Name = "Asset Image")]
+    [Display(Name = "Asset Url")]
     public string? ImageUrl { get; set; }
 
     [Display(Name = "Asset Image")]
