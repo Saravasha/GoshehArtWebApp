@@ -8,32 +8,22 @@
 <section class="container-fluid">
     <h1>@ViewBag.Title</h1>
 
-    <ul class="list-group gap-2">
-        <li class="list-group-item">
-
+    <div class="btn-group gap-2 pb-2">
         <a asp-action="Create" class="btn btn-outline-success">Add new Asset</a>
-        </li>
-        
         @if (User.IsInRole("Admin"))
         {
-            <li class="list-group-item">
-
             <a asp-controller="Catalog" asp-action="Index" class="btn btn-outline-danger">Sync Catalogs</a>
-            </li>
         }
-        <li class="list-group-item">
-
         <a asp-action="MultipleAssets" class="btn btn-outline-success">Add Multiple Assets</a>
-        </li>
-    </ul>
+    </div>
     <div class="table-responsive">
         <table class="table table-bordered table-striped align-middle">
             <thead class="table-dark">
                 <tr>
                 <th>Assets</th>
                 <th class="text-center align-middle">Name</th>
-                 <th class="text-center align-middle">Description</th>
-                 <th class="text-center align-middle">Author</th>
+                <th class="text-center align-middle">Description</th>
+                <th class="text-center align-middle">Author</th>
                 <th class="text-center align-middle">Location</th>
                 <th class="text-center align-middle">Date</th>
                 <th class="text-center align-middle">Categories</th>
