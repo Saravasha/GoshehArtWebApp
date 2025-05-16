@@ -1,8 +1,10 @@
 ﻿using GoshehArtWebApp.Data;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace GoshehArtWebApp.Controllers
 {
+    [Authorize]
     public class ContactController : Controller
     {
         private readonly ApplicationDbContext _context;

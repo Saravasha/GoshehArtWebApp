@@ -7,6 +7,7 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GoshehArtWebApp.Controllers
 {
+
     [Route("api/[controller]")]
     [ApiController]
     public class ReactController : ControllerBase
