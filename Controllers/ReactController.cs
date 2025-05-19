@@ -25,7 +25,15 @@ namespace GoshehArtWebApp.Controllers
             assets = _context.Assets.Include(c => c.Categories).ToList();
             return assets;
         }
-         
+
+        [HttpGet("category")]
+        public List<Category> GetCategories()
+        {
+            List<Category> categories = new List<Category>();
+            categories = _context.Categories.Include(c => c.Assets).ToList();
+            return categories;
+        }
+
         [HttpGet("page")]
         public List<Page> GetPages()
         {

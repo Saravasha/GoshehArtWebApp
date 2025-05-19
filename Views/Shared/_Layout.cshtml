@@ -24,7 +24,8 @@
 
     @RenderSection("Styles", required: false)
 </head>
-<body class="d-flex flex-column min-vh-100">
+<body class="d-flex flex-column">
+    <div class="wrapper">
     <header>
         @if (User.Identity.IsAuthenticated)
         {
@@ -67,17 +68,17 @@
         }
     </header>
 
-    <main role="main" class="">
+    <main role="main" class="container-fluid">
         @RenderBody()
     </main>
 
     @if (User.Identity.IsAuthenticated)
     {
-        <footer class="container border-top footer text-muted text-center py-3">            
+        <footer class="container border-top footer text-muted text-center py-3 ">            
             &copy; GoshehArtWebApp - @(DateTime.Now.Year) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </footer>
     }
-
+    </div>
     <environment include="Development">
         <script src="~/lib/jquery/jquery.js"></script>
         <script src="~/lib/bootstrap/js/bootstrap.bundle.js"></script>

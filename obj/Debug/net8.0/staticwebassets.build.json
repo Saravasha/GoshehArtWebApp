@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "3IYmO43nJyzQSGpL7EtPMCrctWmsrciKmS/7t0xWcl4=",
+  "Hash": "ftmFpOmuuJ05IDGvWIWOEDN1N9n8l/WGg+mAPtN1D6I=",
   "Source": "GoshehArtWebApp",
   "BasePath": "_content/GoshehArtWebApp",
   "Mode": "Default",
@@ -1291,8 +1291,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ApplicationBundle",
-      "Fingerprint": "9btpgr7cuc",
-      "Integrity": "pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=",
+      "Fingerprint": "gbg57mkzvz",
+      "Integrity": "3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css"
@@ -1312,8 +1312,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "ScopedCss",
       "AssetTraitValue": "ProjectBundle",
-      "Fingerprint": "9btpgr7cuc",
-      "Integrity": "pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=",
+      "Fingerprint": "gbg57mkzvz",
+      "Integrity": "3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css"
@@ -7906,8 +7906,8 @@
       "RelatedAsset": "",
       "AssetTraitName": "",
       "AssetTraitValue": "",
-      "Fingerprint": "fosamezn9b",
-      "Integrity": "r22M7xOahcMheWCkoVof2Nt7pQmj7mMSFKTei+SfmQ0=",
+      "Fingerprint": "tx4zughqlb",
+      "Integrity": "P04YS9rRXQ3VGm1AiMmUcsu8RsPVTB8fzQgOX4KPriw=",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\css\\site.css"
@@ -37644,7 +37644,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "341"
+          "Value": "310"
         },
         {
           "Name": "Content-Type",
@@ -37652,11 +37652,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"r22M7xOahcMheWCkoVof2Nt7pQmj7mMSFKTei+SfmQ0=\""
+          "Value": "\"P04YS9rRXQ3VGm1AiMmUcsu8RsPVTB8fzQgOX4KPriw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 21:07:20 GMT"
+          "Value": "Sun, 18 May 2025 22:08:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37666,12 +37666,12 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-r22M7xOahcMheWCkoVof2Nt7pQmj7mMSFKTei+SfmQ0="
+          "Value": "sha256-P04YS9rRXQ3VGm1AiMmUcsu8RsPVTB8fzQgOX4KPriw="
         }
       ]
     },
     {
-      "Route": "css/site.fosamezn9b.css",
+      "Route": "css/site.tx4zughqlb.css",
       "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
       "Selectors": [],
       "ResponseHeaders": [
@@ -37681,7 +37681,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "341"
+          "Value": "310"
         },
         {
           "Name": "Content-Type",
@@ -37689,11 +37689,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"r22M7xOahcMheWCkoVof2Nt7pQmj7mMSFKTei+SfmQ0=\""
+          "Value": "\"P04YS9rRXQ3VGm1AiMmUcsu8RsPVTB8fzQgOX4KPriw=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 21:07:20 GMT"
+          "Value": "Sun, 18 May 2025 22:08:57 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37703,7 +37703,7 @@
       "EndpointProperties": [
         {
           "Name": "fingerprint",
-          "Value": "fosamezn9b"
+          "Value": "tx4zughqlb"
         },
         {
           "Name": "label",
@@ -37711,97 +37711,7 @@
         },
         {
           "Name": "integrity",
-          "Value": "sha256-r22M7xOahcMheWCkoVof2Nt7pQmj7mMSFKTei+SfmQ0="
-        }
-      ]
-    },
-    {
-      "Route": "GoshehArtWebApp.9btpgr7cuc.bundle.scp.css",
-      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1004"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 20:54:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "9btpgr7cuc"
-        },
-        {
-          "Name": "label",
-          "Value": "GoshehArtWebApp.bundle.scp.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
-        }
-      ]
-    },
-    {
-      "Route": "GoshehArtWebApp.9btpgr7cuc.styles.css",
-      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css",
-      "Selectors": [],
-      "ResponseHeaders": [
-        {
-          "Name": "Accept-Ranges",
-          "Value": "bytes"
-        },
-        {
-          "Name": "Content-Length",
-          "Value": "1004"
-        },
-        {
-          "Name": "Content-Type",
-          "Value": "text/css"
-        },
-        {
-          "Name": "ETag",
-          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
-        },
-        {
-          "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 20:54:29 GMT"
-        },
-        {
-          "Name": "Cache-Control",
-          "Value": "max-age=31536000, immutable"
-        }
-      ],
-      "EndpointProperties": [
-        {
-          "Name": "fingerprint",
-          "Value": "9btpgr7cuc"
-        },
-        {
-          "Name": "label",
-          "Value": "GoshehArtWebApp.styles.css"
-        },
-        {
-          "Name": "integrity",
-          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
+          "Value": "sha256-P04YS9rRXQ3VGm1AiMmUcsu8RsPVTB8fzQgOX4KPriw="
         }
       ]
     },
@@ -37816,7 +37726,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1004"
+          "Value": "1310"
         },
         {
           "Name": "Content-Type",
@@ -37824,11 +37734,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
+          "Value": "\"3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 20:54:29 GMT"
+          "Value": "Sun, 18 May 2025 23:52:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37838,7 +37748,97 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
+          "Value": "sha256-3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM="
+        }
+      ]
+    },
+    {
+      "Route": "GoshehArtWebApp.gbg57mkzvz.bundle.scp.css",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\GoshehArtWebApp.bundle.scp.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 23:52:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gbg57mkzvz"
+        },
+        {
+          "Name": "label",
+          "Value": "GoshehArtWebApp.bundle.scp.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM="
+        }
+      ]
+    },
+    {
+      "Route": "GoshehArtWebApp.gbg57mkzvz.styles.css",
+      "AssetFile": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\obj\\Debug\\net8.0\\scopedcss\\bundle\\GoshehArtWebApp.styles.css",
+      "Selectors": [],
+      "ResponseHeaders": [
+        {
+          "Name": "Accept-Ranges",
+          "Value": "bytes"
+        },
+        {
+          "Name": "Content-Length",
+          "Value": "1310"
+        },
+        {
+          "Name": "Content-Type",
+          "Value": "text/css"
+        },
+        {
+          "Name": "ETag",
+          "Value": "\"3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=\""
+        },
+        {
+          "Name": "Last-Modified",
+          "Value": "Sun, 18 May 2025 23:52:47 GMT"
+        },
+        {
+          "Name": "Cache-Control",
+          "Value": "max-age=31536000, immutable"
+        }
+      ],
+      "EndpointProperties": [
+        {
+          "Name": "fingerprint",
+          "Value": "gbg57mkzvz"
+        },
+        {
+          "Name": "label",
+          "Value": "GoshehArtWebApp.styles.css"
+        },
+        {
+          "Name": "integrity",
+          "Value": "sha256-3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM="
         }
       ]
     },
@@ -37853,7 +37853,7 @@
         },
         {
           "Name": "Content-Length",
-          "Value": "1004"
+          "Value": "1310"
         },
         {
           "Name": "Content-Type",
@@ -37861,11 +37861,11 @@
         },
         {
           "Name": "ETag",
-          "Value": "\"pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=\""
+          "Value": "\"3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=\""
         },
         {
           "Name": "Last-Modified",
-          "Value": "Wed, 14 May 2025 20:54:29 GMT"
+          "Value": "Sun, 18 May 2025 23:52:47 GMT"
         },
         {
           "Name": "Cache-Control",
@@ -37875,7 +37875,7 @@
       "EndpointProperties": [
         {
           "Name": "integrity",
-          "Value": "sha256-pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k="
+          "Value": "sha256-3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM="
         }
       ]
     },
