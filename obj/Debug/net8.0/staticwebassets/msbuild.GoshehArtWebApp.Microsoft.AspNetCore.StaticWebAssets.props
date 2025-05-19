@@ -5646,29 +5646,29 @@
       <RelatedAsset></RelatedAsset>
       <AssetTraitName></AssetTraitName>
       <AssetTraitValue></AssetTraitValue>
-      <Fingerprint>fosamezn9b</Fingerprint>
-      <Integrity>r22M7xOahcMheWCkoVof2Nt7pQmj7mMSFKTei+SfmQ0=</Integrity>
+      <Fingerprint>tx4zughqlb</Fingerprint>
+      <Integrity>P04YS9rRXQ3VGm1AiMmUcsu8RsPVTB8fzQgOX4KPriw=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
       <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\css\site.css'))</OriginalItemSpec>
     </StaticWebAsset>
-    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.9btpgr7cuc.bundle.scp.css'))">
+    <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.gbg57mkzvz.bundle.scp.css'))">
       <SourceType>Package</SourceType>
       <SourceId>GoshehArtWebApp</SourceId>
       <ContentRoot>$(MSBuildThisFileDirectory)..\staticwebassets\</ContentRoot>
       <BasePath>_content/GoshehArtWebApp</BasePath>
-      <RelativePath>GoshehArtWebApp.9btpgr7cuc.bundle.scp.css</RelativePath>
+      <RelativePath>GoshehArtWebApp.gbg57mkzvz.bundle.scp.css</RelativePath>
       <AssetKind>All</AssetKind>
       <AssetMode>Reference</AssetMode>
       <AssetRole>Primary</AssetRole>
       <RelatedAsset></RelatedAsset>
       <AssetTraitName>ScopedCss</AssetTraitName>
       <AssetTraitValue>ProjectBundle</AssetTraitValue>
-      <Fingerprint>9btpgr7cuc</Fingerprint>
-      <Integrity>pSwOqsT+DmhW/bQqubVZOY1m1sR/e/4iGS3r5pDKl8k=</Integrity>
+      <Fingerprint>gbg57mkzvz</Fingerprint>
+      <Integrity>3GAsPBjtQmx8JG0L/BUgjc6EKbsJ+mlixnJ6lSY1QmM=</Integrity>
       <CopyToOutputDirectory>Never</CopyToOutputDirectory>
       <CopyToPublishDirectory>PreserveNewest</CopyToPublishDirectory>
-      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.9btpgr7cuc.bundle.scp.css'))</OriginalItemSpec>
+      <OriginalItemSpec>$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\GoshehArtWebApp.gbg57mkzvz.bundle.scp.css'))</OriginalItemSpec>
     </StaticWebAsset>
     <StaticWebAsset Include="$([System.IO.Path]::GetFullPath('$(MSBuildThisFileDirectory)..\staticwebassets\images\image-bg.jpg'))">
       <SourceType>Package</SourceType>

@@ -34,22 +34,22 @@
                     <input asp-for="Location" class="form-control" />
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
-                <div class="form-group ">
+                <div class="form-group">
                     <label asp-for="Date">Date (Optional)</label>
                     <div>
                         <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group flex-column ">
+                <div class="form-group flex-column">
                     <label asp-for="ImageUp" class="control-label"></label>
-                    <div class="custom-file border p-3">
-                    <img id="FrontImagePrv" src="" alt="Asset" width="150" height="150" style="border: 1px; margin-left:0px;" class="pb-2" />
-                        <input asp-for="ImageUp" class="custom-file-input" id="FLFrontImage"
+                     <div class="custom-file">  
+                    <img id="FrontImagePrv" src="" alt=""/>
+                        <input asp-for="ImageUp" class="custom-file-input form-control" id="FLFrontImage"
                                onchange="document.getElementById('FrontImagePrv').src = window.URL.createObjectURL(this.files[0])" />
                         @*<label class="custom-file-label" for="FLFrontImage">Choose file</label>*@
                     <span asp-validation-for="ImageUp" class="text-danger"></span>
-                    </div>
+                    </div> 
                 </div>
                 <div class="form-group">
                     <label asp-for="Categories" class="control-label"></label>
@@ -88,5 +88,10 @@
         var fileName = $(this).val().split("\\").pop();
         $(this).siblings(".custom-file-label").addClass("selected").html(fileName);
         theImage.style.visibility = "visible";
+        theImage.style.width = "150px"; 
+        theImage.style.height = "100%";
+        theImage.style.border = "16px";
+        theImage.style.paddingTop = "2em";
+        theImage.style.paddingBottom = "2em";
     })
 </script>

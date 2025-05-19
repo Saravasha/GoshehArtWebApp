@@ -39,3 +39,24 @@ button.accept-policy[b-wv4do5xpkj] {
   font-size: 1rem;
   line-height: inherit;
 }
+
+html[b-wv4do5xpkj], body[b-wv4do5xpkj] {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper[b-wv4do5xpkj] {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main[b-wv4do5xpkj] {
+    flex: 1;
+}
+
+footer[b-wv4do5xpkj] {
+    
+    padding: 2em;
+    text-align: center;
+}

@@ -38,3 +38,24 @@ button.accept-policy {
   font-size: 1rem;
   line-height: inherit;
 }
+
+html, body {
+    height: 100%;
+    margin: 0;
+}
+
+.wrapper {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex: 1;
+}
+
+footer {
+    
+    padding: 2em;
+    text-align: center;
+}
