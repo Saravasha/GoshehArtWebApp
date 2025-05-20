@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250520011335_newColorsAdded")]
+    partial class newColorsAdded
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -200,7 +203,7 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             BgColor = "bg-white",
-                            GradientColor = "gradientNotSet"
+                            GradientColor = ""
                         });
                 });
 
@@ -357,13 +360,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f0f80468-a6ab-4dd3-977b-2e8f20ec8e59",
+                            Id = "0194c0fd-ba32-43a0-8996-d904087b2160",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "cc568e39-fa3a-451d-817b-f55903f56d9d",
+                            Id = "49f2df1f-85ec-4b50-86f5-0841e33f2d0a",
                             Name = "User",
                             NormalizedName = "USER"
                         });

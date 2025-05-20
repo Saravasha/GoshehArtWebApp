@@ -118,6 +118,7 @@ namespace GoshehArtWebApp.Controllers
 
         // POST: Db/Delete/5
         [HttpPost, ActionName("Delete")]
+        [HttpDelete]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {

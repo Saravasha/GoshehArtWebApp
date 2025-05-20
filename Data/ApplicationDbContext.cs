@@ -17,12 +17,15 @@ namespace GoshehArtWebApp.Data
         public DbSet<Content> Contents { get; set; } = default!;
         public DbSet<Category> Categories { get; set; } = default!;
         public DbSet<Asset> Assets { get; set; } = default!;
+        public DbSet<Color> Colors { get; set; } = default!;
 
 
         protected override void OnModelCreating(ModelBuilder modelbuilder)
         {
             base.OnModelCreating(modelbuilder);
 
+            modelbuilder.Entity<Color>().HasData(
+                new Color { Id = 1, BgColor = "bg-white", GradientColor = "gradientNotSet" });
 
             modelbuilder.Entity<Page>().HasData(
                 new Page { Id = 1, Title = "Home", Container = "Home"},

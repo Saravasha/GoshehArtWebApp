@@ -1,19 +1,17 @@
 ﻿@model IEnumerable<Page>
 
 @{
-    ViewData["Title"] = "Pages Control Panel";
+    ViewData["Title"] = "Pages Index";
 }
 
 <section class="container-fluid">
     <h1 >@ViewData["Title"]</h1>
 
-    <p>
-        <a asp-controller="Page" asp-action="Create" class="btn btn-outline-success">Add New Page</a>
-    </p>
+    <a asp-controller="Page" asp-action="Create" class="btn btn-outline-success">Add New Page</a>
 
     <!-- Responsive table wrapper -->
     <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle">
+        <table class="table table-bordered table-striped align-middle mt-1">
             <thead class="table-dark">
                 <tr>
                     <th>Page Title</th>
@@ -36,8 +34,8 @@
                                 <br />
                             }
                         </td>
-                        <td>
-                            <div class="d-flex justify-content-end gap-2 flex-wrap">
+                        <td class="text-center align-middle">
+                            <div class="d-flex justify-content-center align-items-center flex-row gap-2 justify-content-end">
                                 <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-sm btn-outline-primary">Edit</a>
                                 <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-sm btn-outline-info">Details</a>
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-sm btn-outline-danger">Delete</a>

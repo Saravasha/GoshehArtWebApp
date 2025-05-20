@@ -75,6 +75,12 @@ namespace GoshehArtWebApp.Data
                 await userManager.AddToRoleAsync(adminUser, adminRole);
             }
 
+            roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
+
+            if (!await roleManager.RoleExistsAsync("User"))
+            {
+                await roleManager.CreateAsync(new IdentityRole("User"));
+            }
         }
     }
 }

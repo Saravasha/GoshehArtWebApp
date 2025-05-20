@@ -1,0 +1,34 @@
+﻿@model Color
+
+@{
+    ViewData["Title"] = "Change Background Color";
+}
+
+<section class="container">
+    <h1>@ViewBag.Title</h1>
+        <div class="flex-row md-4">
+            <form asp-action="Edit" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                @* Background Color *@
+                <div class="form-group">
+                    <label asp-for="BgColor" class="control-label"></label>
+                    <input asp-for="BgColor" name="BgColor" value="@Model.BgColor" style="height:10em; width:10em;" type="color" class="form-control" />
+                    <span asp-validation-for="BgColor" class="text-danger"></span>
+                </div>
+                @* Optional Gradient Range *@
+                <div class="form-group">
+                    <label asp-for="GradientColor">Gradient Color (Optional)</label>
+                    <input asp-for="GradientColor" name="GradientColor" value="@Model.GradientColor" style="height:10em; width:10em;" type="color" class="form-control"/>
+                    <span asp-validation-for="GradientColor" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary mt-1" />
+                </div>
+            </form>
+            <div>
+                <a asp-action="Index">Return to Color Index</a>
+            </div>
+        </div>        
+</section>
+
+    @* <div class="row"> *@

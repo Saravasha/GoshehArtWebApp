@@ -8,7 +8,7 @@
 <section class="container-fluid">
     <h1>@ViewBag.Title</h1>
 
-    <div class="btn-group gap-2 pb-2">
+    <div class="btn-group gap-2">
         <a asp-action="Create" class="btn btn-outline-success">Add new Asset</a>
         @if (User.IsInRole("Admin"))
         {
@@ -17,7 +17,7 @@
         <a asp-action="MultipleAssets" class="btn btn-outline-success">Add Multiple Assets</a>
     </div>
     <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle">
+        <table class="table table-bordered table-striped align-middle mt-1">
             <thead class="table-dark">
                 <tr>
                 <th>Assets</th>
@@ -30,10 +30,10 @@
                 <th class="text-center align-middle">Actions</th>
             </tr>
         </thead>
-        <tbody class="table-primary">
+        <tbody>
             @foreach (var asset in Model.Assets)
             {
-                <tr class="table-secondary">
+                <tr>
                     <td><img src="@Url.Content(asset.ImageUrl)" class="img-fluid" style="max-height:100px;" /></td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Name)</td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Description)</td>
@@ -52,7 +52,7 @@
                     <td class="text-center align-middle">
                         <div class="d-flex justify-content-center align-items-center flex-row gap-2 justify-content-end">
                             <a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-primary align-items-center justify-content-center">Edit</a>
-                            <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-primary">Details</a>
+                            <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-info">Details</a>
                             <a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-sm btn-outline-danger">Delete</a>
                         </div>
                     </td>

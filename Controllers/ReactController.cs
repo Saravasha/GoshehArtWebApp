@@ -12,7 +12,7 @@ namespace GoshehArtWebApp.Controllers
     [ApiController]
     public class ReactController : ControllerBase
     {
-        readonly ApplicationDbContext _context;
+        private readonly ApplicationDbContext _context;
         public ReactController(ApplicationDbContext context)
         {
             _context = context;
@@ -41,7 +41,13 @@ namespace GoshehArtWebApp.Controllers
             pages = _context.Pages.Include(c => c.Contents).ToList();
             return pages;
         }
-     
 
+        [HttpGet("color")]
+        public List<Color> GetColors()
+        {
+            List<Color> colors = new List<Color>();
+            colors = _context.Colors.ToList();
+            return colors;
+        }    
     }
 }

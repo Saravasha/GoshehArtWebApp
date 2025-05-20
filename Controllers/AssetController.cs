@@ -91,7 +91,7 @@ namespace GoshehArtWebApp.Controllers
         // POST: AssetController/Create
         //[ValidateAntiForgeryToken]
         [HttpPost]
-		public IActionResult Create(CreateAssetViewModel asset, List<string> Categories)
+		public async Task<IActionResult> Create(CreateAssetViewModel asset, List<string> Categories)
 		{
 			CreateAssetViewModel cavm = new CreateAssetViewModel();
 
@@ -125,8 +125,8 @@ namespace GoshehArtWebApp.Controllers
 
 				}
 
-				_context.Assets.Add(AssetToAdd);
-				_context.SaveChanges();
+				await _context.Assets.AddAsync(AssetToAdd);
+				await _context.SaveChangesAsync();
 
 				return RedirectToAction(nameof(Index));
 			}
@@ -183,7 +183,7 @@ namespace GoshehArtWebApp.Controllers
 		// POST: AssetController/Edit/5
 		[HttpPost]
 		[ValidateAntiForgeryToken]
-		public IActionResult Edit(int id, CreateAssetViewModel asset, List<string> CategoryIds)
+		public async Task<IActionResult> Edit(int id, CreateAssetViewModel asset, List<string> CategoryIds)
 		{
 			Models.Asset? assetToEdit = _context.Assets.Find(id);
 
@@ -229,7 +229,7 @@ namespace GoshehArtWebApp.Controllers
 				}
 
 				_context.Assets.Update(assetToEdit);
-				_context.SaveChanges();
+				await _context.SaveChangesAsync();
 
 				return RedirectToAction(nameof(Index));
 			}
@@ -293,7 +293,7 @@ namespace GoshehArtWebApp.Controllers
 
 
         [HttpPost]
-        public IActionResult Upload(UploadAssetsViewModel model)
+        public async Task<IActionResult> Upload(UploadAssetsViewModel model)
         {
 						
             if (ModelState.IsValid)
@@ -362,7 +362,7 @@ namespace GoshehArtWebApp.Controllers
             return View(umfm);
         }
         [HttpPost]
-		public IActionResult MultipleAssets(CreateMultipleAssetsViewModel assets, List<string> Categories)
+		public async Task<IActionResult> MultipleAssets(CreateMultipleAssetsViewModel assets, List<string> Categories)
         {
             CreateMultipleAssetsViewModel cmavm = new CreateMultipleAssetsViewModel();
 
@@ -424,8 +424,8 @@ namespace GoshehArtWebApp.Controllers
 
                         }
 
-                        _context.Assets.Add(AssetToAdd);
-                        _context.SaveChanges();
+                        await _context.Assets.AddAsync(AssetToAdd);
+                        await _context.SaveChangesAsync();
 
                     }
                 }
