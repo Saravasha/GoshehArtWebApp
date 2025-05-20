@@ -112,10 +112,6 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcTXVsdGlwbGVBc3NldHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Asset/Success.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcU3VjY2Vzcy5jc2h0bWw=
-build_metadata.AdditionalFiles.CssScope = 
-
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Asset/Upload.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcVXBsb2FkLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -138,6 +134,14 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Category/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ2F0ZWdvcnlcSW5kZXguY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Color/Edit.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JcRWRpdC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Color/Index.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ29sb3JcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Contact/Index.cshtml]
@@ -210,6 +214,10 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/User/Delete.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVXNlclxEZWxldGUuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/User/Index.cshtml]

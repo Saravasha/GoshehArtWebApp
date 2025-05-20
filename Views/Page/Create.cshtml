@@ -19,7 +19,6 @@
                     <label asp-for="Container" class="control-label"></label>
                     <span asp-validation-for="Container" class="text-danger"></span>
                     <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="30">
-                        @Model.Container
                     </textarea>
                 </div>
                 <div class="form-group">
@@ -130,6 +129,27 @@
                     }
                 }
             });
+            function uploadFile(file) {
+                var formData = new FormData();
+                formData.append("file", file);
+                $.ajax({
+                    url: '/PageContent/UploadFile',  // Your upload URL
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log("data = ", data)
+                        if (data.url) {
+                            $('#summernote').summernote('insertImage', data.url);
+                        } else {
+                            alert("File upload failed.");                    }
+                    },
+                    error: function () {
+                        alert("Error uploading file.");
+                    }
+                });
+            }
         }
 
         // Initialize asset modal and load categories/assets

@@ -137,6 +137,27 @@
                     }
                 }
             });
+            function uploadFile(file) {
+                var formData = new FormData();
+                formData.append("file", file);
+                $.ajax({
+                    url: '/PageContent/UploadFile',  // Your upload URL
+                    method: 'POST',
+                    data: formData,
+                    contentType: false,
+                    processData: false,
+                    success: function (data) {
+                        console.log("data = ", data)
+                        if (data.url) {
+                            $('#summernote').summernote('insertImage', data.url);
+                        } else {
+                            alert("File upload failed.");                    }
+                    },
+                    error: function () {
+                        alert("Error uploading file.");
+                    }
+                });
+            }
         }
 
         // Initialize asset modal and load categories/assets

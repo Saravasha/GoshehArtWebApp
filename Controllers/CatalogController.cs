@@ -15,24 +15,24 @@ using Microsoft.AspNetCore.Authorization;
 
 namespace GoshehArtWebApp.Controllers
 {
-	[Authorize(Roles = "Admin")]
-	public class CatalogController : Controller
-	{
+    [Authorize(Roles = "Admin")]
+    public class CatalogController : Controller
+    {
 
-		private readonly ApplicationDbContext _context;
-		private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly ApplicationDbContext _context;
+        private readonly IWebHostEnvironment webHostEnvironment;
 
-		public CatalogController(ApplicationDbContext context, IWebHostEnvironment webHost)
-		{
-			_context = context;
-			webHostEnvironment = webHost;
-		}
-		public IActionResult Success()
-		{
-			return View();
-		}
+        public CatalogController(ApplicationDbContext context, IWebHostEnvironment webHost)
+        {
+            _context = context;
+            webHostEnvironment = webHost;
+        }
+        public IActionResult Success()
+        {
+            return View();
+        }
 
-		// Den här fungerar för variabel mängd med uppladdade filer.
+        // Den här fungerar för variabel mängd med uppladdade filer.
         [HttpPost]
         public IActionResult Upload(UploadAssetsViewModel model)
         {
@@ -70,78 +70,78 @@ namespace GoshehArtWebApp.Controllers
         }
 
         public IActionResult Upload()
-		{
+        {
 
-			UploadAssetsViewModel umfm = new UploadAssetsViewModel();
-			return View(umfm);
-		}
+            UploadAssetsViewModel umfm = new UploadAssetsViewModel();
+            return View(umfm);
+        }
 
-		// GET: CatalogController]
-		public IActionResult Index()
-		{
-			// Kanske behöver scopa min uploadDirectory till innuti applikationsmiljön, för det fungerar lokalt, men inte på deployment????!
-			var cvm = new CatalogViewModel();
-			string uploadDirectory = Path.Combine(webHostEnvironment.WebRootPath, "Assets");
-			List<string> localFolders = new List<string>();
-			//Directory.GetDirectories(uploadDirectory, "*").ToList().new DirectoryInfo();
-			foreach (var f in Directory.GetDirectories(uploadDirectory, "*"))
-			{
-				var dir = new DirectoryInfo(f).Name;
-				localFolders.Add(dir);
-			}
+        // GET: CatalogController]
+        public IActionResult Index()
+        {
+            // Kanske behöver scopa min uploadDirectory till innuti applikationsmiljön, för det fungerar lokalt, men inte på deployment????!
+            var cvm = new CatalogViewModel();
+            string uploadDirectory = Path.Combine(webHostEnvironment.WebRootPath, "Assets");
+            List<string> localFolders = new List<string>();
+            //Directory.GetDirectories(uploadDirectory, "*").ToList().new DirectoryInfo();
+            foreach (var f in Directory.GetDirectories(uploadDirectory, "*"))
+            {
+                var dir = new DirectoryInfo(f).Name;
+                localFolders.Add(dir);
+            }
 
-			foreach (var file in localFolders)
-			{
-				if (!_context.Categories.Any(x => x.Name == file))
-				{
-					_context.Categories.Update(new Category() { Name = file });
-					_context.SaveChanges();
-				}
-			}
+            foreach (var file in localFolders)
+            {
+                if (!_context.Categories.Any(x => x.Name == file))
+                {
+                    _context.Categories.Update(new Category() { Name = file });
+                    _context.SaveChanges();
+                }
+            }
 
-			FoldersContentGetter(uploadDirectory, localFolders);
-			return Redirect("Asset");
-		}
-		private void FoldersContentGetter(string uploadDirectory, List<string> localFolders)
-		{
-			//string uploadDirectory = webHostEnvironment.WebRootPath + "\\imagesAsset\\Pictures\\Sidans Filer";
-			//Directory.GetDirectories(uploadDirectory, "*").ToList().new DirectoryInfo();
-			foreach (var folder in localFolders)
-			{
-				Category catToAdd = new Category();
-				//var categoryId = _context.Categories.Any(c => c.Name == folder);
-				//uploadDirectory = Path.Combine(uploadDirectory, folder);
-				foreach (var item in Directory.GetFiles(Path.Combine(uploadDirectory,folder)))
-				{
-					var fileInDirectory = new FileInfo(item).Name;
-					var assetName = _context.Assets.FirstOrDefault(n => n.Name == fileInDirectory);
-					if (!_context.Assets.Any(x => x.Name == fileInDirectory))
-					{
-						//catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
-						//_context.Assets.Update(new Asset() { Name = fileInDirectory, Author = User.Identity.Name, CategoryId = cat.Id, });
-						var fileName = "/Assets//" + folder + "/" + fileInDirectory;
+            FoldersContentGetter(uploadDirectory, localFolders);
+            return Redirect("Asset");
+        }
+        private void FoldersContentGetter(string uploadDirectory, List<string> localFolders)
+        {
+            //string uploadDirectory = webHostEnvironment.WebRootPath + "\\imagesAsset\\Pictures\\Sidans Filer";
+            //Directory.GetDirectories(uploadDirectory, "*").ToList().new DirectoryInfo();
+            foreach (var folder in localFolders)
+            {
+                Category catToAdd = new Category();
+                //var categoryId = _context.Categories.Any(c => c.Name == folder);
+                //uploadDirectory = Path.Combine(uploadDirectory, folder);
+                foreach (var item in Directory.GetFiles(Path.Combine(uploadDirectory, folder)))
+                {
+                    var fileInDirectory = new FileInfo(item).Name;
+                    var assetName = _context.Assets.FirstOrDefault(n => n.Name == fileInDirectory);
+                    if (!_context.Assets.Any(x => x.Name == fileInDirectory))
+                    {
+                        //catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
+                        //_context.Assets.Update(new Asset() { Name = fileInDirectory, Author = User.Identity.Name, CategoryId = cat.Id, });
+                        var fileName = "/Assets//" + folder + "/" + fileInDirectory;
 
-						Asset assetStage = new Asset()
-						{
-							Name = fileInDirectory,
-							Description = folder,
-							Author = User.Identity.Name,
-							ImageUrl = fileName
-						};
-						foreach (var cat in localFolders)
-						{
-							catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
-							if (catToAdd != null)
-							{
-								assetStage.Categories.Add(catToAdd);
-							}
-						}
-						_context.Assets.Add(assetStage);
-					}
-				}
+                        Asset assetStage = new Asset()
+                        {
+                            Name = fileInDirectory,
+                            Description = folder,
+                            Author = User.Identity.Name,
+                            ImageUrl = fileName
+                        };
+                        foreach (var cat in localFolders)
+                        {
+                            catToAdd = _context.Categories.FirstOrDefault(c => c.Name == folder);
+                            if (catToAdd != null)
+                            {
+                                assetStage.Categories.Add(catToAdd);
+                            }
+                        }
+                        _context.Assets.Add(assetStage);
+                    }
+                }
 
-			}
-			_context.SaveChanges();
-		}
-	}
+            }
+            _context.SaveChanges();
+        }
+    }
 }
