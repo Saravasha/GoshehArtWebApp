@@ -16,17 +16,16 @@
             }
             <a asp-action="MultipleAssets" class="btn btn-outline-success">Add Multiple Assets</a>
         </div>
-        <div class="card">
+        <div class="card mt-1">
             <div class="card-body">
                 <form asp-action="Index" method="get" class="row g-2 align-items-center">
                     <!-- Search input with label -->
                     <div class="col-auto">
                         <label for="searchString" class="col-form-label fw-semibold">Search</label>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-2">
                         <input type="text" id="searchString" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Name, location, etc." />
                     </div>
-
                     <!-- From Date -->
                     <div class="col-auto">
                         <label for="fromDate" class="col-form-label fw-semibold">From</label>
