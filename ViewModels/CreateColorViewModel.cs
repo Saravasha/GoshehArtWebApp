@@ -17,13 +17,13 @@ namespace GoshehArtWebApp.ViewModels
         public string StartColor { get; set; }
 
         [Required(ErrorMessage = "End Color is required")]
-        [Display(Name = "End Color (Set to the same as Start Color if you want don't want gradient)")]
+        [Display(Name = "End Color")]
         public string EndColor { get; set; }
         [Required(ErrorMessage = "Dark Start Color is required")]
         [Display(Name = "Dark Start Color")]
         public string DarkStartColor { get; set; }
         [Required(ErrorMessage = "Dark End Color is required")]
-        [Display(Name = "Dark End Color (Set to the same as Start Color if you want don't want gradient)")]
+        [Display(Name = "Dark End Color")]
         public string DarkEndColor { get; set; }
 
     }
