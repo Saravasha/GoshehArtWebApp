@@ -32,7 +32,7 @@
                     <span asp-validation-for="Location" class="text-danger"></span>
                 </div>
                 <div class="form-group">
-                    <label asp-for="Date">Date (Optional)</label>
+                    <label asp-for="Date"></label>
                     <div>
                         <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
                         <span asp-validation-for="Date" class="text-danger"></span>
@@ -41,9 +41,9 @@
                 <div class="form-group flex-column">
                     <label asp-for="ImageUp" class="control-label"></label>
                      <div class="custom-file">  
-                    <img id="FrontImagePrv" src="" alt=""/>
+                    <img id="PreviewImage" src="" alt=""/>
                         <input asp-for="ImageUp" class="custom-file-input form-control" id="FLFrontImage"
-                               onchange="document.getElementById('FrontImagePrv').src = window.URL.createObjectURL(this.files[0])" />
+                               onchange="document.getElementById('PreviewImage').src = window.URL.createObjectURL(this.files[0])" />
                         @*<label class="custom-file-label" for="FLFrontImage">Choose file</label>*@
                     <span asp-validation-for="ImageUp" class="text-danger"></span>
                     </div> 
@@ -75,7 +75,7 @@
 <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
 
 <script>
-    const theImage = document.querySelector("#FrontImagePrv")
+    const theImage = document.querySelector("#PreviewImage")
 
     if (theImage.getAttribute('src') === "") {
         theImage.style.visibility = "hidden";
