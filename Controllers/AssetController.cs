@@ -52,23 +52,54 @@ namespace GoshehArtWebApp.Controllers
 				}
 			}
 
-			return "Uploads/" + uniqueFileName; ;
+			return "Uploads/" + uniqueFileName; 
 		}
 
-		// GET: AssetController
 
-		public IActionResult Index()
-		{
-			var avm = new AssetViewModel();
+        public IActionResult Index(string searchString, DateOnly? fromDate, DateOnly? toDate)
+        {
+            var assets = _context.Assets
+                .Include(a => a.Categories)
+                .ToList();
 
-			avm.Assets = _context.Assets
-				.Include(c => c.Categories).ToList();
+            if (!string.IsNullOrWhiteSpace(searchString))
+            {
+                searchString = searchString.ToLower();
 
-			return View(avm);
-		}
+                assets = assets.Where(a =>
+                    (a.Name?.ToLower().Contains(searchString) ?? false) ||
+                    (a.Description?.ToLower().Contains(searchString) ?? false) ||
+                    (a.Location?.ToLower().Contains(searchString) ?? false) ||
+                    (a.Author?.ToLower().Contains(searchString) ?? false) ||
+                    (a.Date.HasValue && a.Date.Value.ToString("yyyy-MM-dd").Contains(searchString)) ||
+                    a.Categories.Any(c => c.Name.ToLower().Contains(searchString))
+                ).ToList();
+            }
 
-		// GET: AssetController/Details/5
-		public IActionResult Details(int id)
+            // Apply date range filtering
+            if (fromDate.HasValue)
+            {
+                assets = assets.Where(a => a.Date.HasValue && a.Date.Value >= fromDate.Value).ToList();
+            }
+
+            if (toDate.HasValue)
+            {
+                assets = assets.Where(a => a.Date.HasValue && a.Date.Value <= toDate.Value).ToList();
+            }
+
+            var avm = new AssetViewModel
+            {
+                Assets = assets,
+                FromDate = fromDate,
+                ToDate = toDate
+            };
+
+        ViewData["CurrentFilter"] = searchString;
+            return View(avm);
+        }
+
+        // GET: AssetController/Details/5
+        public IActionResult Details(int id)
 		{
             Models.Asset? asset = _context.Assets
 				.Include(c => c.Categories)

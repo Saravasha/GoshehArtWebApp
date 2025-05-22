@@ -4,17 +4,53 @@
     ViewData["Title"] = "Asset Index";
 }
 
-
 <section class="container-fluid">
     <h1>@ViewBag.Title</h1>
 
-    <div class="btn-group gap-2">
-        <a asp-action="Create" class="btn btn-outline-success">Add new Asset</a>
-        @if (User.IsInRole("Admin"))
-        {
-            <a asp-controller="Catalog" asp-action="Index" class="btn btn-outline-danger">Sync Catalogs</a>
-        }
-        <a asp-action="MultipleAssets" class="btn btn-outline-success">Add Multiple Assets</a>
+    <div class="d-flex justify-content-between align-items-end flex-wrap ">
+        <div class="btn-group gap-2 ">
+            <a asp-action="Create" class="btn btn-outline-success">Add new Asset</a>
+            @if (User.IsInRole("Admin"))
+            {
+                <a asp-controller="Catalog" asp-action="Index" class="btn btn-outline-danger">Sync Catalogs</a>
+            }
+            <a asp-action="MultipleAssets" class="btn btn-outline-success">Add Multiple Assets</a>
+        </div>
+        <div class="card">
+            <div class="card-body">
+                <form asp-action="Index" method="get" class="row g-2 align-items-center">
+                    <!-- Search input with label -->
+                    <div class="col-auto">
+                        <label for="searchString" class="col-form-label fw-semibold">Search</label>
+                    </div>
+                    <div class="col-md-4">
+                        <input type="text" id="searchString" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Name, location, etc." />
+                    </div>
+
+                    <!-- From Date -->
+                    <div class="col-auto">
+                        <label for="fromDate" class="col-form-label fw-semibold">From</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" id="fromDate" name="fromDate" value="@(Model.FromDate?.ToString("yyyy-MM-dd"))" class="form-control" />
+                    </div>
+
+                    <!-- To Date -->
+                    <div class="col-auto">
+                        <label for="toDate" class="col-form-label fw-semibold">To</label>
+                    </div>
+                    <div class="col-md-2">
+                        <input type="date" id="toDate" name="toDate" value="@(Model.ToDate?.ToString("yyyy-MM-dd"))" class="form-control" />
+                    </div>
+
+                    <!-- Buttons aligned right -->
+                    <div class="col-md-auto ms-auto d-flex gap-2">
+                        <button type="submit" class="btn btn-outline-primary">Search</button>
+                        <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
+                    </div>
+                </form>
+            </div>
+        </div>
     </div>
     <div class="table-responsive">
         <table class="table table-bordered table-striped align-middle mt-1">
@@ -39,7 +75,8 @@
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Description)</td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Author)</td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Location)</td>
-                    <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.Date)</td>
+                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => asset.DateString)</td>
+
                     @*@<td>@Html.DisplayFor(modelItem => asset.Categories)</td>*@
 
                     <td class="text-center align-middle">
@@ -62,3 +99,14 @@
     </table>
     </div>
 </section>
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
+<script>
+
+    document.addEventListener('DOMContentLoaded', function () {
+        const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+        tooltipTriggerList.forEach(function (tooltipTriggerEl) {
+            new bootstrap.Tooltip(tooltipTriggerEl);
+        });
+    });
+</script>

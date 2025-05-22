@@ -21,8 +21,5 @@ namespace GoshehArtWebApp.Models
         public List<Category> Categories { get; set; } = new List<Category>();
 		[NotMapped]
 		public IFormFile? ImageUp { get; set; } 
-
-   
-
     }
 }

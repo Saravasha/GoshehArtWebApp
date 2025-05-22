@@ -1,5 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 using GoshehArtWebApp.Models;
 
 namespace GoshehArtWebApp.ViewModels
@@ -11,7 +12,15 @@ namespace GoshehArtWebApp.ViewModels
         [Display(Name = "Asset Name")]
         public string Name { get; set; }
         public string? Author { get; set; }
-        public string Description { get; set; }
+        public string? Location { get; set; }
+        [JsonIgnore]
+        public DateOnly? Date { get; set; }
+        public string? DateString => Date?.ToString("yyyy-MM-dd");
+        [DataType(DataType.Date)]
+        public DateOnly? FromDate { get; set; }
+
+        [DataType(DataType.Date)]
+        public DateOnly? ToDate { get; set; }
         public Category Category { get; set; }
         public List<int>? CategoryIds { get; set; } = new();
         public List<Category> Categories { get; set; } = new();
