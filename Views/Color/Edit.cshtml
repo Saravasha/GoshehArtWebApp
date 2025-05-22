@@ -2,20 +2,36 @@
 
 @{
     ViewData["Title"] = "Edit Color Component";
+
 }
+
+
 
 <section class="container-fluid">
     <h1>@ViewBag.Title</h1>
-        <div class="flex-row d-flex md-4">
-            <form asp-action="Edit" method="post" >
-           <div class="d-flex gap-2">
+    <div class="flex-row d-flex md-4">
+        <form asp-action="Edit" method="post" >
+            <div class="d-flex gap-2">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @* Color Name *@
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" name="Name"  style="height:5rem;width:10rem;" type="text" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
+                @{
+                    if (User.IsInRole("Admin"))
+                    {
+                        <div class="form-group">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" name="Name" style="height:5rem;width:10rem;" type="text" class="form-control" />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    }
+                    else
+                    {
+                        <div class="form-group disabled">
+                            <label asp-for="Name" class="control-label"></label>
+                            <input asp-for="Name" name="Name" style="height:5rem;width:10rem;" type="text" class="form-control opacity-50" readonly />
+                            <span asp-validation-for="Name" class="text-danger"></span>
+                        </div>
+                    }
+                }
                 @* Start Color *@
                 <div class="form-group">
                     <label asp-for="StartColor" class="control-label"></label>
@@ -24,7 +40,7 @@
                 </div>
                 @* Optional Gradient Range End Color*@
                 <div class="form-group">
-                    <label asp-for="EndColor" class="control-label" >Gradient Color (Optional)</label>
+                    <label asp-for="EndColor" class="control-label" ></label>
                     <input asp-for="EndColor" name="EndColor"  style="height:5rem; width:10rem;" type="color" class="form-control"/>
                     <span asp-validation-for="EndColor" class="text-danger"></span>
                 </div>
@@ -36,7 +52,7 @@
                 </div>
                 @* Darkmode Optional Gradient Range End Color*@
                 <div class="form-group">
-                    <label asp-for="DarkEndColor" class="control-label">Gradient Color (Optional)</label>
+                    <label asp-for="DarkEndColor" class="control-label"></label>
                     <input asp-for="DarkEndColor" name="DarkEndColor"  style="height:5rem; width:10rem;" type="color" class="form-control" />
                     <span asp-validation-for="DarkEndColor" class="text-danger"></span>
                 </div>
