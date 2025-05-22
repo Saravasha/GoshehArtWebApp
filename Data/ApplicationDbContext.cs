@@ -25,7 +25,7 @@ namespace GoshehArtWebApp.Data
             base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Color>().HasData(
-                new Color { Id = 1, BgColor = "bg-white", GradientColor = "gradientNotSet" });
+                new Color { Id = 1, Name = "Background Color", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" });
 
             modelbuilder.Entity<Page>().HasData(
                 new Page { Id = 1, Title = "Home", Container = "Home"},

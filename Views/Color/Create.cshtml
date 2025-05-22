@@ -1,19 +1,19 @@
 ﻿@model CreateColorViewModel
 
 @{
-    ViewData["Title"] = "Edit Color Component";
+    ViewData["Title"] = "Create a new Color Component";
 }
 
 <section class="container-fluid">
     <h1>@ViewBag.Title</h1>
         <div class="flex-row d-flex md-4">
-            <form asp-action="Edit" method="post" >
+            <form asp-action="Create" method="post" >
            <div class="d-flex gap-2">
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @* Color Name *@
                 <div class="form-group">
                     <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" name="Name"  style="height:5rem;width:10rem;" type="text" class="form-control" />
+                    <input asp-for="Name" name="Name" style="height:5rem;width:10rem;" type="text" class="form-control" />
                     <span asp-validation-for="Name" class="text-danger"></span>
                 </div>
                 @* Start Color *@
@@ -24,8 +24,8 @@
                 </div>
                 @* Optional Gradient Range End Color*@
                 <div class="form-group">
-                    <label asp-for="EndColor" class="control-label" >Gradient Color (Optional)</label>
-                    <input asp-for="EndColor" name="EndColor"  style="height:5rem; width:10rem;" type="color" class="form-control"/>
+                    <label asp-for="EndColor" class="control-label">Gradient Color (Optional)</label>
+                    <input asp-for="EndColor" name="EndColor"  style="height:5rem; width:10rem;" type="color" class="form-control" />
                     <span asp-validation-for="EndColor" class="text-danger"></span>
                 </div>
                 @* Darkmode Background Color *@

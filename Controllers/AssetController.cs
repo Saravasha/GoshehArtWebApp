@@ -337,7 +337,7 @@ namespace GoshehArtWebApp.Controllers
 
                         using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
                         {
-                            file.CopyTo(stream);
+                            await file.CopyToAsync(stream);
                         }
                     }
                     model.IsSuccess = true;

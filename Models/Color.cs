@@ -7,12 +7,17 @@ namespace GoshehArtWebApp.Models
     {
         [Key]
         public int Id { get; set; }
-        [Required]
-        [Display(Name = "Background Color")]
-        public string? BgColor { get; set; }
+        
+        public string Name { get; set; }
+        
+        public string StartColor { get; set; }
 
-        [Display(Name = "Gradient Range Color if set")]
-        public string? GradientColor { get; set; }
+        public string EndColor { get; set; }
+
+        public string DarkStartColor { get; set; }
+        
+        public string DarkEndColor { get; set; }
+
 
     }
 }

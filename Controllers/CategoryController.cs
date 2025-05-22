@@ -78,7 +78,7 @@ namespace GoshehArtWebApp.Controllers
             {
                 categoryToEdit.Name = cat.Name;
 
-                _context.SaveChanges();
+               await _context.SaveChangesAsync();
 
                  return RedirectToAction(nameof(Index));
             }
