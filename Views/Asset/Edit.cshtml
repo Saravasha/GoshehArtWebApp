@@ -4,7 +4,7 @@
     ViewData["Title"] = "Edit Asset";
 }
 
-<section class="container">
+<section class="container-fluid">
     <h1>@ViewBag.Title</h1>
 
     <div class="row">
@@ -66,18 +66,4 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
-    @* <script> *@
-
-    @*     $(document).ready(function () { *@
-    @*         $('#datepicker-container').datepicker({ *@
-    @*             format: 'yyyy/mm/dd', *@
-    @*             autoclose: true, *@
-    @*             todayHighlight: true, *@
-    @*             todayBtn: "linked", *@
-    @*             inline:true *@
-    @*         }).on('changeDate', function(e) { *@
-    @*              $('#Date').val(e.format('yyyy-mm-dd')); *@
-    @*         }); *@
-    @*     }); *@
-    @* </script> *@
 }

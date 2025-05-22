@@ -11,7 +11,7 @@ public class CreateAssetViewModel
 
     [Required(ErrorMessage = "Asset Name is required")]
     [Display(Name = "Asset Name:")]
-    public string? Name { get; set; }
+    public string Name { get; set; }
 
     [Required(ErrorMessage = "Author is required")]
     [Display(Name = "Author:")]

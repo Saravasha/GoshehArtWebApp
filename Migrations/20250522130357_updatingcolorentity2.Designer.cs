@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250522130357_updatingcolorentity2")]
+    partial class updatingcolorentity2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -209,11 +212,7 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            DarkEndColor = "#000000",
-                            DarkStartColor = "#000000",
-                            EndColor = "#000000",
-                            Name = "Background Color",
-                            StartColor = "#000000"
+                            Name = "Background Color"
                         });
                 });
 
@@ -370,13 +369,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1380e15e-fa7c-4d32-9e41-91f46f227767",
+                            Id = "90b1851a-f48b-4a7f-a91b-1ef3c5894e72",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "efd49bfa-91fd-42f1-82d0-5815562d2509",
+                            Id = "dc7e45f5-5459-4a6f-8af9-d90ded65689d",
                             Name = "User",
                             NormalizedName = "USER"
                         });

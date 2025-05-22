@@ -14,37 +14,34 @@ namespace GoshehArtWebApp.Data
             string adminEmail = "admin@admin.com";
             string adminUserName = "Admin";
             string adminRole = "Admin";
+            string userRole = "User";
 
             // Get password from secrets or environment
             string? adminPassword;
 
-            if (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" ||
-                Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production")
-            {
-                adminPassword = Environment.GetEnvironmentVariable("ADMIN_PASSWORD");
-            }
-            else
-            {
-                adminPassword = configuration["Passwords:Admin"];
-            }
+            var isProd = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" ||
+                Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production");
+            
+            adminPassword = isProd ? Environment.GetEnvironmentVariable("ADMIN_PASSWORD") : configuration["Passwords:Admin"];
 
             if (string.IsNullOrWhiteSpace(adminPassword))
             {
                 throw new InvalidOperationException("Admin password not configured.");
             }
 
-            // Ensure Admin role exists
-            if (!await roleManager.RoleExistsAsync(adminRole))
+            // Create roles if they don't exist
+            foreach (var roleName in new[] { adminRole, userRole })
             {
-                await roleManager.CreateAsync(new IdentityRole(adminRole));
+                if (!await roleManager.RoleExistsAsync(roleName))
+                {
+                    await roleManager.CreateAsync(new IdentityRole(roleName));
+                }
             }
 
-            // Find admin user
+            // Create or update admin user
             var adminUser = await userManager.FindByEmailAsync(adminEmail);
-
             if (adminUser == null)
             {
-                // Create new admin user
                 adminUser = new IdentityUser
                 {
                     UserName = adminUserName,
@@ -54,19 +51,17 @@ namespace GoshehArtWebApp.Data
 
                 var createResult = await userManager.CreateAsync(adminUser, adminPassword);
                 if (!createResult.Succeeded)
-                {
-                    throw new Exception("Failed to create admin user: " + string.Join(", ", createResult.Errors.Select(e => e.Description)));
-                }
+                    throw new Exception("Failed to create admin user: " +
+                        string.Join(", ", createResult.Errors.Select(e => e.Description)));
             }
             else
             {
-                // Reset password if user already exists
+                // Optionally reset password if needed
                 var token = await userManager.GeneratePasswordResetTokenAsync(adminUser);
                 var resetResult = await userManager.ResetPasswordAsync(adminUser, token, adminPassword);
                 if (!resetResult.Succeeded)
-                {
-                    throw new Exception("Failed to reset admin password: " + string.Join(", ", resetResult.Errors.Select(e => e.Description)));
-                }
+                    throw new Exception("Failed to reset admin password: " +
+                        string.Join(", ", resetResult.Errors.Select(e => e.Description)));
             }
 
             // Add to Admin role if not already
@@ -75,11 +70,10 @@ namespace GoshehArtWebApp.Data
                 await userManager.AddToRoleAsync(adminUser, adminRole);
             }
 
-            roleManager = serviceProvider.GetRequiredService<RoleManager<IdentityRole>>();
-
-            if (!await roleManager.RoleExistsAsync("User"))
+            // Ensure user is in Admin role
+            if (!await userManager.IsInRoleAsync(adminUser, adminRole))
             {
-                await roleManager.CreateAsync(new IdentityRole("User"));
+                await userManager.AddToRoleAsync(adminUser, adminRole);
             }
         }
     }

@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250522084530_colormodelrefactor")]
+    partial class colormodelrefactor
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -81,7 +84,6 @@ namespace GoshehArtWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
-                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -185,12 +187,6 @@ namespace GoshehArtWebApp.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
-                    b.Property<string>("DarkEndColor")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("DarkStartColor")
-                        .HasColumnType("nvarchar(max)");
-
                     b.Property<string>("EndColor")
                         .HasColumnType("nvarchar(max)");
 
@@ -199,6 +195,7 @@ namespace GoshehArtWebApp.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("StartColor")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
@@ -209,11 +206,9 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            DarkEndColor = "#000000",
-                            DarkStartColor = "#000000",
-                            EndColor = "#000000",
+                            EndColor = "gradientNotSet",
                             Name = "Background Color",
-                            StartColor = "#000000"
+                            StartColor = "bg-white"
                         });
                 });
 
@@ -370,13 +365,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "1380e15e-fa7c-4d32-9e41-91f46f227767",
+                            Id = "fdb95523-7a4d-4662-95b2-07520bb54f68",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "efd49bfa-91fd-42f1-82d0-5815562d2509",
+                            Id = "40e8d240-fc1d-498b-9b81-f5da3dea8af9",
                             Name = "User",
                             NormalizedName = "USER"
                         });
