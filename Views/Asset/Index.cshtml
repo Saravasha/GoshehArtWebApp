@@ -19,14 +19,12 @@
         <div class="card mt-1">
             <div class="card-body">
                 <form asp-action="Index" method="get" class="row g-2 align-items-center">
-                    <!-- Search input with label -->
                     <div class="col-auto">
                         <label for="searchString" class="col-form-label fw-semibold">Search</label>
                     </div>
                     <div class="col-md-2">
                         <input type="text" id="searchString" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Name, location, etc." />
                     </div>
-                    <!-- From Date -->
                     <div class="col-auto">
                         <label for="fromDate" class="col-form-label fw-semibold">From</label>
                     </div>
@@ -34,7 +32,6 @@
                         <input type="date" id="fromDate" name="fromDate" value="@(Model.FromDate?.ToString("yyyy-MM-dd"))" class="form-control" />
                     </div>
 
-                    <!-- To Date -->
                     <div class="col-auto">
                         <label for="toDate" class="col-form-label fw-semibold">To</label>
                     </div>
@@ -42,7 +39,6 @@
                         <input type="date" id="toDate" name="toDate" value="@(Model.ToDate?.ToString("yyyy-MM-dd"))" class="form-control" />
                     </div>
 
-                    <!-- Buttons aligned right -->
                     <div class="col-md-auto ms-auto d-flex gap-2">
                         <button type="submit" class="btn btn-outline-primary">Search</button>
                         <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>

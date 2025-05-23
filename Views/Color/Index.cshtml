@@ -43,7 +43,9 @@
                         <div style="@($"height:10rem; width:10rem; background: linear-gradient(to right, {item.DarkStartColor}, {item.DarkEndColor});")">
                         </div>
                     </td>
-                    <td class="text-center align-middle">
+                    <td class="text-center align-middle ">
+                        <div class="gap-2 d-flex justify-content-center align-items-center flex-row">
+
                         <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-primary">Edit</a>
                         @{
                             if (User.IsInRole("Admin"))
@@ -51,6 +53,7 @@
                                 <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-group-sm btn-outline-danger">Delete</a>
                             }
                         }
+                        </div>
                     </td>
                 </tr>
                 }
