@@ -5,37 +5,56 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="container-fluid">
-    <h1>@ViewBag.Title</h1>
-    <a asp-controller="Category" asp-action="Create" class="btn btn-outline-success">Create a new Category</a>
-    <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle mt-1">
-            <thead class="table-dark">
-                <tr>
-                    <th class="text-start align-middle">Category</th>
-                    <th class="text-end align-middle">Actions</th>
-                </tr>
-            </thead>
-            <tbody class="table-primary">
-                @foreach (var item in Model.Categories)
-                {
-                        <tr class="table-secondary">
-                        <td>
-                            @Html.DisplayFor(modelItem => item.Name)
-                        </td>
-                        <td>
-                            <div class="d-flex flex-row gap-2 justify-content-end">
-                                <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a>
-                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                            </div>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
+<section class="container my-4">
+    <div class="d-flex justify-content-between align-items-center mb-3">
+        <h1 class="h3">@ViewData["Title"]</h1>
+        <a asp-controller="Category" asp-action="Create" class="btn btn-success">
+            <i class="bi bi-plus-circle me-1"></i>New Category
+        </a>
     </div>
+
+    @if (Model.Categories == null || !Model.Categories.Any())
+    {
+        <div class="alert alert-warning text-center">
+            <strong>No categories found.</strong> Use the button above to add your first one.
+        </div>
+    }
+    else
+    {
+        <div class="table-responsive shadow-sm">
+            <table class="table table-bordered table-hover align-middle">
+                <thead class="table-dark">
+                    <tr>
+                        <th class="text-start">Category</th>
+                        <th class="text-end">Actions</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model.Categories)
+                    {
+                        <tr>
+                            <td class="fw-semibold">@item.Name</td>
+                            <td class="text-end">
+                                <div class="btn-group btn-group-sm">
+                                    <a class="btn btn-outline-primary" asp-action="Edit" asp-route-id="@item.Id" title="Edit">
+                                        <i class="bi bi-pencil-square me-1"></i>Edit
+                                    </a>
+                                    <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id" title="Delete">
+                                        <i class="bi bi-trash me-1"></i>Delete
+                                    </a>
+                                </div>
+                            </td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    }
+
     @if (ViewBag.IsInUse == "isinuse")
     {
-        <p>Is in use!</p>
+        <div class="alert alert-info mt-3">
+            <i class="bi bi-info-circle me-1"></i> This category is currently in use.
+        </div>
     }
 </section>

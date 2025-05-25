@@ -12,7 +12,7 @@ namespace GoshehArtWebApp.Controllers
     public class CategoryController : Controller
     {
      
-        private readonly ApplicationDbContext _context; // creates a readonly of DbContext
+        private readonly ApplicationDbContext _context; 
         static readonly CategoryViewModel cvm = new();
         static readonly CreateCategoryViewModel ccvm = new();
         public CategoryController(ApplicationDbContext context)

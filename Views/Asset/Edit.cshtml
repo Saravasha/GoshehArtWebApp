@@ -1,64 +1,125 @@
-﻿@model CreateAssetViewModel
+﻿@model EditAssetViewModel
 
 @{
     ViewData["Title"] = "Edit Asset";
 }
 
-<section class="container-fluid">
-    <h1>@ViewBag.Title</h1>
+<section class="container my-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
 
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Edit" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-controller="Asset" asp-action="Edit" method="post" enctype="multipart/form-data">
+                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
                 <input type="hidden" asp-for="Id" />
-                <div><img src="@($"{ViewContext.HttpContext.Request.Scheme}://{ViewContext.HttpContext.Request.Host}/{Model.ImageUrl}")" class="img-fluid" style="max-height:40%;" /></div>
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                <input type="hidden" name="ExistingFileUrl" value="@Model.FileUrl" />
+
+                <!-- Asset Type -->
+                <div class="mb-3">
+                    <label class="form-label">Asset Type</label>
+                    <input class="form-control" value="@Model.Type.ToString()" disabled />
                 </div>
-                <div class="form-group">
-                    <label asp-for="Description" class="control-label"></label>
-                    <textarea asp-for="Description" class="form-control"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Author" class="control-label"></label>
-                    <textarea asp-for="Author" class="form-control"></textarea>
-                    <span asp-validation-for="Author" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Location" class="control-label"></label>
-                    <input asp-for="Location" class="form-control" />
-                    <span asp-validation-for="Location" class="text-danger"></span>
-                </div>
-                <div class="form-group ">
-                    <label asp-for="Date">Date (Optional)</label>
-                    <div>
-                        <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
-                        <span asp-validation-for="Date" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <label asp-for="CategoryIds" class="control-label"></label>
-                    <select asp-for="CategoryIds" asp-items="ViewBag.CategoryList" class="form-control dropdown-margin-bottom" selected="@Model.Categories" multiple>
-                    </select>
-                    @if (ViewBag.CategoryError != null)
+
+                <!-- File Preview -->
+                <div class="mb-4" id="FilePreviewContainer">
+                    <label class="form-label">Current File:</label><br />
+                    @switch (Model.Type)
                     {
-                        <span class="error-message">@ViewBag.CategoryError</span>
+                        case AssetType.Image:
+                            <img id="PreviewFile" src="@Url.Content("~/" + Model.FileUrl)" class="img-fluid rounded border" style="max-height: 200px; " loading="lazy" />
+                            break;
+                        case AssetType.Video:
+                            <video id="PreviewFile" controls class="w-100 rounded border" style="max-height: 300px;">
+                                <source src="@Url.Content("~/" + Model.FileUrl)" type="video/mp4" />
+                                Your browser does not support the video tag.
+                            </video>
+                            break;
+                        case AssetType.Audio:
+                            <audio id="PreviewFile" controls class="w-100">
+                                <source src="@Url.Content("~/" + Model.FileUrl)" type="audio/mpeg" />
+                                Your browser does not support the audio element.
+                            </audio>
+                            break;
+                        default:
+                            <p class="text-muted"><em>No preview available for this file type.</em></p>
+                            break;
                     }
                 </div>
 
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary mt-1" />
+                <!-- Detected File Type -->
+                <div class="mb-3">
+                    <label class="form-label">Detected File Type</label>
+                    <input id="DetectedType" class="form-control" disabled />
+                    <input type="hidden" name="DetectedFileType" id="DetectedFileType" />
+                </div>
+
+                <!-- Name -->
+                <div class="mb-3">
+                    <label asp-for="Name" class="form-label"></label>
+                    <input asp-for="Name" class="form-control" />
+                    <span asp-validation-for="Name" class="text-danger"></span>
+                </div>
+
+                <!-- Description -->
+                <div class="mb-3">
+                    <label asp-for="Description" class="form-label"></label>
+                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+                    <span asp-validation-for="Description" class="text-danger"></span>
+                </div>
+
+                <!-- Author -->
+                <div class="mb-3">
+                    <label asp-for="Author" class="form-label"></label>
+                    <input asp-for="Author" class="form-control" />
+                    <span asp-validation-for="Author" class="text-danger"></span>
+                </div>
+
+                <!-- Location -->
+                <div class="mb-3">
+                    <label asp-for="Location" class="form-label"></label>
+                    <input asp-for="Location" class="form-control" />
+                    <span asp-validation-for="Location" class="text-danger"></span>
+                </div>
+
+                <!-- Date -->
+                <div class="mb-3">
+                    <label asp-for="Date" class="form-label">Date (Optional)</label>
+                    <input asp-for="Date" type="date" class="form-control" />
+                    <span asp-validation-for="Date" class="text-danger"></span>
+                </div>
+
+                <!-- File Upload -->
+                <div class="mb-3">
+                    <label asp-for="FileUp" class="form-label">Change Asset File:</label>
+                    <input asp-for="FileUp" type="file" class="form-control" id="FLFrontFile" onchange="handleFilePreview(this)" />
+                    <span asp-validation-for="FileUp" class="text-danger"></span>
+                </div>
+
+                <!-- Categories -->
+                <div class="mb-3">
+                    <label asp-for="CategoryIds" class="form-label">Categories:</label>
+                    <select asp-for="CategoryIds"
+                            asp-items="ViewBag.CategoryList"
+                            class="form-select"
+                            multiple>
+                    </select>
+                    <span asp-validation-for="CategoryIds" class="text-danger"></span>
+                    @if (ViewBag.CategoryError != null)
+                    {
+                        <span class="text-danger">@ViewBag.CategoryError</span>
+                    }
+                </div>
+
+                <!-- Submit Button -->
+                <div class="d-flex justify-content-between">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i>Save Changes
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
                 </div>
             </form>
         </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Return to Asset Index</a>
     </div>
 </section>
 
@@ -66,4 +127,73 @@
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+
+    <script>
+        function handleFilePreview(input) {
+            const file = input.files[0];
+            if (!file) return;
+
+            const container = document.getElementById("FilePreviewContainer");
+            const detectedTypeInput = document.getElementById("DetectedType");
+            const hiddenDetectedInput = document.getElementById("DetectedFileType");
+
+            const fileType = file.type;
+            const objectUrl = URL.createObjectURL(file);
+            let previewHtml = "";
+
+            if (fileType.startsWith("image/")) {
+                previewHtml = `<img src="${objectUrl}" class="img-fluid rounded border" style="max-height: 200px;" loading="lazy"/>`;
+                detectedTypeInput.value = "Image";
+                hiddenDetectedInput.value = "Image";
+            } else if (fileType.startsWith("video/")) {
+                previewHtml = `
+                    <video controls class="w-100 rounded border" style="max-height: 300px;">
+                        <source src="${objectUrl}" type="${fileType}" />
+                        Your browser does not support the video tag.
+                    </video>`;
+                detectedTypeInput.value = "Video";
+                hiddenDetectedInput.value = "Video";
+            } else if (fileType.startsWith("audio/")) {
+                previewHtml = `
+                    <audio controls class="w-100">
+                        <source src="${objectUrl}" type="${fileType}" />
+                        Your browser does not support the audio element.
+                    </audio>`;
+                detectedTypeInput.value = "Audio";
+                hiddenDetectedInput.value = "Audio";
+            } else {
+                previewHtml = `<p class="text-muted"><em>No preview available for this file type.</em></p>`;
+                detectedTypeInput.value = "Other";
+                hiddenDetectedInput.value = "Other";
+            }
+
+            container.innerHTML = `<label class="form-label">Preview:</label><br/>` + previewHtml;
+        }
+
+        window.onload = function () {
+            const detectedTypeInput = document.getElementById("DetectedType");
+            const hiddenDetectedInput = document.getElementById("DetectedFileType");
+
+            const typeString = "@Model.Type.ToString().ToLower()";
+
+            switch (typeString) {
+                case "image":
+                    detectedTypeInput.value = "Image";
+                    hiddenDetectedInput.value = "Image";
+                    break;
+                case "video":
+                    detectedTypeInput.value = "Video";
+                    hiddenDetectedInput.value = "Video";
+                    break;
+                case "audio":
+                    detectedTypeInput.value = "Audio";
+                    hiddenDetectedInput.value = "Audio";
+                    break;
+                default:
+                    detectedTypeInput.value = "Other";
+                    hiddenDetectedInput.value = "Other";
+                    break;
+            }
+        };
+    </script>
 }

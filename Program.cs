@@ -26,7 +26,10 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
     .AddRoles<IdentityRole>()
     .AddEntityFrameworkStores<ApplicationDbContext>();
 builder.Services.AddControllersWithViews().AddJsonOptions(x =>
-                x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
+{
+    x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
+    x.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+});
 
 builder.Services.AddDirectoryBrowser();
 
@@ -108,11 +111,28 @@ if (app.Environment.IsProduction())
 
 app.UseStaticFiles();
 
-// Fileprovider f�r Uploads utanf�r webrooten
+// Fileprovider för Uploads utanför webrooten
+
+void ThumbnailDirectoryAsserter()
+{
+    string path = FilePathProvider.ThumbnailsRoot;
+    if (!Directory.Exists(path))
+    {
+        Directory.CreateDirectory(path);
+    }
+
+    app.UseStaticFiles(new StaticFileOptions()
+    {
+        FileProvider = new PhysicalFileProvider(
+        path),
+        RequestPath = "/Thumbnails"
+    });
+}
+
 void UploadDirectoryAsserter()
 {
     // Gets App root path's parent directory and does a combine with Uploads, checks if directory Uploads exists under parent directory, if not then it creates it => Adds a new PhysicalFileProvider for Upload Path...
-    string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(),"Uploads");
+    string path = FilePathProvider.UploadsRoot;
     if (!Directory.Exists(path))
     {
         Directory.CreateDirectory(path);
@@ -126,6 +146,7 @@ void UploadDirectoryAsserter()
     });
 }
 
+ThumbnailDirectoryAsserter();
 UploadDirectoryAsserter();
 
 // Fileprovider f�r Assets rekursivt

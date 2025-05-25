@@ -5,6 +5,13 @@ using System.Text.Json.Serialization;
 
 namespace GoshehArtWebApp.Models
 {
+    public enum AssetType
+    {
+        Image,
+        Video,
+        Audio,
+        Other
+    }
     public class Asset
     {
         [Key]
@@ -16,10 +23,13 @@ namespace GoshehArtWebApp.Models
         [JsonIgnore]
         public DateOnly? Date { get; set; }
         public string? DateString => Date?.ToString("yyyy-MM-dd");
-        public string? ImageUrl { get; set; } 
-		public int CategoryId { get; set; }
-        public List<Category> Categories { get; set; } = new List<Category>();
+        public string? FileUrl { get; set; } 
 		[NotMapped]
-		public IFormFile? ImageUp { get; set; } 
+        [JsonIgnore]
+		public IFormFile? FileUp { get; set; }
+        public AssetType Type { get; set; } = AssetType.Other;
+        public int CategoryId { get; set; }
+        public List<Category> Categories { get; set; } = new List<Category>();
+        public string? ThumbnailUrl { get; set; }
     }
 }

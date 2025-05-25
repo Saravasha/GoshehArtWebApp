@@ -92,6 +92,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQ3JlYXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
+[C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Asset/CreateMultipleAssets.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcQ3JlYXRlTXVsdGlwbGVBc3NldHMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Asset/Delete.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcRGVsZXRlLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
@@ -106,10 +110,6 @@ build_metadata.AdditionalFiles.CssScope =
 
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Asset/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcSW5kZXguY3NodG1s
-build_metadata.AdditionalFiles.CssScope = 
-
-[C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Asset/MultipleAssets.cshtml]
-build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQXNzZXRcTXVsdGlwbGVBc3NldHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/Siavash Gosheh/source/repos/GoshehArt/GoshehArtWebApp/Views/Catalog/Index.cshtml]

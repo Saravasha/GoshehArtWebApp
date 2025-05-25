@@ -39,9 +39,9 @@ namespace GoshehArtWebApp.Controllers
             if (ModelState.IsValid)
             {
                 model.IsResponse = true;
-                if (model.ImagesUp.Count > 0)
+                if (model.FilesUp.Count > 0)
                 {
-                    foreach (var file in model.ImagesUp)
+                    foreach (var file in model.FilesUp)
                     {
 
                         string path = Path.Combine(Directory.GetCurrentDirectory(), "Assets");
@@ -126,7 +126,7 @@ namespace GoshehArtWebApp.Controllers
                             Name = fileInDirectory,
                             Description = folder,
                             Author = User.Identity.Name,
-                            ImageUrl = fileName
+                            FileUrl = fileName
                         };
                         foreach (var cat in localFolders)
                         {

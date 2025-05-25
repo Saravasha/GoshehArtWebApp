@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250523204815_reseedingdans")]
+    partial class reseedingdans
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -74,7 +77,7 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("FileUrl")
+                    b.Property<string>("ImageUrl")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Location")
@@ -83,12 +86,6 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ThumbnailUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
 
                     b.HasKey("Id");
 
@@ -101,9 +98,8 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Inte sett än",
-                            FileUrl = "/Assets/Filmproduktion/image (287).jpg",
-                            Name = "Dans under Vita Lakan",
-                            Type = 3
+                            ImageUrl = "/Assets/Filmproduktion/image (287).jpg",
+                            Name = "Dans under Vita Lakan"
                         },
                         new
                         {
@@ -111,9 +107,8 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 6,
                             Description = "Gods butt from above",
-                            FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg",
-                            Name = "Aisha's Art",
-                            Type = 3
+                            ImageUrl = "/Assets/Kontroversiell Konst/image (3).jpg",
+                            Name = "Aisha's Art"
                         },
                         new
                         {
@@ -121,9 +116,8 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Helt fantastiskt",
-                            FileUrl = "/Assets/Filmproduktion/image (304).jpg",
-                            Name = "Kari - Jag är elak",
-                            Type = 3
+                            ImageUrl = "/Assets/Filmproduktion/image (304).jpg",
+                            Name = "Kari - Jag är elak"
                         });
                 });
 
@@ -383,13 +377,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6e3ceaf1-b5a0-4df8-8ab4-e745c734c274",
+                            Id = "818e2615-94d7-4bf2-b254-1cfd9c5ae782",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d39df32e-883b-4dea-b353-62d1b9f0ab3a",
+                            Id = "e98b228a-a8ce-4e90-b57c-9ecf838ff30b",
                             Name = "User",
                             NormalizedName = "USER"
                         });

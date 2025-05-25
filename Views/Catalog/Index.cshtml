@@ -6,7 +6,7 @@
 
 
 <section class="container">
-    <h1>@ViewBag.Title</h1>
+    <h1>@ViewData["Title"]</h1>
     <p>
         <a asp-controller="Catalog" asp-action="">Catalog View</a>
         <a asp-action="Upload">Upload View</a>
@@ -27,7 +27,7 @@
             @foreach (var asset in Model.Assets)
             {
                 <tr class="table-secondary">
-                    <td><img src="@asset.ImageUrl" class="img-fluid" style="max-height:100px;" /></td>
+                    <td><img src="@asset.FileUrl" class="img-fluid" style="max-height:100px;" /></td>
                     <td>@Html.DisplayFor(modelItem => asset.Name)</td>
                     <td>@Html.DisplayFor(modelItem => asset.Description)</td>
                     <td>@Html.DisplayFor(modelItem => asset.Author)</td>

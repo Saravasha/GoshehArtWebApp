@@ -9,7 +9,7 @@ namespace GoshehArtWebApp.ViewModels
     {
          
         [Required(ErrorMessage = "Select files to upload to the server")]
-        public List<IFormFile> ImagesUp { get; set; }
+        public List<IFormFile> FilesUp { get; set; }
 
   
     }

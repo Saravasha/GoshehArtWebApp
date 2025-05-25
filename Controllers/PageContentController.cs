@@ -21,7 +21,7 @@ namespace GoshehArtWebApp.Controllers
         [HttpGet]
         public async Task<IActionResult> GetAssets()
         {
-            var assets = await _context.Assets.Select(a => new { a.Id, a.ImageUrl, a.Name }).ToListAsync();
+            var assets = await _context.Assets.Select(a => new { a.Id, a.FileUrl, a.Name }).ToListAsync();
             return Ok(assets);
         }
 

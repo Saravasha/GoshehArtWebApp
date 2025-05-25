@@ -1,70 +1,74 @@
 ﻿@model CreateColorViewModel
 
 @{
-    ViewData["Title"] = "Edit Color Component";
+    ViewData["Title"] = "Edit";
 
 }
 
 
+<section class="container mt-4 pb-4">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+    <h4>@Model.Name</h4>
 
-<section class="container-fluid">
-    <h1>@ViewBag.Title</h1>
-    <div class="flex-row d-flex md-4">
-        <form asp-action="Edit" method="post" >
-            <div class="d-flex gap-2">
+    <div class="card shadow-sm">
+        <div class="card-body">
+            <form asp-action="Edit" method="post" >
                 <div asp-validation-summary="ModelOnly" class="text-danger"></div>
                 @* Color Name *@
                 @{
                     if (User.IsInRole("Admin"))
                     {
-                        <div class="form-group">
+                        <div class="mb-3">
                             <label asp-for="Name" class="control-label"></label>
-                            <input asp-for="Name" name="Name" style="height:5rem;width:10rem;" type="text" class="form-control" />
+                            <input asp-for="Name" name="Name" type="text" class="form-control" />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                     }
                     else
                     {
-                        <div class="form-group disabled">
+                        <div class="mb-4 disabled">
                             <label asp-for="Name" class="control-label"></label>
-                            <input asp-for="Name" name="Name" style="height:5rem;width:10rem;" type="text" class="form-control opacity-50" readonly />
+                            <input asp-for="Name" name="Name" type="text" class="form-control opacity-50" readonly />
                             <span asp-validation-for="Name" class="text-danger"></span>
                         </div>
                     }
                 }
                 @* Start Color *@
-                <div class="form-group">
+                <div class="mb-4">
                     <label asp-for="StartColor" class="control-label"></label>
-                    <input asp-for="StartColor" name="StartColor"  style="height:5rem; width:10rem;" type="color" class="form-control" />
+                    <input asp-for="StartColor" name="StartColor" type="color" class="form-control" />
                     <span asp-validation-for="StartColor" class="text-danger"></span>
                 </div>
                 @* Optional Gradient Range End Color*@
-                <div class="form-group">
+                <div class="mb-4">
                     <label asp-for="EndColor" class="control-label" ></label>
-                    <input asp-for="EndColor" name="EndColor"  style="height:5rem; width:10rem;" type="color" class="form-control"/>
+                    <input asp-for="EndColor" name="EndColor" type="color" class="form-control"/>
                     <span asp-validation-for="EndColor" class="text-danger"></span>
                 </div>
                 @* Darkmode Background Color *@
-                <div class="form-group">
+                <div class="mb-4">
                     <label asp-for="DarkStartColor" class="control-label"></label>
-                    <input asp-for="DarkStartColor" name="DarkStartColor"  style="height:5rem; width:10rem;" type="color" class="form-control" />
+                    <input asp-for="DarkStartColor" name="DarkStartColor" type="color" class="form-control" />
                     <span asp-validation-for="DarkStartColor" class="text-danger"></span>
                 </div>
                 @* Darkmode Optional Gradient Range End Color*@
-                <div class="form-group">
+                <div class="mb-4">
                     <label asp-for="DarkEndColor" class="control-label"></label>
-                    <input asp-for="DarkEndColor" name="DarkEndColor"  style="height:5rem; width:10rem;" type="color" class="form-control" />
+                    <input asp-for="DarkEndColor" name="DarkEndColor" type="color" class="form-control" />
                     <span asp-validation-for="DarkEndColor" class="text-danger"></span>
                 </div>
-           </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary mt-1" />
+                <!-- Submit -->
+                <div class="d-flex justify-content-between align-items-center mt-4">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-save me-1"></i>Save Changes
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Back to Colors
+                    </a>
                 </div>
             </form>
         </div>        
-            <div>
-                <a asp-action="Index">Return to Color Index</a>
-            </div>
+    </div>
 </section>
 @section Scripts {
     @{

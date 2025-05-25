@@ -6,10 +6,8 @@ using Microsoft.EntityFrameworkCore;
 using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
-using System.Collections.Generic;
-using System.IO;
-using static System.Runtime.InteropServices.JavaScript.JSType;
-using NuGet.ContentModel;
+using System.Diagnostics;
+using GoshehArtWebApp.Services;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -17,43 +15,95 @@ namespace GoshehArtWebApp.Controllers
     public class AssetController : Controller
     {
         private readonly ApplicationDbContext _context;
-		private readonly IWebHostEnvironment webHostEnvironment;
+        private readonly IWebHostEnvironment _webHostEnvironment;
 
-		public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
-		{
-			_context = context;
-			webHostEnvironment = webHost;
-		}
+        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
+        {
+            _context = context;
+            _webHostEnvironment = webHost;
+        }
 
-		public string UploadedFile(CreateAssetViewModel asset)
-		{
-			string? uniqueFileName = null;
+        private async Task<string?> GenerateVideoThumbnailAsync(string videoPath, string videoFileName)
+        {
+            if (!Directory.Exists(FilePathProvider.ThumbnailsRoot))
+            {
+                Directory.CreateDirectory(FilePathProvider.ThumbnailsRoot);
+            }
 
-			if (asset.ImageUp != null)
-			{
+            string thumbnailFileName = Path.GetFileNameWithoutExtension(videoFileName) + "_thumb.jpg";
+            string thumbnailPath = Path.Combine(FilePathProvider.ThumbnailsRoot, thumbnailFileName);
 
-                string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); 
-                if (!Directory.Exists(path))
+            var ffmpegArgs = $"-i \"{videoPath}\" -ss 00:00:01 -vframes 1 -q:v 2 \"{thumbnailPath}\"";
+
+            var process = new Process
+            {
+                StartInfo = new ProcessStartInfo
                 {
-                    Directory.CreateDirectory(path);
+                    FileName = "ffmpeg",
+                    Arguments = ffmpegArgs,
+                    RedirectStandardError = true,
+                    RedirectStandardOutput = true,
+                    UseShellExecute = false,
+                    CreateNoWindow = true,
                 }
-                // Trying to override Uploads briefly by pushing
-                string uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); 
-				uniqueFileName = Guid.NewGuid().ToString() + "_" + asset.ImageUp.FileName;
-                string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-                
-                if (System.IO.File.Exists(filePath))
-                {
-                    System.IO.File.Copy(filePath, "Uploads");
-                }
-                using (var fileStream = new FileStream(filePath, FileMode.Create))
-				{
-					asset.ImageUp.CopyTo(fileStream);
-				}
-			}
+            };
 
-			return "Uploads/" + uniqueFileName; 
-		}
+            try
+            {
+                process.Start();
+                string stderr = await process.StandardError.ReadToEndAsync();
+                await process.WaitForExitAsync();
+
+                if (process.ExitCode != 0 || !System.IO.File.Exists(thumbnailPath))
+                {
+                    // Log error somewhere persistent in production
+                    Console.WriteLine("FFmpeg Error:\n" + stderr);
+                    return null;
+                }
+
+                return FilePathProvider.ToWebPath(thumbnailPath);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine("FFmpeg failed: " + ex.Message);
+                return null;
+            }
+        }
+
+
+
+        private AssetType GetAssetTypeFromUploadedFile(string contentType)
+        {
+            if (contentType.StartsWith("image/"))
+                return AssetType.Image;
+            else if (contentType.StartsWith("video/"))
+                return AssetType.Video;
+            else if (contentType.StartsWith("audio/"))
+                return AssetType.Audio;
+            else
+                return AssetType.Other;
+        }
+        private async Task<(string PhysicalPath, string WebPath)?> UploadedFile(IFormFile? file)
+        {
+            if (file == null) return null;
+
+            if (!Directory.Exists(FilePathProvider.UploadsRoot))
+            {
+                Directory.CreateDirectory(FilePathProvider.UploadsRoot);
+            }
+
+            string uniqueFileName = Guid.NewGuid() + "_" + file.FileName;
+            string physicalFilePath = Path.Combine(FilePathProvider.UploadsRoot, uniqueFileName);
+
+            using (var fileStream = new FileStream(physicalFilePath, FileMode.Create))
+            {
+                await file.CopyToAsync(fileStream);
+            }
+
+            string webPath = FilePathProvider.ToWebPath(physicalFilePath);
+            return (physicalFilePath, webPath);
+        }
+
 
 
         public IActionResult Index(string searchString, DateOnly? fromDate, DateOnly? toDate)
@@ -94,181 +144,193 @@ namespace GoshehArtWebApp.Controllers
                 ToDate = toDate
             };
 
-        ViewData["CurrentFilter"] = searchString;
+            ViewData["CurrentFilter"] = searchString;
             return View(avm);
         }
 
         // GET: AssetController/Details/5
         public IActionResult Details(int id)
-		{
+        {
             Models.Asset? asset = _context.Assets
-				.Include(c => c.Categories)
-				.FirstOrDefault(p => p.Id == id);
+                .Include(c => c.Categories)
+                .FirstOrDefault(p => p.Id == id);
 
-			return View(asset);
-		}
+            return View(asset);
+        }
 
-		// GET: AssetController/Create
-		public IActionResult Create()
-		{
-			CreateAssetViewModel avm = new CreateAssetViewModel();
-			var categories = _context.Categories;
+        // GET: AssetController/Create
+        public IActionResult Create()
+        {
+            CreateAssetViewModel avm = new CreateAssetViewModel();
+            var categories = _context.Categories;
 
-			ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
+            ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
 
-			return View(avm);
-		}
+            return View(avm);
+        }
 
-        // POST: AssetController/Create
-        //[ValidateAntiForgeryToken]
         [HttpPost]
-		public async Task<IActionResult> Create(CreateAssetViewModel asset, List<string> Categories)
-		{
-			CreateAssetViewModel cavm = new CreateAssetViewModel();
+        public async Task<IActionResult> Create(CreateAssetViewModel asset, List<string> Categories)
+        {
+            CreateAssetViewModel cavm = new CreateAssetViewModel();
 
-			string uniqueFileName = UploadedFile(asset);
-			asset.ImageUrl = uniqueFileName;
+            var uploadResult = await UploadedFile(asset.FileUp);
+            string? physicalFilePath = uploadResult?.PhysicalPath;
+            string? webFilePath = uploadResult?.WebPath;
 
-			ModelState.Remove("Id");
-			//ModelState.Remove("ImageUrl");
-			if (ModelState.IsValid)
-			{
-				var AssetToAdd = new Models.Asset()
-				{
-					Name = asset.Name,
-					Description = asset.Description,
-					Author = asset.Author,
-					ImageUrl = uniqueFileName,
+            asset.FileUrl = webFilePath;
+
+            string? thumbPath = null;
+
+            if (asset.FileUp != null && asset.FileUp.ContentType.StartsWith("video/") && physicalFilePath != null)
+            {
+                thumbPath = await GenerateVideoThumbnailAsync(physicalFilePath, Path.GetFileName(physicalFilePath));
+            }
+
+            if (ModelState.IsValid)
+            {
+                var assetType = asset.FileUp != null ? GetAssetTypeFromUploadedFile(asset.FileUp.ContentType) : AssetType.Other;
+
+                var AssetToAdd = new Asset()
+                {
+                    Name = asset.Name,
+                    Description = asset.Description,
+                    Author = asset.Author,
+                    FileUrl = webFilePath,
+                    ThumbnailUrl = thumbPath,
                     Location = asset.Location,
                     Date = asset.Date,
-				};
+                    Type = assetType
+                };
 
-				Category? catToAdd = new Category();
-				foreach (var item in Categories)
-				{
-					int castItem = Int32.Parse(item);
-					catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
+                foreach (var item in Categories)
+                {
+                    int castItem = Int32.Parse(item);
+                    var catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
+                    if (catToAdd != null)
+                        AssetToAdd.Categories.Add(catToAdd);
+                }
+                
 
-					if (catToAdd != null)
-					{
-						AssetToAdd.Categories.Add(catToAdd);
-					}
+                await _context.Assets.AddAsync(AssetToAdd);
+                await _context.SaveChangesAsync();
 
-				}
+                return RedirectToAction(nameof(Index));
+            }
 
-				await _context.Assets.AddAsync(AssetToAdd);
-				await _context.SaveChangesAsync();
+            if (asset.Categories.Count == 0)
+                ViewBag.CategoryError = "Category is Required";
 
-				return RedirectToAction(nameof(Index));
-			}
-			else
-			{
-				if (asset.Categories.Count == 0)
-				{
-					ViewBag.CategoryError = "Category is Required";
-				}
+            ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
 
-				var categories = _context.Categories;
-				ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
+            return View(cavm);
+        }
 
-				return View(cavm);
-			}
-		}
 
-        // GET: AssetController/Edit/5
+
         [HttpGet]
-		public IActionResult Edit(int id)
-		{
-			CreateAssetViewModel cavm = new CreateAssetViewModel();
-			Models.Asset? asset = _context.Assets
-				.Include(c => c.Categories)
-				.FirstOrDefault(p => p.Id == id);
+        public IActionResult Edit(int id)
+        {
+            EditAssetViewModel cavm = new EditAssetViewModel();
+            Models.Asset? asset = _context.Assets
+                .Include(c => c.Categories)
+                .FirstOrDefault(p => p.Id == id);
 
-			List<int>? categoriesIds = new();
-			foreach (var assetNum in asset.Categories)
-			{
-				categoriesIds.Add(assetNum.Id);
-			}
+            if (asset == null)
+            {
+                return NotFound();
+            }
 
-			if (asset != null)
-			{
-				cavm.Name = asset.Name;
-				cavm.Description = asset.Description;
-				cavm.ImageUrl = asset.ImageUrl;
-                cavm.Author = asset.Author;
-				cavm.CategoryIds = categoriesIds;
-                cavm.Location = asset.Location;
-                cavm.Date = asset.Date;
+            List<int> categoriesIds = asset.Categories.Select(c => c.Id).ToList();
 
-				var categories = _context.Categories;
+            cavm.Name = asset.Name;
+            cavm.Description = asset.Description;
+            cavm.FileUrl = asset.FileUrl;
+            cavm.Author = asset.Author;
+            cavm.CategoryIds = categoriesIds;
+            cavm.Location = asset.Location;
+            cavm.Date = asset.Date;
+            cavm.Type = asset.Type;  // <--- Set the AssetType here
 
-				ViewBag.CategoryList = new MultiSelectList(categories, "Id", "Name");
-				//ViewBag.Image = asset.ImageUrl;
-			}
+            var categories = _context.Categories;
+            ViewBag.CategoryList = new MultiSelectList(categories, "Id", "Name");
 
-
-
-			return View(cavm);
-		}
-
-		// POST: AssetController/Edit/5
-		[HttpPost]
-		[ValidateAntiForgeryToken]
-		public async Task<IActionResult> Edit(int id, CreateAssetViewModel asset, List<string> CategoryIds)
-		{
-			Models.Asset? assetToEdit = _context.Assets.Find(id);
+            return View(cavm);
+        }
 
 
-			ModelState.Remove("Id");
-			ModelState.Remove("ImageUrl");
-			ModelState.Remove("ImageUp");
-			if (assetToEdit != null && ModelState.IsValid)
-			{
-				assetToEdit.Name = asset.Name;
-				assetToEdit.Description = asset.Description;
-				assetToEdit.Author = asset.Author;
-				assetToEdit.ImageUrl = assetToEdit.ImageUrl;
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Edit(EditAssetViewModel asset, string ExistingFileUrl)
+        {
+            var assetToEdit = _context.Assets
+                .Include(a => a.Categories)
+                .FirstOrDefault(a => a.Id == asset.Id);
+
+            if (assetToEdit == null)
+            {
+                return NotFound();
+            }
+
+            ModelState.Remove("FileUp");
+
+            if (ModelState.IsValid)
+            {
+                assetToEdit.Name = asset.Name;
+                assetToEdit.Description = asset.Description;
+                assetToEdit.Author = asset.Author;
                 assetToEdit.Location = asset.Location;
                 assetToEdit.Date = asset.Date;
 
-				var catToDelete = _context.Assets.Include(c => c.Categories)
-										.FirstOrDefault(p => p.Id == id);
+                if (asset.FileUp != null)
+                {
+                    var uploadResult = await UploadedFile(asset.FileUp);
+                    string? physicalFilePath = uploadResult?.PhysicalPath;
+                    string? webFilePath = uploadResult?.WebPath;
 
-				List<Category> tempList = new List<Category>();
+                    assetToEdit.FileUrl = webFilePath;
+                    assetToEdit.Type = GetAssetTypeFromUploadedFile(asset.FileUp.ContentType);
 
-				foreach (var item in catToDelete.Categories)
-				{
-					tempList.Add(item);
-				}
+                    string? thumbPath = null;
 
-				foreach (var cat in tempList)
-				{
-					catToDelete.Categories.Remove(cat);
-				}
+                    if (asset.FileUp.ContentType.StartsWith("video/") && physicalFilePath != null)
+                    {
+                        thumbPath = await GenerateVideoThumbnailAsync(physicalFilePath, Path.GetFileName(physicalFilePath));
+                    }
 
-				Category? catToAdd = new Category();
-				foreach (var item in CategoryIds)
-				{
-					int castItem = Int32.Parse(item);
-					catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
+                    assetToEdit.ThumbnailUrl = thumbPath;
+                }
+                else
+                {
+                    assetToEdit.FileUrl = ExistingFileUrl;
+                }
 
-					if (catToAdd != null)
-					{
-						assetToEdit.Categories.Add(catToAdd);
-					}
+                assetToEdit.Categories.Clear();
+                if (asset.CategoryIds != null)
+                {
+                    foreach (var categoryId in asset.CategoryIds)
+                    {
+                        var category = _context.Categories.FirstOrDefault(c => c.Id == categoryId);
+                        if (category != null)
+                        {
+                            assetToEdit.Categories.Add(category);
+                        }
+                    }
+                }
 
-				}
+                _context.Assets.Update(assetToEdit);
+                await _context.SaveChangesAsync();
 
-				_context.Assets.Update(assetToEdit);
-				await _context.SaveChangesAsync();
+                return RedirectToAction(nameof(Index));
+            }
 
-				return RedirectToAction(nameof(Index));
-			}
-			else
-			{
-				return View();
-			}
-		}
+            var categories = await _context.Categories.ToListAsync();
+
+            ViewBag.CategoryList = new MultiSelectList(categories, "Id", "Name", asset.CategoryIds);
+
+            return View(asset);
+        }
+
 
         public async Task<IActionResult> Delete(int? id)
         {
@@ -291,7 +353,6 @@ namespace GoshehArtWebApp.Controllers
 
         // POST: Db/Delete/5
         [HttpPost, ActionName("Delete")]
-		[HttpDelete]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id, IFormCollection collection)
         {
@@ -309,172 +370,67 @@ namespace GoshehArtWebApp.Controllers
             return RedirectToAction(nameof(Index));
         }
 
-
-
-		// Den här fungerar för variabel mängd med uppladdade filer.
-		public IActionResult Upload()
-		{
-
-			UploadAssetsViewModel umfm = new UploadAssetsViewModel();
-
-			ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
-
-			return View(umfm);
-		}
-
-
-        [HttpPost]
-        public async Task<IActionResult> Upload(UploadAssetsViewModel model)
+        [HttpGet]
+        public IActionResult CreateMultipleAssets()
         {
-						
-            if (ModelState.IsValid)
-            {
-                model.IsResponse = true;
-                if (model.ImagesUp.Count > 1)
-                {
-                    foreach (var file in model.ImagesUp)
-                    {
-
-                        string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
-
-                        //create folder if not exist
-                        if (!Directory.Exists(path))
-                            Directory.CreateDirectory(path);
-
-
-                        string fileNameWithPath = Path.Combine(path, file.FileName);
-
-                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
-                        {
-                            file.CopyTo(stream);
-                        }
-                    }
-                    model.IsSuccess = true;
-                    model.Message = "Assets upload successfully";
-                }
-                else if (model.ImagesUp.Count > 0)
-                {
-                    foreach (var file in model.ImagesUp)
-                    {
-
-                        string path = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
-
-                        //create folder if not exist
-                        if (!Directory.Exists(path))
-                            Directory.CreateDirectory(path);
-
-
-                        string fileNameWithPath = Path.Combine(path, file.FileName);
-
-                        using (var stream = new FileStream(fileNameWithPath, FileMode.Create))
-                        {
-                            await file.CopyToAsync(stream);
-                        }
-                    }
-                    model.IsSuccess = true;
-                    model.Message = "File upload successfully";
-                }
-                else
-                {
-                    model.IsSuccess = false;
-                    model.Message = "Please select files";
-                }
-            }
-            return View("Upload", model);
-        }
-
-        public IActionResult MultipleAssets()
-        {
-
-            CreateMultipleAssetsViewModel umfm = new CreateMultipleAssetsViewModel();
-
+            var vm = new CreateMultipleAssetsViewModel();
             ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
-
-            return View(umfm);
+            return View(vm);
         }
+
         [HttpPost]
-		public async Task<IActionResult> MultipleAssets(CreateMultipleAssetsViewModel assets, List<string> Categories)
+        public async Task<IActionResult> CreateMultipleAssets(CreateMultipleAssetsViewModel model)
         {
-            CreateMultipleAssetsViewModel cmavm = new CreateMultipleAssetsViewModel();
-
-            ModelState.Remove("Id");
-            //ModelState.Remove("ImageUrl");
-            if (ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                if (assets.ImageUp != null)
+                ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
+                return View(model);
+            }
+
+            string uploadsFolder = FilePathProvider.UploadsRoot;
+
+            foreach (var file in model.FileUp!)
+            {
+                var uniqueFileName = Guid.NewGuid() + "_" + Path.GetFileName(file.FileName);
+                var physicalFilePath = Path.Combine(uploadsFolder, uniqueFileName);
+
+                using var stream = new FileStream(physicalFilePath, FileMode.Create);
+                await file.CopyToAsync(stream);
+
+                string? thumbPath = null;
+
+                if (file.ContentType.StartsWith("video/"))
                 {
-                    string? uniqueFileName = null;
-                    string uploadsFolder = Path.Combine(Directory.GetParent(Environment.CurrentDirectory).ToString(), "Uploads"); ;
-                    foreach (var file in assets.ImageUp)
+                    thumbPath = await GenerateVideoThumbnailAsync(physicalFilePath, uniqueFileName);
+                }
+
+                var asset = new Asset
+                {
+                    Name = uniqueFileName,
+                    Description = model.Description,
+                    Author = model.Author,
+                    FileUrl = FilePathProvider.ToWebPath(physicalFilePath),
+                    ThumbnailUrl = thumbPath,
+                    Location = model.Location,
+                    Date = model.Date,
+                    Type = GetAssetTypeFromUploadedFile(file.ContentType)
+                };
+
+                foreach (var catId in model.Categories)
+                {
+                    if (int.TryParse(catId, out var id))
                     {
-                        
-                        uniqueFileName = Guid.NewGuid().ToString() + "_" + file.FileName;
-                        string filePath = Path.Combine(uploadsFolder, uniqueFileName);
-
-                        //string path = Path.Combine(Directory.GetCurrentDirectory(), uploadsFolder);
-
-                        //create folder if not exist
-                        //if (!Directory.Exists(filePath))
-                        //    Directory.CreateDirectory(filePath)w;
-
-                        if (System.IO.File.Exists(filePath))
-                        {
-                            System.IO.File.Copy(filePath, "Uploads");
-                        }
-
-                        //string fileNameWithPath = Path.Combine(filePath, file.FileName);
-
-                        using (var stream = new FileStream(filePath, FileMode.Create))
-                        {
-                            file.CopyTo(stream);
-                        }
-
-                        assets.ImageUrl = "Uploads/" + uniqueFileName;
-
-                        var AssetToAdd = new Models.Asset()
-                        {
-                            Name = uniqueFileName,
-                            Description = assets.Description,
-                            Author = assets.Author,
-                            ImageUrl = assets.ImageUrl,
-                            Location = assets.Location,
-                            Date = assets.Date
-                        };
-              
-
-                        Category? catToAdd = new Category();
-                        foreach (var item in Categories)
-                        {
-                            int castItem = Int32.Parse(item);
-                            catToAdd = _context.Categories.FirstOrDefault(c => c.Id == castItem);
-
-                            if (catToAdd != null)
-                            {
-                                AssetToAdd.Categories.Add(catToAdd);
-                            }
-
-                        }
-
-                        await _context.Assets.AddAsync(AssetToAdd);
-                        await _context.SaveChangesAsync();
-
+                        var category = _context.Categories.FirstOrDefault(c => c.Id == id);
+                        if (category != null)
+                            asset.Categories.Add(category);
                     }
                 }
 
-                return RedirectToAction(nameof(Index));
+                _context.Assets.Add(asset);
+                await _context.SaveChangesAsync();
             }
-            else
-            {
-                if (assets.Categories.Count == 0)
-                {
-                    ViewBag.CategoryError = "Category is Required";
-                }
 
-                var categories = _context.Categories;
-                ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
-
-                return View(cmavm);
-            }
+            return RedirectToAction(nameof(Index));
         }
     }
 

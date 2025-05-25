@@ -1,0 +1,122 @@
+﻿@model CreateMultipleAssetsViewModel
+
+@{
+    ViewData["Title"] = "Add Many Assets";
+}
+
+<section class="container my-5">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
+
+    <form asp-action="CreateMultipleAssets" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+
+        <!-- File Upload -->
+        <div class="mb-3">
+            <label for="FileUp" class="form-label">Select Multiple Files</label>
+            <input asp-for="FileUp" type="file" class="form-control" multiple id="FileUp" />
+            <span asp-validation-for="FileUp" class="text-danger"></span>
+        </div>
+
+        <!-- File Previews -->
+        <div id="filePreview" class="mb-4 d-flex flex-wrap gap-2 border rounded p-2 bg-light"></div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Author -->
+        <div class="mb-3">
+            <label asp-for="Author" class="form-label"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+            <label asp-for="Location" class="form-label"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <!-- Date -->
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label">Date (Optional)</label>
+            <input asp-for="Date" type="date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <!-- Categories -->
+        <div class="mb-4">
+            <label asp-for="Categories" class="form-label">Categories</label>
+            <select asp-for="Categories" asp-items="ViewBag.CategoryList" multiple class="form-select"></select>
+            <span asp-validation-for="Categories" class="text-danger"></span>
+        </div>
+
+        <!-- Submit -->
+        <div class="d-flex justify-content-between align-items-center">
+            <button type="submit" value="Create" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i>Create
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Assets
+            </a>
+        </div>
+    </form>
+</section>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+
+    <script>
+        document.getElementById('FileUp').addEventListener('change', function () {
+            const previewContainer = document.getElementById('filePreview');
+            previewContainer.innerHTML = '';
+
+            const files = this.files;
+            if (!files.length) {
+                previewContainer.innerHTML = '<p class="text-muted"><em>No files selected.</em></p>';
+                return;
+            }
+
+            for (const file of files) {
+                const fileType = file.type;
+                const objectURL = URL.createObjectURL(file);
+                let previewElement;
+
+                if (fileType.startsWith('image/')) {
+                    previewElement = document.createElement('img');
+                    previewElement.src = objectURL;
+                    previewElement.style.maxHeight = '100px';
+                    previewElement.classList.add('img-thumbnail');
+                } else if (fileType.startsWith('video/')) {
+                    previewElement = document.createElement('video');
+                    previewElement.controls = true;
+                    previewElement.style.maxHeight = '100px';
+                    const source = document.createElement('source');
+                    source.src = objectURL;
+                    source.type = fileType;
+                    previewElement.appendChild(source);
+                    previewElement.classList.add('rounded', 'border');
+                } else if (fileType.startsWith('audio/')) {
+                    previewElement = document.createElement('audio');
+                    previewElement.controls = true;
+                    const source = document.createElement('source');
+                    source.src = objectURL;
+                    source.type = fileType;
+                    previewElement.appendChild(source);
+                    previewElement.classList.add('mt-2');
+                } else {
+                    previewElement = document.createElement('div');
+                    previewElement.textContent = file.name;
+                    previewElement.className = 'border rounded bg-white p-2';
+                }
+
+                previewElement.classList.add('m-1');
+                previewContainer.appendChild(previewElement);
+            }
+        });
+    </script>
+}
