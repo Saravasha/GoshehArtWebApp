@@ -1,33 +1,26 @@
-﻿
-using GoshehArtWebApp.Models;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.ComponentModel.DataAnnotations;
-using System.Text.Json.Serialization;
-namespace GoshehArtWebApp.ViewModels;
-public class CreateMultipleAssetsViewModel : ResponseModel
+﻿using System.ComponentModel.DataAnnotations;
+using Microsoft.AspNetCore.Http;
+
+public class CreateMultipleAssetsViewModel
 {
+    [Required(ErrorMessage = "Please upload at least one file.")]
+    public List<IFormFile>? FileUp { get; set; }
 
-
-    //public List<CreateAssetViewModel> CreateAssets { get; set; }
-    public List<int> Id { get; set; }
-
-
-    public string? Name { get; set; }
+    public string? Description { get; set; }
 
     public string? Author { get; set; }
-    public string? Description { get; set; }
 
     public string? Location { get; set; }
 
-    [JsonIgnore]
     public DateOnly? Date { get; set; }
-    public string? DateString => Date?.ToString("yyyy-MM-dd");
-    public string? ImageUrl { get; set; }
 
-    [NotMapped]
-    public List<IFormFile> ImageUp { get; set; }
+    public string? FileUrl { get; set; }
 
-    public List<int>? CategoryId { get; set; } = new();
+    [Required(ErrorMessage = "At least one category is required.")]
+    public List<string> Categories { get; set; } = new();
 
-    public List<Category>? Categories { get; set; } = new();
+    public bool IsResponse { get; set; }
+    public bool IsSuccess { get; set; }
+    public string? Message { get; set; }
+    public string? ThumbnailUrl { get; set; }
 }

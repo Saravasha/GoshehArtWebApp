@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250523210123_refactoredimagetofile")]
+    partial class refactoredimagetofile
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -84,12 +87,6 @@ namespace GoshehArtWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ThumbnailUrl")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<int>("Type")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
 
                     b.ToTable("Assets");
@@ -102,8 +99,7 @@ namespace GoshehArtWebApp.Migrations
                             CategoryId = 8,
                             Description = "Inte sett än",
                             FileUrl = "/Assets/Filmproduktion/image (287).jpg",
-                            Name = "Dans under Vita Lakan",
-                            Type = 3
+                            Name = "Dans under Vita Lakan"
                         },
                         new
                         {
@@ -112,8 +108,7 @@ namespace GoshehArtWebApp.Migrations
                             CategoryId = 6,
                             Description = "Gods butt from above",
                             FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg",
-                            Name = "Aisha's Art",
-                            Type = 3
+                            Name = "Aisha's Art"
                         },
                         new
                         {
@@ -122,8 +117,7 @@ namespace GoshehArtWebApp.Migrations
                             CategoryId = 8,
                             Description = "Helt fantastiskt",
                             FileUrl = "/Assets/Filmproduktion/image (304).jpg",
-                            Name = "Kari - Jag är elak",
-                            Type = 3
+                            Name = "Kari - Jag är elak"
                         });
                 });
 
@@ -383,13 +377,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "6e3ceaf1-b5a0-4df8-8ab4-e745c734c274",
+                            Id = "f86aef39-730d-40b0-83db-09cfd1326a49",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "d39df32e-883b-4dea-b353-62d1b9f0ab3a",
+                            Id = "89559e30-6dc8-4ee0-9689-1c197ee74725",
                             Name = "User",
                             NormalizedName = "USER"
                         });

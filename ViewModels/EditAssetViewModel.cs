@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 using System.Text.Json.Serialization;
 namespace GoshehArtWebApp.ViewModels;
 
-public class CreateAssetViewModel
+public class EditAssetViewModel
 {
     public int Id { get; set; }
 
@@ -27,16 +27,15 @@ public class CreateAssetViewModel
     [Display(Name = "Asset Url")]
     public string? FileUrl { get; set; }
 
-    [Display(Name = "Asset")]
+    [Display(Name = "Asset File")]
     [NotMapped]
-    [Required(ErrorMessage = "Asset is Required")]
-    [JsonIgnore]
-    public IFormFile FileUp { get; set; }
+
+    public IFormFile? FileUp { get; set; }
     public AssetType Type { get; set; }
 
-    public List<int> CategoryIds { get; set; } = new();
+    public List<int>? CategoryIds { get; set; } = new();
 
     [Display(Name = "Category:")]
-    public List<string> Categories { get; set; } = new();
+    public List<Category> Categories { get; set; } = new();
     public string? ThumbnailUrl { get; set; }
 }

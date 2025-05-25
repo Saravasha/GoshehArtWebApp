@@ -1,40 +1,43 @@
 ﻿@model CategoryViewModel
 
 @{
-    ViewData["Title"] = "Edit";
+    ViewData["Title"] = "Edit Category";
 }
 
+<section class="container mt-4">
+    <h1 class="mb-4">@ViewData["Title"]</h1>
 
-<section class="container">
-    <h1>@ViewBag.Title</h1>
+    <div class="row justify-content-center">
+        <div class="col-md-6">
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form asp-action="Edit" novalidate>
+                        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+                        <input type="hidden" asp-for="Id" />
 
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Edit">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <input type="hidden" asp-for="Id" />
-                <div class="form-group">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
+                        <!-- Category Name -->
+                        <div class="mb-3">
+                            <label asp-for="Name" class="form-label fw-semibold">Category Name</label>
+                            <input asp-for="Name" class="form-control" placeholder="Enter category name" />
+                            <span asp-validation-for="Name" class="text-danger small"></span>
+                        </div>
 
+                        <!-- Submit -->
+                        <div class="d-flex justify-content-between align-items-center mt-4">
+                            <button type="submit" class="btn btn-primary">
+                                <i class="bi bi-save me-1"></i>Save Changes
+                            </button>
+                            <a asp-action="Index" class="btn btn-outline-secondary">
+                                <i class="bi bi-arrow-left me-1"></i>Back to Categories
+                            </a>
+                        </div>
+                    </form>
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Save" class="btn btn-primary mt-1" />
-                </div>
-            </form>
+            </div>
         </div>
-    </div>
-
-    <div>
-        <a asp-action="Index">Return to Category Index</a>
     </div>
 </section>
 
-
-
 @section Scripts {
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
+    <partial name="_ValidationScriptsPartial" />
 }

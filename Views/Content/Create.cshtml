@@ -4,32 +4,33 @@
     ViewData["Title"] = "Create Content";
 }
 
-<section class="container">
-    <h1>@ViewBag.Title</h1>
-    <h4>Add Content</h4>
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create" method="post" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                <div class="form-group">
+<section class="container my-5">
+    <h1 class="mb-3">@ViewData["Title"]</h1>
+    <h4 class="mb-4">Add new Content to a Page</h4>
+
+    <div class="row justify-content-center">
+        <div class="col-lg-6 col-md-8">
+            <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+                <div class="mb-3">
                     <label asp-for="Title" class="control-label"></label>
                     <input asp-for="Title" class="form-control" />
                     <span asp-validation-for="Title" class="text-danger"></span>
                 </div>
-                <div class="form-group ">
+                <div class="mb-4">
                     <label asp-for="Date">Date (Optional)</label>
                     <div>
                         <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
                         <span asp-validation-for="Date" class="text-danger"></span>
                     </div>
                 </div>
-                <div class="form-group">
+                <div class="mb-4">
                     <label asp-for="Container" class="control-label"></label>
                     <span asp-validation-for="Container" class="text-danger"></span>
                     <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30">
                     </textarea>
                 </div>
-                <div class="form-group">
+                <div class="mb-4">
                     <label asp-for="PageId" class="control-label"></label>
                     <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-control dropdown-menu-start m-1" required>
                         <option disabled selected>--Select Page--</option>
@@ -39,8 +40,14 @@
                         <span class="error-message">@ViewBag.PageError</span>
                     }
                 </div>
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
+                <!-- Submit -->
+                <div class="d-flex justify-content-between align-items-center">
+                    <button type="submit" class="btn btn-primary">
+                        <i class="bi bi-plus-circle me-1"></i>Create
+                    </button>
+                    <a asp-action="Index" class="btn btn-outline-secondary">
+                        <i class="bi bi-arrow-left me-1"></i>Back to Contents
+                    </a>
                 </div>
             </form>
         </div>
@@ -76,29 +83,28 @@
             </div>
         </div>
     </div>
+
     <div>
         <a asp-action="Index">Return to Page Index</a>
     </div>
 </section>
 
 @section Scripts {
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet">
+    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet" />
     <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
 
     <script>
-        const baseUrl = '@Url.Content("~/")';
-        const fullBaseUrl = window.location.origin + baseUrl;
         let summernoteInstance;
         let debounceTimer;
         let allAssets = [];
 
-        $(document).ready(function () {
+        $(function () {
             initSummernote();
-            initializeAssetModal();
-            bindAssetSearchEvents();
-            $('#clearFiltersBtn').on('click', function () {
+            setupAssetModal();
+            setupAssetSearch();
+            $('#clearFiltersBtn').on('click', () => {
                 $('#assetSearchForm')[0].reset();
                 loadAssets();
             });
@@ -108,16 +114,15 @@
             $('#summernote').summernote({
                 height: 300,
                 callbacks: {
-                    onImageUpload: function (files) {
-                        if (!files || files.length === 0) return;
+                    onImageUpload(files) {
+                        if (!files.length) return;
                         const file = files[0];
-
-                        if (file.type.startsWith("image/")) {
+                        if (file.type.startsWith('image/')) {
                             uploadFile(file, 'image');
-                        } else if (file.type.startsWith("video/")) {
+                        } else if (file.type.startsWith('video/')) {
                             uploadFile(file, 'video');
                         } else {
-                            alert("Unsupported file type.");
+                            alert('Unsupported file type.');
                         }
                     }
                 },
@@ -133,14 +138,15 @@
                     ['view', ['fullscreen', 'codeview', 'help']]
                 ],
                 buttons: {
-                    insertAsset: function (context) {
+                    insertAsset(context) {
                         const ui = $.summernote.ui;
                         summernoteInstance = context;
                         return ui.button({
                             contents: '<i class="note-icon-picture"></i> Insert Asset',
                             tooltip: 'Insert Asset from Asset Library',
-                            click: function () {
-                                $('#assetModal').modal('show');
+                            click() {
+                                const modal = new bootstrap.Modal(document.getElementById('assetModal'));
+                                modal.show();
                             }
                         }).render();
                     }
@@ -149,7 +155,7 @@
 
             function uploadFile(file, type) {
                 const formData = new FormData();
-                formData.append("file", file);
+                formData.append('file', file);
 
                 $.ajax({
                     url: '/PageContent/UploadFile',
@@ -157,50 +163,43 @@
                     data: formData,
                     contentType: false,
                     processData: false,
-                    success: function (data) {
+                    success(data) {
                         if (data.url) {
                             if (type === 'image') {
                                 $('#summernote').summernote('insertImage', data.url);
                             } else if (type === 'video') {
                                 const videoHtml = `
-                                    <video controls preload="none" style="max-width:100%;">
+                                    <video controls preload="none" style="width: 50%;">
                                         <source src="${data.url}" type="${file.type}">
                                         Your browser does not support the video tag.
                                     </video>`;
                                 $('#summernote').summernote('pasteHTML', videoHtml);
                             }
                         } else {
-                            alert("File upload failed.");
+                            alert('File upload failed.');
                         }
                     },
-                    error: function () {
-                        alert("Error uploading file.");
+                    error() {
+                        alert('Error uploading file.');
                     }
                 });
             }
         }
 
-        function initializeAssetModal() {
-            $('#assetModal').on('shown.bs.modal', async function () {
-                try {
-                    await loadCategories();
-                    loadAssets();
-                } catch (error) {
-                    console.error("Error initializing asset modal:", error);
-                }
+        function setupAssetModal() {
+            $('#assetModal').on('shown.bs.modal', async () => {
+                await loadCategories();
+                loadAssets();
             });
         }
 
-        function bindAssetSearchEvents() {
-            $('#assetSearchForm input, #assetSearchForm select').off('input change').on('input change', function () {
+        function setupAssetSearch() {
+            $('#assetSearchForm input, #assetSearchForm select').off('input change').on('input change', () => {
                 clearTimeout(debounceTimer);
                 debounceTimer = setTimeout(() => {
-                    const formData = $('#assetSearchForm').serializeArray();
                     const params = {};
-                    formData.forEach(field => {
-                        if (field.value?.trim()) {
-                            params[field.name] = field.value.trim();
-                        }
+                    $('#assetSearchForm').serializeArray().forEach(({ name, value }) => {
+                        if (value?.trim()) params[name] = value.trim();
                     });
                     loadAssets(params);
                 }, 300);
@@ -210,16 +209,14 @@
         async function loadCategories() {
             try {
                 const res = await fetch('/api/react/category');
-                const data = await res.json();
-
+                const categories = await res.json();
                 const select = $('#categorySelect');
                 select.empty().append('<option value="">All Categories</option>');
-                data.forEach(category => {
-                    const catValue = (category.name || '').toLowerCase();
-                    select.append(`<option value="${catValue}">${category.name}</option>`);
+                categories.forEach(cat => {
+                    select.append(`<option value="${(cat.name || '').toLowerCase()}">${cat.name}</option>`);
                 });
             } catch (err) {
-                console.error("Failed to load categories:", err);
+                console.error('Failed to load categories:', err);
             }
         }
 
@@ -229,55 +226,47 @@
                     .then(res => res.json())
                     .then(data => {
                         allAssets = data;
-                        const filtered = filterAssets(allAssets, params);
-                        renderAssets(filtered);
+                        renderAssets(filterAssets(allAssets, params));
                     })
-                    .catch(err => console.error("Failed to load assets:", err));
+                    .catch(err => console.error('Failed to load assets:', err));
             } else {
-                const filtered = filterAssets(allAssets, params);
-                renderAssets(filtered);
+                renderAssets(filterAssets(allAssets, params));
             }
         }
 
         function filterAssets(assets, params) {
             return assets.filter(asset => {
-                let matches = true;
-
-                if (params.name) {
-                    matches = matches && asset.name?.toLowerCase().includes(params.name.toLowerCase());
-                }
+                if (params.name && !asset.name?.toLowerCase().includes(params.name.toLowerCase())) return false;
 
                 if (params.date) {
                     const assetDate = new Date(asset.dateString).toISOString().slice(0, 10);
                     const filterDate = new Date(params.date).toISOString().slice(0, 10);
-                    matches = matches && assetDate === filterDate;
+                    if (assetDate !== filterDate) return false;
                 }
 
                 if (params.category) {
-                    const paramCat = params.category.toLowerCase();
-                    const assetCategories = asset.categories || [];
-                    const foundMatch = assetCategories.some(cat => (cat.name || '').toLowerCase() === paramCat);
-                    matches = matches && foundMatch;
+                    const catFilter = params.category.toLowerCase();
+                    if (!asset.categories?.some(c => (c.name || '').toLowerCase() === catFilter)) return false;
                 }
 
-                return matches;
+                return true;
             });
         }
 
-        function renderAssets(data) {
+        function renderAssets(assets) {
             const container = $('#assetContainer');
-            $('#assetCount').text(`${data.length} asset${data.length === 1 ? '' : 's'} found`);
+            $('#assetCount').text(`${assets.length} asset${assets.length !== 1 ? 's' : ''} found`);
             container.empty();
 
-            if (!data.length) {
+            if (!assets.length) {
                 container.append(`
                     <div class="col-12 text-center text-muted">
                         <p>No assets match your current filters.</p>
-                        <button type="button" class="btn btn-sm btn-outline-secondary" id="resetAfterEmpty">Reset Filters</button>
+                        <button type="button" id="resetAfterEmpty" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
                     </div>
                 `);
 
-                $('#assetContainer').on('click', '#resetAfterEmpty', function () {
+                $('#resetAfterEmpty').off('click').on('click', () => {
                     $('#assetSearchForm')[0].reset();
                     loadAssets();
                 });
@@ -285,35 +274,69 @@
                 return;
             }
 
-            data.forEach(asset => {
-                const fullUrl = fullBaseUrl + asset.imageUrl.replace(/^\/+/, '');
-                const isVideo = asset.imageUrl.toLowerCase().match(/\.(mp4|webm|ogg)$/);
-                const mediaElement = isVideo
-                    ? `<video src="${fullUrl}" controls preload="none" style="width: 100%; height: auto;"></video>`
-                    : `<img src="${fullUrl}" alt="${asset.name}" title="${asset.name}"
-                            class="img-fluid img-thumbnail asset-img" style="cursor:pointer;" data-url="${fullUrl}">`;
+            const fullBaseUrl = window.location.origin + '@Url.Content("~/")';
 
-                const item = $(`
-                    <div class="col-md-3 mb-3 asset-item" style="cursor: pointer;" data-url="${fullUrl}" data-type="${isVideo ? 'video' : 'image'}" role="button" tabindex="0" aria-label="Insert ${asset.name} into editor">
-                        ${mediaElement}
+            assets.forEach(asset => {
+                if (!asset.fileUrl) return;
+                const urlPath = asset.fileUrl.replace(/^\/+/, '');
+                const fullUrl = fullBaseUrl + urlPath;
+
+                const isVideo = /\.(mp4|webm|ogg)$/i.test(asset.fileUrl);
+                const isAudio = /\.(mp3|wav|ogg)$/i.test(asset.fileUrl);
+                const isImage = /\.(jpe?g|png|gif|webp|svg)$/i.test(asset.fileUrl);
+
+                let mediaHtml = '';
+                if (isImage) {
+                    mediaHtml = `<img src="${fullUrl}" alt="${asset.name}" title="${asset.name}" class="img-fluid img-thumbnail asset-img" style="cursor:pointer;" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor">`;
+                } else if (isVideo) {
+                    const thumbPath = asset.thumbnailUrl ? fullBaseUrl + asset.thumbnailUrl.replace(/^\/+/, '') : fullUrl;
+                    mediaHtml = `<img src="${thumbPath}" alt="${asset.name} (video thumbnail)" title="${asset.name}" class="img-fluid img-thumbnail asset-img" style="cursor:pointer;" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor">`;
+                } else if (isAudio) {
+                    mediaHtml = `<audio controls preload="none" style="width: 100%;">
+                                    <source src="${fullUrl}" type="audio/mpeg">
+                                    Your browser does not support the audio element.
+                                 </audio>`;
+                } else {
+                    return;
+                }
+
+                const type = isImage ? 'image' : isVideo ? 'video' : 'audio';
+
+                const assetDiv = $(`
+                    <div class="col-md-3 mb-3 asset-item" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-type="${type}">
+                        ${mediaHtml}
                     </div>
                 `);
 
-                item.on('click keypress', function (e) {
+                assetDiv.on('click keypress', e => {
                     if (e.type === 'click' || e.key === 'Enter' || e.key === ' ') {
-                        const mediaUrl = $(this).data('url');
-                        const type = $(this).data('type');
-                        if (type === 'video') {
-                            const videoHtml = `<video controls preload="none" style="max-width:100%;"><source src="${mediaUrl}" type="video/mp4"></video>`;
-                            summernoteInstance.invoke('editor.pasteHTML', videoHtml);
-                        } else {
+                        const mediaUrl = assetDiv.data('url');
+                        const mediaType = assetDiv.data('type');
+                        let insertHtml = '';
+
+                        if (mediaType === 'image') {
                             summernoteInstance.invoke('editor.insertImage', mediaUrl);
+                        } else if (mediaType === 'video') {
+                            const posterUrl = asset.thumbnailUrl ? fullBaseUrl + asset.thumbnailUrl.replace(/^\/+/, '') : '';
+                            insertHtml = `<video controls preload="none" style="width:50%;"${posterUrl ? ` poster="${posterUrl}"` : ''}>
+                              <source src="${mediaUrl}" type="video/mp4">
+                              Your browser does not support the video tag.
+                            </video>`;
+                            summernoteInstance.invoke('editor.pasteHTML', insertHtml);
+                        } else if (mediaType === 'audio') {
+                            insertHtml = `<audio controls preload="none" style="width:50%;">
+                                <source src="${mediaUrl}" type="audio/mpeg">
+                                Your browser does not support the audio element.
+                            </audio>`;
+                            summernoteInstance.invoke('editor.pasteHTML', insertHtml);
                         }
-                        $('#assetModal').modal('hide');
+
+                        const modal = bootstrap.Modal.getInstance(document.getElementById('assetModal'));
+                        modal.hide();
                     }
                 });
 
-                container.append(item);
+                container.append(assetDiv);
             });
         }
     </script>
