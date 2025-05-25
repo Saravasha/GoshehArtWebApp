@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250525201853_zigiplz")]
+    partial class zigiplz
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Inte sett än",
-                            FileUrl = "/Assets/Filmproduktion/image (287).jpg",
+                            FileUrl = "A/ssets/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan",
                             Type = 0
                         },
@@ -392,13 +395,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6807f3c-4d55-4d10-81e3-bde36592195b",
+                            Id = "78c1a63a-ad74-4785-9d1f-ba0431317feb",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4c81d983-e4ad-431e-ac11-82a4df746a67",
+                            Id = "b9cff4b4-7c11-47ae-bed6-3d91118b6f77",
                             Name = "User",
                             NormalizedName = "USER"
                         });

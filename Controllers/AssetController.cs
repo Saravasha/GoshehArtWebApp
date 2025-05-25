@@ -16,91 +16,37 @@ namespace GoshehArtWebApp.Controllers
     {
         private readonly ApplicationDbContext _context;
         private readonly IWebHostEnvironment _webHostEnvironment;
+        private readonly VideoThumbnailProvider _videoThumbnailProvider;
+        private readonly AssetTypeProvider _assetTypeProvider;
+        private readonly FilePathProvider _filePathProvider;
 
-        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost)
+        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost, VideoThumbnailProvider videoThumbnailProvider, AssetTypeProvider assetTypeProvider, FilePathProvider filePathProvider)
         {
             _context = context;
             _webHostEnvironment = webHost;
+            _videoThumbnailProvider = videoThumbnailProvider;
+            _assetTypeProvider = assetTypeProvider;
+            _filePathProvider = filePathProvider;
         }
 
-        private async Task<string?> GenerateVideoThumbnailAsync(string videoPath, string videoFileName)
-        {
-            if (!Directory.Exists(FilePathProvider.ThumbnailsRoot))
-            {
-                Directory.CreateDirectory(FilePathProvider.ThumbnailsRoot);
-            }
-
-            string thumbnailFileName = Path.GetFileNameWithoutExtension(videoFileName) + "_thumb.jpg";
-            string thumbnailPath = Path.Combine(FilePathProvider.ThumbnailsRoot, thumbnailFileName);
-
-            var ffmpegArgs = $"-i \"{videoPath}\" -ss 00:00:01 -vframes 1 -q:v 2 \"{thumbnailPath}\"";
-
-            var process = new Process
-            {
-                StartInfo = new ProcessStartInfo
-                {
-                    FileName = "ffmpeg",
-                    Arguments = ffmpegArgs,
-                    RedirectStandardError = true,
-                    RedirectStandardOutput = true,
-                    UseShellExecute = false,
-                    CreateNoWindow = true,
-                }
-            };
-
-            try
-            {
-                process.Start();
-                string stderr = await process.StandardError.ReadToEndAsync();
-                await process.WaitForExitAsync();
-
-                if (process.ExitCode != 0 || !System.IO.File.Exists(thumbnailPath))
-                {
-                    // Log error somewhere persistent in production
-                    Console.WriteLine("FFmpeg Error:\n" + stderr);
-                    return null;
-                }
-
-                return FilePathProvider.ToWebPath(thumbnailPath);
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine("FFmpeg failed: " + ex.Message);
-                return null;
-            }
-        }
-
-
-
-        private AssetType GetAssetTypeFromUploadedFile(string contentType)
-        {
-            if (contentType.StartsWith("image/"))
-                return AssetType.Image;
-            else if (contentType.StartsWith("video/"))
-                return AssetType.Video;
-            else if (contentType.StartsWith("audio/"))
-                return AssetType.Audio;
-            else
-                return AssetType.Other;
-        }
         private async Task<(string PhysicalPath, string WebPath)?> UploadedFile(IFormFile? file)
         {
             if (file == null) return null;
 
-            if (!Directory.Exists(FilePathProvider.UploadsRoot))
+            if (!Directory.Exists(_filePathProvider.UploadsRoot))
             {
-                Directory.CreateDirectory(FilePathProvider.UploadsRoot);
+                Directory.CreateDirectory(_filePathProvider.UploadsRoot);
             }
 
             string uniqueFileName = Guid.NewGuid() + "_" + file.FileName;
-            string physicalFilePath = Path.Combine(FilePathProvider.UploadsRoot, uniqueFileName);
+            string physicalFilePath = Path.Combine(_filePathProvider.UploadsRoot, uniqueFileName);
 
             using (var fileStream = new FileStream(physicalFilePath, FileMode.Create))
             {
                 await file.CopyToAsync(fileStream);
             }
 
-            string webPath = FilePathProvider.ToWebPath(physicalFilePath);
+            string webPath = _filePathProvider.ToWebPath(physicalFilePath);
             return (physicalFilePath, webPath);
         }
 
@@ -184,12 +130,12 @@ namespace GoshehArtWebApp.Controllers
 
             if (asset.FileUp != null && asset.FileUp.ContentType.StartsWith("video/") && physicalFilePath != null)
             {
-                thumbPath = await GenerateVideoThumbnailAsync(physicalFilePath, Path.GetFileName(physicalFilePath));
+                thumbPath = await _videoThumbnailProvider.GenerateAsync(physicalFilePath, Path.GetFileName(physicalFilePath));
             }
 
             if (ModelState.IsValid)
             {
-                var assetType = asset.FileUp != null ? GetAssetTypeFromUploadedFile(asset.FileUp.ContentType) : AssetType.Other;
+                var assetType = asset.FileUp != null ? _assetTypeProvider.GetType(asset.FileUp.ContentType) : AssetType.Other;
 
                 var AssetToAdd = new Asset()
                 {
@@ -225,8 +171,6 @@ namespace GoshehArtWebApp.Controllers
 
             return View(cavm);
         }
-
-
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -289,13 +233,13 @@ namespace GoshehArtWebApp.Controllers
                     string? webFilePath = uploadResult?.WebPath;
 
                     assetToEdit.FileUrl = webFilePath;
-                    assetToEdit.Type = GetAssetTypeFromUploadedFile(asset.FileUp.ContentType);
+                    assetToEdit.Type = _assetTypeProvider.GetType(asset.FileUp.ContentType);
 
                     string? thumbPath = null;
 
                     if (asset.FileUp.ContentType.StartsWith("video/") && physicalFilePath != null)
                     {
-                        thumbPath = await GenerateVideoThumbnailAsync(physicalFilePath, Path.GetFileName(physicalFilePath));
+                        thumbPath = await _videoThumbnailProvider.GenerateAsync(physicalFilePath, Path.GetFileName(physicalFilePath));
                     }
 
                     assetToEdit.ThumbnailUrl = thumbPath;
@@ -387,7 +331,7 @@ namespace GoshehArtWebApp.Controllers
                 return View(model);
             }
 
-            string uploadsFolder = FilePathProvider.UploadsRoot;
+            string uploadsFolder = _filePathProvider.UploadsRoot;
 
             foreach (var file in model.FileUp!)
             {
@@ -401,7 +345,7 @@ namespace GoshehArtWebApp.Controllers
 
                 if (file.ContentType.StartsWith("video/"))
                 {
-                    thumbPath = await GenerateVideoThumbnailAsync(physicalFilePath, uniqueFileName);
+                    thumbPath = await _videoThumbnailProvider.GenerateAsync(physicalFilePath, uniqueFileName);
                 }
 
                 var asset = new Asset
@@ -409,11 +353,11 @@ namespace GoshehArtWebApp.Controllers
                     Name = uniqueFileName,
                     Description = model.Description,
                     Author = model.Author,
-                    FileUrl = FilePathProvider.ToWebPath(physicalFilePath),
+                    FileUrl = _filePathProvider.ToWebPath(physicalFilePath),
                     ThumbnailUrl = thumbPath,
                     Location = model.Location,
                     Date = model.Date,
-                    Type = GetAssetTypeFromUploadedFile(file.ContentType)
+                    Type = _assetTypeProvider.GetType(file.ContentType)
                 };
 
                 foreach (var catId in model.Categories)
@@ -432,6 +376,7 @@ namespace GoshehArtWebApp.Controllers
 
             return RedirectToAction(nameof(Index));
         }
+
     }
 
 }

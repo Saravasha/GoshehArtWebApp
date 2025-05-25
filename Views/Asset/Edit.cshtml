@@ -20,24 +20,24 @@
                     <label class="form-label">Asset Type</label>
                     <input class="form-control" value="@Model.Type.ToString()" disabled />
                 </div>
-
                 <!-- File Preview -->
-                <div class="mb-4" id="FilePreviewContainer">
+                <div class="mb-4 text-center" id="FilePreviewContainer">
                     <label class="form-label">Current File:</label><br />
+
                     @switch (Model.Type)
                     {
                         case AssetType.Image:
-                            <img id="PreviewFile" src="@Url.Content("~/" + Model.FileUrl)" class="img-fluid rounded border" style="max-height: 200px; " loading="lazy" />
+                            <img id="PreviewFile" src="@Url.Content(Model.FileUrl)" class="img-fluid rounded border" style="max-height: 200px; " loading="lazy" />
                             break;
                         case AssetType.Video:
                             <video id="PreviewFile" controls class="w-100 rounded border" style="max-height: 300px;">
-                                <source src="@Url.Content("~/" + Model.FileUrl)" type="video/mp4" />
+                                <source src="@Url.Content(Model.FileUrl)" type="video/mp4" />
                                 Your browser does not support the video tag.
                             </video>
                             break;
                         case AssetType.Audio:
                             <audio id="PreviewFile" controls class="w-100">
-                                <source src="@Url.Content("~/" + Model.FileUrl)" type="audio/mpeg" />
+                                <source src="@Url.Content(Model.FileUrl)" type="audio/mpeg" />
                                 Your browser does not support the audio element.
                             </audio>
                             break;
