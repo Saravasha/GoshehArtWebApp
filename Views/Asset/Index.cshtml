@@ -14,7 +14,7 @@
             <a asp-action="CreateMultipleAssets" class="btn btn-outline-primary">Add Multiple Assets</a>
             @if (User.IsInRole("Admin"))
             {
-                <a asp-controller="Catalog" asp-action="Index" class="btn btn-outline-danger">Sync Catalogs</a>
+                <a asp-controller="Catalog" asp-action="Seed" class="btn btn-outline-danger">Seed Assets & Categories</a>
             }
         </div>
 

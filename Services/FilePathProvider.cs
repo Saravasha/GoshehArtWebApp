@@ -1,27 +1,41 @@
-﻿namespace GoshehArtWebApp.Services
+﻿public class FilePathProvider
 {
-    public static class FilePathProvider
+    private readonly IWebHostEnvironment _env;
+
+    public FilePathProvider(IWebHostEnvironment env)
     {
-        public static string UploadsRoot =>
-            Path.Combine(Directory.GetParent(Environment.CurrentDirectory)!.FullName, "Uploads");
+        _env = env;
+    }
 
-        public static string ThumbnailsRoot =>
-            Path.Combine(UploadsRoot, "Thumbnails");
+    public string UploadsRoot => Path.Combine(Directory.GetParent(Environment.CurrentDirectory)!.FullName, "Uploads");
 
-        public static string ToWebPath(string fullPath)
+    public string ThumbnailsRoot => Path.Combine(UploadsRoot, "Thumbnails");
+
+    public string WebAssetsRoot => Path.Combine(_env.WebRootPath, "Assets");
+
+    public string ToWebPath(string fullPath)
+    {
+        var uploadsRoot = Path.GetFullPath(UploadsRoot) + Path.DirectorySeparatorChar;
+        var webRoot = Path.GetFullPath(_env.WebRootPath) + Path.DirectorySeparatorChar;
+
+        if (fullPath.StartsWith(uploadsRoot, StringComparison.OrdinalIgnoreCase))
         {
-            var basePath = Directory.GetParent(Environment.CurrentDirectory)!.FullName + Path.DirectorySeparatorChar;
-            if (fullPath.StartsWith(basePath))
-            {
-                return fullPath.Substring(basePath.Length).Replace("\\", "/");
-            }
-            return fullPath.Replace("\\", "/"); // fallback, just normalize slashes
+            var relativePath = fullPath.Substring(uploadsRoot.Length);
+            return "/Uploads/" + relativePath.Replace("\\", "/");
         }
 
-
-        public static string GetFullPath(string relativePath)
+        if (fullPath.StartsWith(webRoot, StringComparison.OrdinalIgnoreCase))
         {
-            return Path.Combine(UploadsRoot, relativePath);
+            var relativePath = fullPath.Substring(webRoot.Length);
+            return "/" + relativePath.Replace("\\", "/");
         }
+
+        // Debug fallback
+        return "/unmapped/" + fullPath.Replace("\\", "/");
+    }
+
+    public string GetFullPath(string relativePath)
+    {
+        return Path.Combine(UploadsRoot, relativePath);
     }
 }

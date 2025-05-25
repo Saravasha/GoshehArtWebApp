@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250525174435_letsgo")]
+    partial class letsgo
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -101,7 +104,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Inte sett än",
-                            FileUrl = "/Assets/Filmproduktion/image (287).jpg",
+                            FileUrl = "Assets/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan",
                             Type = 0
                         },
@@ -111,7 +114,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 6,
                             Description = "Gods butt from above",
-                            FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg",
+                            FileUrl = "Assets/Kontroversiell Konst/image (3).jpg",
                             Name = "Aisha's Art",
                             Type = 0
                         },
@@ -121,7 +124,7 @@ namespace GoshehArtWebApp.Migrations
                             Author = "Fateme Gosheh",
                             CategoryId = 8,
                             Description = "Helt fantastiskt",
-                            FileUrl = "/Assets/Filmproduktion/image (304).jpg",
+                            FileUrl = "Assets/Filmproduktion/image (304).jpg",
                             Name = "Kari - Jag är elak",
                             Type = 0
                         });
@@ -226,15 +229,6 @@ namespace GoshehArtWebApp.Migrations
                             DarkStartColor = "#000000",
                             EndColor = "#000000",
                             Name = "Background Color",
-                            StartColor = "#000000"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DarkEndColor = "#000000",
-                            DarkStartColor = "#000000",
-                            EndColor = "#000000",
-                            Name = "Header Text",
                             StartColor = "#000000"
                         });
                 });
@@ -392,13 +386,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6807f3c-4d55-4d10-81e3-bde36592195b",
+                            Id = "869b028b-3af6-4105-82ef-6b1086b54350",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4c81d983-e4ad-431e-ac11-82a4df746a67",
+                            Id = "b4fc879b-61a5-4f2f-ad65-f817ea41f47e",
                             Name = "User",
                             NormalizedName = "USER"
                         });

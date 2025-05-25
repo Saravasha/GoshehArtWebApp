@@ -28,10 +28,14 @@ builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.Requ
 builder.Services.AddControllersWithViews().AddJsonOptions(x =>
 {
     x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles;
-    x.JsonSerializerOptions.Converters.Add(new System.Text.Json.Serialization.JsonStringEnumConverter());
+    x.JsonSerializerOptions.Converters.Add(new JsonStringEnumConverter());
 });
 
 builder.Services.AddDirectoryBrowser();
+
+builder.Services.AddScoped<FilePathProvider>();
+builder.Services.AddScoped<VideoThumbnailProvider>();
+builder.Services.AddScoped<AssetTypeProvider>();
 
 
 var allowedOrigins = builder.Configuration.GetSection("AllowedOrigins").Get<string[]>();
@@ -113,9 +117,9 @@ app.UseStaticFiles();
 
 // Fileprovider för Uploads utanför webrooten
 
-void ThumbnailDirectoryAsserter()
+void DirectoryAsserter(string path,string NewRequestPath)
 {
-    string path = FilePathProvider.ThumbnailsRoot;
+
     if (!Directory.Exists(path))
     {
         Directory.CreateDirectory(path);
@@ -125,44 +129,23 @@ void ThumbnailDirectoryAsserter()
     {
         FileProvider = new PhysicalFileProvider(
         path),
-        RequestPath = "/Thumbnails"
+        RequestPath = NewRequestPath
     });
 }
 
-void UploadDirectoryAsserter()
+
+using (var scope = app.Services.CreateScope())
 {
-    // Gets App root path's parent directory and does a combine with Uploads, checks if directory Uploads exists under parent directory, if not then it creates it => Adds a new PhysicalFileProvider for Upload Path...
-    string path = FilePathProvider.UploadsRoot;
-    if (!Directory.Exists(path))
-    {
-        Directory.CreateDirectory(path);
-    }
+    var filePathProvider = scope.ServiceProvider.GetRequiredService<FilePathProvider>();
 
-    app.UseStaticFiles(new StaticFileOptions()
-    {
-        FileProvider = new PhysicalFileProvider(
-        path),
-        RequestPath = "/Uploads"
-    });
+    DirectoryAsserter(filePathProvider.UploadsRoot, "/Uploads");
+
+    AddStaticFilesRecursively(filePathProvider.WebAssetsRoot, app);
 }
-
-ThumbnailDirectoryAsserter();
-UploadDirectoryAsserter();
-
-// Fileprovider f�r Assets rekursivt
-var baseDirectory = Path.Combine(Directory.GetCurrentDirectory(), "wwwroot/Assets");
-AddStaticFilesRecursively(baseDirectory, app);
-
 void AddStaticFilesRecursively(string directory, WebApplication app)
 {
-    var fileProvider = new PhysicalFileProvider(directory);
-
-    app.UseStaticFiles(new StaticFileOptions
-    {
-        FileProvider = fileProvider,
-        RequestPath = "/" + Path.GetFileName(directory) 
-    });
-
+    DirectoryAsserter(directory, "/" + Path.GetFileName(directory));
+    
     try
     {
         var subdirectories = Directory.GetDirectories(directory);

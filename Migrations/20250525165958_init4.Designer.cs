@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250525165958_init4")]
+    partial class init4
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -227,15 +230,6 @@ namespace GoshehArtWebApp.Migrations
                             EndColor = "#000000",
                             Name = "Background Color",
                             StartColor = "#000000"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DarkEndColor = "#000000",
-                            DarkStartColor = "#000000",
-                            EndColor = "#000000",
-                            Name = "Header Text",
-                            StartColor = "#000000"
                         });
                 });
 
@@ -392,13 +386,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6807f3c-4d55-4d10-81e3-bde36592195b",
+                            Id = "f094920f-efdd-4f55-8f90-adfaeb6cf460",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4c81d983-e4ad-431e-ac11-82a4df746a67",
+                            Id = "da41533e-b9de-46ba-9941-663d5dba5487",
                             Name = "User",
                             NormalizedName = "USER"
                         });

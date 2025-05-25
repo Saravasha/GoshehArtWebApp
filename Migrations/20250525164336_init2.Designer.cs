@@ -4,6 +4,7 @@ using GoshehArtWebApp.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GoshehArtWebApp.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250525164336_init2")]
+    partial class init2
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -103,7 +106,7 @@ namespace GoshehArtWebApp.Migrations
                             Description = "Inte sett än",
                             FileUrl = "/Assets/Filmproduktion/image (287).jpg",
                             Name = "Dans under Vita Lakan",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
@@ -113,7 +116,7 @@ namespace GoshehArtWebApp.Migrations
                             Description = "Gods butt from above",
                             FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg",
                             Name = "Aisha's Art",
-                            Type = 0
+                            Type = 3
                         },
                         new
                         {
@@ -123,7 +126,7 @@ namespace GoshehArtWebApp.Migrations
                             Description = "Helt fantastiskt",
                             FileUrl = "/Assets/Filmproduktion/image (304).jpg",
                             Name = "Kari - Jag är elak",
-                            Type = 0
+                            Type = 3
                         });
                 });
 
@@ -226,15 +229,6 @@ namespace GoshehArtWebApp.Migrations
                             DarkStartColor = "#000000",
                             EndColor = "#000000",
                             Name = "Background Color",
-                            StartColor = "#000000"
-                        },
-                        new
-                        {
-                            Id = 2,
-                            DarkEndColor = "#000000",
-                            DarkStartColor = "#000000",
-                            EndColor = "#000000",
-                            Name = "Header Text",
                             StartColor = "#000000"
                         });
                 });
@@ -392,13 +386,13 @@ namespace GoshehArtWebApp.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "f6807f3c-4d55-4d10-81e3-bde36592195b",
+                            Id = "71517ab7-694e-49b9-9b2f-96c7adc9660e",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
-                            Id = "4c81d983-e4ad-431e-ac11-82a4df746a67",
+                            Id = "acbc8993-1877-4595-a114-347e9e5d96f4",
                             Name = "User",
                             NormalizedName = "USER"
                         });

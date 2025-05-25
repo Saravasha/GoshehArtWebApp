@@ -25,7 +25,9 @@ namespace GoshehArtWebApp.Data
             base.OnModelCreating(modelbuilder);
 
             modelbuilder.Entity<Color>().HasData(
-                new Color { Id = 1, Name = "Background Color", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" });
+                new Color { Id = 1, Name = "Background Color", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" },
+                new Color { Id = 2, Name = "Header Text", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" });
+
 
             modelbuilder.Entity<Page>().HasData(
                 new Page { Id = 1, Title = "Home", Container = "Home"},
@@ -56,9 +58,9 @@ namespace GoshehArtWebApp.Data
             );
 
             modelbuilder.Entity<Asset>().HasData(
-                new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", FileUrl= "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8 },
-                new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg", CategoryId = 6 },
-                new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", FileUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8 }
+                new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", FileUrl= "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8, Type = 0 },
+                new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg", CategoryId = 6, Type = 0 },
+                new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", FileUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8, Type = 0 }
             );
 
 

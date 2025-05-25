@@ -18,9 +18,9 @@ namespace GoshehArtWebApp.ViewModels
         public List<string?>? CatalogNames { get; set; }
         public List<Category?>? Categories { get; set; } = new();
         public List<Asset?>? Assets { get; set; } = new();
-        public string? ImageUrl { get; set; }
+        public string? FileUrl { get; set; }
         public string? CategoryName { get; set; }
         [NotMapped]
-        public IFormFile? ImageUp { get; set; }
+        public IFormFile FileUp { get; set; }
     }
 }
