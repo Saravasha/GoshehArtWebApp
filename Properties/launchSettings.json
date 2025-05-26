@@ -10,6 +10,17 @@
       "dotnetRunMessages": true,
       "applicationUrl": "http://localhost:5283"
     },
+    "https_StagingEnv": {
+      "commandName": "Project",
+      "launchBrowser": true,
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Staging",
+        "DOTNET_ENVIRONMENT": "Staging"
+      },
+      "dotnetRunMessages": true,
+      "applicationUrl": "https://localhost:5283",
+      "sqlDebugging": true
+    },
     "https_ProductionEnv": {
       "commandName": "Project",
       "launchBrowser": true,

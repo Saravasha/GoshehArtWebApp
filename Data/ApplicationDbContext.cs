@@ -87,24 +87,6 @@ namespace GoshehArtWebApp.Data
                 .Property(e => e.Date)
                 .HasColumnType("date");
 
-            string adminRoleId = Guid.NewGuid().ToString();
-            string userRoleId = Guid.NewGuid().ToString();
-            string userId = Guid.NewGuid().ToString();
-
-            modelbuilder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Id = adminRoleId,
-                Name = "Admin",
-                NormalizedName = "ADMIN"
-            });
-            modelbuilder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Id = userRoleId,
-                Name = "User",
-                NormalizedName = "USER"
-
-            });
-
         }
     }
 }
