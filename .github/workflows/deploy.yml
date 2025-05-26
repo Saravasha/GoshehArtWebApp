@@ -3,10 +3,10 @@ name: Deploy GoshehArtWebApp (Backend)
 on:
   push:
     branches:
-      - stage
+      - main
   pull_request:
     branches:
-    - dev
+    - stage
 
 # Controls when the workflow will run
 # Triggers the workflow on push request event for the master branch
