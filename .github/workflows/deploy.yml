@@ -1,81 +1,60 @@
-  # Triggers
-name: Deploy GoshehArtWebApp (Backend)
+name: Deploy GoshehArtWebApp (Staging)
+
 on:
   push:
     branches:
       - stage
   pull_request:
     branches:
-    - dev
-
-# Controls when the workflow will run
-# Triggers the workflow on push request event for the master branch
+      - dev
 
 jobs:
   deploy:
-    # Our previously created self-hosted runner
     runs-on: self-hosted
 
     strategy:
       matrix:
         dotnet: ["8.0.x"]
 
-    # A sequence of tasks that will execute as part of the job
+    env:
+      DOTNET_ENVIRONMENT: Staging
+      ASPNETCORE_ENVIRONMENT: Staging
+      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+
     steps:
-      # Checks out repository so our job can access it
       - uses: actions/checkout@v2
+
       - name: Set HOME environment variable
         run: |
           echo "HOME=/home/runner" >> $GITHUB_ENV
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+
+      - name: Setup .NET Core SDK ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: ${{ matrix.dotnet }}
 
       - name: Install dependencies
         run: dotnet restore
 
-      #Check if DOTNET_ENVIRONMENT is unset or not set to Production
-      - name: Check Environment Variable
-        run: | 
-          if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
-            # Set DOTNET_ENVIRONMENT to Production
-            export DOTNET_ENVIRONMENT=Production
-            echo "DOTNET_ENVIRONMENT set to Production."
-          else
-            echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
-          fi
-        
       - name: Build
         run: dotnet build --configuration Release --no-restore
-    
-      # We will output publish files to the folder we previously created
-      - name: Publish
-         # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
-        run: |
-          dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-      - name: PM2 Syncing for Production
-        env: 
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-        run: |
-          if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
-            # Set DOTNET_ENVIRONMENT to Production
-            export DOTNET_ENVIRONMENT=Production
-            echo "DOTNET_ENVIRONMENT set to Production."
-          else
-            echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
-          fi
 
-          echo $ADMIN_PASSWORD
-          echo $ASPNETCORE_ENVIRONMENT
-          echo $DOTNET_ENVIRONMENT
-          
+      - name: Publish
+        run: |
+          dotnet publish -c Release -o /var/www/goshehartwebapp-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+
+      - name: PM2 Syncing for Staging
+        run: |
+          echo "Using environment: $DOTNET_ENVIRONMENT"
           export PM2_HOME=/root/.pm2
-          pm2 resurrect 
-          pm2 ls
-          pm2 stop goshehartwebapp
-          pm2 start goshehartwebapp
+
+          pm2 stop goshehartwebapp-staging || true
+          pm2 start /var/www/goshehartwebapp-staging/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
+            --name goshehartwebapp-staging \
+            --interpreter dotnet \
+            --env DOTNET_ENVIRONMENT=Staging
           pm2 save
+
       - name: Nginx Restarting
         run: service nginx restart
