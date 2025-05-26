@@ -1,4 +1,4 @@
-name: Deploy GoshehArtWebApp (Staging)
+name: Deploy GoshehArtWebApp to (Staging)
 
 on:
   push:
