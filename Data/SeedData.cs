@@ -21,8 +21,11 @@ namespace GoshehArtWebApp.Data
 
             var isProd = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" ||
                 Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production");
-            
-            adminPassword = isProd ? Environment.GetEnvironmentVariable("ADMIN_PASSWORD") : configuration["Passwords:Admin"];
+
+            var isStaging = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Staging" ||
+                Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Staging");
+
+            adminPassword = isProd ? Environment.GetEnvironmentVariable("ADMIN_PASSWORD") : isStaging ? Environment.GetEnvironmentVariable("ADMIN_PASSWORD_STAGING") : configuration["Passwords:Admin"];
 
             if (string.IsNullOrWhiteSpace(adminPassword))
             {
