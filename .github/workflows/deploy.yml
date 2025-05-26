@@ -29,8 +29,8 @@ jobs:
         run: |
           echo "HOME=/home/runner" >> $GITHUB_ENV
 
-      - name: Setup .NET Core SDK ${{ matrix.dotnet }}
-        uses: actions/setup-dotnet@v1.7.2
+      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet }}
 
@@ -42,11 +42,13 @@ jobs:
 
       - name: Publish
         run: |
+
           dotnet publish -c Release -o /var/www/goshehartwebapp-staging/
 
       - name: PM2 Syncing for Staging
         run: |
           echo "Using environment: $DOTNET_ENVIRONMENT"
+
           export PM2_HOME=/root/.pm2
 
           pm2 stop goshehartwebapp-staging || true
