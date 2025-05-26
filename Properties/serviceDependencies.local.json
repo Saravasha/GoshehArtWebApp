@@ -9,6 +9,6 @@
       "type": "mssql.onprem",
       "connectionId": "ConnectionStrings:DatabaseConnection",
       "dynamicId": null
-    }
+    },
   }
 }

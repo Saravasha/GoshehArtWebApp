@@ -13,9 +13,14 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = "";
 if (builder.Environment.IsDevelopment())  
 {
-    connectionString = builder.Configuration.GetConnectionString("DatabaseConnection") ?? throw new InvalidOperationException("Connection string 'DatabaseConnection' not found.");
+    connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
-} else
+} else if (builder.Environment.IsStaging())
+{
+    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING_STAGING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING_STAGING' not found.");
+}
+else
+        
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found.");
 }
