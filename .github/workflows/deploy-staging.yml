@@ -6,54 +6,47 @@ on:
     branches:
       - main
 
-# Controls when the workflow will run
-# Triggers the workflow on push request event for the master branch
-
 jobs:
   deploy:
-    # Our previously created self-hosted runner
     runs-on: self-hosted
 
     strategy:
       matrix:
         dotnet: ["8.0.x"]
 
-    # A sequence of tasks that will execute as part of the job
     steps:
-      # Checks out repository so our job can access it
       - uses: actions/checkout@v2
+
       - name: Set HOME environment variable
         run: |
           echo "HOME=/home/runner" >> $GITHUB_ENV
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
+
+      - name: Setup .NET Core SDK ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@v1.7.2
         with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+          dotnet-version: ${{ matrix.dotnet }}
 
       - name: Install dependencies
         run: dotnet restore
 
-      #Check if DOTNET_ENVIRONMENT is unset or not set to Production
       - name: Check Environment Variable
-        run: | 
+        run: |
           if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
-            # Set DOTNET_ENVIRONMENT to Production
             export DOTNET_ENVIRONMENT=Production
             echo "DOTNET_ENVIRONMENT set to Production."
           else
             echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
           fi
-        
+
       - name: Build
         run: dotnet build --configuration Release --no-restore
-    
-      # We will output publish files to the folder we previously created
+
       - name: Publish
-         # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
         run: |
           dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+
       - name: PM2 Syncing for Production
-        env: 
+        env:
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
           ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
@@ -64,5 +57,6 @@ jobs:
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT=Production
           pm2 save
-            - name: Nginx Restarting
-              run: service nginx restart
+
+      - name: Nginx Restarting
+        run: service nginx restart
