@@ -59,7 +59,7 @@ jobs:
         run: |
           export PM2_HOME=/root/.pm2
           pm2 stop goshehartwebapp || true
-          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp.dll \
+          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
             --name goshehartwebapp \
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT=Production
