@@ -22,7 +22,7 @@ if (builder.Environment.IsDevelopment())
 else
         
 {
-    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Con nection string 'CONNECTION_STRING' not found.");
+    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found.");
 }
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
