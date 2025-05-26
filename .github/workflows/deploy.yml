@@ -42,7 +42,7 @@ jobs:
 
       - name: Publish
         run: |
-          dotnet publish -c Release -o /var/www/goshehartwebapp-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+          dotnet publish -c Release -o /var/www/goshehartwebapp-staging/
 
       - name: PM2 Syncing for Staging
         run: |
@@ -50,7 +50,7 @@ jobs:
           export PM2_HOME=/root/.pm2
 
           pm2 stop goshehartwebapp-staging || true
-          pm2 start /var/www/goshehartwebapp-staging/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
+          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
             --name goshehartwebapp-staging \
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT=Staging
