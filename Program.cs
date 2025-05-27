@@ -100,23 +100,36 @@ else
 }
 
 
+SmtpSettings smtpSettings;
 if (app.Environment.IsProduction() || app.Environment.IsStaging())
-
 {
-    var smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
-    if (smtpSettings == null)
+    smtpSettings = new SmtpSettings
     {
-        Console.WriteLine("SMTP settings are null.");
-    }
-    if (string.IsNullOrWhiteSpace(smtpSettings.Host) ||
-        string.IsNullOrWhiteSpace(smtpSettings.Username) ||
-        string.IsNullOrWhiteSpace(smtpSettings.Password) ||
-        string.IsNullOrWhiteSpace(smtpSettings.From) ||
-        smtpSettings.Port == 0)
-    {
-        throw new InvalidOperationException("Missing required SMTP configuration values.");
-    }
+        Host = Environment.GetEnvironmentVariable("SMTP_HOST"),
+        Port = int.TryParse(Environment.GetEnvironmentVariable("SMTP_PORT"), out int port) ? port : 0,
+        Username = Environment.GetEnvironmentVariable("SMTP_USERNAME"),
+        Password = Environment.GetEnvironmentVariable("SMTP_PASSWORD"),
+        From = Environment.GetEnvironmentVariable("SMTP_FROM")
+    };
 }
+else
+{
+    smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
+}
+
+if (smtpSettings == null)
+{
+    Console.WriteLine("SMTP settings are null.");
+}
+if (string.IsNullOrWhiteSpace(smtpSettings?.Host) ||
+    string.IsNullOrWhiteSpace(smtpSettings.Username) ||
+    string.IsNullOrWhiteSpace(smtpSettings.Password) ||
+    string.IsNullOrWhiteSpace(smtpSettings.From) ||
+    smtpSettings.Port == 0)
+{
+    throw new InvalidOperationException("Missing required SMTP configuration values.");
+}
+
 
 app.UseStaticFiles();
 
@@ -202,11 +215,11 @@ if (app.Environment.IsStaging())
     try
     {
         dbContext.Database.Migrate();
-        Console.WriteLine("✅ EF Core migrations applied successfully to staging database.");
+        Console.WriteLine("EF Core migrations applied successfully to staging database.");
     }
     catch (Exception ex)
     {
-        Console.WriteLine("❌ Failed to apply EF Core migrations:");
+        Console.WriteLine("Failed to apply EF Core migrations:");
         Console.WriteLine(ex.Message);
         // Optional: rethrow or log to file
     }
