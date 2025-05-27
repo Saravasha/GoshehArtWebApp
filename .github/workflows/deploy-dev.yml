@@ -19,7 +19,7 @@ jobs:
     env:
       DOTNET_ENVIRONMENT: Staging
       ASPNETCORE_ENVIRONMENT: Staging
-      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+      CONNECTION_STRING: "${{ secrets.CONNECTION_STRING_STAGING }}"
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
       SMTP_HOST: ${{ secrets.SMTP_HOST }}
       SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
