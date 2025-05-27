@@ -69,6 +69,8 @@ jobs:
       
           # Save PM2 config so it persists across restarts
           pm2 save
+      - name: Check PM2 env
+        run: pm2 show goshehartwebapp-staging
 
 
       - name: Reload Nginx
