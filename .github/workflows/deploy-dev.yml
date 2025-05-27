@@ -63,19 +63,22 @@ jobs:
           pm2 stop goshehartwebapp-staging || true
 
           pm2 restart goshehartwebapp-staging || pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
+
             --name goshehartwebapp-staging \
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
             --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
-            --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-            --env Smtp__Host="$Smtp__Host" \
-            --env Smtp__Username="$Smtp__Username" \
-            --env Smtp__Password="$Smtp__Password" \
-            --env Smtp__From="$Smtp__From" \
-            --env Smtp__Port="$Smtp__Port"
 
-          pm2 save
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+            --env CONNECTION_STRING="$CONNECTION_STRING" \
+            --env SMTP_HOST="$SMTP_HOST" \
+            --env SMTP_USERNAME="$SMTP_USERNAME" \
+            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
+            --env SMTP_FROM="$SMTP_FROM" \
+            --env SMTP_PORT="$SMTP_PORT"
+            
+            pm2 save
+
 
       - name: Check PM2 env
         run: pm2 show goshehartwebapp-staging

@@ -191,6 +191,7 @@ using (var scope = app.Services.CreateScope())
         await SeedData.InitializeAsync(services, config);
     }
     catch (Exception ex)
+
     {
         // Log error if seed data initialization fails
         Console.WriteLine($"Error initializing seed data: {ex.Message}");
