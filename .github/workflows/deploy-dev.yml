@@ -21,11 +21,11 @@ jobs:
       ASPNETCORE_ENVIRONMENT: Staging
       CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
-      Smtp__Host: ${{ secrets.SMTP_HOST }}
-      Smtp__Username: ${{ secrets.SMTP_USERNAME }}
-      Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
-      Smtp__From: ${{ secrets.SMTP_FROM }}
-      Smtp__Port: ${{ secrets.SMTP_PORT }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
 
     steps:
       - uses: actions/checkout@v3
@@ -50,35 +50,32 @@ jobs:
       - name: Deploy with PM2
         env:
           PM2_HOME: /root/.pm2
-          DOTNET_ENVIRONMENT: Staging
-          ASPNETCORE_ENVIRONMENT: Staging
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
-          Smtp__Host: ${{ secrets.SMTP_HOST }}
-          Smtp__Username: ${{ secrets.SMTP_USERNAME }}
-          Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
-          Smtp__From: ${{ secrets.SMTP_FROM }}
-          Smtp__Port: ${{ secrets.SMTP_PORT }}
+          DOTNET_ENVIRONMENT: ${{ env.DOTNET_ENVIRONMENT }}
+          ASPNETCORE_ENVIRONMENT: ${{ env.ASPNETCORE_ENVIRONMENT }}
+          CONNECTION_STRING: ${{ env.CONNECTION_STRING }}
+          ADMIN_PASSWORD: ${{ env.ADMIN_PASSWORD }}
+          SMTP_HOST: ${{ env.SMTP_HOST }}
+          SMTP_USERNAME: ${{ env.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ env.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ env.SMTP_FROM }}
+          SMTP_PORT: ${{ env.SMTP_PORT }}
         run: |
           pm2 stop goshehartwebapp-staging || true
 
           pm2 restart goshehartwebapp-staging || pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
+          --name goshehartwebapp-staging \
+          --interpreter dotnet \
+          --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+          --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
+          --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+          --env CONNECTION_STRING="$CONNECTION_STRING" \
+          --env SMTP_HOST="$SMTP_HOST" \
+          --env SMTP_USERNAME="$SMTP_USERNAME" \
+          --env SMTP_PASSWORD="$SMTP_PASSWORD" \
+          --env SMTP_FROM="$SMTP_FROM" \
+          --env SMTP_PORT="$SMTP_PORT"
 
-            --name goshehartwebapp-staging \
-            --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
-            --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
-
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-            --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env SMTP_HOST="$SMTP_HOST" \
-            --env SMTP_USERNAME="$SMTP_USERNAME" \
-            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
-            --env SMTP_FROM="$SMTP_FROM" \
-            --env SMTP_PORT="$SMTP_PORT"
-            
-            pm2 save
-
+          pm2 save
 
       - name: Check PM2 env
         run: pm2 show goshehartwebapp-staging
