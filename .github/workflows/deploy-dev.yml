@@ -62,7 +62,7 @@ jobs:
         run: |
           pm2 stop goshehartwebapp-staging || true
 
-          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
+          pm2 restart goshehartwebapp-staging || pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
             --name goshehartwebapp-staging \
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
