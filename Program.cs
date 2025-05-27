@@ -204,6 +204,7 @@ if (app.Environment.IsStaging())
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     Console.WriteLine(dbContext.Database.GetConnectionString());
 
+
     try
     {
         dbContext.Database.Migrate();
