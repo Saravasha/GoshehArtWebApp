@@ -1,85 +1,157 @@
 name: Deploy GoshehArtWebApp to Production
 
 
+
 on:
+
   push:
+
     branches:
+
       - main
 
+
+
 jobs:
+
   deploy:
+
     runs-on: [self-hosted, Production]
 
+
+
     strategy:
+
       matrix:
+
         dotnet: ["8.0.x"]
 
+
+
     env:
+
       DOTNET_ENVIRONMENT: Production
+
       ASPNETCORE_ENVIRONMENT: Production
+
       CONNECTION_STRING: "${{ secrets.CONNECTION_STRING }}"
+
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+
       SMTP_HOST: ${{ secrets.SMTP_HOST }}
+
       SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+
       SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+
       SMTP_FROM: ${{ secrets.SMTP_FROM }}
+
       SMTP_PORT: ${{ secrets.SMTP_PORT }}
 
+
+
     steps:
+
       - uses: actions/checkout@v3
 
+
+
       - name: Set HOME environment variable
+
         run: echo "HOME=/home/runner" >> $GITHUB_ENV
 
+
+
       - name: Setup .NET SDK ${{ matrix.dotnet }}
+
         uses: actions/setup-dotnet@v3
+
         with:
+
           dotnet-version: ${{ matrix.dotnet }}
 
+
+
       - name: Restore dependencies
+
         run: dotnet restore
 
+
+
       - name: Build solution
+
         run: dotnet build --configuration Release --no-restore
 
+
+
       - name: Publish app
+
         run: dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+
+
       - name: Apply EF Core Migrations
+
+
         run: |
+
+
           echo "Applying EF Core migrations..."
+
+
           export CONNECTION_STRING="${{ secrets.CONNECTION_STRING }}"
+
+
           dotnet tool install --global dotnet-ef || true
+
+
           export PATH="$PATH:$HOME/.dotnet/tools"
+
+
           dotnet ef database update --connection "$CONNECTION_STRING" --no-build
+
+
         working-directory: /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+
+
         env:
+
+
           DOTNET_ENVIRONMENT: Production
+
       - name: Deploy with PM2
+
         run: |
+
           export PM2_HOME=/root/.pm2
-      
-          # Stop previous instance
-          pm2 stop goshehartwebapp-staging || true
-      
-          # Start new instance with proper env vars (note double underscores)
-          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
-            --name goshehartwebapp-staging \
+
+          pm2 stop goshehartwebapp || true
+
+          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
+
+            --name goshehartwebapp \
+
             --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="Staging" \
-            --env ASPNETCORE_ENVIRONMENT="Staging" \
-            --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" \
-            --env ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD_STAGING }}" \
-            --env Smtp__Host="${{ secrets.SMTP_HOST }}" \
-            --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" \
-            --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" \
-            --env Smtp__From="${{ secrets.SMTP_FROM }}" \
-            --env Smtp__Port="${{ secrets.SMTP_PORT }}"
-      
-          # Save PM2 config so it persists across restarts
+
+            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+
+            --env CONNECTION_STRING="$CONNECTION_STRING" \
+
+            --env SMTP_HOST="$SMTP_HOST" \
+
+            --env SMTP_USERNAME="$SMTP_USERNAME" \
+
+            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
+
+            --env SMTP_FROM="$SMTP_FROM" \
+
+            --env SMTP_PORT="$SMTP_PORT"
+
           pm2 save
 
-          - name: Check PM2 env
-          run: pm2 show goshehartwebapp-staging
+
 
       - name: Reload Nginx
+
         run: sudo service nginx restart
