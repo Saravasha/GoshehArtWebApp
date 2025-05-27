@@ -70,16 +70,16 @@ jobs:
           pm2 stop goshehartwebapp || true
 
           pm2 restart goshehartwebapp || pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
-            --name goshehartwebapp \
-            --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-            --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env SMTP_HOST="$SMTP_HOST" \
-            --env SMTP_USERNAME="$SMTP_USERNAME" \
-            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
-            --env SMTP_FROM="$SMTP_FROM" \
-            --env SMTP_PORT="$SMTP_PORT"
+          --name goshehartwebapp \
+          --interpreter dotnet \
+          --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+          --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+          --env CONNECTION_STRING="$CONNECTION_STRING" \
+          --env SMTP_HOST="$SMTP_HOST" \
+          --env SMTP_USERNAME="$SMTP_USERNAME" \
+          --env SMTP_PASSWORD="$SMTP_PASSWORD" \
+          --env SMTP_FROM="$SMTP_FROM" \
+          --env SMTP_PORT="$SMTP_PORT"
 
           pm2 save
 
