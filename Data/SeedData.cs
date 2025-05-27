@@ -19,11 +19,10 @@ namespace GoshehArtWebApp.Data
             // Get password from secrets or environment
             string? adminPassword;
 
-            var isProd = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Production" ||
-                Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Production");
+            var env = Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") ?? Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT");
 
-            var isStaging = (Environment.GetEnvironmentVariable("DOTNET_ENVIRONMENT") == "Staging" ||
-                Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT") == "Staging");
+            var isProd = env == "Production";
+            var isStaging = env == "Staging";
 
             adminPassword = isProd ? Environment.GetEnvironmentVariable("ADMIN_PASSWORD") : isStaging ? Environment.GetEnvironmentVariable("ADMIN_PASSWORD_STAGING") : configuration["Passwords:Admin"];
 
