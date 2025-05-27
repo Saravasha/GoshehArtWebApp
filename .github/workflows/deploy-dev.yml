@@ -44,18 +44,35 @@ jobs:
         run: |
           dotnet publish -c Release -o /var/www/goshehartwebapp-staging/
 
-      - name: PM2 Syncing for Staging
+      - name: Deploy with PM2
         run: |
-          echo "Using environment: $DOTNET_ENVIRONMENT"
           export PM2_HOME=/root/.pm2
+          
+          export DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT"
+          export ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT"
+          export ADMIN_PASSWORD="$ADMIN_PASSWORD"
+          export CONNECTION_STRING="$CONNECTION_STRING"
+          export SMTP_HOST="$SMTP_HOST"
+          export SMTP_USERNAME="$SMTP_USERNAME"
+          export SMTP_PASSWORD="$SMTP_PASSWORD"
+          export SMTP_FROM="$SMTP_FROM"
+          export SMTP_PORT="$SMTP_PORT"
+          
           pm2 stop goshehartwebapp-staging || true
           pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
-          --name goshehartwebapp-staging \
-          --interpreter dotnet \
-          --env DOTNET_ENVIRONMENT=Staging \
-          --env ADMIN_PASSWORD="$ADMIN_PASSWORD_STAGING" \
-          --env CONNECTION_STRING="$CONNECTION_STRING_STAGING"
-          pm2 save
+            --name goshehartwebapp-staging \
+            --interpreter dotnet \
+            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+            --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+            --env CONNECTION_STRING="$CONNECTION_STRING" \
+            --env SMTP_HOST="$SMTP_HOST" \
+            --env SMTP_USERNAME="$SMTP_USERNAME" \
+            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
+            --env SMTP_FROM="$SMTP_FROM" \
+            --env SMTP_PORT="$SMTP_PORT"
+            
+            pm2 save
 
       - name: Nginx Restarting
         run: service nginx reload
