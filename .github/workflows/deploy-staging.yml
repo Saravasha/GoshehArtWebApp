@@ -55,7 +55,9 @@ jobs:
           pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
             --name goshehartwebapp \
             --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT=Production
+            --env DOTNET_ENVIRONMENT=Production \
+            --env CONNECTION_STRING="$CONNECTION_STRING" \
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD"
           pm2 save
 
       - name: Nginx Restarting
