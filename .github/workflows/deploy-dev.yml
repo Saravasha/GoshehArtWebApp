@@ -48,13 +48,13 @@ jobs:
         run: |
           echo "Using environment: $DOTNET_ENVIRONMENT"
           export PM2_HOME=/root/.pm2
-
           pm2 stop goshehartwebapp-staging || true
           pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
-            --name goshehartwebapp-staging \
-            --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT=Staging
+          --name goshehartwebapp-staging \
+          --interpreter dotnet \
+          --env DOTNET_ENVIRONMENT=Staging \
+          --env CONNECTION_STRING="$CONNECTION_STRING"
           pm2 save
 
       - name: Nginx Restarting
-        run: service nginx restart
+        run: service nginx reload
