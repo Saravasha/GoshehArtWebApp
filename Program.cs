@@ -100,38 +100,15 @@ else
 }
 
 
-SmtpSettings smtpSettings;
-if (app.Environment.IsProduction() || app.Environment.IsStaging())
-{
-    smtpSettings = new SmtpSettings
-    {
-        Host = Environment.GetEnvironmentVariable("SMTP_HOST"),
-        Port = int.TryParse(Environment.GetEnvironmentVariable("SMTP_PORT"), out int port) ? port : 0,
-        Username = Environment.GetEnvironmentVariable("SMTP_USERNAME"),
-        Password = Environment.GetEnvironmentVariable("SMTP_PASSWORD"),
-        From = Environment.GetEnvironmentVariable("SMTP_FROM")
-    };
+SmtpSettings smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
 
+Console.WriteLine($"SMTP_HOST: {smtpSettings?.Host}");
+Console.WriteLine($"SMTP_PORT: {smtpSettings?.Port}");
+Console.WriteLine($"SMTP_USERNAME: {smtpSettings?.Username}");
+Console.WriteLine($"SMTP_FROM: {smtpSettings?.From}");
 
-}
-else
-{
-    smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
-}
-
-
-
-Console.WriteLine($"SMTP_HOST: {smtpSettings.Host}");
-Console.WriteLine($"SMTP_PORT: {smtpSettings.Port}");
-Console.WriteLine($"SMTP_USERNAME: {smtpSettings.Username}");
-Console.WriteLine($"SMTP_FROM: {smtpSettings.From}");
-
-if (smtpSettings == null)
-{
-    Console.WriteLine("SMTP settings are null.");
-}
-    Console.WriteLine("CONNECTION_STRING_STAGING: " + connectionString);
-if (string.IsNullOrWhiteSpace(smtpSettings?.Host) ||
+if (smtpSettings == null ||
+    string.IsNullOrWhiteSpace(smtpSettings.Host) ||
     string.IsNullOrWhiteSpace(smtpSettings.Username) ||
     string.IsNullOrWhiteSpace(smtpSettings.Password) ||
     string.IsNullOrWhiteSpace(smtpSettings.From) ||
@@ -139,6 +116,7 @@ if (string.IsNullOrWhiteSpace(smtpSettings?.Host) ||
 {
     throw new InvalidOperationException("Missing required SMTP configuration values.");
 }
+
 
 
 app.UseStaticFiles();
