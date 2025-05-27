@@ -119,6 +119,12 @@ else
     smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
 }
 
+
+Console.WriteLine($"SMTP_HOST: {smtpSettings.Host}");
+Console.WriteLine($"SMTP_PORT: {smtpSettings.Port}");
+Console.WriteLine($"SMTP_USERNAME: {smtpSettings.Username}");
+Console.WriteLine($"SMTP_FROM: {smtpSettings.From}");
+
 if (smtpSettings == null)
 {
     Console.WriteLine("SMTP settings are null.");
