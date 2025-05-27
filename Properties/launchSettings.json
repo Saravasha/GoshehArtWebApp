@@ -8,7 +8,7 @@
         "DOTNET_ENVIRONMENT": "Development"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "http://localhost:5283"
+      "applicationUrl": "http://localhost:5000"
     },
     "https_StagingEnv": {
       "commandName": "Project",
@@ -18,7 +18,7 @@
         "DOTNET_ENVIRONMENT": "Staging"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:5283",
+      "applicationUrl": "https://localhost:5001",
       "sqlDebugging": true
     },
     "https_ProductionEnv": {
@@ -29,7 +29,7 @@
         "DOTNET_ENVIRONMENT": "Production"
       },
       "dotnetRunMessages": true,
-      "applicationUrl": "https://localhost:5283",
+      "applicationUrl": "https://localhost:5002",
       "sqlDebugging": true
     },
     "IIS Express": {
