@@ -21,6 +21,11 @@ jobs:
       ASPNETCORE_ENVIRONMENT: Staging
       CONNECTION_STRING_STAGING: ${{ secrets.CONNECTION_STRING_STAGING }}
       ADMIN_PASSWORD_STAGING: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM_ADDRESS }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
 
     steps:
       - uses: actions/checkout@v2
