@@ -162,6 +162,8 @@ using (var scope = app.Services.CreateScope())
     DirectoryAsserter(filePathProvider.UploadsRoot, "/Uploads");
 
     AddStaticFilesRecursively(filePathProvider.WebAssetsRoot, app);
+    Console.WriteLine($"UploadsRoot: {filePathProvider.UploadsRoot}");
+    Console.WriteLine($"WebAssetsRoot: {filePathProvider.WebAssetsRoot}");
 }
 void AddStaticFilesRecursively(string directory, WebApplication app)
 {
@@ -214,6 +216,7 @@ if (app.Environment.IsStaging())
 {
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+    Console.WriteLine(dbContext.Database.GetConnectionString());
 
     try
     {
@@ -224,9 +227,9 @@ if (app.Environment.IsStaging())
     {
         Console.WriteLine("Failed to apply EF Core migrations:");
         Console.WriteLine(ex.Message);
+        app.Logger.LogError(ex, "Exception during SeedData initialization.");
         // Optional: rethrow or log to file
     }
 }
-
 
 app.Run();
