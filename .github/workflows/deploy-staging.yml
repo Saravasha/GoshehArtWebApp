@@ -56,19 +56,29 @@ jobs:
       - name: Deploy with PM2
         run: |
           export PM2_HOME=/root/.pm2
-          pm2 stop goshehartwebapp || true
-          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
-            --name goshehartwebapp \
+      
+          # Stop previous instance
+          pm2 stop goshehartwebapp-staging || true
+      
+          # Start new instance with proper env vars (note double underscores)
+          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
+            --name goshehartwebapp-staging \
             --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-            --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env SMTP_HOST="$SMTP_HOST" \
-            --env SMTP_USERNAME="$SMTP_USERNAME" \
-            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
-            --env SMTP_FROM="$SMTP_FROM" \
-            --env SMTP_PORT="$SMTP_PORT"
+            --env DOTNET_ENVIRONMENT="Staging" \
+            --env ASPNETCORE_ENVIRONMENT="Staging" \
+            --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" \
+            --env ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD_STAGING }}" \
+            --env Smtp__Host="${{ secrets.SMTP_HOST }}" \
+            --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" \
+            --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" \
+            --env Smtp__From="${{ secrets.SMTP_FROM }}" \
+            --env Smtp__Port="${{ secrets.SMTP_PORT }}"
+      
+          # Save PM2 config so it persists across restarts
           pm2 save
+
+          - name: Check PM2 env
+          run: pm2 show goshehartwebapp-staging
 
       - name: Reload Nginx
         run: sudo service nginx restart
