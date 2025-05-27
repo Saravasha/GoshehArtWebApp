@@ -119,6 +119,7 @@ else
     smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
 }
 
+
 Console.WriteLine($"SMTP_HOST: {smtpSettings.Host}");
 Console.WriteLine($"SMTP_PORT: {smtpSettings.Port}");
 Console.WriteLine($"SMTP_USERNAME: {smtpSettings.Username}");
