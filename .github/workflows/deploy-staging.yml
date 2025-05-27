@@ -16,7 +16,7 @@ jobs:
     env:
       DOTNET_ENVIRONMENT: Production
       ASPNETCORE_ENVIRONMENT: Production
-      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+      CONNECTION_STRING: "${{ secrets.CONNECTION_STRING }}"
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
       SMTP_HOST: ${{ secrets.SMTP_HOST }}
       SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
