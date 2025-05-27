@@ -53,6 +53,7 @@ jobs:
           --name goshehartwebapp-staging \
           --interpreter dotnet \
           --env DOTNET_ENVIRONMENT=Staging \
+          --env ADMIN_PASSWORD="$ADMIN_PASSWORD_STAGING" \
           --env CONNECTION_STRING="$CONNECTION_STRING_STAGING"
           pm2 save
 
