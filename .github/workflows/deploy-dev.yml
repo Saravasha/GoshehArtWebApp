@@ -47,28 +47,35 @@ jobs:
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging
       - name: Deploy with PM2
-        run: |
-          export PM2_HOME=/root/.pm2
-      
-          # Stop previous instance
-          pm2 stop goshehartwebapp-staging || true
-      
-          # Start new instance with proper env vars (note double underscores)
-          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
-            --name goshehartwebapp-staging \
-            --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="Staging" \
-            --env ASPNETCORE_ENVIRONMENT="Staging" \
-            --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" \
-            --env ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD_STAGING }}" \
-            --env Smtp__Host="${{ secrets.SMTP_HOST }}" \
-            --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" \
-            --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" \
-            --env Smtp__From="${{ secrets.SMTP_FROM }}" \
-            --env Smtp__Port="${{ secrets.SMTP_PORT }}"
-      
-          # Save PM2 config so it persists across restarts
-          pm2 save
+  env:
+    PM2_HOME: /root/.pm2
+    DOTNET_ENVIRONMENT: Staging
+    ASPNETCORE_ENVIRONMENT: Staging
+    CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+    ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+    Smtp__Host: ${{ secrets.SMTP_HOST }}
+    Smtp__Username: ${{ secrets.SMTP_USERNAME }}
+    Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
+    Smtp__From: ${{ secrets.SMTP_FROM }}
+    Smtp__Port: ${{ secrets.SMTP_PORT }}
+    run: |
+      pm2 stop goshehartwebapp-staging || true
+  
+      pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
+        --name goshehartwebapp-staging \
+        --interpreter dotnet \
+        --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+        --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
+        --env CONNECTION_STRING="$CONNECTION_STRING" \
+        --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+        --env Smtp__Host="$Smtp__Host" \
+        --env Smtp__Username="$Smtp__Username" \
+        --env Smtp__Password="$Smtp__Password" \
+        --env Smtp__From="$Smtp__From" \
+        --env Smtp__Port="$Smtp__Port"
+  
+      pm2 save
+
       - name: Check PM2 env
         run: pm2 show goshehartwebapp-staging
 
