@@ -19,8 +19,8 @@ jobs:
     env:
       DOTNET_ENVIRONMENT: Staging
       ASPNETCORE_ENVIRONMENT: Staging
-      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
-      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+      CONNECTION_STRING_STAGING: ${{ secrets.CONNECTION_STRING_STAGING }}
+      ADMIN_PASSWORD_STAGING: ${{ secrets.ADMIN_PASSWORD_STAGING }}
 
     steps:
       - uses: actions/checkout@v2
@@ -53,7 +53,8 @@ jobs:
           --name goshehartwebapp-staging \
           --interpreter dotnet \
           --env DOTNET_ENVIRONMENT=Staging \
-          --env CONNECTION_STRING="$CONNECTION_STRING"
+          --env ADMIN_PASSWORD="$ADMIN_PASSWORD_STAGING" \
+          --env CONNECTION_STRING="$CONNECTION_STRING_STAGING"
           pm2 save
 
       - name: Nginx Restarting
