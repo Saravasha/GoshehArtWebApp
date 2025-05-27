@@ -53,7 +53,7 @@ jobs:
           --name goshehartwebapp-staging \
           --interpreter dotnet \
           --env DOTNET_ENVIRONMENT=Staging \
-          --env CONNECTION_STRING="$CONNECTION_STRING"
+          --env CONNECTION_STRING="$CONNECTION_STRING_STAGING"
           pm2 save
 
       - name: Nginx Restarting
