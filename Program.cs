@@ -100,7 +100,7 @@ else
 }
 
 
-if (app.Environment.IsProduction())
+if (app.Environment.IsProduction() || app.Environment.IsStaging())
 
 {
     var smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
@@ -191,6 +191,24 @@ using (var scope = app.Services.CreateScope())
     {
         // Log error if seed data initialization fails
         Console.WriteLine($"Error initializing seed data: {ex.Message}");
+    }
+}
+
+if (app.Environment.IsStaging())
+{
+    using var scope = app.Services.CreateScope();
+    var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
+
+    try
+    {
+        dbContext.Database.Migrate();
+        Console.WriteLine("✅ EF Core migrations applied successfully to staging database.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("❌ Failed to apply EF Core migrations:");
+        Console.WriteLine(ex.Message);
+        // Optional: rethrow or log to file
     }
 }
 
