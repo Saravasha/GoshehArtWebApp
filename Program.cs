@@ -111,6 +111,8 @@ if (app.Environment.IsProduction() || app.Environment.IsStaging())
         Password = Environment.GetEnvironmentVariable("SMTP_PASSWORD"),
         From = Environment.GetEnvironmentVariable("SMTP_FROM")
     };
+
+
 }
 else
 {
@@ -121,6 +123,7 @@ if (smtpSettings == null)
 {
     Console.WriteLine("SMTP settings are null.");
 }
+    Console.WriteLine("CONNECTION_STRING_STAGING: " + connectionString);
 if (string.IsNullOrWhiteSpace(smtpSettings?.Host) ||
     string.IsNullOrWhiteSpace(smtpSettings.Username) ||
     string.IsNullOrWhiteSpace(smtpSettings.Password) ||
