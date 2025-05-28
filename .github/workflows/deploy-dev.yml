@@ -69,7 +69,7 @@ jobs:
           pm2 ls
           pm2 stop goshehartwebapp-staging || true
 
-          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll --name goshehartwebapp-staging --interpreter dotnet --env DOTNET_ENVIRONMENT="Staging" --env ASPNETCORE_ENVIRONMENT="Staging" --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" --env ADMIN_PASSWORD="${{ ADMIN_PASSWORD_STAGING }}" --env Smtp__Host="${{ secrets.SMTP_HOST }}" --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" --env Smtp__From="${{ secrets.SMTP_FROM }}" --env Smtp__Port="${{ secrets.SMTP_PORT }}"
+          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll --name goshehartwebapp-staging --interpreter dotnet --env DOTNET_ENVIRONMENT="Staging" --env ASPNETCORE_ENVIRONMENT="Staging" --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" --env ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD_STAGING }}" --env Smtp__Host="${{ secrets.SMTP_HOST }}" --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" --env Smtp__From="${{ secrets.SMTP_FROM }}" --env Smtp__Port="${{ secrets.SMTP_PORT }}"
 
           pm2 save
 
