@@ -21,6 +21,7 @@ if (builder.Environment.IsDevelopment())
 }
 else
         
+
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found."); 
 }
