@@ -52,6 +52,7 @@ jobs:
           echo "SMTP Host: $Smtp__Host"
           echo "SMTP Username: $Smtp__Username"
       
+
       - name: Deploy with PM2
         env:
           PM2_HOME: /root/.pm2
@@ -72,6 +73,7 @@ jobs:
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
             --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
+
             --env CONNECTION_STRING="$CONNECTION_STRING" \
             --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
             --env Smtp__Host="$Smtp__Host" \
@@ -84,6 +86,6 @@ jobs:
 
       - name: Check PM2 env
         run: pm2 show goshehartwebapp-staging
-
+        
       - name: Reload Nginx
         run: sudo service nginx reload
