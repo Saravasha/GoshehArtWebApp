@@ -207,6 +207,17 @@ if (app.Environment.IsStaging())
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
     Console.WriteLine(dbContext.Database.GetConnectionString());
+    
+    var filePathProvider = scope.ServiceProvider.GetRequiredService<FilePathProvider>();
+
+    var robotsPath = filePathProvider.RobotsTxtPath;
+
+    if (!File.Exists(robotsPath))
+    {
+        Directory.CreateDirectory(Path.GetDirectoryName(robotsPath)!); // Ensure wwwroot exists
+        File.WriteAllText(robotsPath, "User-agent: *\nDisallow: /");
+        Console.WriteLine("Created staging robots.txt to block crawlers.");
+    }
 
 
     try
