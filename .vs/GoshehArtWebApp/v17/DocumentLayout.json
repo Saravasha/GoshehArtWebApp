@@ -3,24 +3,28 @@
   "WorkspaceRootPath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\.github\\workflows\\deploy-dev.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.github\\workflows\\deploy-dev.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\.github\\workflows\\deploy-staging.yml||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:.github\\workflows\\deploy-staging.yml||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\services\\smtpsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:services\\smtpsettings.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\services\\smtpemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:services\\smtpemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\appsettings.staging.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:appsettings.staging.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:appsettings.production.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:appsettings.development.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -29,7 +33,7 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 117,
+          "DockedWidth": 180,
           "SelectedChildIndex": 5,
           "Children": [
             {
@@ -54,67 +58,86 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Program.cs",
-              "RelativeDocumentMoniker": "Program.cs",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Program.cs",
-              "RelativeToolTip": "Program.cs",
-              "ViewState": "AgIAAGwAAAAAAAAAAAAowHwAAAA3AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-05-27T15:54:54.572Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "appsettings.Development.json",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.Development.json",
-              "RelativeDocumentMoniker": "appsettings.Development.json",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.Development.json",
-              "RelativeToolTip": "appsettings.Development.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-27T15:51:06.456Z",
+              "DocumentIndex": 1,
+              "Title": "deploy-staging.yml",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\.github\\workflows\\deploy-staging.yml",
+              "RelativeDocumentMoniker": ".github\\workflows\\deploy-staging.yml",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\.github\\workflows\\deploy-staging.yml",
+              "RelativeToolTip": ".github\\workflows\\deploy-staging.yml",
+              "ViewState": "AgIAADQAAAAAAAAAAAAAAE4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-05-28T02:32:33.724Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "appsettings.Production.json",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.Production.json",
-              "RelativeDocumentMoniker": "appsettings.Production.json",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.Production.json",
-              "RelativeToolTip": "appsettings.Production.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-27T15:51:03.881Z",
+              "Title": "SmtpSettings.cs",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Services\\SmtpSettings.cs",
+              "RelativeDocumentMoniker": "Services\\SmtpSettings.cs",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Services\\SmtpSettings.cs",
+              "RelativeToolTip": "Services\\SmtpSettings.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T02:32:33.078Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "appsettings.Staging.json",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.Staging.json",
-              "RelativeDocumentMoniker": "appsettings.Staging.json",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\appsettings.Staging.json",
-              "RelativeToolTip": "appsettings.Staging.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-27T15:51:00.517Z",
+              "DocumentIndex": 3,
+              "Title": "SmtpEmailSender.cs",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Services\\SmtpEmailSender.cs",
+              "RelativeDocumentMoniker": "Services\\SmtpEmailSender.cs",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Services\\SmtpEmailSender.cs",
+              "RelativeToolTip": "Services\\SmtpEmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T02:32:31.566Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "Data\\ApplicationDbContext.cs",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAEUAAAAAAAAAAAAuwAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-28T00:54:57.045Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "launchSettings.json",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Properties\\launchSettings.json",
-              "RelativeDocumentMoniker": "Properties\\launchSettings.json",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Properties\\launchSettings.json",
-              "RelativeToolTip": "Properties\\launchSettings.json",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAkwBoAAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2025-05-27T15:50:01.819Z",
+              "Title": "Program.cs",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Program.cs",
+              "RelativeDocumentMoniker": "Program.cs",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Program.cs",
+              "RelativeToolTip": "Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-05-27T15:54:54.572Z",
+              "EditorCaption": ""
+            }
+          ]
+        },
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 0,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "deploy-dev.yml",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\.github\\workflows\\deploy-dev.yml",
+              "RelativeDocumentMoniker": ".github\\workflows\\deploy-dev.yml",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\.github\\workflows\\deploy-dev.yml",
+              "RelativeToolTip": ".github\\workflows\\deploy-dev.yml",
+              "ViewState": "AgIAADYAAAAAAAAAAAAAAEcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003775|",
+              "WhenOpened": "2025-05-28T02:32:34.548Z",
               "EditorCaption": ""
             }
           ]
@@ -134,12 +157,16 @@
           ]
         },
         {
-          "DockedWidth": 180,
+          "DockedWidth": 117,
           "SelectedChildIndex": -1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:129:0:{75188d03-9892-4ae2-abf1-207126247ce5}"
             }
           ]
         }
