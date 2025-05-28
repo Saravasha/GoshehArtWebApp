@@ -1,4 +1,4 @@
-name: Deploy GoshehArtWebApp to (Staging)
+name: Deploy GoshehArtWebApp to Staging
 
 on:
   push:
@@ -10,7 +10,7 @@ on:
 
 jobs:
   deploy:
-    runs-on: self-hosted
+    runs-on: [self-hosted, Staging]
 
     strategy:
       matrix:
@@ -21,40 +21,69 @@ jobs:
       ASPNETCORE_ENVIRONMENT: Staging
       CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+      Smtp__Host: ${{ secrets.SMTP_HOST }}
+      Smtp__Username: ${{ secrets.SMTP_USERNAME }}
+      Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
+      Smtp__From: ${{ secrets.SMTP_FROM }}
+      Smtp__Port: ${{ secrets.SMTP_PORT }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
 
       - name: Set HOME environment variable
-        run: |
-          echo "HOME=/home/runner" >> $GITHUB_ENV
+        run: echo "HOME=/home/runner" >> $GITHUB_ENV
 
-      - name: Setup .NET Core SDK ${{ matrix.dotnet }}
-        uses: actions/setup-dotnet@v1.7.2
+      - name: Setup .NET SDK ${{ matrix.dotnet }}
+        uses: actions/setup-dotnet@v3
         with:
           dotnet-version: ${{ matrix.dotnet }}
 
-      - name: Install dependencies
+      - name: Restore dependencies
         run: dotnet restore
 
-      - name: Build
+      - name: Build solution
         run: dotnet build --configuration Release --no-restore
 
-      - name: Publish
+      - name: Publish app
+        run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging
+      
+      - name: Debug Env Vars (non-secret)
         run: |
-          dotnet publish -c Release -o /var/www/goshehartwebapp-staging/
-
-      - name: PM2 Syncing for Staging
+          echo "SMTP Host: $Smtp__Host"
+          echo "SMTP Username: $Smtp__Username"
+      
+      - name: Deploy with PM2
+        env:
+          PM2_HOME: /root/.pm2
+          DOTNET_ENVIRONMENT: Staging
+          ASPNETCORE_ENVIRONMENT: Staging
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+          Smtp__Host: ${{ secrets.SMTP_HOST }}
+          Smtp__Username: ${{ secrets.SMTP_USERNAME }}
+          Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
+          Smtp__From: ${{ secrets.SMTP_FROM }}
+          Smtp__Port: ${{ secrets.SMTP_PORT }}
         run: |
-          echo "Using environment: $DOTNET_ENVIRONMENT"
-          export PM2_HOME=/root/.pm2
-
           pm2 stop goshehartwebapp-staging || true
-          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
+
+          pm2 restart goshehartwebapp-staging --update-env || pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
             --name goshehartwebapp-staging \
             --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT=Staging
+            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+            --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
+            --env CONNECTION_STRING="$CONNECTION_STRING" \
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+            --env Smtp__Host="$Smtp__Host" \
+            --env Smtp__Username="$Smtp__Username" \
+            --env Smtp__Password="$Smtp__Password" \
+            --env Smtp__From="$Smtp__From" \
+            --env Smtp__Port="$Smtp__Port"
+
           pm2 save
 
-      - name: Nginx Restarting
-        run: service nginx restart
+      - name: Check PM2 env
+        run: pm2 show goshehartwebapp-staging
+
+      - name: Reload Nginx
+        run: sudo service nginx reload
