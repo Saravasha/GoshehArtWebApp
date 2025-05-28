@@ -18,7 +18,7 @@ if (builder.Environment.IsDevelopment())
     builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 } else if (builder.Environment.IsStaging())
 {
-    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING_STAGING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING_STAGING' not found.");
+    connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' (Staging from Github Secrets) not found.");
 }
 else
         
