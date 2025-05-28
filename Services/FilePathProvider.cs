@@ -6,7 +6,9 @@
     {
         _env = env;
     }
-
+    
+    //for staging 
+    public string RobotsTxtPath => Path.Combine(_env.WebRootPath ?? "wwwroot", "robots.txt");
     public string UploadsRoot => Path.Combine(Directory.GetParent(Environment.CurrentDirectory)!.FullName, "Uploads");
 
     public string ThumbnailsRoot => Path.Combine(UploadsRoot, "Thumbnails");
