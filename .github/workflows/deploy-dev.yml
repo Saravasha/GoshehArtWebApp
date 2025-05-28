@@ -52,7 +52,6 @@ jobs:
           echo "SMTP Host: $Smtp__Host"
           echo "SMTP Username: $Smtp__Username"
       
-
       - name: Deploy with PM2
         env:
           PM2_HOME: /root/.pm2

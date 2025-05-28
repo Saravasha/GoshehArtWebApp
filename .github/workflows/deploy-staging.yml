@@ -18,11 +18,11 @@ jobs:
       ASPNETCORE_ENVIRONMENT: Production
       CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-      SMTP_HOST: ${{ secrets.SMTP_HOST }}
-      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-      SMTP_FROM: ${{ secrets.SMTP_FROM }}
-      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      Smtp__Host: ${{ secrets.SMTP_HOST }}
+      Smtp__Username: ${{ secrets.SMTP_USERNAME }}
+      Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
+      Smtp__From: ${{ secrets.SMTP_FROM }}
+      Smtp__Port: ${{ secrets.SMTP_PORT }}
 
     steps:
       - uses: actions/checkout@v3
@@ -54,33 +54,38 @@ jobs:
           dotnet tool install --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
           dotnet ef database update --connection "$CONNECTION_STRING" --no-build
-
+      
+      - name: Debug Env Vars (non-secret)
+        run: |
+          echo "SMTP Host: $Smtp__Host"
+          echo "SMTP Username: $Smtp__Username"
+          
       - name: Deploy with PM2
         env:
           PM2_HOME: /root/.pm2
           DOTNET_ENVIRONMENT: Production
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          ASPNETCORE_ENVIRONMENT: Production
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
-          SMTP_HOST: ${{ secrets.SMTP_HOST }}
-          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-          SMTP_FROM: ${{ secrets.SMTP_FROM }}
-          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          Smtp__Host: ${{ secrets.SMTP_HOST }}
+          Smtp__Username: ${{ secrets.SMTP_USERNAME }}
+          Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
+          Smtp__From: ${{ secrets.SMTP_FROM }}
+          Smtp__Port: ${{ secrets.SMTP_PORT }}
         run: |
           pm2 stop goshehartwebapp || true
-
-          pm2 restart goshehartwebapp || pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
+          pm2 restart goshehartwebapp --update-env || pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
             --name goshehartwebapp \
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+            --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
             --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env SMTP_HOST="$SMTP_HOST" \
-            --env SMTP_USERNAME="$SMTP_USERNAME" \
-            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
-            --env SMTP_FROM="$SMTP_FROM" \
-            --env SMTP_PORT="$SMTP_PORT"
-
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+            --env Smtp__Host="$SMTP__HOST" \
+            --env Smtp__Username="$SMTP__USERNAME" \
+            --env Smtp__Password="$SMTP__PASSWORD" \
+            --env Smtp__From="$SMTP__FROM" \
+            --env Smtp__Port="$SMTP__PORT"
           pm2 save
 
       - name: Reload Nginx
