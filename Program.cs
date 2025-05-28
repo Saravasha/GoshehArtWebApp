@@ -199,6 +199,7 @@ using (var scope = app.Services.CreateScope())
 }
 
 if (app.Environment.IsStaging())
+
 {
     using var scope = app.Services.CreateScope();
     var dbContext = scope.ServiceProvider.GetRequiredService<ApplicationDbContext>();
@@ -213,7 +214,7 @@ if (app.Environment.IsStaging())
     catch (Exception ex)
     {
         Console.WriteLine("Failed to apply EF Core migrations:");
-        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.Message); 
         app.Logger.LogError(ex, "Exception during SeedData initialization.");
         // Optional: rethrow or log to file
     }
