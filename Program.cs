@@ -9,6 +9,7 @@ using System.Text.Json.Serialization;
 
 var builder = WebApplication.CreateBuilder(args);
 
+builder.Configuration.AddEnvironmentVariables();
 // Add services to the container.
 var connectionString = "";
 if (builder.Environment.IsDevelopment())  
@@ -25,7 +26,6 @@ else
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found."); 
 }
-
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = false)
