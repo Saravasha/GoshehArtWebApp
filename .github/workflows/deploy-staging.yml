@@ -19,11 +19,11 @@ jobs:
       ASPNETCORE_ENVIRONMENT: Production
       CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
-      SMTP_HOST: ${{ secrets.SMTP_HOST }}
-      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
-      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
-      SMTP_FROM: ${{ secrets.SMTP_FROM }}
-      SMTP_PORT: ${{ secrets.SMTP_PORT }}
+      Smtp__Host: ${{ secrets.SMTP_HOST }}
+      Smtp__Username: ${{ secrets.SMTP_USERNAME }}
+      Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
+      Smtp__From: ${{ secrets.SMTP_FROM }}
+      Smtp__Port: ${{ secrets.SMTP_PORT }}
 
     steps:
       - uses: actions/checkout@v3
@@ -55,13 +55,18 @@ jobs:
           dotnet tool install --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
           dotnet ef database update --connection "$CONNECTION_STRING" --no-build
-
+      
+      - name: Debug Env Vars (non-secret)
+        run: |
+          echo "SMTP Host: $Smtp__Host"
+          echo "SMTP Username: $Smtp__Username"
+          
       - name: Deploy with PM2
         env:
-          DOTNET_ENVIRONMENT: Staging
-          ASPNETCORE_ENVIRONMENT: Staging
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
+          DOTNET_ENVIRONMENT: Production
+          ASPNETCORE_ENVIRONMENT: Production
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
           Smtp__Host: ${{ secrets.SMTP_HOST }}
           Smtp__Username: ${{ secrets.SMTP_USERNAME }}
           Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
