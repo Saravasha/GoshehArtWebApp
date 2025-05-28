@@ -14,6 +14,7 @@ jobs:
         dotnet: ["8.0.x"]
 
     env:
+      PM2_HOME: /root/.pm2
       DOTNET_ENVIRONMENT: Production
       ASPNETCORE_ENVIRONMENT: Production
       CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
@@ -62,7 +63,6 @@ jobs:
           
       - name: Deploy with PM2
         env:
-          PM2_HOME: /root/.pm2
           DOTNET_ENVIRONMENT: Production
           ASPNETCORE_ENVIRONMENT: Production
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
@@ -74,18 +74,9 @@ jobs:
           Smtp__Port: ${{ secrets.SMTP_PORT }}
         run: |
           pm2 stop goshehartwebapp || true
-          pm2 restart goshehartwebapp --update-env || pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
-            --name goshehartwebapp \
-            --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
-            --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
-            --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-            --env Smtp__Host="$SMTP__HOST" \
-            --env Smtp__Username="$SMTP__USERNAME" \
-            --env Smtp__Password="$SMTP__PASSWORD" \
-            --env Smtp__From="$SMTP__FROM" \
-            --env Smtp__Port="$SMTP__PORT"
+
+          pm2 restart goshehartwebapp || pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll --name goshehartwebapp --interpreter dotnet --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" --env CONNECTION_STRING="$CONNECTION_STRING" --env ADMIN_PASSWORD="$ADMIN_PASSWORD" --env Smtp__Host="$Smtp__Host" --env Smtp__Username="$Smtp__Username" --env Smtp__Password="$Smtp__Password" --env Smtp__From="$Smtp__From" --env Smtp__Port="$Smtp__Port"
+
           pm2 save
 
       - name: Reload Nginx
