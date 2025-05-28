@@ -1,68 +1,87 @@
-# Triggers
-name: Deploy GoshehArtWebApp to (Production)
+name: Deploy GoshehArtWebApp to Production
 
 on:
   push:
     branches:
       - main
 
-# Controls when the workflow will run
-# Triggers the workflow on push request event for the master branch
-
 jobs:
   deploy:
-    # Our previously created self-hosted runner
-    runs-on: self-hosted
+    runs-on: [self-hosted, Production]
 
     strategy:
       matrix:
         dotnet: ["8.0.x"]
 
-    # A sequence of tasks that will execute as part of the job
-    steps:
-      # Checks out repository so our job can access it
-      - uses: actions/checkout@v2
-      - name: Set HOME environment variable
-        run: |
-          echo "HOME=/home/runner" >> $GITHUB_ENV
-      - name: Setup .NET Core SDK ${{ matrix.dotnet-version }}
-        uses: actions/setup-dotnet@v1.7.2
-        with:
-          dotnet-version: ${{ matrix.dotnet-version }}
+    env:
+      DOTNET_ENVIRONMENT: Production
+      ASPNETCORE_ENVIRONMENT: Production
+      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+      ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+      SMTP_HOST: ${{ secrets.SMTP_HOST }}
+      SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+      SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+      SMTP_FROM: ${{ secrets.SMTP_FROM }}
+      SMTP_PORT: ${{ secrets.SMTP_PORT }}
 
-      - name: Install dependencies
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Set HOME environment variable
+        run: echo "HOME=/home/runner" >> $GITHUB_ENV
+
+      - name: Setup .NET SDK ${{ matrix.dotnet }}
+        uses: actions/setup-dotnet@v3
+        with:
+          dotnet-version: ${{ matrix.dotnet }}
+
+      - name: Restore dependencies
         run: dotnet restore
 
-      #Check if DOTNET_ENVIRONMENT is unset or not set to Production
-      - name: Check Environment Variable
-        run: | 
-          if [ -z "$DOTNET_ENVIRONMENT" ] || [ "$DOTNET_ENVIRONMENT" != "Production" ]; then
-            # Set DOTNET_ENVIRONMENT to Production
-            export DOTNET_ENVIRONMENT=Production
-            echo "DOTNET_ENVIRONMENT set to Production."
-          else
-            echo "DOTNET_ENVIRONMENT is already set to $DOTNET_ENVIRONMENT."
-          fi
-        
-      - name: Build
+      - name: Build solution
         run: dotnet build --configuration Release --no-restore
-    
-      # We will output publish files to the folder we previously created
-      - name: Publish
-         # echo "HOME=/root/.pm2/" >> $GITHUB_ENV
-        run: |
-          dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-      - name: PM2 Syncing for Production
-        env: 
+
+      - name: Publish app
+        run: dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+
+      - name: Apply EF Core Migrations
+        working-directory: /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+        env:
+          DOTNET_ENVIRONMENT: Production
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
         run: |
-          export PM2_HOME=/root/.pm2
+          echo "Applying EF Core migrations..."
+          dotnet tool install --global dotnet-ef || true
+          export PATH="$PATH:$HOME/.dotnet/tools"
+          dotnet ef database update --connection "$CONNECTION_STRING" --no-build
+
+      - name: Deploy with PM2
+        env:
+          PM2_HOME: /root/.pm2
+          DOTNET_ENVIRONMENT: Production
+          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD }}
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+          SMTP_HOST: ${{ secrets.SMTP_HOST }}
+          SMTP_USERNAME: ${{ secrets.SMTP_USERNAME }}
+          SMTP_PASSWORD: ${{ secrets.SMTP_PASSWORD }}
+          SMTP_FROM: ${{ secrets.SMTP_FROM }}
+          SMTP_PORT: ${{ secrets.SMTP_PORT }}
+        run: |
           pm2 stop goshehartwebapp || true
-          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp.dll \
+
+          pm2 restart goshehartwebapp || pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
             --name goshehartwebapp \
             --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT=Production
+            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+            --env CONNECTION_STRING="$CONNECTION_STRING" \
+            --env SMTP_HOST="$SMTP_HOST" \
+            --env SMTP_USERNAME="$SMTP_USERNAME" \
+            --env SMTP_PASSWORD="$SMTP_PASSWORD" \
+            --env SMTP_FROM="$SMTP_FROM" \
+            --env SMTP_PORT="$SMTP_PORT"
+
           pm2 save
-            - name: Nginx Restarting
-              run: service nginx restart
+
+      - name: Reload Nginx
+        run: sudo service nginx restart
