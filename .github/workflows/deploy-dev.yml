@@ -72,7 +72,6 @@ jobs:
             --interpreter dotnet \
             --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
             --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
-
             --env CONNECTION_STRING="$CONNECTION_STRING" \
             --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
             --env Smtp__Host="$Smtp__Host" \
