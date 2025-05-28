@@ -214,7 +214,7 @@ if (app.Environment.IsStaging())
     catch (Exception ex)
     {
         Console.WriteLine("Failed to apply EF Core migrations:");
-        Console.WriteLine(ex.Message);
+        Console.WriteLine(ex.Message); 
         app.Logger.LogError(ex, "Exception during SeedData initialization.");
         // Optional: rethrow or log to file
     }
