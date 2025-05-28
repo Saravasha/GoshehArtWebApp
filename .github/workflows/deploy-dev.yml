@@ -17,6 +17,7 @@ jobs:
         dotnet: ["8.0.x"]
 
     env:
+      PM2_HOME: /root/.pm2
       DOTNET_ENVIRONMENT: Staging
       ASPNETCORE_ENVIRONMENT: Staging
       CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
@@ -52,10 +53,8 @@ jobs:
           echo "SMTP Host: $Smtp__Host"
           echo "SMTP Username: $Smtp__Username"
       
-
       - name: Deploy with PM2
         env:
-          PM2_HOME: /root/.pm2
           DOTNET_ENVIRONMENT: Staging
           ASPNETCORE_ENVIRONMENT: Staging
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
@@ -68,19 +67,7 @@ jobs:
         run: |
           pm2 stop goshehartwebapp-staging || true
 
-          pm2 restart goshehartwebapp-staging --update-env || pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll \
-            --name goshehartwebapp-staging \
-            --interpreter dotnet \
-            --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
-            --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
-
-            --env CONNECTION_STRING="$CONNECTION_STRING" \
-            --env ADMIN_PASSWORD="$ADMIN_PASSWORD" \
-            --env Smtp__Host="$Smtp__Host" \
-            --env Smtp__Username="$Smtp__Username" \
-            --env Smtp__Password="$Smtp__Password" \
-            --env Smtp__From="$Smtp__From" \
-            --env Smtp__Port="$Smtp__Port"
+          pm2 restart goshehartwebapp-staging --update-env || pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll --name goshehartwebapp-staging --interpreter dotnet --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" --env CONNECTION_STRING="$CONNECTION_STRING" --env ADMIN_PASSWORD="$ADMIN_PASSWORD" --env Smtp__Host="$Smtp__Host" --env Smtp__Username="$Smtp__Username" --env Smtp__Password="$Smtp__Password" --env Smtp__From="$Smtp__From" --env Smtp__Port="$Smtp__Port"
 
           pm2 save
 
