@@ -48,6 +48,12 @@ jobs:
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
 
+      - name: Debug env variables
+        run: |
+            echo "CONNECTION_STRING=$CONNECTION_STRING"
+        env:
+            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+
       - name: Apply EF Core Migrations
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
         env:
