@@ -59,13 +59,15 @@ jobs:
       - name: Apply EF Core Migrations
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
         env:
-          DOTNET_ENVIRONMENT: Staging
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+            DOTNET_ENVIRONMENT: Staging
+            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
         run: |
-          echo "Applying EF Core migrations..."
-          dotnet tool install --global dotnet-ef || true
-          export PATH="$PATH:$HOME/.dotnet/tools"
-          dotnet ef database update --no-build
+            echo "Updating dotnet-ef tool..."
+            dotnet tool update --global dotnet-ef || true
+            export PATH="$PATH:$HOME/.dotnet/tools"
+
+            echo "Applying EF Core migrations..."
+            dotnet ef database update --no-build --verbose
       
       - name: Debug Env Vars (non-secret)
         run: |
