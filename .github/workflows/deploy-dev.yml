@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - stage
-  pull_request:
-    branches:
-      - dev
 
 jobs:
   deploy:
@@ -48,9 +45,6 @@ jobs:
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
 
-      - name: Export staging connection string as CONNECTION_STRING
-        run: echo "CONNECTION_STRING=${{ secrets.CONNECTION_STRING_STAGING }}" >> $GITHUB_ENV
-
       - name: Debug env variables (non-secret)
         run: |
           echo "DOTNET_ENVIRONMENT=$DOTNET_ENVIRONMENT"
@@ -59,12 +53,8 @@ jobs:
           echo "SMTP Username: $Smtp__Username"
 
       - name: Apply EF Core Migrations
-        env:
-            DOTNET_ENVIRONMENT: Staging
-            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
         run: |
-          echo "CONNECTION_STRING=$CONNECTION_STRING"
           dotnet tool update --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
           dotnet ef database update --no-build --verbose
