@@ -20,6 +20,7 @@ jobs:
       PM2_HOME: /root/.pm2
       DOTNET_ENVIRONMENT: Staging
       ASPNETCORE_ENVIRONMENT: Staging
+      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
       Smtp__Host: ${{ secrets.SMTP_HOST }}
       Smtp__Username: ${{ secrets.SMTP_USERNAME }}
@@ -63,6 +64,7 @@ jobs:
             CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
         run: |
+          echo "CONNECTION_STRING=$CONNECTION_STRING"
           dotnet tool update --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
           dotnet ef database update --no-build --verbose
