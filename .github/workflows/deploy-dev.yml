@@ -20,7 +20,6 @@ jobs:
       PM2_HOME: /root/.pm2
       DOTNET_ENVIRONMENT: Staging
       ASPNETCORE_ENVIRONMENT: Staging
-      CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
       ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
       Smtp__Host: ${{ secrets.SMTP_HOST }}
       Smtp__Username: ${{ secrets.SMTP_USERNAME }}
@@ -48,44 +47,24 @@ jobs:
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
 
-      - name: Debug env variables
-        run: |
-            echo "DOTNET_ENVIRONMENT=$DOTNET_ENVIRONMENT"
-            echo "CONNECTION_STRING=$CONNECTION_STRING"
-        env:
-            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
-            DOTNET_ENVIRONMENT: Staging
       - name: Export staging connection string as CONNECTION_STRING
         run: echo "CONNECTION_STRING=${{ secrets.CONNECTION_STRING_STAGING }}" >> $GITHUB_ENV
 
-      - name: Apply EF Core Migrations
-        working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
-        env:
-            DOTNET_ENVIRONMENT: Staging
+      - name: Debug env variables (non-secret)
         run: |
-            echo "Updating dotnet-ef tool..."
-            dotnet tool update --global dotnet-ef || true
-            export PATH="$PATH:$HOME/.dotnet/tools"
-
-            echo "Applying EF Core migrations..."
-            dotnet ef database update --no-build --verbose
-      
-      - name: Debug Env Vars (non-secret)
-        run: |
+          echo "DOTNET_ENVIRONMENT=$DOTNET_ENVIRONMENT"
+          echo "CONNECTION_STRING=$CONNECTION_STRING"
           echo "SMTP Host: $Smtp__Host"
           echo "SMTP Username: $Smtp__Username"
-      
+
+      - name: Apply EF Core Migrations
+        working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+        run: |
+          dotnet tool update --global dotnet-ef || true
+          export PATH="$PATH:$HOME/.dotnet/tools"
+          dotnet ef database update --no-build --verbose
+
       - name: Deploy with PM2
-        env:
-          DOTNET_ENVIRONMENT: Staging
-          ASPNETCORE_ENVIRONMENT: Staging
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
-          ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
-          Smtp__Host: ${{ secrets.SMTP_HOST }}
-          Smtp__Username: ${{ secrets.SMTP_USERNAME }}
-          Smtp__Password: ${{ secrets.SMTP_PASSWORD }}
-          Smtp__From: ${{ secrets.SMTP_FROM }}
-          Smtp__Port: ${{ secrets.SMTP_PORT }}
         run: |
           pm2 resurrect
           pm2 ls
@@ -97,6 +76,6 @@ jobs:
 
       - name: Check PM2 env
         run: pm2 show goshehartwebapp-staging
-        
+
       - name: Reload Nginx
         run: sudo service nginx reload
