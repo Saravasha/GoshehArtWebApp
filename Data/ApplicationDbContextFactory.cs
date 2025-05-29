@@ -19,7 +19,7 @@ namespace GoshehArtWebApp.Data
                 .AddEnvironmentVariables()
                 .Build();
 
-            var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+            var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING"); 
 
             if (string.IsNullOrEmpty(connectionString))
                 throw new InvalidOperationException("Missing CONNECTION_STRING environment variable.");
