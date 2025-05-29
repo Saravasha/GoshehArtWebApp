@@ -50,9 +50,11 @@ jobs:
 
       - name: Debug env variables
         run: |
+            echo "DOTNET_ENVIRONMENT=$DOTNET_ENVIRONMENT"
             echo "CONNECTION_STRING=$CONNECTION_STRING"
         env:
             CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+            DOTNET_ENVIRONMENT: Staging
 
       - name: Apply EF Core Migrations
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
