@@ -58,6 +58,9 @@ jobs:
           echo "SMTP Username: $Smtp__Username"
 
       - name: Apply EF Core Migrations
+        env:
+            DOTNET_ENVIRONMENT: Staging
+            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
         run: |
           dotnet tool update --global dotnet-ef || true
