@@ -46,7 +46,28 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Publish app
-        run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging
+        run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+
+      - name: Debug env variables
+        run: |
+            echo "DOTNET_ENVIRONMENT=$DOTNET_ENVIRONMENT"
+            echo "CONNECTION_STRING=$CONNECTION_STRING"
+        env:
+            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+            DOTNET_ENVIRONMENT: Staging
+
+      - name: Apply EF Core Migrations
+        working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+        env:
+            DOTNET_ENVIRONMENT: Staging
+            CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+        run: |
+            echo "Updating dotnet-ef tool..."
+            dotnet tool update --global dotnet-ef || true
+            export PATH="$PATH:$HOME/.dotnet/tools"
+
+            echo "Applying EF Core migrations..."
+            dotnet ef database update --no-build --verbose
       
       - name: Debug Env Vars (non-secret)
         run: |
@@ -69,7 +90,7 @@ jobs:
           pm2 ls
           pm2 stop goshehartwebapp-staging || true
 
-          pm2 start /var/www/goshehartwebapp-staging/GoshehArtWebApp.dll --name goshehartwebapp-staging --interpreter dotnet --env DOTNET_ENVIRONMENT="Staging" --env ASPNETCORE_ENVIRONMENT="Staging" --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" --env ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD_STAGING }}" --env Smtp__Host="${{ secrets.SMTP_HOST }}" --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" --env Smtp__From="${{ secrets.SMTP_FROM }}" --env Smtp__Port="${{ secrets.SMTP_PORT }}"
+          pm2 start /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll --name goshehartwebapp-staging --interpreter dotnet --env DOTNET_ENVIRONMENT="Staging" --env ASPNETCORE_ENVIRONMENT="Staging" --env CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" --env ADMIN_PASSWORD="${{ secrets.ADMIN_PASSWORD_STAGING }}" --env Smtp__Host="${{ secrets.SMTP_HOST }}" --env Smtp__Username="${{ secrets.SMTP_USERNAME }}" --env Smtp__Password="${{ secrets.SMTP_PASSWORD }}" --env Smtp__From="${{ secrets.SMTP_FROM }}" --env Smtp__Port="${{ secrets.SMTP_PORT }}"
 
           pm2 save
 

@@ -21,8 +21,6 @@ if (builder.Environment.IsDevelopment())
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' (Staging from Github Secrets) not found.");
 }
 else
-        
-
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found."); 
 }
@@ -212,11 +210,18 @@ if (app.Environment.IsStaging())
 
     var robotsPath = filePathProvider.RobotsTxtPath;
 
-    if (!File.Exists(robotsPath))
+    try
     {
-        Directory.CreateDirectory(Path.GetDirectoryName(robotsPath)!); // Ensure wwwroot exists
-        File.WriteAllText(robotsPath, "User-agent: *\nDisallow: /");
-        Console.WriteLine("Created staging robots.txt to block crawlers.");
+        if (!File.Exists(robotsPath))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(robotsPath)!);
+            File.WriteAllText(robotsPath, "User-agent: *\nDisallow: /");
+            Console.WriteLine("Created staging robots.txt to block crawlers.");
+        }
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine("Failed to write robots.txt: " + ex.Message);
     }
 
 
