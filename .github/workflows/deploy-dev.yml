@@ -47,6 +47,17 @@ jobs:
 
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+
+      - name: Apply EF Core Migrations
+        working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
+        env:
+          DOTNET_ENVIRONMENT: Staging
+          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+        run: |
+          echo "Applying EF Core migrations..."
+          dotnet tool install --global dotnet-ef || true
+          export PATH="$PATH:$HOME/.dotnet/tools"
+          dotnet ef database update --connection "$CONNECTION_STRING" --no-build
       
       - name: Debug Env Vars (non-secret)
         run: |
