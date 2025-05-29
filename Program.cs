@@ -21,8 +21,6 @@ if (builder.Environment.IsDevelopment())
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' (Staging from Github Secrets) not found.");
 }
 else
-        
-
 {
     connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING") ?? throw new InvalidOperationException("Connection string 'CONNECTION_STRING' not found."); 
 }
