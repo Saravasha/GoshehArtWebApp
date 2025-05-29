@@ -56,7 +56,7 @@ jobs:
             CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
             DOTNET_ENVIRONMENT: Staging
       - name: Export staging connection string as CONNECTION_STRING
-        run: echo "CONNECTION_STRING=${{ secrets.STAGING_CONNECTION_STRING }}" >> $GITHUB_ENV
+        run: echo "CONNECTION_STRING=${{ secrets.CONNECTION_STRING_STAGING }}" >> $GITHUB_ENV
 
       - name: Apply EF Core Migrations
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
