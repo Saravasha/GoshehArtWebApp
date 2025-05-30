@@ -52,6 +52,11 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(allowedOrigins).AllowAnyMethod().AllowAnyHeader();
     })
 );
+Console.WriteLine("CORS Allowed Origins:");
+foreach (var origin in allowedOrigins ?? new string[0])
+{
+    Console.WriteLine($"- {origin}");
+}
 
 // Identity options
 builder.Services.Configure<IdentityOptions>(options =>
@@ -72,8 +77,8 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     options.SlidingExpiration = true;
 });
-
 var app = builder.Build();
+Console.WriteLine($"Environment: {app.Environment.EnvironmentName}");
 
 // Error handling pipeline
 if (app.Environment.IsDevelopment())
@@ -128,9 +133,6 @@ using (var scope = app.Services.CreateScope())
 
 // SMTP validation
 var smtpSettings = builder.Configuration.GetSection("Smtp").Get<SmtpSettings>();
-Console.WriteLine($"SMTP_HOST: {smtpSettings?.Host}");
-Console.WriteLine($"SMTP_PORT: {smtpSettings?.Port}");
-
 if (smtpSettings == null ||
     string.IsNullOrWhiteSpace(smtpSettings.Host) ||
     string.IsNullOrWhiteSpace(smtpSettings.Username) ||
@@ -177,7 +179,7 @@ app.UseRouting();
 app.UseCors("corsPolicy");
 app.UseAuthentication();
 app.UseAuthorization();
-
+app.MapControllers();
 app.MapControllerRoute(
     name: "default",
     pattern: "{controller=Home}/{action=Index}/{id?}");
