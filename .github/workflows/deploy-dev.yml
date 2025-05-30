@@ -45,18 +45,12 @@ jobs:
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
 
-      - name: Debug env variables (non-secret)
-        run: |
-          echo "DOTNET_ENVIRONMENT=$DOTNET_ENVIRONMENT"
-          echo "CONNECTION_STRING=$CONNECTION_STRING"
-          echo "SMTP Host: $Smtp__Host"
-          echo "SMTP Username: $Smtp__Username"
-
       - name: Apply EF Core Migrations
         working-directory: /var/www/goshehartwebapp-staging/actions-runner-staging/_work/GoshehArtWebApp/GoshehArtWebApp
         env:
             DOTNET_ENVIRONMENT: Staging
             CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
+            ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
         run: |
           dotnet tool update --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
