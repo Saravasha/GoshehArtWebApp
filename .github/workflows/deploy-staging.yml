@@ -43,7 +43,7 @@ jobs:
         run: dotnet build --configuration Release --no-restore
 
       - name: Publish app
-        run: dotnet publish -c Release --no-build -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
+        run: dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
           
       - name: Deploy with PM2
         env:
