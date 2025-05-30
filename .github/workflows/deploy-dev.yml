@@ -65,8 +65,5 @@ jobs:
 
           pm2 save
 
-      - name: Check PM2 env
-        run: pm2 show goshehartwebapp-staging
-
       - name: Reload Nginx
         run: sudo service nginx reload
