@@ -87,6 +87,16 @@
 
     @if (User.Identity.IsAuthenticated)
     {
+            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
+                <div id="cleanupToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
+                    <div class="d-flex">
+                        <div class="toast-body">
+                            @TempData["CleanupSuccess"]
+                        </div>
+                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
+                    </div>
+                </div>
+            </div>
         <footer class="container-fluid border-top footer text-muted text-center py-3 ">            
             &copy; GoshehArtWebApp - @(DateTime.Now.Year) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
         </footer>
@@ -115,3 +125,12 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
+<script>
+    window.addEventListener('DOMContentLoaded', () => {
+        const toastEl = document.getElementById('cleanupToast');
+        if (toastEl && toastEl.querySelector('.toast-body').textContent.trim()) {
+            const toast = new bootstrap.Toast(toastEl);
+            toast.show();
+        }
+    });
+</script>

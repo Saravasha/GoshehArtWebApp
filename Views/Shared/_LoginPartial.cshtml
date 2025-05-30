@@ -19,8 +19,8 @@
                     <li><a class="dropdown-item text-dark" asp-controller="User" asp-action="Index">User List</a></li>
                     <!-- Manual Cleanup Trigger -->
                     <li>
-                        <form asp-controller="AdminMaintenance" asp-action="CleanupOrphanFiles" method="post" style="display:inline;">
-                            <button type="submit" class="dropdown-item text-danger" style="background:none; border:none; padding:0; width:100%; text-align:left;">
+                        <form asp-controller="Cleanup" asp-action="CleanupOrphanFiles" method="post" style="display:inline;">
+                            <button type="submit" class="dropdown-item text-danger">
                                 Cleanup Orphan Files
                             </button>
                         </form>

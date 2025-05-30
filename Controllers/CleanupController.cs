@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 namespace GoshehArtWebApp.Controllers
 {
     [Authorize(Roles = "Admin")]
-    [Route("admin/cleanup")]
     public class CleanupController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -23,13 +22,17 @@ namespace GoshehArtWebApp.Controllers
         {
             var cleanup = new OrphanAnnihilator(_context, _filePathProvider);
             await cleanup.RemoveUnusedFilesAsync();
-            return Ok("Orphan file cleanup completed.");
+            TempData["CleanupSuccess"] = "Unused files successfully cleaned up.";
+            var referer = Request.Headers["Referer"].ToString();
+            if (Uri.TryCreate(referer, UriKind.Absolute, out var refererUri) &&
+    refererUri.Host == Request.Host.Host)
+            {
+                return Redirect(referer);
+            }
+
+            // Fallback if no referer is available
+            return RedirectToAction("Index", "Home");
         }
 
-        [HttpGet("cleanup-orphans")]
-        public IActionResult ConfirmCleanup()
-        {
-            return View(); // Optional: simple Razor page to confirm
-        }
     }
 }
