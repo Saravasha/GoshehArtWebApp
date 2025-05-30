@@ -8,12 +8,6 @@
     <meta name="description" content="GoshehArtWebApp - Art-focused web application for managing productions, assets, and content." />
     <title>@ViewData["Title"] - GoshehArtWebApp</title>
 
-    @if (env.EnvironmentName == "Staging")
-    {
-        <div style="background-color: darkorange; color: white; padding: 10px; text-align: center;">
-            <strong>STAGING ENVIRONMENT</strong> — Not for production use
-        </div>
-    }
 
     <environment include="Development">
         <link rel="stylesheet" href="~/lib/bootstrap/css/bootstrap.css" />
@@ -37,6 +31,12 @@
 <body class="d-flex flex-column">
     <div class="wrapper">
     <header>
+        @if (env.EnvironmentName == "Staging")
+        {
+            <div style="background-color: darkorange; color: white; padding: 10px; text-align: center;">
+                <strong>STAGING ENVIRONMENT</strong> — Not for production use
+            </div>
+        }
         @if (User.Identity.IsAuthenticated)
         {
             <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">

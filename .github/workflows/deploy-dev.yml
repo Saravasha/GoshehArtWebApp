@@ -50,7 +50,6 @@ jobs:
         env:
             DOTNET_ENVIRONMENT: Staging
             CONNECTION_STRING: ${{ secrets.CONNECTION_STRING_STAGING }}
-            ADMIN_PASSWORD: ${{ secrets.ADMIN_PASSWORD_STAGING }}
         run: |
           dotnet tool update --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
