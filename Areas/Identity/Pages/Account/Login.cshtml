@@ -5,6 +5,8 @@
     Layout = "~/Views/Shared/_AccountLayout.cshtml";
 }
 
+@using Microsoft.AspNetCore.Hosting
+@inject IWebHostEnvironment env
 
 
 
@@ -14,6 +16,12 @@
 
    
                 <div class="row justify-content-center ">
+                    @if (env.EnvironmentName == "Staging")
+                    {
+                        <div style="background-color: darkorange; color: white; padding: 10px; text-align: center;">
+                            <strong>STAGING ENVIRONMENT</strong> — Not for production use
+                        </div>
+                    }
                         <h1 class="text-center mb-4">GoshehArtWebApp</h1>
                 <div class="col-md-6">
                     <div class="card shadow">

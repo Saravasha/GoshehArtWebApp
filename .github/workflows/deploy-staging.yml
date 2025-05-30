@@ -44,22 +44,6 @@ jobs:
 
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-
-      - name: Apply EF Core Migrations
-        working-directory: /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-        env:
-          DOTNET_ENVIRONMENT: Production
-          CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
-        run: |
-          echo "Applying EF Core migrations..."
-          dotnet tool install --global dotnet-ef || true
-          export PATH="$PATH:$HOME/.dotnet/tools"
-          dotnet ef database update --connection "$CONNECTION_STRING" --no-build
-      
-      - name: Debug Env Vars (non-secret)
-        run: |
-          echo "SMTP Host: $Smtp__Host"
-          echo "SMTP Username: $Smtp__Username"
           
       - name: Deploy with PM2
         env:
