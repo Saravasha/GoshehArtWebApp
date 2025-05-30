@@ -19,7 +19,7 @@ namespace GoshehArtWebApp.Controllers
         {
             _context = context;
         }
-
+         
         public IActionResult Index()
         {
             cvm.Categories = _context.Categories.ToList();
