@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace GoshehArtWebApp.Controllers
 {
+    [Authorize]
     public class AboutController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -13,7 +14,6 @@ namespace GoshehArtWebApp.Controllers
             _context = context;
         }
 
-        [Authorize]
         public IActionResult Index()
         {
             var page = _context.Pages.FirstOrDefault(x => x.Title == "About");
