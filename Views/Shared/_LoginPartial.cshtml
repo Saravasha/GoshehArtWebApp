@@ -17,6 +17,14 @@
                 {
                     <li><a class="dropdown-item text-dark" asp-area="Identity" asp-page="/Account/Register">Register User</a></li>
                     <li><a class="dropdown-item text-dark" asp-controller="User" asp-action="Index">User List</a></li>
+                    <!-- Manual Cleanup Trigger -->
+                    <li>
+                        <form asp-controller="AdminMaintenance" asp-action="CleanupOrphanFiles" method="post" style="display:inline;">
+                            <button type="submit" class="dropdown-item text-danger" style="background:none; border:none; padding:0; width:100%; text-align:left;">
+                                Cleanup Orphan Files
+                            </button>
+                        </form>
+                    </li>
                 }
 
                 <li><a href="#" class="dropdown-item text-dark" data-bs-toggle="modal" data-bs-target="#logoutModal">Logout</a></li>
