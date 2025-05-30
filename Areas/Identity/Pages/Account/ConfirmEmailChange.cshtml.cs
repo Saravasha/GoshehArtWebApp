@@ -13,6 +13,7 @@ using Microsoft.AspNetCore.WebUtilities;
 
 namespace GoshehArtWebApp.Areas.Identity.Pages.Account
 {
+    [Authorize]
     public class ConfirmEmailChangeModel : PageModel
     {
         private readonly UserManager<IdentityUser> _userManager;
