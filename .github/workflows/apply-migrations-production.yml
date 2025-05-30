@@ -16,6 +16,7 @@ jobs:
         env:
           DOTNET_ENVIRONMENT: Production
           CONNECTION_STRING: ${{ secrets.CONNECTION_STRING }}
+          HOME: /home/runner
         run: |
           dotnet tool install --global dotnet-ef || true
           export PATH="$PATH:$HOME/.dotnet/tools"
