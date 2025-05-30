@@ -41,6 +41,7 @@ builder.Services.AddDirectoryBrowser();
 builder.Services.AddScoped<FilePathProvider>();
 builder.Services.AddScoped<VideoThumbnailProvider>();
 builder.Services.AddScoped<AssetTypeProvider>();
+builder.Services.AddHostedService<OrphanAnnihilatorBackgroundService>();
 builder.Services.AddTransient<IEmailSender, SmtpEmailSender>();
 
 // CORS setup

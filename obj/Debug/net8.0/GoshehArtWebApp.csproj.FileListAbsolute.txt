@@ -267,3 +267,4 @@ C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.upToDateCheck.txt
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\appsettings.Production.json
 C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\obj\Debug\net8.0\staticwebassets.build.json.cache
+C:\Users\Siavash Gosheh\source\repos\GoshehArt\GoshehArtWebApp\bin\Debug\net8.0\HtmlAgilityPack.dll
