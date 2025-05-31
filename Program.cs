@@ -52,15 +52,6 @@ builder.Services.AddCors(options =>
         policy.WithOrigins(allowedOrigins).AllowAnyMethod().AllowAnyHeader();
     })
 );
-Console.WriteLine("CORS Allowed Origins:");
-foreach (var origin in allowedOrigins ?? new string[0])
-{
-    Console.WriteLine($"- {origin}");
-}
-if (allowedOrigins == null || !allowedOrigins.Any())
-{
-    Console.WriteLine("No AllowedOrigins loaded! Check your config.");
-}
 
 
 // Identity options
