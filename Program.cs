@@ -57,6 +57,11 @@ foreach (var origin in allowedOrigins ?? new string[0])
 {
     Console.WriteLine($"- {origin}");
 }
+if (allowedOrigins == null || !allowedOrigins.Any())
+{
+    Console.WriteLine("No AllowedOrigins loaded! Check your config.");
+}
+
 
 // Identity options
 builder.Services.Configure<IdentityOptions>(options =>
