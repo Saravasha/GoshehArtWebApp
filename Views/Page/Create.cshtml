@@ -293,7 +293,7 @@
                 const type = isImage ? 'image' : isVideo ? 'video' : 'audio';
 
                 const assetDiv = $(`
-                    <div class="col-md-3 mb-3 asset-item" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-type="${type}">
+                    <div class="col-md-3 mb-3 asset-item d-flex justify-content-center align-items-center" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-type="${type}">
                         ${mediaHtml}
                     </div>
                 `);

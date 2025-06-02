@@ -48,7 +48,7 @@
                     </button>
 
                     <div class="collapse navbar-collapse" id="mainNavbar">
-                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 gap-2">
+                        <ul class="navbar-nav me-2 mb-2 mb-lg-0 gap-2">
                             <li class="nav-item">
                                 <a class="btn btn-outline-secondary" asp-controller="Production" asp-action="Index">Production</a>
                             </li>
@@ -74,7 +74,11 @@
                                 <a class="btn btn-outline-secondary" asp-controller="Color" asp-action="Index">Colors</a>
                             </li>
                         </ul>
-                        <partial name="_LoginPartial" />
+                        <ul class="navbar-nav mv-auto ms-auto mb-2 mb-lg-0 gap-2">
+                            <li class="nav-item">
+                                <partial name="_LoginPartial" />
+                            </li>
+                        </ul>
                     </div>
                 </div>
             </nav>
