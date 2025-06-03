@@ -59,8 +59,8 @@ jobs:
           fi
       
           # Optional: check for your specific CSS file
-          if [ ! -f "/var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/wwwroot/css/.styles.css" ]; then
-            echo "ERROR: .styles.css file is missing!"
+          if [ ! -f "/var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/wwwroot/GoshehArtWebApp.styles.css" ]; then
+            echo "ERROR: GoshehArtWebApp.styles.css file is missing!"
             exit 1
           fi
       - name: Deploy with PM2
