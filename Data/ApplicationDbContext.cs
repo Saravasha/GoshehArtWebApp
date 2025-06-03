@@ -26,7 +26,7 @@ namespace GoshehArtWebApp.Data
 
             modelbuilder.Entity<Color>().HasData(
                 new Color { Id = 1, Name = "Background Color", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" },
-                new Color { Id = 2, Name = "Header Text", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" });
+                new Color { Id = 2, Name = "Header Text", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#ffffff", DarkEndColor = "#ffffff" });
 
 
             modelbuilder.Entity<Page>().HasData(
@@ -43,7 +43,7 @@ namespace GoshehArtWebApp.Data
                 new Content { Id = 3, Title = "Biography", Container = "Early Life", PageId = 3 },
                 new Content { Id = 4, Title = "Social Media", Container = "Faceberrk", PageId = 4 },
                 new Content { Id = 5, Title = "Cookie Policy", Container = "We don't use cookies", PageId = 5 },
-                new Content { Id = 6, Title = "Privacy Policy", Container = "Pending", PageId = 5 }
+                new Content { Id = 7, Title = "Wikipedia Profil", Container = "Fateme Gosheh är en regissör, målare och fotograf född 1961 i Iran, numera bosatt och verksam i Sverige.\r\n\r\n\r\n2002 ställde hon ut målningar under namnet \"En muslimsk kvinna - drömmar och mardrömmar\" på Liljevalchs vårsalong som föreställde döda och nakna kvinnor tillsammans med olika muslimska symboler, något som väckte uppmärksamhet och ilska. För målningarna polisanmäldes hon för hets mot folkgrupp av Sveriges muslimska råd. Svenska dagbladet och andra svenska tidningar som återgav hennes konst anmäldes också. Trots hot fortsatte hon därefter med konst som utmanar islam.\r\n\r\n\r\n2010 hade hennes dokumentärfilm Tusen och en natt (jävla sköna män) premiär.\r\n\r\n\r\nHennes verk har ställts ut runt om i världen, bland annat Florens, New York och Los Angeles.", PageId = 3 }
             );
 
             modelbuilder.Entity<Category>().HasData(

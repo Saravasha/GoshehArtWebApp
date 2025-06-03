@@ -9,10 +9,18 @@ namespace GoshehArtWebApp.Data
         public ApplicationDbContext CreateDbContext(string[] args)
         {
             // Get connection string ONLY from environment variable
-            var connectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+            var envConnectionString = Environment.GetEnvironmentVariable("CONNECTION_STRING");
+            
+            var connectionString = !string.IsNullOrEmpty(envConnectionString)
+                ? envConnectionString
+                : new ConfigurationBuilder()
+                    .SetBasePath(Directory.GetCurrentDirectory())
+                    .AddJsonFile("appsettings.Development.json", optional: false)
+                    .Build()
+                    .GetConnectionString("DefaultConnection");
 
             if (string.IsNullOrEmpty(connectionString))
-                throw new InvalidOperationException("Missing CONNECTION_STRING environment variable.");
+                throw new InvalidOperationException("Connection String Error.");
 
             var optionsBuilder = new DbContextOptionsBuilder<ApplicationDbContext>();
             optionsBuilder.UseSqlServer(connectionString);
