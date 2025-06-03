@@ -44,7 +44,25 @@ jobs:
 
       - name: Publish app
         run: dotnet publish -c Release -o /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp
-          
+      - name: Verify publish output
+        run: |
+          echo "Checking published files..."
+          ls -l /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/wwwroot
+          if [ ! -d "/var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/wwwroot" ]; then
+            echo "ERROR: wwwroot directory does not exist!"
+            exit 1
+          fi
+      
+          if [ -z "$(ls -A /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/wwwroot)" ]; then
+            echo "ERROR: wwwroot directory is empty!"
+            exit 1
+          fi
+      
+          # Optional: check for your specific CSS file
+          if [ ! -f "/var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/wwwroot/css/.styles.css" ]; then
+            echo "ERROR: .styles.css file is missing!"
+            exit 1
+          fi
       - name: Deploy with PM2
         env:
           DOTNET_ENVIRONMENT: Production
