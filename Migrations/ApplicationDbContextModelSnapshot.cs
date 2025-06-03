@@ -231,11 +231,11 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 2,
-                            DarkEndColor = "#000000",
-                            DarkStartColor = "#000000",
-                            EndColor = "#000000",
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#ffffff",
+                            EndColor = "#ffffff",
                             Name = "Header Text",
-                            StartColor = "#000000"
+                            StartColor = "#ffffff"
                         });
                 });
 
@@ -304,10 +304,10 @@ namespace GoshehArtWebApp.Migrations
                         },
                         new
                         {
-                            Id = 6,
-                            Container = "Pending",
-                            PageId = 5,
-                            Title = "Privacy Policy"
+                            Id = 7,
+                            Container = "Fateme Gosheh är en regissör, målare och fotograf född 1961 i Iran, numera bosatt och verksam i Sverige.\r\n\r\n\r\n2002 ställde hon ut målningar under namnet \"En muslimsk kvinna - drömmar och mardrömmar\" på Liljevalchs vårsalong som föreställde döda och nakna kvinnor tillsammans med olika muslimska symboler, något som väckte uppmärksamhet och ilska. För målningarna polisanmäldes hon för hets mot folkgrupp av Sveriges muslimska råd. Svenska dagbladet och andra svenska tidningar som återgav hennes konst anmäldes också. Trots hot fortsatte hon därefter med konst som utmanar islam.\r\n\r\n\r\n2010 hade hennes dokumentärfilm Tusen och en natt (jävla sköna män) premiär.\r\n\r\n\r\nHennes verk har ställts ut runt om i världen, bland annat Florens, New York och Los Angeles.",
+                            PageId = 3,
+                            Title = "Wikipedia Profil"
                         });
                 });
 
@@ -508,12 +508,10 @@ namespace GoshehArtWebApp.Migrations
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityUserLogin<string>", b =>
                 {
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderKey")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("ProviderDisplayName")
                         .HasColumnType("nvarchar(max)");
@@ -550,12 +548,10 @@ namespace GoshehArtWebApp.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LoginProvider")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Name")
-                        .HasMaxLength(128)
-                        .HasColumnType("nvarchar(128)");
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Value")
                         .HasColumnType("nvarchar(max)");
