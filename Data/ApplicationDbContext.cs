@@ -34,7 +34,19 @@ namespace GoshehArtWebApp.Data
                 new Page { Id = 2, Title = "Production", Container = "Production"},
                 new Page { Id = 3, Title = "About", Container = "About" },
                 new Page { Id = 4, Title = "Contact", Container = "Contact" },
-                new Page { Id = 5, Title = "Privacy", Container = "Privacy" }
+                new Page { Id = 5, Title = "Privacy", Container = @"
+            <h2>Privacy and Cookie Policy</h2>
+            <p><strong>Effective Date:</strong> [Insert Date]</p>
+            <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>
+            <h3>Cookies</h3>
+            <p>Our website does not use cookies to track visitors or personalize content. The only cookies used are for authentication purposes on the backend, which is accessible only to the site owner (administrator) for managing the website. These cookies are essential for secure login and session management and do not affect public visitors.</p>
+            <h3>Personal Data</h3>
+            <p>We do not collect, track, or share any personal data from visitors. No personal information is gathered through this website.</p>
+            <h3>Data Security</h3>
+            <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>
+            <h3>Your Rights</h3>
+            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a>.</p>"
+                 }
             );
 
             modelbuilder.Entity<Content>().HasData(
@@ -43,7 +55,15 @@ namespace GoshehArtWebApp.Data
                 new Content { Id = 3, Title = "Biography", Container = "Early Life", PageId = 3 },
                 new Content { Id = 4, Title = "Social Media", Container = "Faceberrk", PageId = 4 },
                 new Content { Id = 5, Title = "Cookie Policy", Container = "We don't use cookies", PageId = 5 },
-                new Content { Id = 7, Title = "Wikipedia Profil", Container = "Fateme Gosheh är en regissör, målare och fotograf född 1961 i Iran, numera bosatt och verksam i Sverige.\r\n\r\n\r\n2002 ställde hon ut målningar under namnet \"En muslimsk kvinna - drömmar och mardrömmar\" på Liljevalchs vårsalong som föreställde döda och nakna kvinnor tillsammans med olika muslimska symboler, något som väckte uppmärksamhet och ilska. För målningarna polisanmäldes hon för hets mot folkgrupp av Sveriges muslimska råd. Svenska dagbladet och andra svenska tidningar som återgav hennes konst anmäldes också. Trots hot fortsatte hon därefter med konst som utmanar islam.\r\n\r\n\r\n2010 hade hennes dokumentärfilm Tusen och en natt (jävla sköna män) premiär.\r\n\r\n\r\nHennes verk har ställts ut runt om i världen, bland annat Florens, New York och Los Angeles.", PageId = 3 }
+                new Content { Id = 7, Title = "Wikipedia Profil",
+                    Container = @"
+    <p><strong>Fateme Gosheh</strong> är en regissör, målare och fotograf född 1961 i Iran, numera bosatt och verksam i Sverige.</p>
+    <p>År 2002 ställde hon ut målningar under namnet <em>”En muslimsk kvinna – drömmar och mardrömmar”</em> på Liljevalchs vårsalong. Utställningen föreställde döda och nakna kvinnor tillsammans med olika muslimska symboler, något som väckte uppmärksamhet och ilska. För målningarna polisanmäldes hon för hets mot folkgrupp av Sveriges muslimska råd. Svenska Dagbladet och andra svenska tidningar som återgav hennes konst anmäldes också.</p>
+    <p>Trots hot fortsatte hon därefter med konst som utmanar islam.</p>
+    <p>År 2010 hade hennes dokumentärfilm <em>Tusen och en natt (jävla sköna män)</em> premiär.</p>
+    <p>Hennes verk har ställts ut runt om i världen, bland annat i Florens, New York och Los Angeles.</p>"
+,
+                    PageId = 3 }
             );
 
             modelbuilder.Entity<Category>().HasData(
