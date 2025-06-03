@@ -106,17 +106,15 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine("Seeding complete.");
 
         // Add robots.txt for staging
-        if (app.Environment.IsStaging())
-        {
-            var filePathProvider = services.GetRequiredService<FilePathProvider>();
-            var robotsPath = filePathProvider.RobotsTxtPath;
+        
+        var filePathProvider = services.GetRequiredService<FilePathProvider>();
+        var robotsPath = filePathProvider.RobotsTxtPath;
 
-            if (!File.Exists(robotsPath))
-            {
-                Directory.CreateDirectory(Path.GetDirectoryName(robotsPath)!);
-                File.WriteAllText(robotsPath, "User-agent: *\nDisallow: /");
-                Console.WriteLine("Created staging robots.txt to block crawlers.");
-            }
+        if (!File.Exists(robotsPath))
+        {
+            Directory.CreateDirectory(Path.GetDirectoryName(robotsPath)!);
+            File.WriteAllText(robotsPath, "User-agent: *\nDisallow: /");
+            Console.WriteLine("Created staging robots.txt to block crawlers.");
         }
     }
     catch (Exception ex)
