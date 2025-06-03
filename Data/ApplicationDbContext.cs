@@ -34,18 +34,7 @@ namespace GoshehArtWebApp.Data
                 new Page { Id = 2, Title = "Production", Container = "Production"},
                 new Page { Id = 3, Title = "About", Container = "About" },
                 new Page { Id = 4, Title = "Contact", Container = "Contact" },
-                new Page { Id = 5, Title = "Privacy", Container = @"
-            <h2>Privacy and Cookie Policy</h2>
-            <p><strong>Effective Date:</strong> [Insert Date]</p>
-            <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>
-            <h3>Cookies</h3>
-            <p>Our website does not use cookies to track visitors or personalize content. The only cookies used are for authentication purposes on the backend, which is accessible only to the site owner (administrator) for managing the website. These cookies are essential for secure login and session management and do not affect public visitors.</p>
-            <h3>Personal Data</h3>
-            <p>We do not collect, track, or share any personal data from visitors. No personal information is gathered through this website.</p>
-            <h3>Data Security</h3>
-            <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>
-            <h3>Your Rights</h3>
-            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a>.</p>"
+                new Page { Id = 5, Title = "Privacy", Container = ""
                  }
             );
 
@@ -63,7 +52,18 @@ namespace GoshehArtWebApp.Data
     <p>År 2010 hade hennes dokumentärfilm <em>Tusen och en natt (jävla sköna män)</em> premiär.</p>
     <p>Hennes verk har ställts ut runt om i världen, bland annat i Florens, New York och Los Angeles.</p>"
 ,
-                    PageId = 3 }
+                    PageId = 3 },
+                new Content { Id = 6, Title = "Privacy Policy", Container = @"
+            <h2>Privacy and Cookie Policy</h2>
+            <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>
+            <h3>Cookies</h3>
+            <p>Our website does not use cookies to track visitors or personalize content. The only cookies used are for authentication purposes on the backend, which is accessible only to the site owner (administrator) for managing the website. These cookies are essential for secure login and session management and do not affect public visitors.</p>
+            <h3>Personal Data</h3>
+            <p>We do not collect, track, or share any personal data from visitors. No personal information is gathered through this website.</p>
+            <h3>Data Security</h3>
+            <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>
+            <h3>Your Rights</h3>
+            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a>.</p>", PageId = 5, Date =  new DateOnly(2025, 6, 3) }
             );
 
             modelbuilder.Entity<Category>().HasData(
