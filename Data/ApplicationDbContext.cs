@@ -26,7 +26,14 @@ namespace GoshehArtWebApp.Data
 
             modelbuilder.Entity<Color>().HasData(
                 new Color { Id = 1, Name = "Background Color", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#000000", DarkEndColor = "#000000" },
-                new Color { Id = 2, Name = "Header Text", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#ffffff", DarkEndColor = "#ffffff" });
+                new Color { Id = 2, Name = "Header Text", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#ffffff", DarkEndColor = "#ffffff" },
+                new Color { Id = 3, Name = "Navbar Background Color", StartColor = "#ffff6a", EndColor = "#ffffff", DarkStartColor = "#052e16", DarkEndColor = "#ffffff" },
+                new Color { Id = 4, Name = "Page Header Text Color", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#000000", DarkEndColor = "#ffffff" },
+                new Color { Id = 5, Name = "Content Header Text Color", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#000000", DarkEndColor = "#ffffff" },
+                new Color { Id = 6, Name = "Page Body Text Color", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#000000", DarkEndColor = "#ffffff" },
+                new Color { Id = 7, Name = "Content Body Text Color", StartColor = "#ffffff", EndColor = "#ffffff", DarkStartColor = "#000000", DarkEndColor = "#ffffff" },
+                new Color { Id = 8, Name = "ScrollToTop Background Color", StartColor = "#052e16", EndColor = "#052e16", DarkStartColor = "#052e16", DarkEndColor = "#052e16" },
+                new Color { Id = 9, Name = "Navbar Text Color", StartColor = "#000000", EndColor = "#000000", DarkStartColor = "#ffffff", DarkEndColor = "#ffffff" });
 
 
             modelbuilder.Entity<Page>().HasData(
