@@ -37,13 +37,13 @@
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.StartColor)</td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.EndColor)</td>
                     <td class="d-flex flex justify-content-center align-items-center">
-                        <div style="@($"height:10rem; border-radius: 15px; width:10rem; background: linear-gradient(to right, {item.StartColor}, {item.EndColor});")">
+                            <div style="@($"height:10rem; border-radius: 15px; width:10rem; border-style: solid; border-color: black; border-width: 1px; background: linear-gradient(to right, {item.StartColor}, {item.EndColor});")">
                         </div>
                     </td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.DarkStartColor)</td>
                     <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.DarkEndColor)</td>
                     <td class="d-flex flex justify-content-center align-items-center">
-                            <div style="@($"height:10rem; border-radius: 15px; width:10rem; background: linear-gradient(to right, {item.DarkStartColor}, {item.DarkEndColor});")">
+                            <div style="@($"height:10rem; border-radius: 15px; width:10rem; border-style: solid; border-color: black; border-width: 1px; background: linear-gradient(to right, {item.DarkStartColor}, {item.DarkEndColor});")">
                         </div>
                     </td>
                     <td class="text-center align-middle">
