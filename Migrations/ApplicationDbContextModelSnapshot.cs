@@ -236,6 +236,69 @@ namespace GoshehArtWebApp.Migrations
                             EndColor = "#ffffff",
                             Name = "Header Text",
                             StartColor = "#ffffff"
+                        },
+                        new
+                        {
+                            Id = 3,
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#052e16",
+                            EndColor = "#ffffff",
+                            Name = "Navbar Background Color",
+                            StartColor = "#ffff6a"
+                        },
+                        new
+                        {
+                            Id = 4,
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#000000",
+                            EndColor = "#ffffff",
+                            Name = "Page Header Text Color",
+                            StartColor = "#ffffff"
+                        },
+                        new
+                        {
+                            Id = 5,
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#000000",
+                            EndColor = "#ffffff",
+                            Name = "Content Header Text Color",
+                            StartColor = "#ffffff"
+                        },
+                        new
+                        {
+                            Id = 6,
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#000000",
+                            EndColor = "#ffffff",
+                            Name = "Page Body Text Color",
+                            StartColor = "#ffffff"
+                        },
+                        new
+                        {
+                            Id = 7,
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#000000",
+                            EndColor = "#ffffff",
+                            Name = "Content Body Text Color",
+                            StartColor = "#ffffff"
+                        },
+                        new
+                        {
+                            Id = 8,
+                            DarkEndColor = "#052e16",
+                            DarkStartColor = "#052e16",
+                            EndColor = "#052e16",
+                            Name = "ScrollToTop Background Color",
+                            StartColor = "#052e16"
+                        },
+                        new
+                        {
+                            Id = 9,
+                            DarkEndColor = "#ffffff",
+                            DarkStartColor = "#ffffff",
+                            EndColor = "#000000",
+                            Name = "Navbar Text Color",
+                            StartColor = "#000000"
                         });
                 });
 
