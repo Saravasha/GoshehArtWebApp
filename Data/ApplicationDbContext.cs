@@ -70,7 +70,7 @@ namespace GoshehArtWebApp.Data
             <h3>Data Security</h3>
             <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>
             <h3>Your Rights</h3>
-            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a>.</p>", PageId = 5, Date =  new DateOnly(2025, 6, 3) }
+            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a></p>", PageId = 5, Date =  new DateOnly(2025, 6, 3) }
             );
 
             modelbuilder.Entity<Category>().HasData(
