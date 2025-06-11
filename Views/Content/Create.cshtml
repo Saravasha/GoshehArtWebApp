@@ -4,89 +4,84 @@
     ViewData["Title"] = "Create Content";
 }
 
-<section class="container my-5">
+<section class="container my-4">
     <h1 class="mb-3">@ViewData["Title"]</h1>
-    <h4 class="mb-4">Add new Content to a Page</h4>
+    <h4 class="mb-4">Add child sections to a Page container</h4>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-            <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
-                <div class="mb-3">
-                    <label asp-for="Title" class="control-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
-                <div class="mb-4">
-                    <label asp-for="Date">Date (Optional)</label>
-                    <div>
-                        <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
-                        <span asp-validation-for="Date" class="text-danger"></span>
-                    </div>
-                </div>
-                <div class="mb-4">
-                    <label asp-for="Container" class="control-label"></label>
-                    <span asp-validation-for="Container" class="text-danger"></span>
-                    <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30">
-                    </textarea>
-                </div>
-                <div class="mb-4">
-                    <label asp-for="PageId" class="control-label"></label>
-                    <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-control dropdown-menu-start m-1" required>
-                        <option disabled selected>--Select Page--</option>
-                    </select>
-                    @if (ViewBag.PageError != null)
-                    {
-                        <span class="error-message">@ViewBag.PageError</span>
-                    }
-                </div>
-                <!-- Submit -->
-                <div class="d-flex justify-content-between align-items-center">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-1"></i>Create
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-1"></i>Back to Contents
-                    </a>
-                </div>
-            </form>
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+        <div class="mb-3">
+            <label asp-for="Title" class="control-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
-        <!-- Modal for Asset Selection -->
-        <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-lg">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title">Select an Asset</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="assetSearchForm" class="row mb-3" onsubmit="return false;">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" name="name" placeholder="Search by name" />
-                            </div>
-                            <div class="col-md-4">
-                                <input type="date" class="form-control" name="date" placeholder="Search by date" />
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-control" name="category" id="categorySelect">
-                                    <option value="">All Categories</option>
-                                </select>
-                            </div>
-                            <div class="col-12 mt-2 text-end">
-                                <button type="button" id="clearFiltersBtn" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
-                            </div>
-                        </form>
-                        <div id="assetCount" class="mb-2 text-muted small"></div>
-                        <div class="row" id="assetContainer"></div>
-                    </div>
+        <div class="mb-4">
+            <label asp-for="Date">Date (Optional)</label>
+            <div>
+                <input asp-for="Date" class="border p-1 rounded " type="date" id="Date" />
+                <span asp-validation-for="Date" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="mb-4">
+            <label asp-for="Container" class="control-label"></label>
+            <span asp-validation-for="Container" class="text-danger"></span>
+            <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30">
+                    </textarea>
+        </div>
+        <div class="mb-4">
+            <label asp-for="PageId" class="control-label"></label>
+            <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-control dropdown-menu-start m-1" required>
+                <option disabled selected>--Select Page--</option>
+            </select>
+            @if (ViewBag.PageError != null)
+            {
+                <span class="error-message">@ViewBag.PageError</span>
+            }
+        </div>
+        <!-- Submit -->
+        <div class="d-flex justify-content-between align-items-center">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i>Create
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Contents
+            </a>
+        </div>
+    </form>
+    </div>
+    <!-- Modal for Asset Selection -->
+    <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Select an Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="assetSearchForm" class="row mb-3" onsubmit="return false;">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name" placeholder="Search by name" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" name="date" placeholder="Search by date" />
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-control" name="category" id="categorySelect">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        <div class="col-12 mt-2 text-end">
+                            <button type="button" id="clearFiltersBtn" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
+                        </div>
+                    </form>
+                    <div id="assetCount" class="mb-2 text-muted small"></div>
+                    <div class="row" id="assetContainer"></div>
                 </div>
             </div>
         </div>
     </div>
-
-    <div>
-        <a asp-action="Index">Return to Page Index</a>
     </div>
+
 </section>
 
 @section Scripts {

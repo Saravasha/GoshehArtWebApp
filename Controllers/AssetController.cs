@@ -1,13 +1,12 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using System.Data;
+﻿using GoshehArtWebApp.Data;
+using GoshehArtWebApp.Models;
+using GoshehArtWebApp.Services;
+using GoshehArtWebApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using GoshehArtWebApp.Data;
-using GoshehArtWebApp.Models;
-using GoshehArtWebApp.ViewModels;
-using System.Diagnostics;
-using GoshehArtWebApp.Services;
+using System.Data;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -156,7 +155,7 @@ namespace GoshehArtWebApp.Controllers
                     if (catToAdd != null)
                         AssetToAdd.Categories.Add(catToAdd);
                 }
-                
+
 
                 await _context.Assets.AddAsync(AssetToAdd);
                 await _context.SaveChangesAsync();

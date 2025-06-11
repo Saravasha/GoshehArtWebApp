@@ -1,49 +1,47 @@
 ﻿@model CreatePageViewModel
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Page";
 }
 
-<section class="container my-5">
+<section class="container my-4">
     <h1 class="mb-3">@ViewData["Title"]</h1>
     <h4 class="mb-4">Add a new Page</h4>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-            <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
-                <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-                <div class="mb-3">
-                    <label asp-for="Title" class="form-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="invalid-feedback d-block"></span>
-                </div>
-
-                <div class="mb-4">
-                    <label asp-for="Container" class="form-label"></label>
-                    <span asp-validation-for="Container" class="invalid-feedback d-block"></span>
-                    <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="15">@Model.Container</textarea>
-                </div>
-
-                <div class="mb-4">
-                    <label asp-for="Contents" class="form-label"></label>
-                    <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-select" aria-describedby="contentsHelp"></select>
-                    @if (ViewBag.ContentError != null)
-                    {
-                        <div class="text-danger mt-1">@ViewBag.ContentError</div>
-                    }
-                    <div id="contentsHelp" class="form-text">Select one or more contents.</div>
-                </div>
-                <!-- Submit -->
-                <div class="d-flex justify-content-between align-items-center">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-1"></i>Create
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-1"></i>Back to Pages
-                    </a>
-                </div>
-            </form>
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="invalid-feedback d-block"></span>
         </div>
+
+        <div class="mb-4">
+            <label asp-for="Container" class="form-label"></label>
+            <span asp-validation-for="Container" class="invalid-feedback d-block"></span>
+            <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="15">@Model.Container</textarea>
+        </div>
+
+        <div class="mb-4">
+            <label asp-for="Contents" class="form-label"></label>
+            <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-select" aria-describedby="contentsHelp"></select>
+            @if (ViewBag.ContentError != null)
+            {
+                <div class="text-danger mt-1">@ViewBag.ContentError</div>
+            }
+            <div id="contentsHelp" class="form-text">Select one or more contents.</div>
+        </div>
+        <!-- Submit -->
+        <div class="d-flex justify-content-between align-items-center">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i>Create
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Pages
+            </a>
+        </div>
+    </form>
+    </div>
     </div>
 
     <!-- Asset Selection Modal -->

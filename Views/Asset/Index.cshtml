@@ -5,35 +5,36 @@
 }
 
 <section class="container-fluid my-4">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+    <h1 class="mb-0">@ViewData["Title"]</h1>
 
-    <!-- Action Buttons and Search -->
     <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
+    <!-- Action Buttons and Search -->
         <div class="btn-group">
-            <a asp-action="Create" class="btn btn-outline-success">Add New Asset</a>
-            <a asp-action="CreateMultipleAssets" class="btn btn-outline-primary">Add Multiple Assets</a>
+
+            <a asp-action="Create" class="btn btn-outline-success"><i class="bi bi-plus-circle me-1"></i>Add New Asset</a>
+            <a asp-action="CreateMultipleAssets" class="btn btn-outline-primary"><i class="bi bi-collection me-1"></i>Add Multiple Assets</a>
             @if (User.IsInRole("Admin"))
             {
-                <a asp-controller="Catalog" asp-action="Seed" class="btn btn-outline-danger">Seed Assets & Categories</a>
+                <a asp-controller="Catalog" asp-action="Seed" class="btn btn-outline-danger"><i class="bi bi-bootstrap-reboot me-1"></i>Seed Assets & Categories</a>
             }
         </div>
 
         <!-- Search & Filters -->
         <form asp-action="Index" method="get" class="card p-3 shadow-sm">
             <div class="row g-2 align-items-end">
-                <div class="col-md-3">
+                <div class="col-md-auto">
                     <label for="searchString" class="form-label">Search</label>
                     <input type="text" id="searchString" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Name, location..." />
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-auto">
                     <label for="fromDate" class="form-label">From</label>
                     <input type="date" id="fromDate" name="fromDate" value="@(Model.FromDate?.ToString("yyyy-MM-dd"))" class="form-control" />
                 </div>
-                <div class="col-md-2">
+                <div class="col-md-auto">
                     <label for="toDate" class="form-label">To</label>
                     <input type="date" id="toDate" name="toDate" value="@(Model.ToDate?.ToString("yyyy-MM-dd"))" class="form-control" />
                 </div>
-                <div class="col-auto d-flex gap-2">
+                <div class="col-md-auto d-flex gap-2">
                     <button type="submit" class="btn btn-outline-primary">Search</button>
                     <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
                 </div>
