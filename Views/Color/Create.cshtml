@@ -1,58 +1,63 @@
 ﻿@model CreateColorViewModel
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Create Color";
 }
 
-<section class="container my-5">
-    <h1>@ViewData["Title"]</h1>
+<section class="container my-4">
+    <h1 class="mb-3">@ViewData["Title"]</h1>
     <h4 class="mb-4">Add a new Color Component</h4>
 
-    <div class="row justify-content-center">
-        <div class="col-lg-6 col-md-8">
-            <form asp-action="Create" method="post" class="card shadow-sm p-4">
-                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-                @* Color Name *@
-                <div class="mb-2">
-                    <label asp-for="Name" class="control-label"></label>
-                    <input asp-for="Name" name="Name" type="text" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-                @* Start Color *@
-                <div class="mb-4 d-flex row">
-                    <label asp-for="StartColor" class="control-label"></label>
-                    <input asp-for="StartColor" name="StartColor" type="color" class="form-control" />
-                    <span asp-validation-for="StartColor" class="text-danger"></span>
-                    <label asp-for="EndColor" class="control-label"></label>
-                    <input asp-for="EndColor" name="EndColor" type="color" class="form-control" />
-                    <span asp-validation-for="EndColor" class="text-danger"></span>
-                </div>
-                @* Optional Gradient Range End Color*@
-                <div class="mb-4">
-                </div>
-                @* Darkmode Background Color *@
-                <div class="mb-4">
-                    <label asp-for="DarkStartColor" class="control-label"></label>
-                    <input asp-for="DarkStartColor" name="DarkStartColor" type="color" class="form-control" />
-                    <span asp-validation-for="DarkStartColor" class="text-danger"></span>
-                    <label asp-for="DarkEndColor" class="control-label">Gradient Color (Optional)</label>
-                    <input asp-for="DarkEndColor" name="DarkEndColor" type="color" class="form-control" />
-                    <span asp-validation-for="DarkEndColor" class="text-danger"></span>
-                </div>
-                @* Darkmode Optional Gradient Range End Color*@
-                <div class="mb-4">
-                </div>
-                <!-- Submit -->
-                <div class="d-flex justify-content-between align-items-center">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-plus-circle me-1"></i>Create
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-1"></i>Back to Colors
-                    </a>
-                </div>
-            </form>
-        </div> 
+    <form asp-action="Create" method="post" class="card shadow-sm p-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        @* Color Name *@
+        <div class="mb-2">
+            <label asp-for="Name" class="control-label"></label>
+            <input asp-for="Name" name="Name" type="text" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+        @* Start Color *@
+        <div class="mb-4 d-flex row">
+            <label asp-for="StartColor" class="control-label"></label>
+            <input asp-for="StartColor" name="StartColor" type="color" class="form-control" />
+            <span asp-validation-for="StartColor" class="text-danger"></span>
+            <label asp-for="EndColor" class="control-label"></label>
+            <input asp-for="EndColor" name="EndColor" type="color" class="form-control" />
+            <span asp-validation-for="EndColor" class="text-danger"></span>
+            <label asp-for="Opacity" class="control-label"></label>
+            <div class="d-flex">
+                <input asp-for="Opacity" name="Opacity" type="range" class="form-control" min="0" max="1" step="0.01" id="opacityRange" />
+                <input type="text" id="opacityValue" readonly class="form-control" style="width:60px; display:inline-block; margin-left:10px;" />
+                <span asp-validation-for="Opacity" class="text-danger"></span>
+            </div>
+        </div>
+        @* Optional Gradient Range End Color*@
+        @* Darkmode Background Color *@
+        <div class="mb-4">
+            <label asp-for="DarkStartColor" class="control-label"></label>
+            <input asp-for="DarkStartColor" name="DarkStartColor" type="color" class="form-control" />
+            <span asp-validation-for="DarkStartColor" class="text-danger"></span>
+            <label asp-for="DarkEndColor" class="control-label">Gradient Color (Optional)</label>
+            <input asp-for="DarkEndColor" name="DarkEndColor" type="color" class="form-control" />
+            <span asp-validation-for="DarkEndColor" class="text-danger"></span>
+            <label asp-for="DarkOpacity" class="control-label"></label>
+            <div class="d-flex">
+                <input asp-for="DarkOpacity" name="DarkOpacity" type="range" class="form-control" min="0" max="1" step="0.01" id="darkOpacityRange" />
+                <input type="text" id="darkOpacityValue" readonly class="form-control" style="width:60px; display:inline-block; margin-left:10px;" />
+                <span asp-validation-for="DarkOpacity" class="text-danger"></span>
+            </div>
+        </div>
+        <!-- Submit -->
+        <div class="d-flex justify-content-between align-items-center">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-plus-circle me-1"></i>Create
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Colors
+            </a>
+        </div>
+    </form>
+    </div>
     </div>
 </section>
 @section Scripts {
@@ -60,3 +65,28 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 }
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const slider = document.getElementById('opacityRange');
+      const display = document.getElementById('opacityValue');
+      const darkSlider = document.getElementById('darkOpacityRange');
+      const darkDisplay = document.getElementById('darkOpacityValue');
+
+      function updateValue() {
+        display.value = slider.value;
+      }
+
+      function darkUpdateValue() {
+        darkDisplay.value = darkSlider.value;
+      }
+
+      slider.addEventListener('input', updateValue);
+      darkSlider.addEventListener('input', darkUpdateValue);
+
+
+      // Initialize on page load
+      updateValue();
+      darkUpdateValue();
+    });
+</script>

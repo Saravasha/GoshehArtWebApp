@@ -4,12 +4,13 @@
     ViewData["Title"] = "Delete Asset";
 }
 
-<section class="container my-5">
+<section class="container my-4">
     <div class="card shadow-sm border-danger">
         <div class="card-header bg-danger text-white">
             <h2 class="mb-0">Delete Confirmation</h2>
         </div>
-        <div class="card-body">
+        <div class="p-4">
+            <h3 class="mb-4 card-header-pills border-danger border-bottom border-1">Are you sure you want to delete <strong>@Model.Name</strong>?</h3>
 
             <div class="mb-4 text-center">
                 @switch (Model.Type)

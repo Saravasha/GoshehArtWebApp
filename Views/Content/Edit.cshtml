@@ -4,84 +4,84 @@
     ViewData["Title"] = "Edit Content";
 }
 
-<section class="container mt-4 pb-4">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <form asp-action="Edit" enctype="multipart/form-data" method="post" novalidate>
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+<section class="container my-4">
+    <h1 class="mb-3">@ViewData["Title"]</h1>
+    <h4 class="mb-4">@Model.Title</h4>
 
-                <div class="mb-3">
-                    <label asp-for="Title" class="form-label"></label>
-                    <input asp-for="Title" class="form-control" />
-                    <span asp-validation-for="Title" class="text-danger"></span>
-                </div>
+    <form asp-action="Edit" enctype="multipart/form-data" method="post" class="card shadow-sm p-4" novalidate>
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                <div class="mb-3">
-                    <label asp-for="Date" class="form-label">Date (Optional)</label>
-                    <input asp-for="Date" type="date" class="form-control" />
-                    <span asp-validation-for="Date" class="text-danger"></span>
-                </div>
-
-                <div class="mb-3">
-                    <label asp-for="Container" class="form-label"></label>
-                    <textarea asp-for="Container" id="summernote" class="form-control" rows="15"></textarea>
-                    <span asp-validation-for="Container" class="text-danger"></span>
-                </div>
-
-                <div class="mb-4">
-                    <label asp-for="PageId" class="form-label"></label>
-                    <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-select">
-                        <option value="">-- Select Page --</option>
-                    </select>
-                    <span asp-validation-for="PageId" class="text-danger"></span>
-                </div>
-
-                <!-- Submit -->
-                <div class="d-flex justify-content-between align-items-center mt-4">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-save me-1"></i>Save Changes
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">
-                        <i class="bi bi-arrow-left me-1"></i>Back to Contents
-                    </a>
-                </div>
-            </form>
+        <div class="mb-3">
+            <label asp-for="Title" class="form-label"></label>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="text-danger"></span>
         </div>
 
-        <!-- Asset Selection Modal -->
-        <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
-            <div class="modal-dialog modal-xl modal-dialog-scrollable">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h5 class="modal-title" id="assetModalLabel">Select an Asset</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form id="assetSearchForm" class="row g-3 mb-3" onsubmit="return false;">
-                            <div class="col-md-4">
-                                <input type="text" class="form-control" name="name" placeholder="Search by name" aria-label="Search by name" />
-                            </div>
-                            <div class="col-md-4">
-                                <input type="date" class="form-control" name="date" aria-label="Search by date" />
-                            </div>
-                            <div class="col-md-4">
-                                <select class="form-select" name="category" id="categorySelect" aria-label="Filter by category">
-                                    <option value="">All Categories</option>
-                                </select>
-                            </div>
-                            <div class="col-12 text-end">
-                                <button type="button" id="clearFiltersBtn" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
-                            </div>
-                        </form>
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label">Date (Optional)</label>
+            <input asp-for="Date" type="date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
 
-                        <div id="assetCount" class="mb-2 text-muted small"></div>
+        <div class="mb-3">
+            <label asp-for="Container" class="form-label"></label>
+            <textarea asp-for="Container" id="summernote" class="form-control" rows="15"></textarea>
+            <span asp-validation-for="Container" class="text-danger"></span>
+        </div>
 
-                        <div class="row" id="assetContainer" role="list" aria-live="polite"></div>
-                    </div>
+        <div class="mb-4">
+            <label asp-for="PageId" class="form-label"></label>
+            <select asp-for="PageId" asp-items="ViewBag.PageList" class="form-select">
+                <option value="">-- Select Page --</option>
+            </select>
+            <span asp-validation-for="PageId" class="text-danger"></span>
+        </div>
+
+        <!-- Submit -->
+        <div class="d-flex justify-content-between align-items-center mt-4">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save me-1"></i>Save Changes
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">
+                <i class="bi bi-arrow-left me-1"></i>Back to Contents
+            </a>
+        </div>
+    </form>
+    </div>
+
+    <!-- Asset Selection Modal -->
+    <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="assetModalLabel">Select an Asset</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <form id="assetSearchForm" class="row g-3 mb-3" onsubmit="return false;">
+                        <div class="col-md-4">
+                            <input type="text" class="form-control" name="name" placeholder="Search by name" aria-label="Search by name" />
+                        </div>
+                        <div class="col-md-4">
+                            <input type="date" class="form-control" name="date" aria-label="Search by date" />
+                        </div>
+                        <div class="col-md-4">
+                            <select class="form-select" name="category" id="categorySelect" aria-label="Filter by category">
+                                <option value="">All Categories</option>
+                            </select>
+                        </div>
+                        <div class="col-12 text-end">
+                            <button type="button" id="clearFiltersBtn" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
+                        </div>
+                    </form>
+
+                    <div id="assetCount" class="mb-2 text-muted small"></div>
+
+                    <div class="row" id="assetContainer" role="list" aria-live="polite"></div>
                 </div>
             </div>
         </div>
+    </div>
 </section>
 
 @section Scripts {

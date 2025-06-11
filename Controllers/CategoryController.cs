@@ -1,25 +1,24 @@
-﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Mvc;
-using GoshehArtWebApp.Data;
+﻿using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
-using Microsoft.EntityFrameworkCore;
 using GoshehArtWebApp.ViewModels;
-using System.Runtime.Intrinsics.X86;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace GoshehArtWebApp.Controllers
 {
     [Authorize]
     public class CategoryController : Controller
     {
-     
-        private readonly ApplicationDbContext _context; 
+
+        private readonly ApplicationDbContext _context;
         static readonly CategoryViewModel cvm = new();
         static readonly CreateCategoryViewModel ccvm = new();
         public CategoryController(ApplicationDbContext context)
         {
             _context = context;
         }
-         
+
         public IActionResult Index()
         {
             cvm.Categories = _context.Categories.ToList();
@@ -78,9 +77,9 @@ namespace GoshehArtWebApp.Controllers
             {
                 categoryToEdit.Name = cat.Name;
 
-               await _context.SaveChangesAsync();
+                await _context.SaveChangesAsync();
 
-                 return RedirectToAction(nameof(Index));
+                return RedirectToAction(nameof(Index));
             }
             else
             {

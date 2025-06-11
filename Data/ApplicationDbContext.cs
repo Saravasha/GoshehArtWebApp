@@ -1,6 +1,4 @@
 ﻿using GoshehArtWebApp.Models;
-using Microsoft.AspNetCore.Components.Web;
-using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 
@@ -37,21 +35,28 @@ namespace GoshehArtWebApp.Data
 
 
             modelbuilder.Entity<Page>().HasData(
-                new Page { Id = 1, Title = "Home", Container = "Home"},
-                new Page { Id = 2, Title = "Production", Container = "Production"},
+                new Page { Id = 1, Title = "Home", Container = "Home" },
+                new Page { Id = 2, Title = "Production", Container = "Production" },
                 new Page { Id = 3, Title = "About", Container = "About" },
                 new Page { Id = 4, Title = "Contact", Container = "Contact" },
-                new Page { Id = 5, Title = "Privacy", Container = ""
-                 }
+                new Page
+                {
+                    Id = 5,
+                    Title = "Privacy",
+                    Container = ""
+                }
             );
 
             modelbuilder.Entity<Content>().HasData(
-                new Content { Id = 1, Title = "Welcome", Container = "Welcome",  PageId = 1 },
-                new Content { Id = 2, Title = "This is what I'm working on", Container = "Process:",  PageId = 2 },
+                new Content { Id = 1, Title = "Welcome", Container = "Welcome", PageId = 1 },
+                new Content { Id = 2, Title = "This is what I'm working on", Container = "Process:", PageId = 2 },
                 new Content { Id = 3, Title = "Biography", Container = "Early Life", PageId = 3 },
                 new Content { Id = 4, Title = "Social Media", Container = "Faceberrk", PageId = 4 },
                 new Content { Id = 5, Title = "Cookie Policy", Container = "We don't use cookies", PageId = 5 },
-                new Content { Id = 7, Title = "Wikipedia Profil",
+                new Content
+                {
+                    Id = 7,
+                    Title = "Wikipedia Profil",
                     Container = @"
     <p><strong>Fateme Gosheh</strong> är en regissör, målare och fotograf född 1961 i Iran, numera bosatt och verksam i Sverige.</p>
     <p>År 2002 ställde hon ut målningar under namnet <em>”En muslimsk kvinna – drömmar och mardrömmar”</em> på Liljevalchs vårsalong. Utställningen föreställde döda och nakna kvinnor tillsammans med olika muslimska symboler, något som väckte uppmärksamhet och ilska. För målningarna polisanmäldes hon för hets mot folkgrupp av Sveriges muslimska råd. Svenska Dagbladet och andra svenska tidningar som återgav hennes konst anmäldes också.</p>
@@ -59,7 +64,8 @@ namespace GoshehArtWebApp.Data
     <p>År 2010 hade hennes dokumentärfilm <em>Tusen och en natt (jävla sköna män)</em> premiär.</p>
     <p>Hennes verk har ställts ut runt om i världen, bland annat i Florens, New York och Los Angeles.</p>"
 ,
-                    PageId = 3 },
+                    PageId = 3
+                },
                 new Content { Id = 6, Title = "Privacy Policy", Container = @"
             <h2>Privacy and Cookie Policy</h2>
             <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>
@@ -70,7 +76,7 @@ namespace GoshehArtWebApp.Data
             <h3>Data Security</h3>
             <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>
             <h3>Your Rights</h3>
-            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a></p>", PageId = 5, Date =  new DateOnly(2025, 6, 3) }
+            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a></p>", PageId = 5, Date = new DateOnly(2025, 6, 3) }
             );
 
             modelbuilder.Entity<Category>().HasData(
@@ -85,7 +91,7 @@ namespace GoshehArtWebApp.Data
             );
 
             modelbuilder.Entity<Asset>().HasData(
-                new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", FileUrl= "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8, Type = 0 },
+                new Asset { Id = 1, Name = "Dans under Vita Lakan", Author = "Fateme Gosheh", Description = "Inte sett än", FileUrl = "/Assets/Filmproduktion/image (287).jpg", CategoryId = 8, Type = 0 },
                 new Asset { Id = 2, Name = "Aisha's Art", Author = "Fateme Gosheh", Description = "Gods butt from above", FileUrl = "/Assets/Kontroversiell Konst/image (3).jpg", CategoryId = 6, Type = 0 },
                 new Asset { Id = 3, Name = "Kari - Jag är elak", Author = "Fateme Gosheh", Description = "Helt fantastiskt", FileUrl = "/Assets/Filmproduktion/image (304).jpg", CategoryId = 8, Type = 0 }
             );

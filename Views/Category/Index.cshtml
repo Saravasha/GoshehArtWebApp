@@ -5,11 +5,11 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<section class="container my-4">
+<section class="container-fluid my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
-        <h1 class="h3">@ViewData["Title"]</h1>
+        <h1 class="mb-0">@ViewData["Title"]</h1>
         <a asp-controller="Category" asp-action="Create" class="btn btn-success">
-            <i class="bi bi-plus-circle me-1"></i>New Category
+            <i class="bi bi-plus-lg me-1"></i>New Category
         </a>
     </div>
 
@@ -21,7 +21,7 @@
     }
     else
     {
-        <div class="table-responsive shadow-sm">
+        <div class="table-responsive">
             <table class="table table-bordered table-hover align-middle">
                 <thead class="table-dark">
                     <tr>

@@ -4,122 +4,121 @@
     ViewData["Title"] = "Edit Asset";
 }
 
-<section class="container my-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+<section class="container my-4">
+    <h1 class="mb-3">@ViewData["Title"]</h1>
+    <h4 class="mb-4">@Model.Name</h4>
 
-    <div class="card shadow-sm">
-        <div class="card-body">
-            <form asp-controller="Asset" asp-action="Edit" method="post" enctype="multipart/form-data">
-                <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
+    <form asp-controller="Asset" asp-action="Edit" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
 
-                <input type="hidden" asp-for="Id" />
-                <input type="hidden" name="ExistingFileUrl" value="@Model.FileUrl" />
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" name="ExistingFileUrl" value="@Model.FileUrl" />
 
-                <!-- Asset Type -->
-                <div class="mb-3">
-                    <label class="form-label">Asset Type</label>
-                    <input class="form-control" value="@Model.Type.ToString()" disabled />
-                </div>
-                <!-- File Preview -->
-                <div class="mb-4 text-center" id="FilePreviewContainer">
-                    <label class="form-label">Current File:</label><br />
-
-                    @switch (Model.Type)
-                    {
-                        case AssetType.Image:
-                            <img id="PreviewFile" src="@Url.Content(Model.FileUrl)" class="img-fluid rounded border" style="max-height: 200px; " loading="lazy" />
-                            break;
-                        case AssetType.Video:
-                            <video id="PreviewFile" controls class="w-100 rounded border" style="max-height: 300px;">
-                                <source src="@Url.Content(Model.FileUrl)" type="video/mp4" />
-                                Your browser does not support the video tag.
-                            </video>
-                            break;
-                        case AssetType.Audio:
-                            <audio id="PreviewFile" controls class="w-100">
-                                <source src="@Url.Content(Model.FileUrl)" type="audio/mpeg" />
-                                Your browser does not support the audio element.
-                            </audio>
-                            break;
-                        default:
-                            <p class="text-muted"><em>No preview available for this file type.</em></p>
-                            break;
-                    }
-                </div>
-
-                <!-- Detected File Type -->
-                <div class="mb-3">
-                    <label class="form-label">Detected File Type</label>
-                    <input id="DetectedType" class="form-control" disabled />
-                    <input type="hidden" name="DetectedFileType" id="DetectedFileType" />
-                </div>
-
-                <!-- Name -->
-                <div class="mb-3">
-                    <label asp-for="Name" class="form-label"></label>
-                    <input asp-for="Name" class="form-control" />
-                    <span asp-validation-for="Name" class="text-danger"></span>
-                </div>
-
-                <!-- Description -->
-                <div class="mb-3">
-                    <label asp-for="Description" class="form-label"></label>
-                    <textarea asp-for="Description" class="form-control" rows="3"></textarea>
-                    <span asp-validation-for="Description" class="text-danger"></span>
-                </div>
-
-                <!-- Author -->
-                <div class="mb-3">
-                    <label asp-for="Author" class="form-label"></label>
-                    <input asp-for="Author" class="form-control" />
-                    <span asp-validation-for="Author" class="text-danger"></span>
-                </div>
-
-                <!-- Location -->
-                <div class="mb-3">
-                    <label asp-for="Location" class="form-label"></label>
-                    <input asp-for="Location" class="form-control" />
-                    <span asp-validation-for="Location" class="text-danger"></span>
-                </div>
-
-                <!-- Date -->
-                <div class="mb-3">
-                    <label asp-for="Date" class="form-label">Date (Optional)</label>
-                    <input asp-for="Date" type="date" class="form-control" />
-                    <span asp-validation-for="Date" class="text-danger"></span>
-                </div>
-
-                <!-- File Upload -->
-                <div class="mb-3">
-                    <label asp-for="FileUp" class="form-label">Change Asset File:</label>
-                    <input asp-for="FileUp" type="file" class="form-control" id="FLFrontFile" onchange="handleFilePreview(this)" />
-                    <span asp-validation-for="FileUp" class="text-danger"></span>
-                </div>
-
-                <!-- Categories -->
-                <div class="mb-3">
-                    <label asp-for="CategoryIds" class="form-label">Categories:</label>
-                    <select asp-for="CategoryIds"
-                            asp-items="ViewBag.CategoryList"
-                            class="form-select"
-                            multiple>
-                    </select>
-                    <span asp-validation-for="CategoryIds" class="text-danger"></span>
-                    @if (ViewBag.CategoryError != null)
-                    {
-                        <span class="text-danger">@ViewBag.CategoryError</span>
-                    }
-                </div>
-
-                <!-- Submit Button -->
-                <div class="d-flex justify-content-between">
-                    <button type="submit" class="btn btn-primary">
-                        <i class="bi bi-save me-1"></i>Save Changes
-                    </button>
-                    <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
-                </div>
-            </form>
+        <!-- Asset Type -->
+        <div class="mb-3">
+            <label class="form-label">Asset Type</label>
+            <input class="form-control" value="@Model.Type.ToString()" disabled />
         </div>
+        <!-- File Preview -->
+        <div class="mb-4 text-center" id="FilePreviewContainer">
+            <label class="form-label">Current File:</label><br />
+
+            @switch (Model.Type)
+            {
+                case AssetType.Image:
+                    <img id="PreviewFile" src="@Url.Content(Model.FileUrl)" class="img-fluid rounded border" style="max-height: 200px; " loading="lazy" />
+                    break;
+                case AssetType.Video:
+                    <video id="PreviewFile" controls class="w-100 rounded border" style="max-height: 300px;">
+                        <source src="@Url.Content(Model.FileUrl)" type="video/mp4" />
+                        Your browser does not support the video tag.
+                    </video>
+                    break;
+                case AssetType.Audio:
+                    <audio id="PreviewFile" controls class="w-100">
+                        <source src="@Url.Content(Model.FileUrl)" type="audio/mpeg" />
+                        Your browser does not support the audio element.
+                    </audio>
+                    break;
+                default:
+                    <p class="text-muted"><em>No preview available for this file type.</em></p>
+                    break;
+            }
+        </div>
+
+        <!-- Detected File Type -->
+        <div class="mb-3">
+            <label class="form-label">Detected File Type</label>
+            <input id="DetectedType" class="form-control" disabled />
+            <input type="hidden" name="DetectedFileType" id="DetectedFileType" />
+        </div>
+
+        <!-- Name -->
+        <div class="mb-3">
+            <label asp-for="Name" class="form-label"></label>
+            <input asp-for="Name" class="form-control" />
+            <span asp-validation-for="Name" class="text-danger"></span>
+        </div>
+
+        <!-- Description -->
+        <div class="mb-3">
+            <label asp-for="Description" class="form-label"></label>
+            <textarea asp-for="Description" class="form-control" rows="3"></textarea>
+            <span asp-validation-for="Description" class="text-danger"></span>
+        </div>
+
+        <!-- Author -->
+        <div class="mb-3">
+            <label asp-for="Author" class="form-label"></label>
+            <input asp-for="Author" class="form-control" />
+            <span asp-validation-for="Author" class="text-danger"></span>
+        </div>
+
+        <!-- Location -->
+        <div class="mb-3">
+            <label asp-for="Location" class="form-label"></label>
+            <input asp-for="Location" class="form-control" />
+            <span asp-validation-for="Location" class="text-danger"></span>
+        </div>
+
+        <!-- Date -->
+        <div class="mb-3">
+            <label asp-for="Date" class="form-label">Date (Optional)</label>
+            <input asp-for="Date" type="date" class="form-control" />
+            <span asp-validation-for="Date" class="text-danger"></span>
+        </div>
+
+        <!-- File Upload -->
+        <div class="mb-3">
+            <label asp-for="FileUp" class="form-label">Change Asset File:</label>
+            <input asp-for="FileUp" type="file" class="form-control" id="FLFrontFile" onchange="handleFilePreview(this)" />
+            <span asp-validation-for="FileUp" class="text-danger"></span>
+        </div>
+
+        <!-- Categories -->
+        <div class="mb-3">
+            <label asp-for="CategoryIds" class="form-label">Categories:</label>
+            <select asp-for="CategoryIds"
+                    asp-items="ViewBag.CategoryList"
+                    class="form-select"
+                    multiple>
+            </select>
+            <span asp-validation-for="CategoryIds" class="text-danger"></span>
+            @if (ViewBag.CategoryError != null)
+            {
+                <span class="text-danger">@ViewBag.CategoryError</span>
+            }
+        </div>
+
+        <!-- Submit Button -->
+        <div class="d-flex justify-content-between">
+            <button type="submit" class="btn btn-primary">
+                <i class="bi bi-save me-1"></i>Save Changes
+            </button>
+            <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>
+        </div>
+    </form>
+    </div>
     </div>
 </section>
 

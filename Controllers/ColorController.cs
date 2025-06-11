@@ -1,8 +1,8 @@
 ﻿using GoshehArtWebApp.Data;
+using GoshehArtWebApp.Models;
 using GoshehArtWebApp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using GoshehArtWebApp.Models;
 using Microsoft.EntityFrameworkCore;
 
 namespace GoshehArtWebApp.Controllers
@@ -42,8 +42,10 @@ namespace GoshehArtWebApp.Controllers
                     Name = colors.Name,
                     StartColor = colors.StartColor,
                     EndColor = colors.EndColor,
+                    Opacity = colors.Opacity,
                     DarkStartColor = colors.DarkStartColor,
-                    DarkEndColor = colors.DarkEndColor
+                    DarkEndColor = colors.DarkEndColor,
+                    DarkOpacity = colors.DarkOpacity,
                 };
 
                 _context.Colors.Add(newColors);
@@ -71,8 +73,10 @@ namespace GoshehArtWebApp.Controllers
                 Name = color.Name,
                 StartColor = color.StartColor,
                 EndColor = color.EndColor,
+                Opacity = color.Opacity,
                 DarkStartColor = color.DarkStartColor,
-                DarkEndColor = color.DarkEndColor
+                DarkEndColor = color.DarkEndColor,
+                DarkOpacity = color.DarkOpacity,
             };
 
             return View(viewModel);
@@ -83,7 +87,7 @@ namespace GoshehArtWebApp.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(CreateColorViewModel colors)
         {
-            
+
             if (ModelState.IsValid)
             {
                 var updatingColors = await _context.Colors.FirstOrDefaultAsync(c => c.Id == colors.Id);
@@ -96,8 +100,10 @@ namespace GoshehArtWebApp.Controllers
                 updatingColors.Name = colors.Name;
                 updatingColors.StartColor = colors.StartColor;
                 updatingColors.EndColor = colors.EndColor;
+                updatingColors.Opacity = colors.Opacity;
                 updatingColors.DarkStartColor = colors.DarkStartColor;
                 updatingColors.DarkEndColor = colors.DarkEndColor;
+                updatingColors.DarkOpacity = colors.DarkOpacity;
 
                 _context.Colors.Update(updatingColors);
                 await _context.SaveChangesAsync();
@@ -111,7 +117,7 @@ namespace GoshehArtWebApp.Controllers
         {
 
             var colors = await _context.Colors.FindAsync(id);
-            
+
             if (id == null || _context.Colors == null)
             {
                 return NotFound();
@@ -136,7 +142,7 @@ namespace GoshehArtWebApp.Controllers
         {
             if (_context.Colors == null)
             {
-                return Problem("Entity set 'ApplicationDbConext.Colors'  is null.");
+                return Problem("Entity set 'ApplicationDbConext.Colors' is null.");
             }
             var colors = await _context.Colors.FindAsync(id);
             if (colors != null)

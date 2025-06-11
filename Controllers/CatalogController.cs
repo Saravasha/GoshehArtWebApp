@@ -1,19 +1,9 @@
-﻿using GoshehArtWebApp.Controllers;
-using GoshehArtWebApp.Data;
+﻿using GoshehArtWebApp.Data;
 using GoshehArtWebApp.Models;
-using GoshehArtWebApp.ViewModels;
-using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using NuGet.Versioning;
-using System.Linq;
-using System.Runtime.InteropServices;
-using System.Linq.Expressions;
-using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Routing.Constraints;
-using Microsoft.AspNetCore.Authorization;
 using GoshehArtWebApp.Services;
-using NuGet.ContentModel;
+using GoshehArtWebApp.ViewModels;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -51,9 +41,9 @@ namespace GoshehArtWebApp.Controllers
                     _context.Categories.Update(new Category() { Name = file });
                 }
             }
-           await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync();
 
-           await FoldersContentGetter(_filePathProvider, localFolders);
+            await FoldersContentGetter(_filePathProvider, localFolders);
             return RedirectToAction("Index", "Asset");
         }
         private async Task FoldersContentGetter(FilePathProvider filePathProvider, List<string> localFolders)
@@ -68,7 +58,7 @@ namespace GoshehArtWebApp.Controllers
                     var assetName = _context.Assets.FirstOrDefault(n => n.Name == fileInDirectory);
                     if (!_context.Assets.Any(x => x.Name == fileInDirectory))
                     {
-                        
+
                         var fullPath = Path.Combine(filePathProvider.WebAssetsRoot, folder, fileInDirectory);
                         var webPath = filePathProvider.ToWebPath(fullPath);
 
