@@ -198,6 +198,9 @@ namespace GoshehArtWebApp.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<float>("DarkOpacity")
+                        .HasColumnType("real");
+
                     b.Property<string>("DarkStartColor")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
@@ -209,6 +212,9 @@ namespace GoshehArtWebApp.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<float>("Opacity")
+                        .HasColumnType("real");
 
                     b.Property<string>("StartColor")
                         .IsRequired()
@@ -223,81 +229,99 @@ namespace GoshehArtWebApp.Migrations
                         {
                             Id = 1,
                             DarkEndColor = "#000000",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#000000",
                             EndColor = "#000000",
                             Name = "Background Color",
+                            Opacity = 1f,
                             StartColor = "#000000"
                         },
                         new
                         {
                             Id = 2,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#ffffff",
                             EndColor = "#ffffff",
                             Name = "Header Text",
+                            Opacity = 1f,
                             StartColor = "#ffffff"
                         },
                         new
                         {
                             Id = 3,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#052e16",
                             EndColor = "#ffffff",
                             Name = "Navbar Background Color",
+                            Opacity = 1f,
                             StartColor = "#ffff6a"
                         },
                         new
                         {
                             Id = 4,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#000000",
                             EndColor = "#ffffff",
                             Name = "Page Header Text Color",
+                            Opacity = 1f,
                             StartColor = "#ffffff"
                         },
                         new
                         {
                             Id = 5,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#000000",
                             EndColor = "#ffffff",
                             Name = "Content Header Text Color",
+                            Opacity = 1f,
                             StartColor = "#ffffff"
                         },
                         new
                         {
                             Id = 6,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#000000",
                             EndColor = "#ffffff",
                             Name = "Page Body Text Color",
+                            Opacity = 1f,
                             StartColor = "#ffffff"
                         },
                         new
                         {
                             Id = 7,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#000000",
                             EndColor = "#ffffff",
                             Name = "Content Body Text Color",
+                            Opacity = 1f,
                             StartColor = "#ffffff"
                         },
                         new
                         {
                             Id = 8,
                             DarkEndColor = "#052e16",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#052e16",
                             EndColor = "#052e16",
                             Name = "ScrollToTop Background Color",
+                            Opacity = 1f,
                             StartColor = "#052e16"
                         },
                         new
                         {
                             Id = 9,
                             DarkEndColor = "#ffffff",
+                            DarkOpacity = 1f,
                             DarkStartColor = "#ffffff",
                             EndColor = "#000000",
                             Name = "Navbar Text Color",
+                            Opacity = 1f,
                             StartColor = "#000000"
                         });
                 });
@@ -375,7 +399,7 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 6,
-                            Container = "\r\n            <h2>Privacy and Cookie Policy</h2>\r\n            <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>\r\n            <h3>Cookies</h3>\r\n            <p>Our website does not use cookies to track visitors or personalize content. The only cookies used are for authentication purposes on the backend, which is accessible only to the site owner (administrator) for managing the website. These cookies are essential for secure login and session management and do not affect public visitors.</p>\r\n            <h3>Personal Data</h3>\r\n            <p>We do not collect, track, or share any personal data from visitors. No personal information is gathered through this website.</p>\r\n            <h3>Data Security</h3>\r\n            <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>\r\n            <h3>Your Rights</h3>\r\n            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a>.</p>",
+                            Container = "\r\n            <h2>Privacy and Cookie Policy</h2>\r\n            <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>\r\n            <h3>Cookies</h3>\r\n            <p>Our website does not use cookies to track visitors or personalize content. The only cookies used are for authentication purposes on the backend, which is accessible only to the site owner (administrator) for managing the website. These cookies are essential for secure login and session management and do not affect public visitors.</p>\r\n            <h3>Personal Data</h3>\r\n            <p>We do not collect, track, or share any personal data from visitors. No personal information is gathered through this website.</p>\r\n            <h3>Data Security</h3>\r\n            <p>The backend login area is secured and accessible only by the site owner. We take reasonable measures to protect any stored data related to site administration.</p>\r\n            <h3>Your Rights</h3>\r\n            <p>Since we do not collect personal data from visitors, there are no user data requests applicable. If you have questions or concerns about privacy, please contact us at <a href='mailto:info@goshehart.se'>info@goshehart.se</a></p>",
                             Date = new DateOnly(2025, 6, 3),
                             PageId = 5,
                             Title = "Privacy Policy"

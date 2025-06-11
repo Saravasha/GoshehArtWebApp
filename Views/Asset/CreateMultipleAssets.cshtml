@@ -1,11 +1,12 @@
 ﻿@model CreateMultipleAssetsViewModel
 
 @{
-    ViewData["Title"] = "Add Many Assets";
+    ViewData["Title"] = "Create Many Assets";
 }
 
-<section class="container my-5">
-    <h1 class="mb-4">@ViewData["Title"]</h1>
+<section class="container my-4">
+    <h1 class="mb-3">@ViewData["Title"]</h1>
+    <h4 class="mb-4">Add new Assets</h4>
 
     <form asp-action="CreateMultipleAssets" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
         <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>

@@ -7,17 +7,20 @@ namespace GoshehArtWebApp.Models
     {
         [Key]
         public int Id { get; set; }
-        
+
         public string Name { get; set; }
-        
-        public string StartColor { get; set; }
 
-        public string EndColor { get; set; }
+        public string StartColor { get; set; } = "#ffffff";
 
-        public string DarkStartColor { get; set; }
-        
-        public string DarkEndColor { get; set; }
+        public string EndColor { get; set; } = "#ffffff";
 
+        public float Opacity { get; set; } = 1.0f;
+
+        public string DarkStartColor { get; set; } = "#000000";
+
+        public string DarkEndColor { get; set; } = "#000000";
+
+        public float DarkOpacity { get; set; } = 1.0f;
 
     }
 }
