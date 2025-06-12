@@ -25,8 +25,7 @@
         <div class="mb-4">
             <label asp-for="Container" class="control-label"></label>
             <span asp-validation-for="Container" class="text-danger"></span>
-            <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30">
-                    </textarea>
+            <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30"></textarea>
         </div>
         <div class="mb-4">
             <label asp-for="PageId" class="control-label"></label>
@@ -48,7 +47,6 @@
             </a>
         </div>
     </form>
-    </div>
     <!-- Modal for Asset Selection -->
     <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg">
@@ -80,15 +78,19 @@
             </div>
         </div>
     </div>
-    </div>
-
 </section>
 
+@section Styles {
+
+    @* <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-4Q6Gf2aSP4eDXB8Miphtr37CMZZQ5oXLH2yaXMJ2w8e2ZtHTl7GptT4jmndRuHDT" crossorigin="anonymous"> *@
+    @* <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.css" rel="stylesheet" /> *@
+
+}
+
 @section Scripts {
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    @* <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script> *@
+    @* <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script> *@
+    @* <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs5.min.js"></script> *@
 
     <script>
         let summernoteInstance;
