@@ -20,6 +20,10 @@
     {
       "library": "jquery-validate@1.21.0",
       "destination": "wwwroot/lib/jquery-validate/"
+    },
+    {
+      "library": "summernote@0.9.1",
+      "destination": "wwwroot/lib/summernote/"
     }
   ]
 }
