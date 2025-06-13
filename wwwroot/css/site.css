@@ -20,3 +20,9 @@ html {
 .note-editor .dropdown-menu {
     z-index: 1055;
 }
+
+.PageContainer > *, .PageContainer > * > *, .ContentContainer > *, .ContentContainer > * > * {
+    max-width: 100% !important;
+    height: auto;
+    display: block;
+}
