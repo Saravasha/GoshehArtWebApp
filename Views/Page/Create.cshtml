@@ -10,21 +10,21 @@
     <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-        <div class="mb-3">
+        <div class="form-group mb-3">
             <label asp-for="Title" class="form-label"></label>
             <input asp-for="Title" class="form-control" />
             <span asp-validation-for="Title" class="invalid-feedback d-block"></span>
         </div>
 
-        <div class="mb-4">
+        <div class="form-group mb-4">
             <label asp-for="Container" class="form-label"></label>
             <span asp-validation-for="Container" class="invalid-feedback d-block"></span>
             <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="15">@Model.Container</textarea>
         </div>
 
-        <div class="mb-4">
-            <label asp-for="Contents" class="form-label"></label>
-            <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-select" aria-describedby="contentsHelp"></select>
+        <div class="form-group mb-4">
+            <label asp-for="Contents" class="control-label"></label>
+            <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-control" aria-describedby="contentsHelp"></select>
             @if (ViewBag.ContentError != null)
             {
                 <div class="text-danger mt-1">@ViewBag.ContentError</div>
@@ -34,15 +34,13 @@
         <!-- Submit -->
         <div class="d-flex justify-content-between align-items-center">
             <button type="submit" class="btn btn-primary">
-                <i class="bi bi-plus-circle me-1"></i>Create
+                <i class="bi bi-plus-circle mr-1"></i>Create
             </button>
             <a asp-action="Index" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>Back to Pages
+                <i class="bi bi-arrow-left mr-1"></i>Back to Pages
             </a>
         </div>
     </form>
-    </div>
-    </div>
 
     <!-- Asset Selection Modal -->
     <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
@@ -50,7 +48,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="assetModalLabel">Select an Asset</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="assetSearchForm" class="row g-3 mb-3" onsubmit="return false;">
@@ -77,11 +77,15 @@
     </div>
 </section>
 
+
+@section Styles {
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.css" rel="stylesheet" />
+}
+
 @section Scripts {
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <link href="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.css" rel="stylesheet" />
-    <script src="https://cdn.jsdelivr.net/npm/summernote@0.9.0/dist/summernote.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.6/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/summernote@0.8.20/dist/summernote-bs4.min.js"></script>
 
     <script>
         let summernoteInstance;
@@ -133,8 +137,8 @@
                             contents: '<i class="note-icon-picture"></i> Insert Asset',
                             tooltip: 'Insert Asset from Asset Library',
                             click() {
-                                const modal = new bootstrap.Modal(document.getElementById('assetModal'));
-                                modal.show();
+
+                                $('#assetModal').modal('show');
                             }
                         }).render();
                     }
@@ -291,7 +295,7 @@
                 const type = isImage ? 'image' : isVideo ? 'video' : 'audio';
 
                 const assetDiv = $(`
-                    <div class="col-md-3 mb-3 asset-item d-flex justify-content-center align-items-center" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-type="${type}">
+                    <div class="col-md-3 mb-3 asset-item" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-type="${type}">
                         ${mediaHtml}
                     </div>
                 `);
@@ -319,8 +323,7 @@
                             summernoteInstance.invoke('editor.pasteHTML', insertHtml);
                         }
 
-                        const modal = bootstrap.Modal.getInstance(document.getElementById('assetModal'));
-                        modal.hide();
+                        $('#assetModal').modal('hide');
                     }
                 });
 

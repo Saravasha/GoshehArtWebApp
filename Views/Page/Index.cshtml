@@ -4,18 +4,17 @@
     ViewData["Title"] = "Pages Index";
 }
 
-
 <section class="container-fluid my-4">
     <div class="d-flex justify-content-between align-items-center mb-3">
         <h1 class="mb-0">@ViewData["Title"]</h1>
         <a asp-controller="Page" asp-action="Create" class="btn btn-success">
-            <i class="bi bi-plus-lg me-1"></i>New Page
+            <i class="bi bi-plus-lg mr-1"></i>New Page
         </a>
     </div>
 
     <div class="table-responsive">
-        <table class="table table-bordered table-striped align-middle">
-            <thead class="table-dark text-center">
+        <table class="table table-bordered table-striped align-middle text-center">
+            <thead class="thead-dark">
                 <tr>
                     <th>Page Title</th>
                     <th>Container</th>
@@ -27,14 +26,15 @@
                 @foreach (var item in Model)
                 {
                     <tr>
-                        <td class="text-center align-middle">@Html.DisplayFor(modelItem => item.Title)</td>
-                        <td class="text-center align-middle">@Html.Raw(item.Container)</td>
-                        <td class="text-center align-middle">
+                        <td class="align-middle">@Html.DisplayFor(modelItem => item.Title)</td>
+                        <td class="align-middle">@Html.Raw(item.Container)</td>
+                        <td class="align-middle">
                             @if (item.Contents != null && item.Contents.Any())
                             {
-                                @foreach (var content in item.Contents)
+                                foreach (var content in item.Contents)
                                 {
-                                    <span class="badge bg-secondary">@content.Title</span>
+                                    <span class="badge badge-secondary">@content.Title</span>
+                        
                                     <br />
                                 }
                             }
@@ -43,12 +43,16 @@
                                 <em>No Content Children could be found!</em>
                             }
                         </td>
-                        <td class="text-center align-middle">
+                        <td class="align-middle">
                             <div class="btn-group btn-group-sm d-flex justify-content-center">
-                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary" title="Edit"><i class="bi bi-pencil-square me-1"></i>Edit</a>
-                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info" title="Details"><i class="bi bi-info-circle me-1"></i>Details</a>
-                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@item.Id" title="Delete">
-                                    <i class="bi bi-trash me-1"></i>Delete
+                                <a asp-action="Edit" asp-route-id="@item.Id" class="btn btn-outline-primary" title="Edit">
+                                    <i class="bi bi-pencil-square mr-1"></i>Edit
+                                </a>
+                                <a asp-action="Details" asp-route-id="@item.Id" class="btn btn-outline-info" title="Details">
+                                    <i class="bi bi-info-circle mr-1"></i>Details
+                                </a>
+                                <a asp-action="Delete" asp-route-id="@item.Id" class="btn btn-outline-danger" title="Delete">
+                                    <i class="bi bi-trash mr-1"></i>Delete
                                 </a>
                             </div>
                         </td>
