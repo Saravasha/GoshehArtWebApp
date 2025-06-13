@@ -63,7 +63,7 @@
                         <ul class="list-unstyled mb-0">
                             @foreach (var cat in Model.Categories)
                             {
-                                <li><span class="badge bg-secondary">@cat.Name</span></li>
+                                <li><span class="badge badge-secondary">@cat.Name</span></li>
                             }
                         </ul>
                     }
@@ -78,7 +78,7 @@
         <div class="card-footer d-flex justify-content-between">
             <a asp-action="Edit" asp-route-id="@Model?.Id" class="btn btn-primary">Edit Asset</a>
             <a asp-action="Index" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>Back to Assets
+                <i class="bi bi-arrow-left mr-1"></i>Back to Assets
             </a>
         </div>
     </div>

@@ -51,39 +51,40 @@
                 <nav class="navbar navbar-expand-sm navbar-light bg-white border-bottom box-shadow mb-3">
                     <div class="container-fluid">
                         <a class="navbar-brand" asp-controller="Home" asp-action="Index">GoshehArtWebApp</a>
-                        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNavbar"
+                        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#mainNavbar"
+
                                 aria-controls="mainNavbar" aria-expanded="false" aria-label="Toggle navigation">
                             <span class="navbar-toggler-icon"></span>
                         </button>
 
                         <div class="collapse navbar-collapse" id="mainNavbar">
-                            <ul class="navbar-nav me-2 mb-2 mb-lg-0 gap-2">
-                                <li class="nav-item">
+                            <ul class="navbar-nav mr-2 mb-2 mb-lg-0">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Production" asp-action="Index">Production</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="About" asp-action="Index">About</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Contact" asp-action="Index">Contact</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Asset" asp-action="Index">Assets</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Category" asp-action="Index">Categories</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Page" asp-action="Index">Pages</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Content" asp-action="Index">Content</a>
                                 </li>
-                                <li class="nav-item">
+                                <li class="nav-item mr-2">
                                     <a class="btn btn-outline-secondary" asp-controller="Color" asp-action="Index">Colors</a>
                                 </li>
                             </ul>
-                            <ul class="navbar-nav mv-auto ms-auto mb-2 mb-lg-0 gap-2">
+                            <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
                                 <li class="nav-item">
                                     <partial name="_LoginPartial" />
                                 </li>
@@ -100,16 +101,28 @@
 
         @if (User.Identity.IsAuthenticated)
         {
-            <div class="position-fixed bottom-0 end-0 p-3" style="z-index: 9999">
-                <div id="cleanupToast" class="toast align-items-center text-bg-success border-0" role="alert" aria-live="assertive" aria-atomic="true">
-                    <div class="d-flex">
-                        <div class="toast-body">
-                            @TempData["CleanupSuccess"]
-                        </div>
-                        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast" aria-label="Close"></button>
-                    </div>
-                </div>
+      <!-- TOAST -->
+<div class="position-fixed" style="bottom: 0; right: 0; padding: 1rem; z-index: 9999;">
+    <div id="cleanupToast" class="toast bg-success text-white" role="alert" aria-live="assertive" aria-atomic="true">
+        <div class="d-flex">
+            <div class="toast-body">
+                @TempData["CleanupSuccess"]
             </div>
+            <button type="button" class="close text-white ml-2 mb-auto" data-dismiss="toast" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </div>
+    </div>
+</div>
+
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        var toastEl = document.getElementById('cleanupToast');
+        if (toastEl && toastEl.querySelector('.toast-body').textContent.trim()) {
+            $(toastEl).toast('show');
+        }
+    });
+</script>
             <footer class="container-fluid border-top footer text-muted text-center py-3 ">
                 &copy; GoshehArtWebApp - @(DateTime.Now.Year) - <a asp-area="" asp-controller="Home" asp-action="Privacy">Privacy</a>
             </footer>
@@ -137,12 +150,3 @@
     @await RenderSectionAsync("Scripts", required: false)
 </body>
 </html>
-<script>
-    window.addEventListener('DOMContentLoaded', () => {
-        const toastEl = document.getElementById('cleanupToast');
-        if (toastEl && toastEl.querySelector('.toast-body').textContent.trim()) {
-            const toast = new bootstrap.Toast(toastEl);
-            toast.show();
-        }
-    });
-</script>

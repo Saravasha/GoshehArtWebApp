@@ -3,13 +3,6 @@
   "defaultProvider": "cdnjs",
   "libraries": [
     {
-      "library": "bootstrap@5.3.3",
-      "destination": "wwwroot/lib/bootstrap/",
-      "files": [
-        "js/bootstrap.min.js"
-      ]
-    },
-    {
       "library": "jquery@3.7.1",
       "destination": "wwwroot/lib/jquery/"
     },
@@ -21,10 +14,7 @@
       "library": "jquery-validate@1.21.0",
       "destination": "wwwroot/lib/jquery-validate/"
     },
-    {
-      "library": "summernote@0.9.1",
-      "destination": "wwwroot/lib/summernote/"
-    },
+
     {
       "library": "bootstrap@4.6.2",
       "destination": "wwwroot/lib/bootstrap/"

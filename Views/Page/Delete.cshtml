@@ -30,7 +30,7 @@
                             @foreach (var content in Model.Contents)
                             {
                                 <li class="list-inline-item" role="listitem">
-                                    <span class="badge bg-secondary">@content.Title</span>
+                                    <span class="badge badge-secondary">@content.Title</span>
                                 </li>
                             }
                         </ul>
@@ -48,7 +48,7 @@
             <form asp-controller="Page" asp-action="Delete" method="post" class="mb-0">
                 <input type="hidden" asp-for="Id" />
                 <button type="submit" class="btn btn-danger">
-                    <i class="bi bi-trash me-1"></i>Delete
+                    <i class="bi bi-trash mr-1"></i>Delete
                 </button>
             </form>
             <a asp-action="Index" class="btn btn-outline-secondary">Cancel</a>

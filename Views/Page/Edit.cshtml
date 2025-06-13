@@ -7,42 +7,37 @@
 <section class="container my-4">
     <h1 class="mb-3">@ViewData["Title"]</h1>
     <h4 class="mb-4">@Model.Title</h4>
+    <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
+        <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-    <form asp-action="Edit" enctype="multipart/form-data" method="post" class="card shadow-sm p-4" novalidate>
-        <div asp-validation-summary="ModelOnly" class="text-danger mb-3"></div>
-
-        <div class="mb-3">
+        <div class="form-group mb-3">
             <label asp-for="Title" class="form-label"></label>
-            <input asp-for="Title" name="title" value="@Model.Title" class="form-control" />
-            <span asp-validation-for="Title" class="text-danger"></span>
+            <input asp-for="Title" class="form-control" />
+            <span asp-validation-for="Title" class="invalid-feedback d-block"></span>
         </div>
 
-        <div class="mb-3">
+        <div class="form-group mb-4">
             <label asp-for="Container" class="form-label"></label>
-            <textarea asp-for="Container" id="summernote" name="container" class="form-control" rows="15">@Model.Container</textarea>
-            <span asp-validation-for="Container" class="text-danger"></span>
+            <span asp-validation-for="Container" class="invalid-feedback d-block"></span>
+            <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="15">@Model.Container</textarea>
         </div>
 
-        <div class="mb-4">
-            <label asp-for="ContentIds" class="form-label"></label>
-            <select asp-for="ContentIds" asp-items="ViewBag.ContentList" class="form-select" multiple aria-describedby="contentHelp">
-            </select>
-            <div id="contentHelp" class="form-text">
-                Hold Ctrl (Cmd on Mac) to select multiple items.
-            </div>
+        <div class="form-group mb-4">
+            <label asp-for="Contents" class="control-label"></label>
+            <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-control" aria-describedby="contentsHelp"></select>
             @if (ViewBag.ContentError != null)
             {
                 <div class="text-danger mt-1">@ViewBag.ContentError</div>
             }
+            <div id="contentsHelp" class="form-text">Select one or more contents.</div>
         </div>
-
         <!-- Submit -->
-        <div class="d-flex justify-content-between align-items-center mt-4">
+        <div class="d-flex justify-content-between align-items-center">
             <button type="submit" class="btn btn-primary">
-                <i class="bi bi-save me-1"></i>Save Changes
+                <i class="bi bi-plus-circle mr-1"></i>Create
             </button>
             <a asp-action="Index" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>Back to Pages
+                <i class="bi bi-arrow-left mr-1"></i>Back to Pages
             </a>
         </div>
     </form>
@@ -53,7 +48,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="assetModalLabel">Select an Asset</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="assetSearchForm" class="row g-3 mb-3" onsubmit="return false;">
@@ -72,10 +69,8 @@
                             <button type="button" id="clearFiltersBtn" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
                         </div>
                     </form>
-
                     <div id="assetCount" class="mb-2 text-muted small"></div>
-
-                    <div class="row" id="assetContainer" role="list" aria-live="polite"></div>
+                    <div class="row" id="assetContainer" role="list" aria-live="polite" aria-relevant="additions"></div>
                 </div>
             </div>
         </div>

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "iPv/s/b9QAo=",
+  "dgSpecHash": "4IQPV4vIFb0=",
   "success": true,
   "projectFilePath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\GoshehArtWebApp.csproj",
   "expectedPackageFiles": [
@@ -8,7 +8,6 @@
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\anglesharp.css\\0.17.0\\anglesharp.css.0.17.0.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",
-    "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\bootstrap\\5.3.5\\bootstrap.5.3.5.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\fontawesome\\4.2.0\\fontawesome.4.2.0.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\htmlagilitypack\\1.12.1\\htmlagilitypack.1.12.1.nupkg.sha512",
     "C:\\Users\\Siavash Gosheh\\.nuget\\packages\\htmlsanitizer\\9.0.876\\htmlsanitizer.9.0.876.nupkg.sha512",
