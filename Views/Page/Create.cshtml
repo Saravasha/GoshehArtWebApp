@@ -10,21 +10,21 @@
     <form asp-action="Create" method="post" enctype="multipart/form-data" class="card shadow-sm p-4">
         <div asp-validation-summary="ModelOnly" class="alert alert-danger"></div>
 
-        <div class="mb-3">
+        <div class="form-group mb-3">
             <label asp-for="Title" class="form-label"></label>
             <input asp-for="Title" class="form-control" />
             <span asp-validation-for="Title" class="invalid-feedback d-block"></span>
         </div>
 
-        <div class="mb-4">
+        <div class="form-group mb-4">
             <label asp-for="Container" class="form-label"></label>
             <span asp-validation-for="Container" class="invalid-feedback d-block"></span>
             <textarea asp-for="Container" id="summernote" name="containerContent" class="form-control" rows="15">@Model.Container</textarea>
         </div>
 
-        <div class="mb-4">
-            <label asp-for="Contents" class="form-label"></label>
-            <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-select" aria-describedby="contentsHelp"></select>
+        <div class="form-group mb-4">
+            <label asp-for="Contents" class="control-label"></label>
+            <select asp-for="Contents" asp-items="ViewBag.ContentList" multiple class="form-control" aria-describedby="contentsHelp"></select>
             @if (ViewBag.ContentError != null)
             {
                 <div class="text-danger mt-1">@ViewBag.ContentError</div>
@@ -34,10 +34,10 @@
         <!-- Submit -->
         <div class="d-flex justify-content-between align-items-center">
             <button type="submit" class="btn btn-primary">
-                <i class="bi bi-plus-circle me-1"></i>Create
+                <i class="bi bi-plus-circle mr-1"></i>Create
             </button>
             <a asp-action="Index" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>Back to Pages
+                <i class="bi bi-arrow-left mr-1"></i>Back to Pages
             </a>
         </div>
     </form>
@@ -48,7 +48,9 @@
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="assetModalLabel">Select an Asset</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
                 </div>
                 <div class="modal-body">
                     <form id="assetSearchForm" class="row g-3 mb-3" onsubmit="return false;">

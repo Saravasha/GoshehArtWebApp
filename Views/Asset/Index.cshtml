@@ -7,35 +7,34 @@
 <section class="container-fluid my-4">
     <h1 class="mb-0">@ViewData["Title"]</h1>
 
-    <div class="d-flex flex-wrap justify-content-between align-items-end gap-3 mb-3">
-    <!-- Action Buttons and Search -->
-        <div class="btn-group">
-
-            <a asp-action="Create" class="btn btn-outline-success"><i class="bi bi-plus-circle me-1"></i>Add New Asset</a>
-            <a asp-action="CreateMultipleAssets" class="btn btn-outline-primary"><i class="bi bi-collection me-1"></i>Add Multiple Assets</a>
+    <div class="d-flex flex-wrap justify-content-between align-items-end mb-3">
+        <!-- Action Buttons -->
+        <div class="btn-group mb-2">
+            <a asp-action="Create" class="btn btn-outline-success"><i class="bi bi-plus-circle mr-1"></i>Add New Asset</a>
+            <a asp-action="CreateMultipleAssets" class="btn btn-outline-primary"><i class="bi bi-collection mr-1"></i>Add Multiple Assets</a>
             @if (User.IsInRole("Admin"))
             {
-                <a asp-controller="Catalog" asp-action="Seed" class="btn btn-outline-danger"><i class="bi bi-bootstrap-reboot me-1"></i>Seed Assets & Categories</a>
+                <a asp-controller="Catalog" asp-action="Seed" class="btn btn-outline-danger"><i class="bi bi-bootstrap-reboot mr-1"></i>Seed Assets & Categories</a>
             }
         </div>
 
         <!-- Search & Filters -->
         <form asp-action="Index" method="get" class="card p-3 shadow-sm">
-            <div class="row g-2 align-items-end">
-                <div class="col-md-auto">
-                    <label for="searchString" class="form-label">Search</label>
+            <div class="form-row align-items-end">
+                <div class="form-group mr-2">
+                    <label for="searchString">Search</label>
                     <input type="text" id="searchString" name="searchString" value="@ViewData["CurrentFilter"]" class="form-control" placeholder="Name, location..." />
                 </div>
-                <div class="col-md-auto">
-                    <label for="fromDate" class="form-label">From</label>
+                <div class="form-group mr-2">
+                    <label for="fromDate">From</label>
                     <input type="date" id="fromDate" name="fromDate" value="@(Model.FromDate?.ToString("yyyy-MM-dd"))" class="form-control" />
                 </div>
-                <div class="col-md-auto">
-                    <label for="toDate" class="form-label">To</label>
+                <div class="form-group mr-2">
+                    <label for="toDate">To</label>
                     <input type="date" id="toDate" name="toDate" value="@(Model.ToDate?.ToString("yyyy-MM-dd"))" class="form-control" />
                 </div>
-                <div class="col-md-auto d-flex gap-2">
-                    <button type="submit" class="btn btn-outline-primary">Search</button>
+                <div class="form-group d-flex align-items-end">
+                    <button type="submit" class="btn btn-outline-primary mr-2">Search</button>
                     <a asp-action="Index" class="btn btn-outline-secondary">Clear</a>
                 </div>
             </div>
@@ -45,25 +44,24 @@
     <!-- Assets Table -->
     <div class="table-responsive">
         <table class="table table-striped table-bordered align-middle text-center">
-            <thead class="table-dark">
+            <thead class="thead-dark">
                 <tr>
-                    <th scope="col">Preview</th>
-                    <th scope="col">Name</th>
-                    <th scope="col">Description</th>
-                    <th scope="col">Author</th>
-                    <th scope="col">Location</th>
-                    <th scope="col">Date</th>
-                    <th scope="col">Type</th>
-                    <th scope="col">Categories</th>
-                    <th scope="col">Actions</th>
+                    <th>Preview</th>
+                    <th>Name</th>
+                    <th>Description</th>
+                    <th>Author</th>
+                    <th>Location</th>
+                    <th>Date</th>
+                    <th>Type</th>
+                    <th>Categories</th>
+                    <th>Actions</th>
                 </tr>
             </thead>
             <tbody>
                 @foreach (var asset in Model.Assets)
                 {
                     <tr>
-                        <!-- Preview Column -->
-                        <td style="max-width: 160px; max-height: 100px;" class="text-start">
+                        <td style="max-width: 160px; max-height: 100px;" class="text-left">
                             @switch (asset.Type)
                             {
                                 case AssetType.Image:
@@ -72,9 +70,9 @@
                                 case AssetType.Video:
                                     if (!string.IsNullOrEmpty(asset.ThumbnailUrl))
                                     {
-                                        <div class="position-relative" style="cursor: pointer;" data-bs-toggle="modal" data-bs-target="#videoModal-@asset.Id">
+                                        <div class="position-relative" style="cursor: pointer;" data-toggle="modal" data-target="#videoModal-@asset.Id">
                                             <img src="@Url.Content(asset.ThumbnailUrl)" alt="Video Thumbnail" class="img-fluid rounded" loading="lazy" />
-                                            <i class="bi bi-play-circle-fill position-absolute top-50 start-50 translate-middle text-white fs-2"></i>
+                                            <i class="bi bi-play-circle-fill position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: white;"></i>
                                         </div>
                                     }
                                     else
@@ -94,30 +92,25 @@
                                     break;
                             }
                         </td>
-
-                        <!-- Info Columns -->
-                        <td>@asset.Name</td>
-                        <td>@asset.Description</td>
-                        <td>@asset.Author</td>
-                        <td>@asset.Location</td>
-                        <td>@asset.DateString</td>
-                        <td>@asset.Type</td>
-                        <td>
+                        <td class="text-center align-middle">@asset.Name</td>
+                        <td class="text-center align-middle">@asset.Description</td>
+                        <td class="text-center align-middle">@asset.Author</td>
+                        <td class="text-center align-middle">@asset.Location</td>
+                        <td class="text-center align-middle">@asset.DateString</td>
+                        <td class="text-center align-middle">@asset.Type</td>
+                        <td class="text-center align-middle">
                             @foreach (var cat in asset.Categories)
                             {
-                                <span class="badge bg-secondary">@cat.Name</span>
+                                <span class="badge badge-secondary">@cat.Name</span>
+                        
                                 <br />
                             }
                         </td>
-
-                        <!-- Actions -->
-                        <td class="text-center align-middle">
+                     <td class="text-center align-middle">
                             <div class="btn-group btn-group-sm d-flex justify-content-center">
-                                <a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-outline-primary" title="Edit"><i class="bi bi-pencil-square me-1"></i>Edit</a>
-                                <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-outline-info" title="Details"><i class="bi bi-info-circle me-1"></i>Details</a>
-                                <a class="btn btn-outline-danger" asp-action="Delete" asp-route-id="@asset.Id" title="Delete">
-                                    <i class="bi bi-trash me-1"></i>Delete
-                                </a>
+                                <a asp-action="Edit" asp-route-id="@asset.Id" class="btn btn-outline-primary"><i class="bi bi-pencil-square mr-1"></i>Edit</a>
+                                <a asp-action="Details" asp-route-id="@asset.Id" class="btn btn-outline-info"><i class="bi bi-info-circle mr-1"></i>Details</a>
+                                <a asp-action="Delete" asp-route-id="@asset.Id" class="btn btn-outline-danger"><i class="bi bi-trash mr-1"></i>Delete</a>
                             </div>
                         </td>
                     </tr>
@@ -129,12 +122,14 @@
     <!-- Video Modals -->
     @foreach (var asset in Model.Assets.Where(a => a.Type == AssetType.Video))
     {
-        <div class="modal fade" id="videoModal-@asset.Id" tabindex="-1" aria-labelledby="videoModalLabel-@asset.Id" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg">
+        <div class="modal fade" id="videoModal-@asset.Id" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel-@asset.Id" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title">@asset.Name</h5>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body p-0">
                         <video controls autoplay class="w-100" id="video-player-@asset.Id">

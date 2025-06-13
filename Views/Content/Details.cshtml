@@ -4,7 +4,6 @@
     ViewData["Title"] = "Content Details";
 }
 
-
 <section class="container my-4">
     <h1 class="mb-3">@ViewData["Title"]</h1>
 
@@ -22,18 +21,17 @@
                 </dd>
                 <dt class="col-sm-2">@Html.DisplayNameFor(model => model.Page.Title)</dt>
                 <dd class="col-sm-10">
-                    <span class="badge bg-primary">@Html.DisplayFor(model => model.Page.Title)</span>
-
+                    <span class="badge badge-primary">@Html.DisplayFor(model => model.Page.Title)</span>
                 </dd>
             </dl>
         </div>
+
         <!-- Submit -->
         <div class="card-footer d-flex justify-content-between">
             <a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-primary">Update</a>
             <a asp-action="Index" class="btn btn-outline-secondary">
-                <i class="bi bi-arrow-left me-1"></i>Back to Contents
+                <i class="bi bi-arrow-left mr-1"></i>Back to Contents
             </a>
         </div>
     </div>
-
 </section>
