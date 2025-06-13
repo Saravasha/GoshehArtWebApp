@@ -3,36 +3,16 @@
   "WorkspaceRootPath": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\changepassword.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:wwwroot\\css\\site.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\changepassword.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\changepassword.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\views\\page\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:views\\page\\details.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\email.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\email.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\accessdenied.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\personaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\personaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\areas\\identity\\pages\\account\\manage\\email.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:areas\\identity\\pages\\account\\manage\\email.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+      "AbsoluteMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|c:\\users\\siavash gosheh\\source\\repos\\goshehart\\goshehartwebapp\\views\\page\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CD0E50B4-D42A-497E-98C9-27050DE4E2BD}|GoshehArtWebApp.csproj|solutionrelative:views\\page\\delete.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -41,8 +21,8 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 214,
-          "SelectedChildIndex": 10,
+          "DockedWidth": 260,
+          "SelectedChildIndex": 5,
           "Children": [
             {
               "$type": "Bookmark",
@@ -66,113 +46,35 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Email.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml.cs",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml.cs",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml.cs",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T03:25:48.926Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "AccessDenied.cshtml",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\AccessDenied.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T03:23:40.088Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "PersonalData.cshtml",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T03:23:37.173Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "ManageNavPages.cs",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T03:23:34.996Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "Email.cshtml",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\Email.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T03:23:24.025Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "ChangePassword.cshtml",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAaAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T03:22:58.179Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 1,
-              "Title": "ChangePassword.cshtml.cs",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml.cs",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml.cs",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml.cs",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\ChangePassword.cshtml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAsAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-06-13T03:22:28.89Z",
+              "Title": "Details.cshtml",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Views\\Page\\Details.cshtml",
+              "RelativeDocumentMoniker": "Views\\Page\\Details.cshtml",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Views\\Page\\Details.cshtml",
+              "RelativeToolTip": "Views\\Page\\Details.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAmAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2025-06-13T19:29:05.694Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "Index.cshtml",
-              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
-              "RelativeDocumentMoniker": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
-              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
-              "RelativeToolTip": "Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAwAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "Delete.cshtml",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Views\\Page\\Delete.cshtml",
+              "RelativeDocumentMoniker": "Views\\Page\\Delete.cshtml",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\Views\\Page\\Delete.cshtml",
+              "RelativeToolTip": "Views\\Page\\Delete.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2025-06-13T03:19:14.909Z",
+              "WhenOpened": "2025-06-13T19:29:04.9Z",
               "EditorCaption": ""
             }
           ]
         },
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Bookmark",
@@ -181,6 +83,19 @@
             {
               "$type": "Bookmark",
               "Name": "ST:132:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "site.css",
+              "DocumentMoniker": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
+              "RelativeDocumentMoniker": "wwwroot\\css\\site.css",
+              "ToolTip": "C:\\Users\\Siavash Gosheh\\source\\repos\\GoshehArt\\GoshehArtWebApp\\wwwroot\\css\\site.css",
+              "RelativeToolTip": "wwwroot\\css\\site.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAAgAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2025-06-13T19:32:23.067Z",
+              "EditorCaption": ""
             }
           ]
         },
