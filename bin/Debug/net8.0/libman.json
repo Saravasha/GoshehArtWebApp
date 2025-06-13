@@ -24,6 +24,10 @@
     {
       "library": "summernote@0.9.1",
       "destination": "wwwroot/lib/summernote/"
+    },
+    {
+      "library": "bootstrap@4.6.2",
+      "destination": "wwwroot/lib/bootstrap/"
     }
   ]
 }
