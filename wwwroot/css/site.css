@@ -17,3 +17,6 @@ html {
   min-height: 100%;
 }
 
+.note-editor .dropdown-menu {
+    z-index: 1055;
+}
