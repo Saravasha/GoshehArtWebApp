@@ -357,35 +357,35 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            Container = "Welcome",
+                            Container = "<p>Welcome</p>",
                             PageId = 1,
                             Title = "Welcome"
                         },
                         new
                         {
                             Id = 2,
-                            Container = "Process:",
+                            Container = "<p>Process:</p>",
                             PageId = 2,
                             Title = "This is what I'm working on"
                         },
                         new
                         {
                             Id = 3,
-                            Container = "Early Life",
+                            Container = "<p>Early Life</p>",
                             PageId = 3,
                             Title = "Biography"
                         },
                         new
                         {
                             Id = 4,
-                            Container = "Faceberrk",
+                            Container = "<p>Faceberrk</p>",
                             PageId = 4,
                             Title = "Social Media"
                         },
                         new
                         {
                             Id = 5,
-                            Container = "We don't use cookies",
+                            Container = "<p>We don't use cookies</p>",
                             PageId = 5,
                             Title = "Cookie Policy"
                         },
@@ -429,25 +429,25 @@ namespace GoshehArtWebApp.Migrations
                         new
                         {
                             Id = 1,
-                            Container = "Home",
+                            Container = "<p>Home</p>",
                             Title = "Home"
                         },
                         new
                         {
                             Id = 2,
-                            Container = "Production",
+                            Container = "<p>Production</p>",
                             Title = "Production"
                         },
                         new
                         {
                             Id = 3,
-                            Container = "About",
+                            Container = "<p>About</p>",
                             Title = "About"
                         },
                         new
                         {
                             Id = 4,
-                            Container = "Contact",
+                            Container = "<p>Email: <a href='mailto:info@goshehart.se'>info@goshehart.se</a></p>",
                             Title = "Contact"
                         },
                         new
