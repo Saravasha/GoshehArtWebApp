@@ -35,10 +35,10 @@ namespace GoshehArtWebApp.Data
 
 
             modelbuilder.Entity<Page>().HasData(
-                new Page { Id = 1, Title = "Home", Container = "Home" },
-                new Page { Id = 2, Title = "Production", Container = "Production" },
-                new Page { Id = 3, Title = "About", Container = "About" },
-                new Page { Id = 4, Title = "Contact", Container = "Contact" },
+                new Page { Id = 1, Title = "Home", Container = @"<p>Home</p>" },
+                new Page { Id = 2, Title = "Production", Container = @"<p>Production</p>" },
+                new Page { Id = 3, Title = "About", Container = @"<p>About</p>" },
+                new Page { Id = 4, Title = "Contact", Container = @"<p>Email: <a href='mailto:info@goshehart.se'>info@goshehart.se</a></p>" },
                 new Page
                 {
                     Id = 5,
@@ -48,11 +48,11 @@ namespace GoshehArtWebApp.Data
             );
 
             modelbuilder.Entity<Content>().HasData(
-                new Content { Id = 1, Title = "Welcome", Container = "Welcome", PageId = 1 },
-                new Content { Id = 2, Title = "This is what I'm working on", Container = "Process:", PageId = 2 },
-                new Content { Id = 3, Title = "Biography", Container = "Early Life", PageId = 3 },
-                new Content { Id = 4, Title = "Social Media", Container = "Faceberrk", PageId = 4 },
-                new Content { Id = 5, Title = "Cookie Policy", Container = "We don't use cookies", PageId = 5 },
+                new Content { Id = 1, Title = "Welcome", Container = @"<p>Welcome</p>", PageId = 1 },
+                new Content { Id = 2, Title = "This is what I'm working on", Container = @"<p>Process:</p>", PageId = 2 },
+                new Content { Id = 3, Title = "Biography", Container = @"<p>Early Life</p>", PageId = 3 },
+                new Content { Id = 4, Title = "Social Media", Container = @"<p>Faceberrk</p>", PageId = 4 },
+                new Content { Id = 5, Title = "Cookie Policy", Container = @"<p>We don't use cookies</p>", PageId = 5 },
                 new Content
                 {
                     Id = 7,
@@ -67,7 +67,6 @@ namespace GoshehArtWebApp.Data
                     PageId = 3
                 },
                 new Content { Id = 6, Title = "Privacy Policy", Container = @"
-            <h2>Privacy and Cookie Policy</h2>
             <p>At Goshehart.se, we respect your privacy and are committed to protecting your personal data.</p>
             <h3>Cookies</h3>
             <p>Our website does not use cookies to track visitors or personalize content. The only cookies used are for authentication purposes on the backend, which is accessible only to the site owner (administrator) for managing the website. These cookies are essential for secure login and session management and do not affect public visitors.</p>
