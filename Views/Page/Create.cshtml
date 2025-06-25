@@ -43,8 +43,8 @@
     </form>
 
     <!-- Asset Selection Modal -->
-    <div class="modal fade" id="assetModal" tabindex="-1" aria-labelledby="assetModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-xl modal-dialog-scrollable">
+    <div class="modal fade" id="assetModal" tabindex="-1" role="dialog" aria-labelledby="assetModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-xl modal-dialog-scrollable" role="document">
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="assetModalLabel">Select an Asset</h5>
@@ -53,24 +53,25 @@
                     </button>
                 </div>
                 <div class="modal-body">
-                    <form id="assetSearchForm" class="row g-3 mb-3" onsubmit="return false;">
-                        <div class="col-md-4">
+                    <form id="assetSearchForm" class="form-row mb-3" onsubmit="return false;">
+                        <div class="form-group col-md-4">
                             <input type="text" class="form-control" name="name" placeholder="Search by name" aria-label="Search by name" />
                         </div>
-                        <div class="col-md-4">
+                        <div class="form-group col-md-4">
                             <input type="date" class="form-control" name="date" aria-label="Search by date" />
                         </div>
-                        <div class="col-md-4">
-                            <select class="form-select" name="category" id="categorySelect" aria-label="Filter by category">
+                        <div class="form-group col-md-4">
+                            <select class="form-control" name="category" id="categorySelect" aria-label="Filter by category">
                                 <option value="">All Categories</option>
                             </select>
                         </div>
-                        <div class="col-12 text-end">
+                        <div class="col-12 text-right">
                             <button type="button" id="clearFiltersBtn" class="btn btn-sm btn-outline-secondary">Reset Filters</button>
                         </div>
                     </form>
+
                     <div id="assetCount" class="mb-2 text-muted small"></div>
-                    <div class="row" id="assetContainer" role="list" aria-live="polite" aria-relevant="additions"></div>
+                    <div class="row" id="assetContainer" role="list" aria-live="polite"></div>
                 </div>
             </div>
         </div>
