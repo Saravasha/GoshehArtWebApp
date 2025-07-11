@@ -70,10 +70,10 @@
                                 case AssetType.Video:
                                     if (!string.IsNullOrEmpty(asset.ThumbnailUrl))
                                     {
-                                        <div class="position-relative" style="cursor: pointer;" data-toggle="modal" data-target="#videoModal-@asset.Id">
-                                            <img src="@Url.Content(asset.ThumbnailUrl)" alt="Video Thumbnail" class="img-fluid rounded" loading="lazy" />
-                                            <i class="bi bi-play-circle-fill position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: white;"></i>
-                                        </div>
+                                    <div class="position-relative video-thumb" style="cursor: pointer;" data-toggle="modal" data-target="#videoModal-@asset.Id">
+                                        <img src="@Url.Content(asset.ThumbnailUrl)" alt="Video Thumbnail" class="img-fluid rounded" loading="lazy" />
+                                        <i class="bi bi-play-circle-fill position-absolute" style="top: 50%; left: 50%; transform: translate(-50%, -50%); font-size: 2rem; color: white;"></i>
+                                    </div>
                                     }
                                     else
                                     {
@@ -83,9 +83,9 @@
                                     }
                                     break;
                                 case AssetType.Audio:
-                                    <audio controls preload="none" class="w-100">
-                                        <source src="@Url.Content(asset.FileUrl)" type="audio/mpeg" />
-                                    </audio>
+                                    <div class="position-relative audio-thumb border border-dotted p-1" style="cursor: pointer;" data-toggle="modal" data-target="#audioModal-@asset.Id">
+                                        <i class="bi bi-play-circle-fill play-icon"></i>
+                                    </div>
                                     break;
                                 default:
                                     <em>No preview</em>
@@ -120,20 +120,35 @@
     </div>
 
     <!-- Video Modals -->
-    @foreach (var asset in Model.Assets.Where(a => a.Type == AssetType.Video))
+    @foreach (var videoOsset in Model.Assets.Where(a => a.Type == AssetType.Video))
     {
-        <div class="modal fade" id="videoModal-@asset.Id" tabindex="-1" role="dialog" aria-labelledby="videoModalLabel-@asset.Id" aria-hidden="true">
-            <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal fade" id="videoModal-@videoOsset.Id" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-body p-0">
+                    <video controls class="w-100" id="video-player-@videoOsset.Id" data-src="@Url.Content(videoOsset.FileUrl)">
+                        <!-- Source will be added dynamically -->
+                    </video>
+                </div>
+            </div>
+        </div>
+    </div>
+    }
+    @foreach (var audioAsset in Model.Assets.Where(a => a.Type == AssetType.Audio))
+    {
+        <div class="modal fade" id="audioModal-@audioAsset.Id" tabindex="-1" role="dialog" aria-labelledby="audioModalLabel-@audioAsset.Id" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered" role="document">
                 <div class="modal-content">
                     <div class="modal-header">
-                        <h5 class="modal-title">@asset.Name</h5>
+                        <h5 class="modal-title">@audioAsset.Name</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body p-0">
-                        <video controls class="w-100" id="video-player-@asset.Id" data-src="@Url.Content(asset.FileUrl)">
-                        </video>
+                    <div class="modal-body text-center">
+                        <audio controls id="audio-player-@audioAsset.Id" data-src="@Url.Content(audioAsset.FileUrl)">
+                            <!-- Source added via JS -->
+                        </audio>
                     </div>
                 </div>
             </div>
@@ -144,32 +159,40 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.1/font/bootstrap-icons.css">
 
 @section Scripts {
-    <script>
-        document.querySelectorAll('.modal').forEach(modal => {
-            const video = modal.querySelector('video');
+<script>
+    $(document).ready(function () {
+    $('.modal').on('shown.bs.modal', function () {
+        const video = $(this).find('video')[0];
+        if (video && video.children.length === 0) {
+            const sourceUrl = $(video).data('src');
+            const source = document.createElement('source');
+            source.src = sourceUrl;
+            source.type = 'video/mp4';
+            video.appendChild(source);
+            video.load();
+            video.play().catch(err => console.warn('Autoplay blocked', err));
+        }
 
-            if (!video) return;
+        const audio = $(this).find('audio')[0];
+        if (audio && audio.children.length === 0) {
+            const sourceUrl = $(audio).data('src');
+            const source = document.createElement('source');
+            source.src = sourceUrl;
+            source.type = 'audio/mpeg';
+            audio.appendChild(source);
+            audio.load();
+            audio.play().catch(err => console.warn('Autoplay blocked', err));
+        }
+    });
 
-            // Load video source when modal opens
-            modal.addEventListener('shown.bs.modal', () => {
-                const sourceUrl = video.getAttribute('data-src');
-                if (sourceUrl && video.children.length === 0) {
-                    const source = document.createElement('source');
-                    source.src = sourceUrl;
-                    source.type = 'video/mp4';
-                    video.appendChild(source);
-                    video.load();
-                    video.play();
-                }
-            });
-
-            // Reset video on modal close
-            modal.addEventListener('hidden.bs.modal', () => {
-                video.pause();
-                video.currentTime = 0;
-                video.removeAttribute('src');
-                video.innerHTML = ''; // Remove source to prevent caching autoplay
-            });
-        });
-    </script>
+    $('.modal').on('hidden.bs.modal', function () {
+        const media = $(this).find('video, audio')[0];
+        if (media) {
+            media.pause();
+            media.currentTime = 0;
+            media.innerHTML = '';
+        }
+    });
+});
+</script>
 }
