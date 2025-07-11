@@ -310,7 +310,6 @@ wwwroot\Assets\Utställningar\image (96).jpg
 wwwroot\Assets\Utställningar\image (97).jpg
 wwwroot\Assets\Utställningar\image (98).jpg
 wwwroot\Assets\Utställningar\image (99).jpg
-wwwroot\css\account.css
 wwwroot\css\site.css
 wwwroot\images\image-bg.jpg
 wwwroot\js\site.js
@@ -572,3 +571,4 @@ wwwroot\lib\jquery\jquery.slim.js
 wwwroot\lib\jquery\jquery.slim.min.js
 wwwroot\lib\jquery\jquery.slim.min.map
 wwwroot\robots.txt
+wwwroot\css\account.css
