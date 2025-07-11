@@ -73,6 +73,14 @@ builder.Services.ConfigureApplicationCookie(options =>
     options.Cookie.SecurePolicy = CookieSecurePolicy.Always;
     options.SlidingExpiration = true;
 });
+
+builder.WebHost.ConfigureKestrel(options =>
+{
+    options.Limits.MaxRequestBodySize = 400 * 1024 * 1024; // 400 MB
+    options.Limits.KeepAliveTimeout = TimeSpan.FromMinutes(10);
+    options.Limits.RequestHeadersTimeout = TimeSpan.FromMinutes(10);
+});
+
 var app = builder.Build();
 Console.WriteLine($"Environment: {app.Environment.EnvironmentName}");
 

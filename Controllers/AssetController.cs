@@ -114,8 +114,9 @@ namespace GoshehArtWebApp.Controllers
             return View(avm);
         }
 
+        [RequestFormLimits(MultipartBodyLengthLimit = 400 * 1024 * 1024)]
         [HttpPost]
-        public async Task<IActionResult> Create(CreateAssetViewModel asset, List<string> Categories)
+        public async Task<IActionResult> Create([FromForm] CreateAssetViewModel asset, List<string> Categories)
         {
             CreateAssetViewModel cavm = new CreateAssetViewModel();
 
@@ -171,6 +172,7 @@ namespace GoshehArtWebApp.Controllers
             return View(cavm);
         }
 
+
         [HttpGet]
         public IActionResult Edit(int id)
         {
@@ -201,7 +203,7 @@ namespace GoshehArtWebApp.Controllers
             return View(cavm);
         }
 
-
+        [RequestFormLimits(MultipartBodyLengthLimit = 400 * 1024 * 1024)]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(EditAssetViewModel asset, string ExistingFileUrl)
@@ -321,6 +323,7 @@ namespace GoshehArtWebApp.Controllers
             return View(vm);
         }
 
+        [RequestFormLimits(MultipartBodyLengthLimit = 400 * 1024 * 1024)]
         [HttpPost]
         public async Task<IActionResult> CreateMultipleAssets(CreateMultipleAssetsViewModel model)
         {
