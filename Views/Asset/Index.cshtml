@@ -77,13 +77,13 @@
                                     }
                                     else
                                     {
-                                        <video controls class="w-100" style="max-height: 100px;">
+                                        <video controls preload="none" class="w-100" style="max-height: 100px;">
                                             <source src="@Url.Content(asset.FileUrl)" type="video/mp4" />
                                         </video>
                                     }
                                     break;
                                 case AssetType.Audio:
-                                    <audio controls class="w-100">
+                                    <audio controls preload="none" class="w-100">
                                         <source src="@Url.Content(asset.FileUrl)" type="audio/mpeg" />
                                     </audio>
                                     break;
