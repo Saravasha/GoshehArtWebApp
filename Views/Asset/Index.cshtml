@@ -132,8 +132,7 @@
                         </button>
                     </div>
                     <div class="modal-body p-0">
-                        <video controls autoplay class="w-100" id="video-player-@asset.Id">
-                            <source src="@Url.Content(asset.FileUrl)" type="video/mp4" />
+                        <video controls class="w-100" id="video-player-@asset.Id" data-src="@Url.Content(asset.FileUrl)">
                         </video>
                     </div>
                 </div>
@@ -146,14 +145,30 @@
 
 @section Scripts {
     <script>
-        // Reset video playback on modal close
         document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('hidden.bs.modal', () => {
-                const video = modal.querySelector('video');
-                if (video) {
-                    video.pause();
-                    video.currentTime = 0;
+            const video = modal.querySelector('video');
+
+            if (!video) return;
+
+            // Load video source when modal opens
+            modal.addEventListener('shown.bs.modal', () => {
+                const sourceUrl = video.getAttribute('data-src');
+                if (sourceUrl && video.children.length === 0) {
+                    const source = document.createElement('source');
+                    source.src = sourceUrl;
+                    source.type = 'video/mp4';
+                    video.appendChild(source);
+                    video.load();
+                    video.play();
                 }
+            });
+
+            // Reset video on modal close
+            modal.addEventListener('hidden.bs.modal', () => {
+                video.pause();
+                video.currentTime = 0;
+                video.removeAttribute('src');
+                video.innerHTML = ''; // Remove source to prevent caching autoplay
             });
         });
     </script>
