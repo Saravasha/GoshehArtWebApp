@@ -120,13 +120,13 @@
     </div>
 
     <!-- Video Modals -->
-    @foreach (var videoOsset in Model.Assets.Where(a => a.Type == AssetType.Video))
+    @foreach (var videoAsset in Model.Assets.Where(a => a.Type == AssetType.Video))
     {
-    <div class="modal fade" id="videoModal-@videoOsset.Id" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal fade" id="videoModal-@videoAsset.Id" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered" role="document">
             <div class="modal-content">
                 <div class="modal-body p-0">
-                    <video controls class="w-100" id="video-player-@videoOsset.Id" data-src="@Url.Content(videoOsset.FileUrl)">
+                        <video controls class="w-100" id="video-player-@videoAsset.Id" data-src="@Url.Action("Stream", "Asset", new { id = videoAsset.Id })">
                         <!-- Source will be added dynamically -->
                     </video>
                 </div>
