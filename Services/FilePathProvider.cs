@@ -36,8 +36,26 @@
         return "/unmapped/" + fullPath.Replace("\\", "/");
     }
 
-    public string GetFullPath(string relativePath)
+    public string GetFullPath(string webPath)
     {
-        return Path.Combine(UploadsRoot, relativePath);
+        if (string.IsNullOrEmpty(webPath))
+            throw new ArgumentException("Path cannot be null or empty", nameof(webPath));
+
+        // Normalize slashes
+        webPath = webPath.Replace('\\', '/');
+
+        // Expecting webPath like "/Uploads/filename.ext"
+        const string uploadsPrefix = "/Uploads/";
+
+        if (!webPath.StartsWith(uploadsPrefix, StringComparison.OrdinalIgnoreCase))
+            throw new ArgumentException($"Invalid path: must start with {uploadsPrefix}", nameof(webPath));
+
+        // Strip "/Uploads/" prefix to get relative path
+        var relativePath = webPath.Substring(uploadsPrefix.Length);
+
+        // Combine with UploadsRoot, making sure to use system directory separators
+        var fullPath = Path.Combine(UploadsRoot, relativePath.Replace('/', Path.DirectorySeparatorChar));
+
+        return fullPath;
     }
 }
