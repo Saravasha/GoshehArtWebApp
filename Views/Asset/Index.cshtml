@@ -146,7 +146,7 @@
                         </button>
                     </div>
                     <div class="modal-body text-center">
-                        <audio controls id="audio-player-@audioAsset.Id" data-src="@Url.Content(audioAsset.FileUrl)">
+                        <audio controls id="audio-player-@audioAsset.Id" data-src="@Url.Action("Stream", "Asset", new { id = audioAsset.Id})">
                             <!-- Source added via JS -->
                         </audio>
                     </div>
