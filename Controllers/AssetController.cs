@@ -5,7 +5,9 @@ using GoshehArtWebApp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Data;
 
 namespace GoshehArtWebApp.Controllers
@@ -18,14 +20,16 @@ namespace GoshehArtWebApp.Controllers
         private readonly VideoThumbnailProvider _videoThumbnailProvider;
         private readonly AssetTypeProvider _assetTypeProvider;
         private readonly FilePathProvider _filePathProvider;
+        private readonly IMemoryCache _cache;
 
-        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost, VideoThumbnailProvider videoThumbnailProvider, AssetTypeProvider assetTypeProvider, FilePathProvider filePathProvider)
+        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost, VideoThumbnailProvider videoThumbnailProvider, AssetTypeProvider assetTypeProvider, FilePathProvider filePathProvider, IMemoryCache cache)
         {
             _context = context;
             _webHostEnvironment = webHost;
             _videoThumbnailProvider = videoThumbnailProvider;
             _assetTypeProvider = assetTypeProvider;
             _filePathProvider = filePathProvider;
+            _cache = cache;
         }
 
         private async Task<(string PhysicalPath, string WebPath)?> UploadedFile(IFormFile? file)
@@ -49,13 +53,53 @@ namespace GoshehArtWebApp.Controllers
             return (physicalFilePath, webPath);
         }
 
-
-
-        public IActionResult Index(string searchString, DateOnly? fromDate, DateOnly? toDate)
+        [AllowAnonymous]
+        [HttpGet("/Asset/Stream/{id}")]
+        public async Task<IActionResult> Stream(int id)
         {
-            var assets = _context.Assets
+            var asset = await _cache.GetOrCreateAsync($"asset_{id}", async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
+                return await _context.Assets.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
+            });
+
+            if (asset == null || string.IsNullOrWhiteSpace(asset.FileUrl))
+            {
+                return NotFound("Asset or file URL not found.");
+            }
+
+            string filePath;
+
+            try
+            {
+                filePath = _filePathProvider.GetFullPath(asset.FileUrl);
+            }
+            catch (Exception ex)
+            {
+                // Optional: log exception here
+                return BadRequest("Invalid file path.");
+            }
+            if (!System.IO.File.Exists(filePath))
+                return NotFound();
+
+            var provider = new FileExtensionContentTypeProvider();
+            if (!provider.TryGetContentType(filePath, out string contentType))
+            {
+                contentType = "application/octet-stream";
+            }
+
+            var fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read, FileShare.Read);
+            return File(fileStream, contentType, enableRangeProcessing: true);
+        }
+
+
+
+        public async Task<IActionResult> Index(string searchString, DateOnly? fromDate, DateOnly? toDate)
+        {
+            var assets = await _context.Assets
+                .AsNoTracking()
                 .Include(a => a.Categories)
-                .ToList();
+                .ToListAsync();
 
             if (!string.IsNullOrWhiteSpace(searchString))
             {
@@ -94,20 +138,21 @@ namespace GoshehArtWebApp.Controllers
         }
 
         // GET: AssetController/Details/5
-        public IActionResult Details(int id)
+        public async Task<IActionResult> Details(int id)
         {
-            Models.Asset? asset = _context.Assets
+            Models.Asset? asset = await _context.Assets
+                .AsNoTracking()
                 .Include(c => c.Categories)
-                .FirstOrDefault(p => p.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             return View(asset);
         }
 
         // GET: AssetController/Create
-        public IActionResult Create()
+        public async Task<IActionResult> Create()
         {
             CreateAssetViewModel avm = new CreateAssetViewModel();
-            var categories = _context.Categories;
+            var categories = await _context.Categories.ToListAsync();
 
             ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
 
@@ -174,12 +219,12 @@ namespace GoshehArtWebApp.Controllers
 
 
         [HttpGet]
-        public IActionResult Edit(int id)
+        public async Task<IActionResult> Edit(int id)
         {
             EditAssetViewModel cavm = new EditAssetViewModel();
-            Models.Asset? asset = _context.Assets
+            Models.Asset? asset = await _context.Assets
                 .Include(c => c.Categories)
-                .FirstOrDefault(p => p.Id == id);
+                .FirstOrDefaultAsync(p => p.Id == id);
 
             if (asset == null)
             {
@@ -284,7 +329,9 @@ namespace GoshehArtWebApp.Controllers
                 return NotFound();
             }
 
-            var asset = await _context.Assets.Include(c => c.Categories)
+            var asset = await _context.Assets
+                .AsNoTracking()
+                .Include(c => c.Categories)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (asset == null)
             {
@@ -316,10 +363,11 @@ namespace GoshehArtWebApp.Controllers
         }
 
         [HttpGet]
-        public IActionResult CreateMultipleAssets()
+        public async Task<IActionResult> CreateMultipleAssets()
         {
             var vm = new CreateMultipleAssetsViewModel();
-            ViewBag.CategoryList = new SelectList(_context.Categories, "Id", "Name");
+            var categories = await _context.Categories.ToListAsync();
+            ViewBag.CategoryList = new SelectList(categories, "Id", "Name");
             return View(vm);
         }
 

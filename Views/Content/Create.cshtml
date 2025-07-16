@@ -22,7 +22,7 @@
         </div>
         <div class="form-group mb-4">
             <label asp-for="Container" class="control-label"></label>
-            <textarea asp-for="Container" id="summernote" name="Container" class="form-control" rows="30"></textarea>
+            <textarea asp-for="Container" id="summernote" class="form-control" rows="15"></textarea>
             <span asp-validation-for="Container" class="text-danger"></span>
         </div>
         <div class="form-group mb-4">
@@ -106,6 +106,32 @@
             });
         });
 
+        function getMimeType(fileUrl) {
+            const ext = fileUrl.split('.').pop().toLowerCase();
+
+            // Images
+            if (['jpg', 'jpeg', 'png', 'gif', 'webp', 'svg'].includes(ext)) {
+                return `image/${ext === 'jpg' ? 'jpeg' : ext}`;
+            }
+
+            // Videos
+            if (['mp4', 'webm', 'ogg'].includes(ext)) {
+                if (ext === 'mp4') return 'video/mp4';
+                if (ext === 'webm') return 'video/webm';
+                if (ext === 'ogg') return 'video/ogg';
+            }
+
+            // Audio
+            if (['mp3', 'wav', 'ogg'].includes(ext)) {
+                if (ext === 'mp3') return 'audio/mpeg';
+                if (ext === 'wav') return 'audio/wav';
+                if (ext === 'ogg') return 'audio/ogg';
+            }
+
+            // Fallback
+            return 'application/octet-stream';
+        }
+
         function initSummernote() {
             $('#summernote').summernote({
                 height: 300,
@@ -117,6 +143,8 @@
                             uploadFile(file, 'image');
                         } else if (file.type.startsWith('video/')) {
                             uploadFile(file, 'video');
+                        } else if (file.type.startsWith('audio/')) {
+                            uploadFile(file, 'audio');
                         } else {
                             alert('Unsupported file type.');
                         }
@@ -141,7 +169,6 @@
                             contents: '<i class="note-icon-picture"></i> Insert Asset',
                             tooltip: 'Insert Asset from Asset Library',
                             click() {
-
                                 $('#assetModal').modal('show');
                             }
                         }).render();
@@ -163,13 +190,24 @@
                         if (data.url) {
                             if (type === 'image') {
                                 $('#summernote').summernote('insertImage', data.url);
-                            } else if (type === 'video') {
-                                const videoHtml = `
-                                    <video controls preload="none" style="width: 50%;">
-                                        <source src="${data.url}" type="${file.type}">
-                                        Your browser does not support the video tag.
-                                    </video>`;
-                                $('#summernote').summernote('pasteHTML', videoHtml);
+                            } else if (type === 'video' || type === 'audio') {
+                                const uploadMimeType = getMimeType(data.url);
+                                let mediaHtml = '';
+
+                                if (type === 'video') {
+                                    mediaHtml = `
+                                        <video controls preload="none" style="width: 50%;">
+                                            <source src="${data.url}" type="${uploadMimeType}">
+                                            Your browser does not support the video tag.
+                                        </video>`;
+                                } else if (type === 'audio') {
+                                    mediaHtml = `
+                                        <audio controls preload="none" style="width: 50%;">
+                                            <source src="${data.url}" type="${uploadMimeType}">
+                                            Your browser does not support the audio element.
+                                        </audio>`;
+                                }
+                                $('#summernote').summernote('pasteHTML', mediaHtml);
                             }
                         } else {
                             alert('File upload failed.');
@@ -272,10 +310,15 @@
 
             const fullBaseUrl = window.location.origin + '@Url.Content("~/")';
 
+
             assets.forEach(asset => {
                 if (!asset.fileUrl) return;
+
                 const urlPath = asset.fileUrl.replace(/^\/+/, '');
                 const fullUrl = fullBaseUrl + urlPath;
+                const mediaUrl = `/Asset/Stream/${asset.id}`;
+                const fileUrl = asset.fileUrl;
+                const mimeType = getMimeType(fileUrl);
 
                 const isVideo = /\.(mp4|webm|ogg)$/i.test(asset.fileUrl);
                 const isAudio = /\.(mp3|wav|ogg)$/i.test(asset.fileUrl);
@@ -289,39 +332,41 @@
                     mediaHtml = `<img src="${thumbPath}" alt="${asset.name} (video thumbnail)" title="${asset.name}" class="img-fluid img-thumbnail asset-img" style="cursor:pointer;" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor">`;
                 } else if (isAudio) {
                     mediaHtml = `<audio controls preload="none" style="width: 100%;">
-                                    <source src="${fullUrl}" type="audio/mpeg">
-                                    Your browser does not support the audio element.
-                                 </audio>`;
+                        <source src="${mediaUrl}" type="${mimeType}">
+                        Your browser does not support the audio element.
+                    </audio>`;
                 } else {
                     return;
                 }
 
-                const type = isImage ? 'image' : isVideo ? 'video' : 'audio';
+                const type = isImage ? 'image' : isVideo ? 'video' : isAudio ? 'audio' : 'other';
 
                 const assetDiv = $(`
-                    <div class="col-md-3 mb-3 asset-item" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-type="${type}">
+                    <div class="col-md-3 mb-3 asset-item" tabindex="0" role="button" aria-label="Insert ${asset.name} into editor" data-url="${fullUrl}" data-id="${asset.id}" data-type="${type}">
                         ${mediaHtml}
                     </div>
                 `);
 
                 assetDiv.on('click keypress', e => {
                     if (e.type === 'click' || e.key === 'Enter' || e.key === ' ') {
-                        const mediaUrl = assetDiv.data('url');
+
+                        const assetId = assetDiv.data('id');
                         const mediaType = assetDiv.data('type');
                         let insertHtml = '';
 
                         if (mediaType === 'image') {
-                            summernoteInstance.invoke('editor.insertImage', mediaUrl);
+                            const imageUrl = assetDiv.data('url');
+                            summernoteInstance.invoke('editor.insertImage', imageUrl);
                         } else if (mediaType === 'video') {
                             const posterUrl = asset.thumbnailUrl ? fullBaseUrl + asset.thumbnailUrl.replace(/^\/+/, '') : '';
                             insertHtml = `<video controls preload="none" style="width:50%;"${posterUrl ? ` poster="${posterUrl}"` : ''}>
-                              <source src="${mediaUrl}" type="video/mp4">
-                              Your browser does not support the video tag.
+                                <source src="${mediaUrl}" type="${mimeType}">
+                                Your browser does not support the video tag.
                             </video>`;
                             summernoteInstance.invoke('editor.pasteHTML', insertHtml);
                         } else if (mediaType === 'audio') {
                             insertHtml = `<audio controls preload="none" style="width:50%;">
-                                <source src="${mediaUrl}" type="audio/mpeg">
+                                <source src="${mediaUrl}" type="${mimeType}">
                                 Your browser does not support the audio element.
                             </audio>`;
                             summernoteInstance.invoke('editor.pasteHTML', insertHtml);

@@ -4,8 +4,8 @@ using GoshehArtWebApp.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.CodeAnalysis.CSharp.Syntax;
 using NuGet.ContentModel;
 
 
@@ -21,13 +21,13 @@ namespace GoshehArtWebApp.Controllers
             _context = context;
         }
 
-      
+
 
         public IActionResult Index()
         {
 
             var pageList = _context.Pages.Include(c => c.Contents).ToList();
-            
+
             return View(pageList);
         }
 
@@ -47,57 +47,43 @@ namespace GoshehArtWebApp.Controllers
             CreatePageViewModel cpvm = new CreatePageViewModel();
             var contents = _context.Contents;
 
-            ViewBag.ContentList = new SelectList(contents, "Id", "Title");
+            ViewBag.ContentList = new MultiSelectList(contents, "Id", "Title");
 
             return View(cpvm);
         }
 
         [HttpPost]
-        public IActionResult Create(CreatePageViewModel page, string containerContent, List<string> Contents)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreatePageViewModel page)
         {
-            
-
-            CreatePageViewModel cpvm = new CreatePageViewModel();
-            ModelState.Remove("Id");
-
 
             if (ModelState.IsValid)
             {
-                var PageToAdd = new Page()
+                var pageToAdd = new Page
                 {
                     Title = page.Title,
-                    Container = containerContent
+                    Container = page.Container,
+                    Contents = new List<Content>()
                 };
 
-                Content contToAdd = new Content();
-                foreach (var item in Contents)
+                if (page.ContentIds != null && page.ContentIds.Any())
                 {
-                    int castItem = Int32.Parse(item);
-                    contToAdd = _context.Contents.FirstOrDefault(c => c.Id == castItem);
+                    var selectedContents = await _context.Contents
+                        .Where(c => page.ContentIds.Contains(c.Id))
+                        .ToListAsync();
 
-                    if (contToAdd != null)
-                    {
-                        PageToAdd.Contents.Add(contToAdd);
-                    }
+                    pageToAdd.Contents.AddRange(selectedContents);
                 }
-
-                _context.Pages.Add(PageToAdd);
-                _context.SaveChanges();
+                _context.Pages.Add(pageToAdd);
+                await _context.SaveChangesAsync();
 
                 return RedirectToAction(nameof(Index));
             }
-            else
-            {
-                if (page.Contents.Count == 0)
-                {
-                    ViewBag.ContentError = "Content is Required";
-                }
 
-                var contents = _context.Contents;
-                ViewBag.ContentList = new SelectList(contents, "Id", "Title");
+            // Repopulate ContentList if validation fails
+            ViewBag.ContentList = new MultiSelectList(await _context.Contents.ToListAsync(), "Id", "Title", page.ContentIds);
 
-                return View(cpvm);
-            }
+            return View(page);
         }
 
 
@@ -132,57 +118,44 @@ namespace GoshehArtWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, CreatePageViewModel page, string title, string container, List<string> ContentIds)
+        public async Task<IActionResult> Edit(int id, CreatePageViewModel page)
         {
-       
-            Page? pageToEdit = _context.Pages.Find(id);
-
-            ModelState.Remove("Id");
-            ModelState.Remove("Container");
-
-            if (pageToEdit != null && ModelState.IsValid)
+            if (!ModelState.IsValid)
             {
-                pageToEdit.Title = page.Title;
-                pageToEdit.Container = page.Container;
-
-                var contToDelete = _context.Pages.Include(c => c.Contents)
-                    .FirstOrDefault(p => p.Id == id);
-
-                List<Content> tempList = new List<Content>();
-
-                foreach (var item in contToDelete.Contents)
-                {
-                    tempList.Add(item);
-                }
-
-                foreach (var cont in tempList)
-                {
-                    contToDelete.Contents.Remove(cont);
-                }
-
-                Content? contToAdd = new Content();
-                foreach (var item in ContentIds)
-                {
-                    int castItem = Int32.Parse(item);
-                    contToAdd = _context.Contents.FirstOrDefault(c => c.Id == castItem);
-
-                    if (contToAdd != null)
-                    {
-                        pageToEdit.Contents.Add(contToAdd);
-                    }
-
-                }
-
-                _context.Pages.Update(pageToEdit);
-                _context.SaveChanges();
-
-                return RedirectToAction(nameof(Index));
+                ViewBag.ContentList = new MultiSelectList(await _context.Contents.ToListAsync(), "Id", "Title", page.ContentIds);
+                return View(page);
             }
-            else
+
+            var pageToEdit = await _context.Pages.Include(p => p.Contents).FirstOrDefaultAsync(p => p.Id == id);
+
+            if (pageToEdit == null)
             {
-                return View();
+                return NotFound();
             }
+
+            pageToEdit.Title = page.Title;
+            pageToEdit.Container = page.Container;
+
+            // Clear old contents
+            pageToEdit.Contents.Clear();
+
+            if (page.ContentIds != null && page.ContentIds.Any())
+            {
+                var selectedContents = await _context.Contents
+                    .Where(c => page.ContentIds.Contains(c.Id))
+                    .ToListAsync();
+
+                foreach (var content in selectedContents)
+                {
+                    pageToEdit.Contents.Add(content);
+                }
+            }
+
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
+
 
         public async Task<IActionResult> Delete(int? id)
         {

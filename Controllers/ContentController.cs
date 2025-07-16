@@ -52,40 +52,32 @@ namespace GoshehArtWebApp.Controllers
         }
 
         [HttpPost]
-        public IActionResult Create(CreateContentViewModel content, int PageId)
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(CreateContentViewModel content)
         {
-
-
-            CreateContentViewModel ccvm = new CreateContentViewModel();
-            ModelState.Remove("Id");
-            if (ModelState.IsValid && PageId != 0)
+            if (!ModelState.IsValid || content.PageId == 0)
             {
-                var ContentToAdd = new Content()
+                if (content.PageId == 0)
                 {
-                    Title = content.Title,
-                    Date = content.Date,
-                    Container = content.Container,
-                    PageId = PageId
-                };
-
-
-                _context.Contents.Add(ContentToAdd);
-                _context.SaveChanges();
-
-                return RedirectToAction(nameof(Index));
-            }
-            else
-            {
-                if (content.PageId == 0 || content.PageId == null)
-                {
-                    ViewBag.PageError = "Page is Required";
+                    ViewBag.PageError = "Page is required";
                 }
 
-                var pages = _context.Pages;
-                ViewBag.PageList = new SelectList(pages, "Id", "Title");
-
-                return View(ccvm);
+                ViewBag.PageList = new SelectList(await _context.Pages.ToListAsync(), "Id", "Title", content.PageId);
+                return View(content);
             }
+
+            var contentToAdd = new Content
+            {
+                Title = content.Title,
+                Date = content.Date,
+                Container = content.Container,
+                PageId = content.PageId
+            };
+
+            _context.Contents.Add(contentToAdd);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
 
@@ -117,30 +109,31 @@ namespace GoshehArtWebApp.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, CreateContentViewModel content, string title, string container, int PageId)
+        public async Task<IActionResult> Edit(int id, CreateContentViewModel content)
         {
-
-            Content? contentToEdit = _context.Contents.Find(id);
-
-            ModelState.Remove("Id");
-            ModelState.Remove("Container");
-
-            if (contentToEdit != null && ModelState.IsValid)
+            
+            if (!ModelState.IsValid)
             {
-                contentToEdit.Title = content.Title;
-                contentToEdit.Date = content.Date;
-                contentToEdit.Container = content.Container;
-                contentToEdit.PageId = content.PageId;
-
-                _context.Contents.Update(contentToEdit);
-                _context.SaveChanges();
-
-                return RedirectToAction(nameof(Index));
+                ViewBag.PageList = new SelectList(await _context.Pages.ToListAsync(), "Id", "Title", content.PageId);
+                return View(content);
             }
-            else
+
+            var contentToEdit = await _context.Contents.FindAsync(id);
+
+            if (contentToEdit == null)
             {
-                return View();
+                return NotFound();
             }
+
+            contentToEdit.Title = content.Title;
+            contentToEdit.Date = content.Date;
+            contentToEdit.Container = content.Container;
+            contentToEdit.PageId = content.PageId;
+
+            _context.Contents.Update(contentToEdit);
+            await _context.SaveChangesAsync();
+
+            return RedirectToAction(nameof(Index));
         }
 
         public async Task<IActionResult> Delete(int? id)
