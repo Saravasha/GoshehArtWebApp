@@ -7,8 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.AspNetCore.StaticFiles;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Caching.Memory;
 using System.Data;
-using System.Threading.Tasks;
 
 namespace GoshehArtWebApp.Controllers
 {
@@ -20,14 +20,16 @@ namespace GoshehArtWebApp.Controllers
         private readonly VideoThumbnailProvider _videoThumbnailProvider;
         private readonly AssetTypeProvider _assetTypeProvider;
         private readonly FilePathProvider _filePathProvider;
+        private readonly IMemoryCache _cache;
 
-        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost, VideoThumbnailProvider videoThumbnailProvider, AssetTypeProvider assetTypeProvider, FilePathProvider filePathProvider)
+        public AssetController(ApplicationDbContext context, IWebHostEnvironment webHost, VideoThumbnailProvider videoThumbnailProvider, AssetTypeProvider assetTypeProvider, FilePathProvider filePathProvider, IMemoryCache cache)
         {
             _context = context;
             _webHostEnvironment = webHost;
             _videoThumbnailProvider = videoThumbnailProvider;
             _assetTypeProvider = assetTypeProvider;
             _filePathProvider = filePathProvider;
+            _cache = cache;
         }
 
         private async Task<(string PhysicalPath, string WebPath)?> UploadedFile(IFormFile? file)
@@ -51,16 +53,32 @@ namespace GoshehArtWebApp.Controllers
             return (physicalFilePath, webPath);
         }
 
-
+        [AllowAnonymous]
         [HttpGet("/Asset/Stream/{id}")]
         public async Task<IActionResult> Stream(int id)
         {
-            var asset = await _context.Assets.FirstOrDefaultAsync(a => a.Id == id);
-            if (asset == null || string.IsNullOrEmpty(asset.FileUrl) || asset.Type != AssetType.Video)
-                return NotFound();
+            var asset = await _cache.GetOrCreateAsync($"asset_{id}", async entry =>
+            {
+                entry.AbsoluteExpirationRelativeToNow = TimeSpan.FromMinutes(10);
+                return await _context.Assets.AsNoTracking().FirstOrDefaultAsync(a => a.Id == id);
+            });
 
-            var filePath = _filePathProvider.GetFullPath(asset.FileUrl);
+            if (asset == null || string.IsNullOrWhiteSpace(asset.FileUrl))
+            {
+                return NotFound("Asset or file URL not found.");
+            }
 
+            string filePath;
+
+            try
+            {
+                filePath = _filePathProvider.GetFullPath(asset.FileUrl);
+            }
+            catch (Exception ex)
+            {
+                // Optional: log exception here
+                return BadRequest("Invalid file path.");
+            }
             if (!System.IO.File.Exists(filePath))
                 return NotFound();
 
@@ -79,6 +97,7 @@ namespace GoshehArtWebApp.Controllers
         public async Task<IActionResult> Index(string searchString, DateOnly? fromDate, DateOnly? toDate)
         {
             var assets = await _context.Assets
+                .AsNoTracking()
                 .Include(a => a.Categories)
                 .ToListAsync();
 
@@ -122,6 +141,7 @@ namespace GoshehArtWebApp.Controllers
         public async Task<IActionResult> Details(int id)
         {
             Models.Asset? asset = await _context.Assets
+                .AsNoTracking()
                 .Include(c => c.Categories)
                 .FirstOrDefaultAsync(p => p.Id == id);
 
@@ -309,7 +329,9 @@ namespace GoshehArtWebApp.Controllers
                 return NotFound();
             }
 
-            var asset = await _context.Assets.Include(c => c.Categories)
+            var asset = await _context.Assets
+                .AsNoTracking()
+                .Include(c => c.Categories)
                 .FirstOrDefaultAsync(m => m.Id == id);
             if (asset == null)
             {
