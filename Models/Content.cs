@@ -17,7 +17,7 @@ namespace GoshehArtWebApp.Models
         public string? DateString => Date?.ToString("yyyy-MM-dd");
         [Display(Name = "Container Body")]
         public string? Container { get; set; }
-        public int PageId { get; set; }
+        public int? PageId { get; set; }
         public Page? Page { get; set; }
 
     }
