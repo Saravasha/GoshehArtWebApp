@@ -91,29 +91,35 @@ namespace GoshehArtWebApp.Controllers
         public IActionResult Edit(int id)
         {
 
-            CreatePageViewModel cpvm = new CreatePageViewModel();
-            Page? page = _context.Pages
-                .Include(c => c.Contents)
+            
+
+            // Try to get the page with its related contents
+            var page = _context.Pages
+                .Include(p => p.Contents)
                 .FirstOrDefault(p => p.Id == id);
 
-            List<int>? contentsId = new();
-            foreach (var pageNum in page.Contents)
+            foreach (var content in page.Contents)
             {
-                contentsId.Add(pageNum.Id);
+                Console.WriteLine($"Content ID: {content.Id}, Title: {content.Title}, Date: {(content.Date.HasValue ? content.Date.Value.ToString() : "NULL")}");
             }
-            if (page != null)
+
+            if (page == null)
             {
-                cpvm.Title = page.Title;
-                cpvm.Container = page.Container;
-                cpvm.ContentIds = contentsId;
-
-                var contents = _context.Contents;
-
-                ViewBag.ContentList = new MultiSelectList(contents, "Id", "Title");
+                return NotFound();
             }
+
+            // Initialize ViewModel
+            var cpvm = new CreatePageViewModel
+            {
+                Title = page.Title,
+                Container = page.Container,
+                ContentIds = page.Contents.Select(c => c.Id).ToList()
+            };
+
+            // Populate ViewBag with content options for multiselect
+            ViewBag.ContentList = new MultiSelectList(_context.Contents, "Id", "Title");
 
             return View(cpvm);
-
         }
 
         [HttpPost]
