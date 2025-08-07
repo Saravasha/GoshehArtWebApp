@@ -61,7 +61,6 @@ jobs:
           pm2 ls
           pm2 stop goshehartwebapp || true
 
-          env \
           DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
           ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
           CONNECTION_STRING="$CONNECTION_STRING" \
@@ -76,7 +75,7 @@ jobs:
             --interpreter dotnet \
             --update-env
 
-          
           pm2 save
+
       - name: Reload Nginx
         run: sudo service nginx restart
