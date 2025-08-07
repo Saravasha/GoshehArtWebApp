@@ -61,7 +61,22 @@ jobs:
           pm2 ls
           pm2 stop goshehartwebapp || true
 
-          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll --name goshehartwebapp --interpreter dotnet --update-env --env DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" --env ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" --env CONNECTION_STRING="$CONNECTION_STRING" --env ADMIN_PASSWORD="$ADMIN_PASSWORD" --env Smtp__Host="$Smtp__Host" --env Smtp__Username="$Smtp__Username" --env Smtp__Password="$Smtp__Password" --env Smtp__From="$Smtp__From" --env Smtp__Port="$Smtp__Port"
+          env \
+          DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
+          ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
+          CONNECTION_STRING="$CONNECTION_STRING" \
+          ADMIN_PASSWORD="$ADMIN_PASSWORD" \
+          Smtp__Host="$Smtp__Host" \
+          Smtp__Username="$Smtp__Username" \
+          Smtp__Password="$Smtp__Password" \
+          Smtp__From="$Smtp__From" \
+          Smtp__Port="$Smtp__Port" \
+          pm2 start /var/www/goshehartwebapp/_work/GoshehArtWebApp/GoshehArtWebApp/GoshehArtWebApp.dll \
+            --name goshehartwebapp \
+            --interpreter dotnet \
+            --update-env
+
+          
           pm2 save
       - name: Reload Nginx
         run: sudo service nginx restart
