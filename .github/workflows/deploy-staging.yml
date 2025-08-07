@@ -57,9 +57,7 @@ jobs:
           Smtp__From: ${{ secrets.SMTP_FROM }}
           Smtp__Port: ${{ secrets.SMTP_PORT }}
         run: |
-          pm2 resurrect
-          pm2 ls
-          pm2 stop goshehartwebapp || true
+          pm2 delete goshehartwebapp || true
 
           DOTNET_ENVIRONMENT="$DOTNET_ENVIRONMENT" \
           ASPNETCORE_ENVIRONMENT="$ASPNETCORE_ENVIRONMENT" \
