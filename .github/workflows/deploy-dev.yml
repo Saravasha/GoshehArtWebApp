@@ -61,7 +61,6 @@ jobs:
           pm2 ls
           pm2 stop goshehartwebapp-staging || true
 
-          env \
           DOTNET_ENVIRONMENT=Staging \
           ASPNETCORE_ENVIRONMENT=Staging \
           CONNECTION_STRING="${{ secrets.CONNECTION_STRING_STAGING }}" \
