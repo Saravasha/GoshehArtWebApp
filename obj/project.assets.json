@@ -8774,8 +8774,20 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.304/PortableRuntimeIdentifierGraph.json"
       }
     }
-  }
+  },
+  "logs": [
+    {
+      "code": "NU1902",
+      "level": "Warning",
+      "warningLevel": 1,
+      "message": "Package 'HtmlSanitizer' 9.0.876 has a known moderate severity vulnerability, https://github.com/advisories/GHSA-j92c-7v7g-gj3f",
+      "libraryId": "HtmlSanitizer",
+      "targetGraphs": [
+        "net8.0"
+      ]
+    }
+  ]
 }
