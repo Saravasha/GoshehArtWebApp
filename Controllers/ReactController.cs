@@ -37,9 +37,16 @@ namespace GoshehArtWebApp.Controllers
         [HttpGet("page")]
         public List<Page> GetPages()
         {
-            List<Page> pages = new List<Page>();
-            pages = _context.Pages.Include(c => c.Contents).ToList();
-            return pages;
+            return _context.Pages
+                .Select(p => new Page
+                {
+                    Id = p.Id,
+                    Title = p.Title,
+                    Contents = p.Contents
+                        .OrderByDescending(c => c.Id) // or CreatedAt, etc.
+                        .ToList()
+                })
+                .ToList();
         }
 
         [HttpGet("color")]
